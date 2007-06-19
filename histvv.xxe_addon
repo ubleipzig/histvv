@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<a:addon xmlns="http://www.w3.org/1999/xhtml"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:a="http://www.xmlmind.com/xmleditor/schema/addon">
+
+  <a:category>
+    <a:configuration />
+  </a:category>
+
+  <a:name>HistVV configuration</a:name>
+
+  <a:version>0.1</a:version>
+
+  <a:author>Carsten Milling
+  <a href="mailto:cmil@hashtable.de">mailto:cmil@hashtable.de</a></a:author>
+
+  <a:abstract>
+     Historische Vorlesungsverzeichnisse der Universiät Leipzig
+  </a:abstract>
+
+</a:addon>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<vv id="0000-WS" xml:lang="de" xmlns="http://hashtable.de/ns/histvv">
+  <kopf>
+    <!-- semester: Winter|Sommer -->
+    <semester>Winter</semester>
+    <beginn>
+      <jahr>1000</jahr>
+    </beginn>
+    <ende>
+      <jahr>1000</jahr>
+    </ende>
+  </kopf>
+
+  <titel>[TITEL]</titel>
+
+  <systematik>
+    <titel>[TITEL]</titel>
+    <veranstaltung>
+      <dozent><nachname>[NAME]</nachname>, <titel>[TITEL]</titel> <vorname>[VORNAME]</vorname>,
+      </dozent>, <beschreibung>[BESCHREIBUNG]</beschreibung>,
+      <zeit>[ZEIT]</zeit>
+    </veranstaltung>
+  </systematik>
+
+  <p></p>
+
+</vv>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<configuration name="HistVV"
+  xmlns="http://www.xmlmind.com/xmleditor/schema/configuration">
+
+  <detect>
+    <or>
+      <rootElementLocalName>vv</rootElementLocalName>
+      <rootElementNamespace>http://hashtable.de/ns/histvv</rootElementNamespace>
+    </or>
+  </detect>
+
+  <relaxng location="histvv.rng"
+           name="http://hashtable.de/ns/histvv"/>
+
+  <css name="Einfache Ansicht" location="css/view.css" />
+
+  <template name="Vorlesungsverzeichnis" location="templates/vv.xml" />
+
+  <saveOptions favorInteroperability="false"/>
+
+</configuration>
