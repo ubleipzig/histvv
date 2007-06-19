@@ -1,0 +1,139 @@
+# $Id$
+
+default namespace = "http://hashtable.de/ns/histvv"
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+
+start = vv
+
+## 
+##       Wurzelelement für ein Vorlesungsverzeichnis
+##     
+vv =
+  element vv {
+    
+    ##
+    attribute id {
+      xsd:NMTOKEN { pattern = "[0-9]{4}-(WS|[0-9]{4}-SS)" }
+    }?,
+    attribute xml:lang {
+      xsd:language { length = "2" }
+    }?,
+    kopf,
+    element titel { text-content },
+    element untertitel { text-content }?,
+    (systematik+ & p*)
+  }
+
+## Metadaten
+kopf =
+  element kopf {
+    element semester { "Winter" | "Sommer" }
+    & element beginn { partial-date }
+    & element ende { partial-date }
+    & element universität { text }?
+  }
+
+## 
+##       Gliederung der Fachgebiete, Themen etc.
+##     
+systematik =
+  # TODO: besserer Name?
+  element systematik {
+    attribute ref { text }?,
+    element titel { text-content },
+    ((systematik | veranstaltung)+ & p* & seite*)
+  }
+
+## 
+##       einzelne Lehrveranstaltung
+##     
+veranstaltung =
+  # Sollte das nach Veranstaltungstypen (Vorlesung, Übung, Seminar
+  # usw.) aufgegliedert werden?
+  element veranstaltung {
+    attribute id { xsd:NMTOKEN }?,
+    (text-content
+     & (dozent | ders)
+     & beschreibung?
+     & (zeit*)
+       # TODO: hierher gehören ggf. weitere Elemente wie "publikum",
+       # "vergütung" etc.
+       )
+  }
+
+## 
+##       Container für Angaben zum Dozenten
+##     
+dozent =
+  element dozent {
+    attribute ref { text }?,
+    (text-content
+     & element nachname { text-content }
+     & element vorname { text-content }
+     & element titel { text-content }?
+     & element status { text-content }?)
+  }
+
+## 
+##       Auszeichnung für Verweise auf vorhergehenden Dozenten:
+##       "Derselbe", "Ders." etc.
+##     
+ders = element ders { text }
+[
+  # Wäre "titel" vielleicht passender?
+  
+  a:documentation [ ]
+]
+beschreibung = element beschreibung { text-content }
+
+## 
+##       zur Auszeichnung von Zeitangaben
+##     
+zeit = element zeit { text-content }
+
+## 
+##       Textabsatz
+##     
+p = element p { text-content }
+
+##
+text-content = text & seite* & notiz* & i* & em*
+
+## Seitenmarkierung
+seite = element seite { xsd:positiveInteger }
+
+##
+notiz =
+  element notiz {
+    attribute betreff { text }?,
+    text
+  }
+
+## Hervorhebung, antiqua
+i = element i { text }
+
+## Hervorhebung, gesperrt
+em = element em { text }
+
+## 
+##       Datumsangabe, die mindestens das Jahr enthalten muss
+##     
+partial-date = jahr, (monat, tag?)?
+
+## Jahreszahl
+jahr =
+  element jahr {
+    xsd:positiveInteger { pattern = "[0-9]{4}" }
+  }
+
+## Monatszahl
+monat =
+  element monat {
+    xsd:positiveInteger { minInclusive = "1" maxInclusive = "12" }
+  }
+
+## Tag des Monats
+tag =
+  element tag {
+    xsd:positiveInteger { minInclusive = "1" maxInclusive = "31" }
+  }

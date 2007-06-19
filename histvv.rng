@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id$ -->
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+         datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+         ns="http://hashtable.de/ns/histvv">
+
+  <start>
+    <ref name="vv"/>
+  </start>
+
+  <define name="vv">
+    <a:documentation>
+      Wurzelelement für ein Vorlesungsverzeichnis
+    </a:documentation>
+    <element name="vv">
+      <optional>
+        <attribute name="id">
+          <a:documentation></a:documentation>
+          <data type="NMTOKEN">
+            <param name="pattern">[0-9]{4}-(WS|[0-9]{4}-SS)</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang">
+          <data type="language">
+            <param name="length">2</param>
+          </data>
+        </attribute>
+      </optional>
+      <ref name="kopf"/>
+      <element name="titel">
+        <ref name="text-content"/>
+      </element>
+      <optional>
+        <element name="untertitel">
+          <ref name="text-content"/>
+        </element>
+      </optional>
+      <interleave>
+        <oneOrMore>
+          <ref name="systematik"/>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="p"/>
+        </zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+
+  <define name="kopf">
+    <a:documentation>Metadaten</a:documentation>
+    <element name="kopf">
+      <interleave>
+        <element name="semester">
+          <choice>
+            <value>Winter</value>
+            <value>Sommer</value>
+          </choice>
+        </element>
+        <element name="beginn">
+          <ref name="partial-date"/>
+        </element>
+        <element name="ende">
+          <ref name="partial-date"/>
+        </element>
+        <optional>
+          <element name="universität">
+            <text/>
+          </element>
+        </optional>
+      </interleave>
+    </element>
+  </define>
+
+  <define name="systematik">
+    <a:documentation>
+      Gliederung der Fachgebiete, Themen etc.
+    </a:documentation>
+    <!-- TODO: besserer Name? -->
+    <element name="systematik">
+      <optional>
+        <attribute name="ref"/>
+      </optional>
+      <element name="titel">
+        <ref name="text-content"/>
+      </element>
+      <interleave>
+        <oneOrMore>
+          <choice>
+            <ref name="systematik"/>
+            <ref name="veranstaltung"/>
+          </choice>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="p"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="seite"/>
+        </zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+
+  <define name="veranstaltung">
+    <a:documentation>
+      einzelne Lehrveranstaltung
+    </a:documentation>
+    <!-- 
+       Sollte das nach Veranstaltungstypen (Vorlesung, Übung, Seminar
+       usw.) aufgegliedert werden?
+    -->
+    <element name="veranstaltung">
+      <optional>
+        <attribute name="id">
+          <data type="NMTOKEN"/>
+        </attribute>
+      </optional>
+      <interleave>
+        <ref name="text-content"/>
+        <choice>
+          <ref name="dozent"/>
+          <ref name="ders"/>
+        </choice>
+        <optional>
+          <ref name="beschreibung"/>
+        </optional>
+        <zeroOrMore>
+          <ref name="zeit"/>
+        </zeroOrMore>
+        <!--
+          TODO: hierher gehören ggf. weitere Elemente wie "publikum",
+          "vergütung" etc.
+        -->
+      </interleave>
+    </element>
+  </define>
+
+  <define name="dozent">
+    <a:documentation>
+      Container für Angaben zum Dozenten
+    </a:documentation>
+    <element name="dozent">
+      <optional>
+        <attribute name="ref"/>
+      </optional>
+      <interleave>
+        <ref name="text-content"/>
+        <element name="nachname">
+          <ref name="text-content"/>
+        </element>
+        <element name="vorname">
+          <ref name="text-content"/>
+        </element>
+        <optional>
+          <element name="titel">
+            <ref name="text-content"/>
+          </element>
+        </optional>
+        <optional>
+          <element name="status">
+            <ref name="text-content"/>
+          </element>
+        </optional>
+      </interleave>
+    </element>
+  </define>
+
+  <define name="ders">
+    <a:documentation>
+      Auszeichnung für Verweise auf vorhergehenden Dozenten:
+      "Derselbe", "Ders." etc.
+    </a:documentation>
+    <element name="ders">
+      <text/>
+    </element>
+  </define>
+
+  <define name="beschreibung">
+    <!--  Wäre "titel" vielleicht passender? -->
+    <a:documentation></a:documentation>
+    <element name="beschreibung">
+      <ref name="text-content"/>
+    </element>
+  </define>
+
+  <define name="zeit">
+    <a:documentation>
+      zur Auszeichnung von Zeitangaben
+    </a:documentation>
+    <element name="zeit">
+      <ref name="text-content"/>
+    </element>
+  </define>
+
+  <define name="p">
+    <a:documentation>
+      Textabsatz
+    </a:documentation>
+    <element name="p">
+      <ref name="text-content"/>
+    </element>
+  </define>
+
+
+  <define name="text-content">
+    <a:documentation></a:documentation>
+    <interleave>
+      <text/>
+      <zeroOrMore>
+        <ref name="seite"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="notiz"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="i"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="em"/>
+      </zeroOrMore>
+    </interleave>
+  </define>
+
+  <define name="seite">
+    <a:documentation>Seitenmarkierung</a:documentation>
+    <element name="seite">
+      <data type="positiveInteger"/>
+    </element>
+  </define>
+
+  <define name="notiz">
+    <a:documentation></a:documentation>
+    <element name="notiz">
+      <optional>
+        <attribute name="betreff"/>
+      </optional>
+      <text/>
+    </element>
+  </define>
+
+  <define name="i">
+    <a:documentation>Hervorhebung, antiqua</a:documentation>
+    <element name="i">
+      <text/>
+    </element>
+  </define>
+
+  <define name="em">
+    <a:documentation>Hervorhebung, gesperrt</a:documentation>
+    <element name="em">
+      <text/>
+    </element>
+  </define>
+
+
+  <define name="partial-date">
+    <a:documentation>
+      Datumsangabe, die mindestens das Jahr enthalten muss
+    </a:documentation>
+    <group>
+      <ref name="jahr"/>
+      <optional>
+        <ref name="monat"/>
+        <optional>
+          <ref name="tag"/>
+        </optional>
+      </optional>
+    </group>
+  </define>
+
+  <define name="jahr">
+    <a:documentation>Jahreszahl</a:documentation>
+    <element name="jahr">
+      <data type="positiveInteger">
+        <param name="pattern">[0-9]{4}</param>
+      </data>
+    </element>
+  </define>
+
+  <define name="monat">
+    <a:documentation>Monatszahl</a:documentation>
+    <element name="monat">
+      <data type="positiveInteger">
+        <param name="minInclusive">1</param>
+        <param name="maxInclusive">12</param>
+      </data>
+    </element>
+  </define>
+
+  <define name="tag">
+    <a:documentation>Tag des Monats</a:documentation>
+    <element name="tag">
+      <data type="positiveInteger">
+        <param name="minInclusive">1</param>
+        <param name="maxInclusive">31</param>
+      </data>
+    </element>
+  </define>
+
+</grammar>
