@@ -54,7 +54,7 @@ veranstaltung =
     attribute id { xsd:NMTOKEN }?,
     (text-content
      & (dozent | ders)
-     & beschreibung?
+     & thema?
      & (zeit*)
        # TODO: hierher gehören ggf. weitere Elemente wie "publikum",
        # "vergütung" etc.
@@ -95,12 +95,12 @@ funktion = element funktion { text-content }
 ##       "Derselbe", "Ders." etc.
 ##     
 ders = element ders { text }
-[
-  # Wäre "titel" vielleicht passender?
-  
-  a:documentation [ ]
-]
-beschreibung = element beschreibung { text-content }
+
+## 
+##       Auszechnung für Text, der das Thema der Lehrveranstaltung
+##       beschreibt
+##     
+thema = element thema { text-content }
 
 ## 
 ##       zur Auszeichnung von Zeitangaben

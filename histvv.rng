@@ -124,7 +124,7 @@
           <ref name="ders"/>
         </choice>
         <optional>
-          <ref name="beschreibung"/>
+          <ref name="thema"/>
         </optional>
         <zeroOrMore>
           <ref name="zeit"/>
@@ -205,10 +205,12 @@
     </element>
   </define>
 
-  <define name="beschreibung">
-    <!--  Wäre "titel" vielleicht passender? -->
-    <a:documentation></a:documentation>
-    <element name="beschreibung">
+  <define name="thema">
+    <a:documentation>
+      Auszechnung für Text, der das Thema der Lehrveranstaltung
+      beschreibt
+    </a:documentation>
+    <element name="thema">
       <ref name="text-content"/>
     </element>
   </define>

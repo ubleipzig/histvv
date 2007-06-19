@@ -17,7 +17,7 @@
     <titel>[TITEL]</titel>
     <veranstaltung>
       <dozent><nachname>[NAME]</nachname>, <grad>[AKAD. GRAD]</grad> <vorname>[VORNAME]</vorname>
-      </dozent>, <beschreibung>[BESCHREIBUNG]</beschreibung>,
+      </dozent>, <thema>[THEMA]</thema>,
       <zeit>[ZEIT]</zeit>
     </veranstaltung>
   </systematik>
