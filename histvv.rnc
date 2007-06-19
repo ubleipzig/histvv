@@ -62,17 +62,33 @@ veranstaltung =
   }
 
 ## 
-##       Container für Angaben zum Dozenten
+##       Angaben zum Dozenten
 ##     
 dozent =
   element dozent {
     attribute ref { text }?,
-    (text-content
-     & element nachname { text-content }
-     & element vorname { text-content }
-     & element titel { text-content }?
-     & element status { text-content }?)
+    (text-content & nachname & vorname & grad? & funktion?)
   }
+
+## 
+##       Nachname
+##     
+nachname = element nachname { text-content }
+
+## 
+##       Vorname
+##     
+vorname = element vorname { text-content }
+
+## 
+##       akademischer Grad
+##     
+grad = element grad { text-content }
+
+## 
+##       akademische Funktion
+##     
+funktion = element funktion { text-content }
 
 ## 
 ##       Auszeichnung für Verweise auf vorhergehenden Dozenten:

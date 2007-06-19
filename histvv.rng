@@ -139,7 +139,7 @@
 
   <define name="dozent">
     <a:documentation>
-      Container für Angaben zum Dozenten
+      Angaben zum Dozenten
     </a:documentation>
     <element name="dozent">
       <optional>
@@ -147,23 +147,51 @@
       </optional>
       <interleave>
         <ref name="text-content"/>
-        <element name="nachname">
-          <ref name="text-content"/>
-        </element>
-        <element name="vorname">
-          <ref name="text-content"/>
-        </element>
+        <ref name="nachname"/>
+        <ref name="vorname"/>
         <optional>
-          <element name="titel">
-            <ref name="text-content"/>
-          </element>
+          <ref name="grad"/>
         </optional>
         <optional>
-          <element name="status">
-            <ref name="text-content"/>
-          </element>
+          <ref name="funktion"/>
         </optional>
       </interleave>
+    </element>
+  </define>
+
+  <define name="nachname">
+    <a:documentation>
+      Nachname
+    </a:documentation>
+    <element name="nachname">
+      <ref name="text-content"/>
+    </element>
+  </define>
+
+  <define name="vorname">
+    <a:documentation>
+      Vorname
+    </a:documentation>
+    <element name="vorname">
+      <ref name="text-content"/>
+    </element>
+  </define>
+
+  <define name="grad">
+    <a:documentation>
+      akademischer Grad
+    </a:documentation>
+    <element name="grad">
+      <ref name="text-content"/>
+    </element>
+  </define>
+
+  <define name="funktion">
+    <a:documentation>
+      akademische Funktion
+    </a:documentation>
+    <element name="funktion">
+      <ref name="text-content"/>
     </element>
   </define>
 
