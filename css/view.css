@@ -5,6 +5,8 @@ vv, kopf, systematik, veranstaltung, p, seite
   display: block;
 }
 
+vv { font-family: serif; }
+
 kopf
 {
   color: green;
@@ -15,7 +17,7 @@ p { margin: 1em 0; }
 veranstaltung { margin: .5em 0; }
 
 i { font-style: italic; }
-em { font-family: serif; }
+em { font-family: sans-serif; }
 
 
 vv > titel, vv > untertitel
