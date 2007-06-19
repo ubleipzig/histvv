@@ -48,3 +48,8 @@ systematik > titel
 seite { color: red; font-weight: bold; }
 seite:before { content: "[Seite "; }
 seite:after  { content: "]"; }
+
+dozent > grad, dozent > funktion
+{
+  font-style: italic;
+}
