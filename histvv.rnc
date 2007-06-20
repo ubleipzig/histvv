@@ -67,7 +67,7 @@ veranstaltung =
 dozent =
   element dozent {
     attribute ref { text }?,
-    (text-content & nachname & vorname & grad? & funktion?)
+    (text-content & nachname & vorname? & grad? & funktion?)
   }
 
 ## 
@@ -97,7 +97,7 @@ funktion = element funktion { text-content }
 ders = element ders { text }
 
 ## 
-##       Auszechnung für Text, der das Thema der Lehrveranstaltung
+##       Auszeichnung für Text, der das Thema der Lehrveranstaltung
 ##       beschreibt
 ##     
 thema = element thema { text-content }

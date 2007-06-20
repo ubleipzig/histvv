@@ -148,7 +148,9 @@
       <interleave>
         <ref name="text-content"/>
         <ref name="nachname"/>
-        <ref name="vorname"/>
+        <optional>
+          <ref name="vorname"/>
+        </optional>
         <optional>
           <ref name="grad"/>
         </optional>
@@ -207,7 +209,7 @@
 
   <define name="thema">
     <a:documentation>
-      Auszechnung für Text, der das Thema der Lehrveranstaltung
+      Auszeichnung für Text, der das Thema der Lehrveranstaltung
       beschreibt
     </a:documentation>
     <element name="thema">
