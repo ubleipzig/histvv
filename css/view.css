@@ -5,12 +5,30 @@ vv, kopf, systematik, veranstaltung, p, seite
   display: block;
 }
 
-vv { font-family: serif; }
+vv
+{
+  font-family: serif; 
+  color: black;
+  background-color: white;
+}
 
 kopf
 {
-  color: green;
+  color: gray;
 }
+
+kopf > *
+{
+  display: block;
+}
+
+kopf > universität:before { content: "Universität: "; }
+kopf > semester:before { content: "Semester: "; }
+kopf > beginn:before { content: "Beginn: "; }
+kopf > ende:before { content: "Ende: "; }
+
+kopf > * > monat:before { content: " / "; }
+kopf > * > tag:before { content: " / "; }
 
 p { margin: 1em 0; }
 
@@ -45,7 +63,7 @@ systematik > titel
   font-size: large;
 }
 
-seite { color: red; font-weight: bold; }
+seite { color: blue; font-weight: bold; }
 seite:before { content: "[Seite "; }
 seite:after  { content: "]"; }
 
@@ -53,3 +71,5 @@ dozent > grad, dozent > funktion
 {
   font-style: italic;
 }
+
+notiz { color: red; }
