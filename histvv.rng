@@ -18,7 +18,7 @@
         <attribute name="id">
           <a:documentation></a:documentation>
           <data type="NMTOKEN">
-            <param name="pattern">[0-9]{4}-(WS|[0-9]{4}-SS)</param>
+            <param name="pattern">[a-z]+-[0-9]{4}-(ws|ss)</param>
           </data>
         </attribute>
       </optional>
@@ -44,6 +44,9 @@
         </oneOrMore>
         <zeroOrMore>
           <ref name="p"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="seite"/>
         </zeroOrMore>
       </interleave>
     </element>
@@ -120,7 +123,9 @@
       <interleave>
         <ref name="text-content"/>
         <choice>
-          <ref name="dozent"/>
+          <oneOrMore>
+            <ref name="dozent"/>
+          </oneOrMore>
           <ref name="ders"/>
         </choice>
         <optional>
@@ -231,7 +236,12 @@
       Textabsatz
     </a:documentation>
     <element name="p">
-      <ref name="text-content"/>
+      <interleave>
+        <ref name="text-content"/>
+        <zeroOrMore>
+          <ref name="veranstaltung"/>
+        </zeroOrMore>
+      </interleave>
     </element>
   </define>
 
@@ -258,7 +268,10 @@
   <define name="seite">
     <a:documentation>Seitenmarkierung</a:documentation>
     <element name="seite">
-      <data type="positiveInteger"/>
+      <choice>
+        <empty/>
+        <data type="positiveInteger"/>
+      </choice>
     </element>
   </define>
 

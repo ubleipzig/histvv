@@ -13,7 +13,7 @@ vv =
     
     ##
     attribute id {
-      xsd:NMTOKEN { pattern = "[0-9]{4}-(WS|[0-9]{4}-SS)" }
+      xsd:NMTOKEN { pattern = "[a-z]+-[0-9]{4}-(ws|ss)" }
     }?,
     attribute xml:lang {
       xsd:language { length = "2" }
@@ -21,7 +21,7 @@ vv =
     kopf,
     element titel { text-content },
     element untertitel { text-content }?,
-    (systematik+ & p*)
+    (systematik+ & p* & seite*)
   }
 
 ## Metadaten
@@ -53,7 +53,7 @@ veranstaltung =
   element veranstaltung {
     attribute id { xsd:NMTOKEN }?,
     (text-content
-     & (dozent | ders)
+     & (dozent+ | ders)
      & thema?
      & (zeit*)
        # TODO: hierher gehören ggf. weitere Elemente wie "publikum",
@@ -110,13 +110,13 @@ zeit = element zeit { text-content }
 ## 
 ##       Textabsatz
 ##     
-p = element p { text-content }
+p = element p { text-content & veranstaltung* }
 
 ##
 text-content = text & seite* & notiz* & i* & em*
 
 ## Seitenmarkierung
-seite = element seite { xsd:positiveInteger }
+seite = element seite { empty | xsd:positiveInteger }
 
 ##
 notiz =
