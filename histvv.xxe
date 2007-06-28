@@ -18,4 +18,10 @@
 
   <saveOptions favorInteroperability="false"/>
 
+  <elementTemplate name="default" selectable="override">
+    <veranstaltung xmlns="http://hashtable.de/ns/histvv">
+      <dozent></dozent>
+    </veranstaltung>
+  </elementTemplate>
+
 </configuration>
