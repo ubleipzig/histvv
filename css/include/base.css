@@ -22,7 +22,7 @@ kopf > *
   display: block;
 }
 
-kopf > universität:before { content: "Universität: "; }
+kopf > universität:before { content: "Uni: "; }
 kopf > semester:before { content: "Semester: "; }
 kopf > beginn:before { content: "Beginn: "; }
 kopf > ende:before { content: "Ende: "; }
