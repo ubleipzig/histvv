@@ -1,0 +1,77 @@
+/* $Id$ */
+
+vv, kopf, systematik, veranstaltung, p, seite
+{
+  display: block;
+}
+
+vv
+{
+  font-family: serif; 
+  color: black;
+  background-color: white;
+}
+
+kopf
+{
+  color: gray;
+}
+
+kopf > *
+{
+  display: block;
+}
+
+kopf > universität:before { content: "Universität: "; }
+kopf > semester:before { content: "Semester: "; }
+kopf > beginn:before { content: "Beginn: "; }
+kopf > ende:before { content: "Ende: "; }
+
+kopf > * > monat:before { content: " / "; }
+kopf > * > tag:before { content: " / "; }
+
+p { margin: 1em 0; }
+
+p > veranstaltung { display: inline; }
+
+veranstaltung { margin: .5em 0; }
+
+i { font-style: italic; }
+em { font-family: sans-serif; }
+
+
+vv > titel, vv > untertitel
+{
+  display: block;
+  font-weight: bold;
+  margin-top: 1em;
+  text-align: center;
+}
+
+vv > titel
+{
+  font-size: xx-large;
+}
+
+systematik
+{
+  margin-left: 1em;
+}
+
+systematik > titel
+{
+  display: block;
+  font-weight: bold;
+  font-size: large;
+}
+
+seite { color: blue; font-weight: bold; }
+seite:before { content: "[Seite "; }
+seite:after  { content: "]"; }
+
+dozent > grad, dozent > funktion
+{
+  font-style: italic;
+}
+
+notiz { color: red; }

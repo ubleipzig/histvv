@@ -12,7 +12,8 @@
   <relaxng location="histvv.rng"
            name="http://hashtable.de/ns/histvv"/>
 
-  <css name="Einfache Ansicht" location="css/view.css" />
+  <css name="Textansicht" location="css/view.css" />
+  <css name="Struktur" location="css/structure.css" alternate="true"/>
 
   <template name="Vorlesungsverzeichnis" location="templates/vv.xml" />
 
