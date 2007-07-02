@@ -40,7 +40,7 @@
       </optional>
       <interleave>
         <oneOrMore>
-          <ref name="systematik"/>
+          <ref name="sachgruppe"/>
         </oneOrMore>
         <zeroOrMore>
           <ref name="p"/>
@@ -77,12 +77,11 @@
     </element>
   </define>
 
-  <define name="systematik">
+  <define name="sachgruppe">
     <a:documentation>
       Gliederung der Fachgebiete, Themen etc.
     </a:documentation>
-    <!-- TODO: besserer Name? -->
-    <element name="systematik">
+    <element name="sachgruppe">
       <optional>
         <attribute name="ref"/>
       </optional>
@@ -92,7 +91,7 @@
       <interleave>
         <oneOrMore>
           <choice>
-            <ref name="systematik"/>
+            <ref name="sachgruppe"/>
             <ref name="veranstaltung"/>
           </choice>
         </oneOrMore>
@@ -134,10 +133,12 @@
         <zeroOrMore>
           <ref name="zeit"/>
         </zeroOrMore>
-        <!--
-          TODO: hierher gehören ggf. weitere Elemente wie "publikum",
-          "vergütung" etc.
-        -->
+        <zeroOrMore>
+          <ref name="modus"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="entgelt"/>
+        </zeroOrMore>
       </interleave>
     </element>
   </define>
@@ -230,6 +231,26 @@
       <ref name="text-content"/>
     </element>
   </define>
+
+  <define name="modus">
+    <a:documentation>
+      z.B. "privatissime" / "öffentlich"
+    </a:documentation>
+    <element name="modus">
+      <ref name="text-content"/>
+    </element>
+  </define>
+
+  <define name="entgelt">
+    <a:documentation>
+      Angaben zur Bezahlung einer Lehrveranstaltung,
+      z.B. "unentgeltlich"
+    </a:documentation>
+    <element name="entgelt">
+      <ref name="text-content"/>
+    </element>
+  </define>
+
 
   <define name="p">
     <a:documentation>

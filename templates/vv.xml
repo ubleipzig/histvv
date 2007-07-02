@@ -15,14 +15,14 @@
 
   <p></p>
 
-  <systematik>
+  <sachgruppe>
     <titel>[TITEL]</titel>
     <veranstaltung>
       <dozent><nachname>[NAME]</nachname>, <grad>[AKAD. GRAD]</grad>
       <vorname>[VORNAME]</vorname></dozent>, <thema>[THEMA]</thema>,
       <zeit>[ZEIT]</zeit>
     </veranstaltung>
-  </systematik>
+  </sachgruppe>
 
   <p></p>
 

@@ -21,7 +21,7 @@ vv =
     kopf,
     element titel { text-content },
     element untertitel { text-content }?,
-    (systematik+ & p* & seite*)
+    (sachgruppe+ & p* & seite*)
   }
 
 ## Metadaten
@@ -36,12 +36,11 @@ kopf =
 ## 
 ##       Gliederung der Fachgebiete, Themen etc.
 ##     
-systematik =
-  # TODO: besserer Name?
-  element systematik {
+sachgruppe =
+  element sachgruppe {
     attribute ref { text }?,
     element titel { text-content },
-    ((systematik | veranstaltung)+ & p* & seite*)
+    ((sachgruppe | veranstaltung)+ & p* & seite*)
   }
 
 ## 
@@ -55,10 +54,9 @@ veranstaltung =
     (text-content
      & (dozent+ | ders)
      & thema?
-     & (zeit*)
-       # TODO: hierher gehören ggf. weitere Elemente wie "publikum",
-       # "vergütung" etc.
-       )
+     & zeit*
+     & modus*
+     & entgelt*)
   }
 
 ## 
@@ -106,6 +104,17 @@ thema = element thema { text-content }
 ##       zur Auszeichnung von Zeitangaben
 ##     
 zeit = element zeit { text-content }
+
+## 
+##       z.B. "privatissime" / "öffentlich"
+##     
+modus = element modus { text-content }
+
+## 
+##       Angaben zur Bezahlung einer Lehrveranstaltung,
+##       z.B. "unentgeltlich"
+##     
+entgelt = element entgelt { text-content }
 
 ## 
 ##       Textabsatz

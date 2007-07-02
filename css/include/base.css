@@ -1,6 +1,6 @@
 /* $Id$ */
 
-vv, kopf, systematik, veranstaltung, p, seite
+vv, kopf, sachgruppe, veranstaltung, p, seite
 {
   display: block;
 }
@@ -53,12 +53,12 @@ vv > titel
   font-size: xx-large;
 }
 
-systematik
+sachgruppe
 {
   margin-left: 1em;
 }
 
-systematik > titel
+sachgruppe > titel
 {
   display: block;
   font-weight: bold;
@@ -75,3 +75,7 @@ dozent > grad, dozent > funktion
 }
 
 notiz { color: red; }
+
+zeit { text-decoration: underline; }
+modus { font-style: italic; }
+entgelt { font-style: italic; }
