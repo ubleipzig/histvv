@@ -65,17 +65,11 @@ sachgruppe > titel
   font-size: large;
 }
 
-seite { color: blue; font-weight: bold; }
+seite { font-weight: bold; }
 seite:before { content: "[Seite "; }
 seite:after  { content: "]"; }
 
-dozent > grad, dozent > funktion
-{
-  font-style: italic;
-}
-
-notiz { color: red; }
-
-zeit { text-decoration: underline; }
-modus { font-style: italic; }
+dozent > grad,
+dozent > funktion { font-style: italic; }
+modus   { font-style: italic; }
 entgelt { font-style: italic; }

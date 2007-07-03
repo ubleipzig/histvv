@@ -13,6 +13,7 @@
            name="http://hashtable.de/ns/histvv"/>
 
   <css name="Textansicht" location="css/view.css" />
+  <css name="Textansicht (farbig)" location="css/view-colored.css" />
   <css name="Struktur" location="css/structure.css" alternate="true"/>
 
   <template name="Vorlesungsverzeichnis" location="templates/vv.xml" />
