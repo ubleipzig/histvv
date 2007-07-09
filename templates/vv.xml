@@ -13,7 +13,7 @@
 
   <titel>Verzeichnis ...</titel>
 
-  <p></p>
+  <absatz></absatz>
 
   <sachgruppe>
     <titel>[TITEL]</titel>
@@ -24,6 +24,6 @@
     </veranstaltung>
   </sachgruppe>
 
-  <p></p>
+  <absatz></absatz>
 
 </vv>

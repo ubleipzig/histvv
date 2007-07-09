@@ -1,6 +1,6 @@
 /* $Id$ */
 
-vv, kopf, sachgruppe, veranstaltung, p, seite
+vv, kopf, sachgruppe, veranstaltung, absatz, seite
 {
   display: block;
 }
@@ -30,14 +30,14 @@ kopf > ende:before { content: "Ende: "; }
 kopf > * > monat:before { content: " / "; }
 kopf > * > tag:before { content: " / "; }
 
-p { margin: 1em 0; }
+absatz { margin: 1em 0; }
 
-p > veranstaltung { display: inline; }
+absatz > veranstaltung { display: inline; }
 
 veranstaltung { margin: .5em 0; }
 
-i { font-style: italic; }
-em { font-family: sans-serif; }
+fremdsprache { font-style: italic; }
+gesperrt { font-family: sans-serif; }
 
 
 vv > titel, vv > untertitel

@@ -43,7 +43,7 @@
           <ref name="sachgruppe"/>
         </oneOrMore>
         <zeroOrMore>
-          <ref name="p"/>
+          <ref name="absatz"/>
         </zeroOrMore>
         <zeroOrMore>
           <ref name="seite"/>
@@ -96,7 +96,7 @@
           </choice>
         </oneOrMore>
         <zeroOrMore>
-          <ref name="p"/>
+          <ref name="absatz"/>
         </zeroOrMore>
         <zeroOrMore>
           <ref name="seite"/>
@@ -252,11 +252,11 @@
   </define>
 
 
-  <define name="p">
+  <define name="absatz">
     <a:documentation>
       Textabsatz
     </a:documentation>
-    <element name="p">
+    <element name="absatz">
       <interleave>
         <ref name="text-content"/>
         <zeroOrMore>
@@ -278,10 +278,10 @@
         <ref name="notiz"/>
       </zeroOrMore>
       <zeroOrMore>
-        <ref name="i"/>
+        <ref name="fremdsprache"/>
       </zeroOrMore>
       <zeroOrMore>
-        <ref name="em"/>
+        <ref name="gesperrt"/>
       </zeroOrMore>
     </interleave>
   </define>
@@ -306,16 +306,16 @@
     </element>
   </define>
 
-  <define name="i">
-    <a:documentation>Hervorhebung, antiqua</a:documentation>
-    <element name="i">
+  <define name="fremdsprache">
+    <a:documentation>Hervorhebung fremdsprachlichen Texts</a:documentation>
+    <element name="fremdsprache">
       <text/>
     </element>
   </define>
 
-  <define name="em">
+  <define name="gesperrt">
     <a:documentation>Hervorhebung, gesperrt</a:documentation>
-    <element name="em">
+    <element name="gesperrt">
       <text/>
     </element>
   </define>

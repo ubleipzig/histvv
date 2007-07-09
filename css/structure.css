@@ -2,4 +2,4 @@
 
 @import "include/base.css";
 
-vv p, veranstaltung, seite, sachgruppe p { display: none; }
+vv absatz, veranstaltung, seite, sachgruppe absatz { display: none; }

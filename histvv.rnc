@@ -21,7 +21,7 @@ vv =
     kopf,
     element titel { text-content },
     element untertitel { text-content }?,
-    (sachgruppe+ & p* & seite*)
+    (sachgruppe+ & absatz* & seite*)
   }
 
 ## Metadaten
@@ -40,7 +40,7 @@ sachgruppe =
   element sachgruppe {
     attribute ref { text }?,
     element titel { text-content },
-    ((sachgruppe | veranstaltung)+ & p* & seite*)
+    ((sachgruppe | veranstaltung)+ & absatz* & seite*)
   }
 
 ## 
@@ -119,10 +119,10 @@ entgelt = element entgelt { text-content }
 ## 
 ##       Textabsatz
 ##     
-p = element p { text-content & veranstaltung* }
+absatz = element absatz { text-content & veranstaltung* }
 
 ##
-text-content = text & seite* & notiz* & i* & em*
+text-content = text & seite* & notiz* & fremdsprache* & gesperrt*
 
 ## Seitenmarkierung
 seite = element seite { empty | xsd:positiveInteger }
@@ -134,11 +134,11 @@ notiz =
     text
   }
 
-## Hervorhebung, antiqua
-i = element i { text }
+## Hervorhebung fremdsprachlichen Texts
+fremdsprache = element fremdsprache { text }
 
 ## Hervorhebung, gesperrt
-em = element em { text }
+gesperrt = element gesperrt { text }
 
 ## 
 ##       Datumsangabe, die mindestens das Jahr enthalten muss
