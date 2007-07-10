@@ -85,16 +85,24 @@
       <optional>
         <attribute name="ref"/>
       </optional>
-      <element name="titel">
-        <ref name="text-content"/>
-      </element>
+      <optional>
+        <element name="titel">
+          <ref name="text-content"/>
+        </element>
+      </optional>
       <interleave>
-        <oneOrMore>
-          <choice>
-            <ref name="sachgruppe"/>
-            <ref name="veranstaltung"/>
-          </choice>
-        </oneOrMore>
+        <!--
+           Um das Editieren zu erleichtern, wird das Vorhandensein
+           entweder einer <veranstaltung> oder einer <sachgruppe> an
+           dieser Stelle nicht erzwungen. TODO: Es sollte vielleicht
+           durch eine Schematron-Regel sichergestellt werden.
+        -->
+        <zeroOrMore>
+          <ref name="sachgruppe"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="veranstaltung"/>
+        </zeroOrMore>
         <zeroOrMore>
           <ref name="absatz"/>
         </zeroOrMore>
@@ -122,9 +130,14 @@
       <interleave>
         <ref name="text-content"/>
         <choice>
-          <oneOrMore>
+          <!-- 
+            <dozent> bzw. <ders> sind optional um das Editieren zu
+            erleichtern. TODO: Eine Schematron-Regel könnte auf
+            fehlende Dozentenangaben hinweisen.
+          -->
+          <zeroOrMore>
             <ref name="dozent"/>
-          </oneOrMore>
+          </zeroOrMore>
           <ref name="ders"/>
         </choice>
         <optional>
@@ -151,9 +164,16 @@
       <optional>
         <attribute name="ref"/>
       </optional>
+      <!-- 
+        Um das Editieren zu erleichtern sind alle Kindelemente
+        optional. TODO: Eine Schematron-Regel könnte auf
+        unvollständige Dozentenangaben hinweisen.
+      -->
       <interleave>
         <ref name="text-content"/>
-        <ref name="nachname"/>
+        <optional>
+          <ref name="nachname"/>
+        </optional>
         <optional>
           <ref name="vorname"/>
         </optional>

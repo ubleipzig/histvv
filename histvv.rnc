@@ -39,8 +39,15 @@ kopf =
 sachgruppe =
   element sachgruppe {
     attribute ref { text }?,
-    element titel { text-content },
-    ((sachgruppe | veranstaltung)+ & absatz* & seite*)
+    element titel { text-content }?,
+    (# Um das Editieren zu erleichtern, wird das Vorhandensein
+     # entweder einer <veranstaltung> oder einer <sachgruppe> an
+     # dieser Stelle nicht erzwungen. TODO: Es sollte vielleicht
+     # durch eine Schematron-Regel sichergestellt werden.
+     sachgruppe*
+     & veranstaltung*
+     & absatz*
+     & seite*)
   }
 
 ## 
@@ -52,7 +59,11 @@ veranstaltung =
   element veranstaltung {
     attribute id { xsd:NMTOKEN }?,
     (text-content
-     & (dozent+ | ders)
+     & (# <dozent> bzw. <ders> sind optional um das Editieren zu
+        # erleichtern. TODO: Eine Schematron-Regel könnte auf
+        # fehlende Dozentenangaben hinweisen.
+        dozent*
+        | ders)
      & thema?
      & zeit*
      & modus*
@@ -65,7 +76,10 @@ veranstaltung =
 dozent =
   element dozent {
     attribute ref { text }?,
-    (text-content & nachname & vorname? & grad? & funktion?)
+    # Um das Editieren zu erleichtern sind alle Kindelemente
+    # optional. TODO: Eine Schematron-Regel könnte auf
+    # unvollständige Dozentenangaben hinweisen.
+    (text-content & nachname? & vorname? & grad? & funktion?)
   }
 
 ## 
