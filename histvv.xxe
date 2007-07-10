@@ -12,8 +12,8 @@
   <relaxng location="histvv.rng"
            name="http://hashtable.de/ns/histvv"/>
 
-  <css name="Textansicht" location="css/view.css" />
   <css name="Textansicht (farbig)" location="css/view-colored.css" />
+  <css name="Textansicht" location="css/view.css" alternate="true"/>
   <css name="Struktur" location="css/structure.css" alternate="true"/>
 
   <template name="Vorlesungsverzeichnis" location="templates/vv.xml" />
@@ -21,9 +21,19 @@
   <saveOptions favorInteroperability="false"/>
 
   <elementTemplate name="default" selectable="override">
-    <veranstaltung xmlns="http://hashtable.de/ns/histvv">
-      <dozent></dozent>
-    </veranstaltung>
+    <veranstaltung xmlns="http://hashtable.de/ns/histvv"/>
+  </elementTemplate>
+
+  <elementTemplate name="default" selectable="override">
+    <sachgruppe xmlns="http://hashtable.de/ns/histvv">
+      <titel/>
+    </sachgruppe>
+  </elementTemplate>
+
+  <elementTemplate name="ohne_titel">
+    <sachgruppe xmlns="http://hashtable.de/ns/histvv">
+      <absatz></absatz>
+    </sachgruppe>
   </elementTemplate>
 
 </configuration>
