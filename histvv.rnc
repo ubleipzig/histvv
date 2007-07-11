@@ -21,7 +21,7 @@ vv =
     kopf,
     element titel { text-content },
     element untertitel { text-content }?,
-    (sachgruppe+ & absatz* & seite*)
+    (sachgruppe+ & absatz* & seite* & trennlinie*)
   }
 
 ## Metadaten
@@ -47,7 +47,8 @@ sachgruppe =
      sachgruppe*
      & veranstaltung*
      & absatz*
-     & seite*)
+     & seite*
+     & trennlinie*)
   }
 
 ## 
@@ -153,6 +154,9 @@ fremdsprache = element fremdsprache { text }
 
 ## Hervorhebung, gesperrt
 gesperrt = element gesperrt { text }
+
+## horizontale Linie
+trennlinie = element trennlinie { empty }
 
 ## 
 ##       Datumsangabe, die mindestens das Jahr enthalten muss

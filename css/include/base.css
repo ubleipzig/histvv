@@ -69,6 +69,23 @@ seite { font-weight: bold; }
 seite:before { content: "[Seite "; }
 seite:after  { content: "]"; }
 
+trennlinie 
+{
+  display: block;
+  margin: 1em 0;
+  border: 1px solid gray;
+  height: 1px;
+  text-align: center;
+}
+
+@media XMLmind-XML-Editor {
+  trennlinie
+  {
+    content: paragraph("----------", text-align, center, color, gray);
+    border: 0;
+  }
+}
+
 dozent > grad,
 dozent > funktion { font-style: italic; }
 modus   { font-style: italic; }

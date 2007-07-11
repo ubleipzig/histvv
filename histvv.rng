@@ -48,6 +48,9 @@
         <zeroOrMore>
           <ref name="seite"/>
         </zeroOrMore>
+        <zeroOrMore>
+          <ref name="trennlinie"/>
+        </zeroOrMore>
       </interleave>
     </element>
   </define>
@@ -108,6 +111,9 @@
         </zeroOrMore>
         <zeroOrMore>
           <ref name="seite"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="trennlinie"/>
         </zeroOrMore>
       </interleave>
     </element>
@@ -340,6 +346,12 @@
     </element>
   </define>
 
+  <define name="trennlinie">
+    <a:documentation>horizontale Linie</a:documentation>
+    <element name="trennlinie">
+      <empty/>
+    </element>
+  </define>
 
   <define name="partial-date">
     <a:documentation>
