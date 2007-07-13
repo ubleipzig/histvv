@@ -137,7 +137,10 @@ entgelt = element entgelt { text-content }
 absatz = element absatz { text-content & veranstaltung* }
 
 ##
-text-content = text & seite* & notiz* & fremdsprache* & gesperrt*
+model.text = text & seite*
+
+##
+text-content = model.text & notiz* & fremdsprache* & gesperrt*
 
 ## Seitenmarkierung
 seite = element seite { empty | xsd:positiveInteger }
@@ -146,14 +149,14 @@ seite = element seite { empty | xsd:positiveInteger }
 notiz =
   element notiz {
     attribute betreff { text }?,
-    text
+    model.text
   }
 
 ## Hervorhebung fremdsprachlichen Texts
-fremdsprache = element fremdsprache { text }
+fremdsprache = element fremdsprache { model.text }
 
 ## Hervorhebung, gesperrt
-gesperrt = element gesperrt { text }
+gesperrt = element gesperrt { model.text }
 
 ## horizontale Linie
 trennlinie = element trennlinie { empty }

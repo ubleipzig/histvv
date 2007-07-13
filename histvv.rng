@@ -277,7 +277,6 @@
     </element>
   </define>
 
-
   <define name="absatz">
     <a:documentation>
       Textabsatz
@@ -292,14 +291,20 @@
     </element>
   </define>
 
-
-  <define name="text-content">
+  <define name="model.text">
     <a:documentation></a:documentation>
     <interleave>
       <text/>
       <zeroOrMore>
         <ref name="seite"/>
       </zeroOrMore>
+    </interleave>
+  </define>
+
+  <define name="text-content">
+    <a:documentation></a:documentation>
+    <interleave>
+      <ref name="model.text"/>
       <zeroOrMore>
         <ref name="notiz"/>
       </zeroOrMore>
@@ -328,21 +333,21 @@
       <optional>
         <attribute name="betreff"/>
       </optional>
-      <text/>
+      <ref name="model.text"/>
     </element>
   </define>
 
   <define name="fremdsprache">
     <a:documentation>Hervorhebung fremdsprachlichen Texts</a:documentation>
     <element name="fremdsprache">
-      <text/>
+      <ref name="model.text"/>
     </element>
   </define>
 
   <define name="gesperrt">
     <a:documentation>Hervorhebung, gesperrt</a:documentation>
     <element name="gesperrt">
-      <text/>
+      <ref name="model.text"/>
     </element>
   </define>
 
