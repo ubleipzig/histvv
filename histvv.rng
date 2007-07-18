@@ -9,11 +9,39 @@
     <ref name="vv"/>
   </start>
 
+  <define name="xml.lang.attribute">
+    <attribute name="xml:lang">
+      <data type="language">
+        <param name="length">2</param>
+      </data>
+    </attribute>
+  </define>
+
+  <define name="xml.id.attribute">
+    <attribute name="xml:id">
+      <data type="ID"/>
+    </attribute>
+  </define>
+
+  <define name="basic.attributes">
+    <optional>
+      <ref name="xml.id.attribute"/>
+    </optional>
+  </define>
+
+  <define name="common.attributes">
+    <ref name="basic.attributes"/>
+    <optional>
+      <ref name="xml.lang.attribute"/>
+    </optional>
+  </define>
+
   <define name="vv">
     <a:documentation>
       Wurzelelement für ein Vorlesungsverzeichnis
     </a:documentation>
     <element name="vv">
+      <ref name="common.attributes"/>
       <optional>
         <attribute name="id">
           <a:documentation></a:documentation>
@@ -22,19 +50,14 @@
           </data>
         </attribute>
       </optional>
-      <optional>
-        <attribute name="xml:lang">
-          <data type="language">
-            <param name="length">2</param>
-          </data>
-        </attribute>
-      </optional>
       <ref name="kopf"/>
       <element name="titel">
+        <ref name="common.attributes"/>
         <ref name="text-content"/>
       </element>
       <optional>
         <element name="untertitel">
+          <ref name="common.attributes"/>
           <ref name="text-content"/>
         </element>
       </optional>
@@ -85,11 +108,13 @@
       Gliederung der Fachgebiete, Themen etc.
     </a:documentation>
     <element name="sachgruppe">
+      <ref name="common.attributes"/>
       <optional>
         <attribute name="ref"/>
       </optional>
       <optional>
         <element name="titel">
+          <ref name="common.attributes"/>
           <ref name="text-content"/>
         </element>
       </optional>
@@ -128,6 +153,7 @@
        usw.) aufgegliedert werden?
     -->
     <element name="veranstaltung">
+      <ref name="common.attributes"/>
       <optional>
         <attribute name="id">
           <data type="NMTOKEN"/>
@@ -167,6 +193,7 @@
       Angaben zum Dozenten
     </a:documentation>
     <element name="dozent">
+      <ref name="common.attributes"/>
       <optional>
         <attribute name="ref"/>
       </optional>
@@ -198,6 +225,7 @@
       Nachname
     </a:documentation>
     <element name="nachname">
+      <ref name="common.attributes"/>
       <ref name="text-content"/>
     </element>
   </define>
@@ -207,6 +235,7 @@
       Vorname
     </a:documentation>
     <element name="vorname">
+      <ref name="common.attributes"/>
       <ref name="text-content"/>
     </element>
   </define>
@@ -216,6 +245,7 @@
       akademischer Grad
     </a:documentation>
     <element name="grad">
+      <ref name="common.attributes"/>
       <ref name="text-content"/>
     </element>
   </define>
@@ -225,6 +255,7 @@
       akademische Funktion
     </a:documentation>
     <element name="funktion">
+      <ref name="common.attributes"/>
       <ref name="text-content"/>
     </element>
   </define>
@@ -235,6 +266,7 @@
       "Derselbe", "Ders." etc.
     </a:documentation>
     <element name="ders">
+      <ref name="common.attributes"/>
       <text/>
     </element>
   </define>
@@ -245,6 +277,7 @@
       beschreibt
     </a:documentation>
     <element name="thema">
+      <ref name="common.attributes"/>
       <ref name="text-content"/>
     </element>
   </define>
@@ -254,6 +287,7 @@
       zur Auszeichnung von Zeitangaben
     </a:documentation>
     <element name="zeit">
+      <ref name="common.attributes"/>
       <ref name="text-content"/>
     </element>
   </define>
@@ -263,6 +297,7 @@
       z.B. "privatissime" / "öffentlich"
     </a:documentation>
     <element name="modus">
+      <ref name="common.attributes"/>
       <ref name="text-content"/>
     </element>
   </define>
@@ -273,6 +308,7 @@
       z.B. "unentgeltlich"
     </a:documentation>
     <element name="entgelt">
+      <ref name="common.attributes"/>
       <ref name="text-content"/>
     </element>
   </define>
@@ -282,6 +318,7 @@
       Textabsatz
     </a:documentation>
     <element name="absatz">
+      <ref name="common.attributes"/>
       <interleave>
         <ref name="text-content"/>
         <zeroOrMore>
@@ -320,6 +357,18 @@
   <define name="seite">
     <a:documentation>Seitenmarkierung</a:documentation>
     <element name="seite">
+      <ref name="basic.attributes"/>
+      <optional>
+        <attribute name="nr">
+          <a:documentation>implizite Seitenzahl bei nichtpaginierten Seiten</a:documentation>
+          <choice>
+            <data type="positiveInteger"/>
+            <data type="NMTOKEN">
+              <param name="pattern">[a-z0-9]+</param>
+            </data>
+          </choice>
+        </attribute>
+      </optional>
       <choice>
         <empty/>
         <data type="positiveInteger"/>
@@ -330,6 +379,7 @@
   <define name="notiz">
     <a:documentation></a:documentation>
     <element name="notiz">
+      <ref name="common.attributes"/>
       <optional>
         <attribute name="betreff"/>
       </optional>
@@ -340,6 +390,7 @@
   <define name="fremdsprache">
     <a:documentation>Hervorhebung fremdsprachlichen Texts</a:documentation>
     <element name="fremdsprache">
+      <ref name="common.attributes"/>
       <ref name="model.text"/>
     </element>
   </define>
@@ -347,6 +398,7 @@
   <define name="gesperrt">
     <a:documentation>Hervorhebung, gesperrt</a:documentation>
     <element name="gesperrt">
+      <ref name="common.attributes"/>
       <ref name="model.text"/>
     </element>
   </define>
@@ -354,6 +406,7 @@
   <define name="trennlinie">
     <a:documentation>horizontale Linie</a:documentation>
     <element name="trennlinie">
+      <ref name="basic.attributes"/>
       <empty/>
     </element>
   </define>
@@ -376,6 +429,7 @@
   <define name="jahr">
     <a:documentation>Jahreszahl</a:documentation>
     <element name="jahr">
+      <ref name="basic.attributes"/>
       <data type="positiveInteger">
         <param name="pattern">[0-9]{4}</param>
       </data>
@@ -385,6 +439,7 @@
   <define name="monat">
     <a:documentation>Monatszahl</a:documentation>
     <element name="monat">
+      <ref name="basic.attributes"/>
       <data type="positiveInteger">
         <param name="minInclusive">1</param>
         <param name="maxInclusive">12</param>
@@ -395,6 +450,7 @@
   <define name="tag">
     <a:documentation>Tag des Monats</a:documentation>
     <element name="tag">
+      <ref name="basic.attributes"/>
       <data type="positiveInteger">
         <param name="minInclusive">1</param>
         <param name="maxInclusive">31</param>

@@ -4,23 +4,28 @@ default namespace = "http://hashtable.de/ns/histvv"
 namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
 start = vv
+xml.lang.attribute =
+  attribute xml:lang {
+    xsd:language { length = "2" }
+  }
+xml.id.attribute = attribute xml:id { xsd:ID }
+basic.attributes = xml.id.attribute?
+common.attributes = basic.attributes, xml.lang.attribute?
 
 ## 
 ##       Wurzelelement für ein Vorlesungsverzeichnis
 ##     
 vv =
   element vv {
+    common.attributes,
     
     ##
     attribute id {
       xsd:NMTOKEN { pattern = "[a-z]+-[0-9]{4}-(ws|ss)" }
     }?,
-    attribute xml:lang {
-      xsd:language { length = "2" }
-    }?,
     kopf,
-    element titel { text-content },
-    element untertitel { text-content }?,
+    element titel { common.attributes, text-content },
+    element untertitel { common.attributes, text-content }?,
     (sachgruppe+ & absatz* & seite* & trennlinie*)
   }
 
@@ -38,8 +43,9 @@ kopf =
 ##     
 sachgruppe =
   element sachgruppe {
+    common.attributes,
     attribute ref { text }?,
-    element titel { text-content }?,
+    element titel { common.attributes, text-content }?,
     (# Um das Editieren zu erleichtern, wird das Vorhandensein
      # entweder einer <veranstaltung> oder einer <sachgruppe> an
      # dieser Stelle nicht erzwungen. TODO: Es sollte vielleicht
@@ -58,6 +64,7 @@ veranstaltung =
   # Sollte das nach Veranstaltungstypen (Vorlesung, Übung, Seminar
   # usw.) aufgegliedert werden?
   element veranstaltung {
+    common.attributes,
     attribute id { xsd:NMTOKEN }?,
     (text-content
      & (# <dozent> bzw. <ders> sind optional um das Editieren zu
@@ -76,6 +83,7 @@ veranstaltung =
 ##     
 dozent =
   element dozent {
+    common.attributes,
     attribute ref { text }?,
     # Um das Editieren zu erleichtern sind alle Kindelemente
     # optional. TODO: Eine Schematron-Regel könnte auf
@@ -86,55 +94,56 @@ dozent =
 ## 
 ##       Nachname
 ##     
-nachname = element nachname { text-content }
+nachname = element nachname { common.attributes, text-content }
 
 ## 
 ##       Vorname
 ##     
-vorname = element vorname { text-content }
+vorname = element vorname { common.attributes, text-content }
 
 ## 
 ##       akademischer Grad
 ##     
-grad = element grad { text-content }
+grad = element grad { common.attributes, text-content }
 
 ## 
 ##       akademische Funktion
 ##     
-funktion = element funktion { text-content }
+funktion = element funktion { common.attributes, text-content }
 
 ## 
 ##       Auszeichnung für Verweise auf vorhergehenden Dozenten:
 ##       "Derselbe", "Ders." etc.
 ##     
-ders = element ders { text }
+ders = element ders { common.attributes, text }
 
 ## 
 ##       Auszeichnung für Text, der das Thema der Lehrveranstaltung
 ##       beschreibt
 ##     
-thema = element thema { text-content }
+thema = element thema { common.attributes, text-content }
 
 ## 
 ##       zur Auszeichnung von Zeitangaben
 ##     
-zeit = element zeit { text-content }
+zeit = element zeit { common.attributes, text-content }
 
 ## 
 ##       z.B. "privatissime" / "öffentlich"
 ##     
-modus = element modus { text-content }
+modus = element modus { common.attributes, text-content }
 
 ## 
 ##       Angaben zur Bezahlung einer Lehrveranstaltung,
 ##       z.B. "unentgeltlich"
 ##     
-entgelt = element entgelt { text-content }
+entgelt = element entgelt { common.attributes, text-content }
 
 ## 
 ##       Textabsatz
 ##     
-absatz = element absatz { text-content & veranstaltung* }
+absatz =
+  element absatz { common.attributes, (text-content & veranstaltung*) }
 
 ##
 model.text = text & seite*
@@ -143,23 +152,34 @@ model.text = text & seite*
 text-content = model.text & notiz* & fremdsprache* & gesperrt*
 
 ## Seitenmarkierung
-seite = element seite { empty | xsd:positiveInteger }
+seite =
+  element seite {
+    basic.attributes,
+    
+    ## implizite Seitenzahl bei nichtpaginierten Seiten
+    attribute nr {
+      xsd:positiveInteger
+      | xsd:NMTOKEN { pattern = "[a-z0-9]+" }
+    }?,
+    (empty | xsd:positiveInteger)
+  }
 
 ##
 notiz =
   element notiz {
+    common.attributes,
     attribute betreff { text }?,
     model.text
   }
 
 ## Hervorhebung fremdsprachlichen Texts
-fremdsprache = element fremdsprache { model.text }
+fremdsprache = element fremdsprache { common.attributes, model.text }
 
 ## Hervorhebung, gesperrt
-gesperrt = element gesperrt { model.text }
+gesperrt = element gesperrt { common.attributes, model.text }
 
 ## horizontale Linie
-trennlinie = element trennlinie { empty }
+trennlinie = element trennlinie { basic.attributes, empty }
 
 ## 
 ##       Datumsangabe, die mindestens das Jahr enthalten muss
@@ -169,17 +189,20 @@ partial-date = jahr, (monat, tag?)?
 ## Jahreszahl
 jahr =
   element jahr {
+    basic.attributes,
     xsd:positiveInteger { pattern = "[0-9]{4}" }
   }
 
 ## Monatszahl
 monat =
   element monat {
+    basic.attributes,
     xsd:positiveInteger { minInclusive = "1" maxInclusive = "12" }
   }
 
 ## Tag des Monats
 tag =
   element tag {
+    basic.attributes,
     xsd:positiveInteger { minInclusive = "1" maxInclusive = "31" }
   }
