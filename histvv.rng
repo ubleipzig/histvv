@@ -182,7 +182,7 @@
           <ref name="modus"/>
         </zeroOrMore>
         <zeroOrMore>
-          <ref name="entgelt"/>
+          <ref name="gebühr"/>
         </zeroOrMore>
       </interleave>
     </element>
@@ -302,12 +302,12 @@
     </element>
   </define>
 
-  <define name="entgelt">
+  <define name="gebühr">
     <a:documentation>
       Angaben zur Bezahlung einer Lehrveranstaltung,
       z.B. "unentgeltlich"
     </a:documentation>
-    <element name="entgelt">
+    <element name="gebühr">
       <ref name="common.attributes"/>
       <ref name="text-content"/>
     </element>

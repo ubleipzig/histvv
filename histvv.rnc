@@ -75,7 +75,7 @@ veranstaltung =
      & thema?
      & zeit*
      & modus*
-     & entgelt*)
+     & gebühr*)
   }
 
 ## 
@@ -137,7 +137,7 @@ modus = element modus { common.attributes, text-content }
 ##       Angaben zur Bezahlung einer Lehrveranstaltung,
 ##       z.B. "unentgeltlich"
 ##     
-entgelt = element entgelt { common.attributes, text-content }
+gebühr = element gebühr { common.attributes, text-content }
 
 ## 
 ##       Textabsatz
