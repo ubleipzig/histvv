@@ -22,7 +22,7 @@ kopf > *
   display: block;
 }
 
-kopf > universität:before { content: "Uni: "; }
+kopf > universit\0000E4t:before { content: "Uni: "; }
 kopf > semester:before { content: "Semester: "; }
 kopf > beginn:before { content: "Beginn: "; }
 kopf > ende:before { content: "Ende: "; }
@@ -89,4 +89,4 @@ trennlinie
 dozent > grad,
 dozent > funktion { font-style: italic; }
 modus   { font-style: italic; }
-gebühr { font-style: italic; }
+geb\0000FChr { font-style: italic; }
