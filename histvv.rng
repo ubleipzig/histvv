@@ -383,7 +383,15 @@
       <optional>
         <attribute name="betreff"/>
       </optional>
-      <ref name="model.text"/>
+      <interleave>
+        <ref name="model.text"/>
+        <zeroOrMore>
+          <ref name="fremdsprache"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="gesperrt"/>
+        </zeroOrMore>
+      </interleave>
     </element>
   </define>
 

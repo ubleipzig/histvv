@@ -169,7 +169,7 @@ notiz =
   element notiz {
     common.attributes,
     attribute betreff { text }?,
-    model.text
+    (model.text & fremdsprache* & gesperrt*)
   }
 
 ## Hervorhebung fremdsprachlichen Texts
