@@ -175,6 +175,9 @@
         <optional>
           <ref name="thema"/>
         </optional>
+        <optional>
+          <ref name="ort"/>
+        </optional>
         <zeroOrMore>
           <ref name="zeit"/>
         </zeroOrMore>
@@ -211,6 +214,9 @@
           <ref name="vorname"/>
         </optional>
         <optional>
+          <ref name="von"/>
+        </optional>
+        <optional>
           <ref name="grad"/>
         </optional>
         <optional>
@@ -237,6 +243,16 @@
     <element name="vorname">
       <ref name="common.attributes"/>
       <ref name="text-content"/>
+    </element>
+  </define>
+
+  <define name="von">
+    <a:documentation>
+      "von", "van", "de" ...
+    </a:documentation>
+    <element name="von">
+      <ref name="common.attributes"/>
+      <text/>
     </element>
   </define>
 
@@ -278,7 +294,12 @@
     </a:documentation>
     <element name="thema">
       <ref name="common.attributes"/>
-      <ref name="text-content"/>
+      <interleave>
+        <ref name="text-content"/>
+        <optional>
+          <ref name="ort"/>
+        </optional>
+      </interleave>
     </element>
   </define>
 
@@ -287,6 +308,16 @@
       zur Auszeichnung von Zeitangaben
     </a:documentation>
     <element name="zeit">
+      <ref name="common.attributes"/>
+      <ref name="text-content"/>
+    </element>
+  </define>
+
+  <define name="ort">
+    <a:documentation>
+      zur Auszeichnung von Ortsangaben
+    </a:documentation>
+    <element name="ort">
       <ref name="common.attributes"/>
       <ref name="text-content"/>
     </element>
@@ -324,6 +355,9 @@
         <zeroOrMore>
           <ref name="veranstaltung"/>
         </zeroOrMore>
+        <zeroOrMore>
+          <ref name="ort"/>
+        </zeroOrMore>
       </interleave>
     </element>
   </define>
@@ -334,6 +368,9 @@
       <text/>
       <zeroOrMore>
         <ref name="seite"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="sic"/>
       </zeroOrMore>
     </interleave>
   </define>
@@ -416,6 +453,19 @@
     <element name="trennlinie">
       <ref name="basic.attributes"/>
       <empty/>
+    </element>
+  </define>
+
+  <define name="sic">
+    <a:documentation>
+      Markierung für ungewöhnliche Schreibweisen im Original
+    </a:documentation>
+    <element name="sic">
+      <ref name="basic.attributes"/>
+      <optional>
+        <attribute name="beschreibung"/>
+      </optional>
+      <text/>
     </element>
   </define>
 

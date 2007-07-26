@@ -73,6 +73,7 @@ veranstaltung =
         dozent*
         | ders)
      & thema?
+     & ort?
      & zeit*
      & modus*
      & gebühr*)
@@ -88,7 +89,7 @@ dozent =
     # Um das Editieren zu erleichtern sind alle Kindelemente
     # optional. TODO: Eine Schematron-Regel könnte auf
     # unvollständige Dozentenangaben hinweisen.
-    (text-content & nachname? & vorname? & grad? & funktion?)
+    (text-content & nachname? & vorname? & von? & grad? & funktion?)
   }
 
 ## 
@@ -100,6 +101,11 @@ nachname = element nachname { common.attributes, text-content }
 ##       Vorname
 ##     
 vorname = element vorname { common.attributes, text-content }
+
+## 
+##       "von", "van", "de" ...
+##     
+von = element von { common.attributes, text }
 
 ## 
 ##       akademischer Grad
@@ -121,12 +127,17 @@ ders = element ders { common.attributes, text }
 ##       Auszeichnung für Text, der das Thema der Lehrveranstaltung
 ##       beschreibt
 ##     
-thema = element thema { common.attributes, text-content }
+thema = element thema { common.attributes, (text-content & ort?) }
 
 ## 
 ##       zur Auszeichnung von Zeitangaben
 ##     
 zeit = element zeit { common.attributes, text-content }
+
+## 
+##       zur Auszeichnung von Ortsangaben
+##     
+ort = element ort { common.attributes, text-content }
 
 ## 
 ##       z.B. "privatissime" / "öffentlich"
@@ -143,10 +154,12 @@ gebühr = element gebühr { common.attributes, text-content }
 ##       Textabsatz
 ##     
 absatz =
-  element absatz { common.attributes, (text-content & veranstaltung*) }
+  element absatz {
+    common.attributes, (text-content & veranstaltung* & ort*)
+  }
 
 ##
-model.text = text & seite*
+model.text = text & seite* & sic*
 
 ##
 text-content = model.text & notiz* & fremdsprache* & gesperrt*
@@ -180,6 +193,16 @@ gesperrt = element gesperrt { common.attributes, model.text }
 
 ## horizontale Linie
 trennlinie = element trennlinie { basic.attributes, empty }
+
+## 
+##       Markierung für ungewöhnliche Schreibweisen im Original
+##     
+sic =
+  element sic {
+    basic.attributes,
+    attribute beschreibung { text }?,
+    text
+  }
 
 ## 
 ##       Datumsangabe, die mindestens das Jahr enthalten muss
