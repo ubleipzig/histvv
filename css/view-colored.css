@@ -2,3 +2,13 @@
 
 @import "include/base.css";
 @import "include/colors.css";
+
+sachgruppe
+{
+  border: 1px dotted gray;
+  padding: 3px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+titel + sachgruppe { margin-top: 0; }

@@ -30,7 +30,7 @@ kopf > ende:before { content: "Ende: "; }
 kopf > * > monat:before { content: " / "; }
 kopf > * > tag:before { content: " / "; }
 
-absatz { margin: 1em 0; }
+absatz { margin: .5em 0; }
 
 absatz > veranstaltung { display: inline; }
 
@@ -72,7 +72,7 @@ seite:after  { content: "]"; }
 trennlinie 
 {
   display: block;
-  margin: 1em 0;
+  margin: .5em 0;
   border: 1px solid gray;
   height: 1px;
   text-align: center;
