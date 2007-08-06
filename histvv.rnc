@@ -176,7 +176,7 @@ absatz =
 model.text = text & seite* & sic*
 
 ##
-text-content = model.text & notiz* & fremdsprache* & gesperrt*
+text-content = model.text & notiz* & antiqua* & gesperrt*
 
 ## Seitenmarkierung
 seite =
@@ -196,14 +196,17 @@ notiz =
   element notiz {
     common.attributes,
     attribute betreff { text }?,
-    (model.text & fremdsprache* & gesperrt*)
+    (model.text & antiqua* & gesperrt* & kursiv*)
   }
 
-## Hervorhebung fremdsprachlichen Texts
-fremdsprache = element fremdsprache { common.attributes, model.text }
+## Hervorhebung, antiqua
+antiqua = element antiqua { common.attributes, model.text }
 
 ## Hervorhebung, gesperrt
 gesperrt = element gesperrt { common.attributes, model.text }
+
+## Hervorhebung, kursiv
+kursiv = element kursiv { common.attributes, model.text }
 
 ## horizontale Linie
 trennlinie = element trennlinie { basic.attributes, empty }

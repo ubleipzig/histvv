@@ -418,7 +418,7 @@
         <ref name="notiz"/>
       </zeroOrMore>
       <zeroOrMore>
-        <ref name="fremdsprache"/>
+        <ref name="antiqua"/>
       </zeroOrMore>
       <zeroOrMore>
         <ref name="gesperrt"/>
@@ -458,18 +458,21 @@
       <interleave>
         <ref name="model.text"/>
         <zeroOrMore>
-          <ref name="fremdsprache"/>
+          <ref name="antiqua"/>
         </zeroOrMore>
         <zeroOrMore>
           <ref name="gesperrt"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="kursiv"/>
         </zeroOrMore>
       </interleave>
     </element>
   </define>
 
-  <define name="fremdsprache">
-    <a:documentation>Hervorhebung fremdsprachlichen Texts</a:documentation>
-    <element name="fremdsprache">
+  <define name="antiqua">
+    <a:documentation>Hervorhebung, antiqua</a:documentation>
+    <element name="antiqua">
       <ref name="common.attributes"/>
       <ref name="model.text"/>
     </element>
@@ -478,6 +481,14 @@
   <define name="gesperrt">
     <a:documentation>Hervorhebung, gesperrt</a:documentation>
     <element name="gesperrt">
+      <ref name="common.attributes"/>
+      <ref name="model.text"/>
+    </element>
+  </define>
+
+  <define name="kursiv">
+    <a:documentation>Hervorhebung, kursiv</a:documentation>
+    <element name="kursiv">
       <ref name="common.attributes"/>
       <ref name="model.text"/>
     </element>

@@ -36,8 +36,9 @@ absatz > veranstaltung { display: inline; }
 
 veranstaltung { margin: .5em 0; }
 
-fremdsprache { font-style: italic; }
+antiqua { font-style: italic; }
 gesperrt { font-family: sans-serif; }
+kursiv { font-style: italic; }
 
 
 vv > titel, vv > untertitel
