@@ -36,6 +36,13 @@
     </optional>
   </define>
 
+  <define name="titel">
+    <element name="titel">
+      <ref name="common.attributes"/>
+      <ref name="text-content"/>
+    </element>
+  </define>
+
   <define name="vv">
     <a:documentation>
       Wurzelelement für ein Vorlesungsverzeichnis
@@ -51,10 +58,7 @@
         </attribute>
       </optional>
       <ref name="kopf"/>
-      <element name="titel">
-        <ref name="common.attributes"/>
-        <ref name="text-content"/>
-      </element>
+      <ref name="titel"/>
       <optional>
         <element name="untertitel">
           <ref name="common.attributes"/>
@@ -63,7 +67,10 @@
       </optional>
       <interleave>
         <oneOrMore>
-          <ref name="sachgruppe"/>
+          <choice>
+            <ref name="sachgruppe"/>
+            <ref name="übersicht"/>
+          </choice>
         </oneOrMore>
         <zeroOrMore>
           <ref name="absatz"/>
@@ -103,6 +110,37 @@
     </element>
   </define>
 
+  <define name="übersicht">
+    <a:documentation>
+      Hauptgliederung späterer Vorlesungsverzeichnisse ("Sytematische
+      Übersicht", "Übersicht nach der Ordnung der Lehrer", "Übersicht
+      nach Tagesstunden" usw.)
+    </a:documentation>
+    <element name="übersicht">
+      <ref name="common.attributes"/>
+      <optional>
+        <attribute name="ref"/>
+      </optional>
+      <optional>
+        <ref name="titel"/>
+      </optional>
+      <interleave>
+        <zeroOrMore>
+          <ref name="sachgruppe"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="absatz"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="seite"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="trennlinie"/>
+        </zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+
   <define name="sachgruppe">
     <a:documentation>
       Gliederung der Fachgebiete, Themen etc.
@@ -113,10 +151,7 @@
         <attribute name="ref"/>
       </optional>
       <optional>
-        <element name="titel">
-          <ref name="common.attributes"/>
-          <ref name="text-content"/>
-        </element>
+        <ref name="titel"/>
       </optional>
       <interleave>
         <!--

@@ -11,6 +11,7 @@ xml.lang.attribute =
 xml.id.attribute = attribute xml:id { xsd:ID }
 basic.attributes = xml.id.attribute?
 common.attributes = basic.attributes, xml.lang.attribute?
+titel = element titel { common.attributes, text-content }
 
 ## 
 ##       Wurzelelement für ein Vorlesungsverzeichnis
@@ -24,9 +25,9 @@ vv =
       xsd:NMTOKEN { pattern = "[a-z]+-[0-9]{4}-(ws|ss)" }
     }?,
     kopf,
-    element titel { common.attributes, text-content },
+    titel,
     element untertitel { common.attributes, text-content }?,
-    (sachgruppe+ & absatz* & seite* & trennlinie*)
+    ((sachgruppe | übersicht)+ & absatz* & seite* & trennlinie*)
   }
 
 ## Metadaten
@@ -39,13 +40,26 @@ kopf =
   }
 
 ## 
+##       Hauptgliederung späterer Vorlesungsverzeichnisse ("Sytematische
+##       Übersicht", "Übersicht nach der Ordnung der Lehrer", "Übersicht
+##       nach Tagesstunden" usw.)
+##     
+übersicht =
+  element übersicht {
+    common.attributes,
+    attribute ref { text }?,
+    titel?,
+    (sachgruppe* & absatz* & seite* & trennlinie*)
+  }
+
+## 
 ##       Gliederung der Fachgebiete, Themen etc.
 ##     
 sachgruppe =
   element sachgruppe {
     common.attributes,
     attribute ref { text }?,
-    element titel { common.attributes, text-content }?,
+    titel?,
     (# Um das Editieren zu erleichtern, wird das Vorhandensein
      # entweder einer <veranstaltung> oder einer <sachgruppe> an
      # dieser Stelle nicht erzwungen. TODO: Es sollte vielleicht

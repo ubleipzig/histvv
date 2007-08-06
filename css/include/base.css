@@ -1,6 +1,6 @@
 /* $Id$ */
 
-vv, kopf, sachgruppe, veranstaltung, absatz, seite
+vv, kopf, \0000FCbersicht, sachgruppe, veranstaltung, absatz, seite
 {
   display: block;
 }
@@ -53,7 +53,16 @@ vv > titel
   font-size: xx-large;
 }
 
-sachgruppe
+\0000FCbersicht > titel
+{
+  display: block;
+  margin: 1em 0;
+  font-weight: bold;
+  font-size: x-large;
+  text-align: center;
+}
+
+sachgruppe > sachgruppe
 {
   margin-left: 1em;
 }
@@ -69,8 +78,16 @@ seite { font-weight: bold; }
 seite:before { content: "[Seite "; }
 seite:after  { content: "]"; }
 
-sic:before { content: "["; color: gray; }
-sic:after { content: " sic!]"; color: gray; }
+sic
+{
+  display: inline-block; 
+  border: 1px solid transparent;
+  border-bottom-color: gray;
+  background-color: inherit;
+}
+
+sic:after { color: gray; content: " [sic]"; }
+sic[beschreibung]:after { content: " [sic (" attr(beschreibung) ")]"; }
 
 trennlinie 
 {
@@ -87,6 +104,9 @@ trennlinie
     content: paragraph("----------", text-align, center, color, gray);
     border: 0;
   }
+
+  /* XXE doesn't support letter-spacing */
+  gesperrt { font-size: larger; }
 }
 
 dozent > grad,
