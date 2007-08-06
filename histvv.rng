@@ -423,6 +423,9 @@
       <zeroOrMore>
         <ref name="gesperrt"/>
       </zeroOrMore>
+      <zeroOrMore>
+        <ref name="kursiv"/>
+      </zeroOrMore>
     </interleave>
   </define>
 

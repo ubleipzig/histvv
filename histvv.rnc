@@ -176,7 +176,7 @@ absatz =
 model.text = text & seite* & sic*
 
 ##
-text-content = model.text & notiz* & antiqua* & gesperrt*
+text-content = model.text & notiz* & antiqua* & gesperrt* & kursiv*
 
 ## Seitenmarkierung
 seite =
