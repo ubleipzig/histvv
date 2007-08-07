@@ -413,6 +413,9 @@
         <ref name="ort"/>
       </zeroOrMore>
       <zeroOrMore>
+        <ref name="scil"/>
+      </zeroOrMore>
+      <zeroOrMore>
         <ref name="antiqua"/>
       </zeroOrMore>
       <zeroOrMore>
@@ -472,6 +475,17 @@
           <ref name="kursiv"/>
         </zeroOrMore>
       </interleave>
+    </element>
+  </define>
+
+  <define name="scil">
+    <a:documentation>
+      zur Textklärung
+    </a:documentation>
+    <element name="scil">
+      <ref name="common.attributes"/>
+      <attribute name="text"/>
+      <ref name="model.text"/>
     </element>
   </define>
 

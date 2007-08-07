@@ -174,7 +174,14 @@ model.text = text & seite* & sic*
 
 ##
 text-content =
-  model.text & notiz* & verweis* & ort* & antiqua* & gesperrt* & kursiv*
+  model.text
+  & notiz*
+  & verweis*
+  & ort*
+  & scil*
+  & antiqua*
+  & gesperrt*
+  & kursiv*
 
 ## Seitenmarkierung
 seite =
@@ -199,6 +206,16 @@ verweis =
     common.attributes,
     attribute ref { text }?,
     (model.text & notiz* & antiqua* & gesperrt* & kursiv*)
+  }
+
+## 
+##       zur Textklärung
+##     
+scil =
+  element scil {
+    common.attributes,
+    attribute text { text },
+    model.text
   }
 
 ##

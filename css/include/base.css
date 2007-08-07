@@ -90,6 +90,8 @@ sic
 sic:after { color: gray; content: " [sic]"; }
 sic[beschreibung]:after { content: " [sic (" attr(beschreibung) ")]"; }
 
+scil:after { color: gray; content: " [scil. \"" attr(text) "\"]"; }
+
 trennlinie 
 {
   display: block;
