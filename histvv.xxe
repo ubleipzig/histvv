@@ -30,8 +30,4 @@
     </sachgruppe>
   </elementTemplate>
 
-  <elementTemplate name="ohne_titel">
-    <sachgruppe xmlns="http://hashtable.de/ns/histvv"></sachgruppe>
-  </elementTemplate>
-
 </configuration>
