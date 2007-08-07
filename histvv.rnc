@@ -86,8 +86,7 @@ veranstaltung =
         # fehlende Dozentenangaben hinweisen.
         dozent*
         | ders)
-     & thema?
-     & ort?
+     & thema*
      & zeit*
      & modus*
      & gebühr*)
@@ -103,18 +102,18 @@ dozent =
     # Um das Editieren zu erleichtern sind alle Kindelemente
     # optional. TODO: Eine Schematron-Regel könnte auf
     # unvollständige Dozentenangaben hinweisen.
-    (text-content & nachname? & vorname? & von? & grad? & funktion?)
+    (model.text & nachname? & vorname? & von? & grad? & funktion?)
   }
 
 ## 
 ##       Nachname
 ##     
-nachname = element nachname { common.attributes, text-content }
+nachname = element nachname { common.attributes, model.text }
 
 ## 
 ##       Vorname
 ##     
-vorname = element vorname { common.attributes, text-content }
+vorname = element vorname { common.attributes, model.text }
 
 ## 
 ##       "von", "van", "de" ...
@@ -124,24 +123,24 @@ von = element von { common.attributes, text }
 ## 
 ##       akademischer Grad
 ##     
-grad = element grad { common.attributes, text-content }
+grad = element grad { common.attributes, model.text }
 
 ## 
 ##       akademische Funktion
 ##     
-funktion = element funktion { common.attributes, text-content }
+funktion = element funktion { common.attributes, model.text }
 
 ## 
 ##       Auszeichnung für Verweise auf vorhergehenden Dozenten:
 ##       "Derselbe", "Ders." etc.
 ##     
-ders = element ders { common.attributes, text }
+ders = element ders { common.attributes, model.text }
 
 ## 
 ##       Auszeichnung für Text, der das Thema der Lehrveranstaltung
 ##       beschreibt
 ##     
-thema = element thema { common.attributes, (text-content & ort?) }
+thema = element thema { common.attributes, text-content }
 
 ## 
 ##       zur Auszeichnung von Zeitangaben
@@ -151,32 +150,31 @@ zeit = element zeit { common.attributes, text-content }
 ## 
 ##       zur Auszeichnung von Ortsangaben
 ##     
-ort = element ort { common.attributes, text-content }
+ort = element ort { common.attributes, model.text }
 
 ## 
 ##       z.B. "privatissime" / "öffentlich"
 ##     
-modus = element modus { common.attributes, text-content }
+modus = element modus { common.attributes, model.text }
 
 ## 
 ##       Angaben zur Bezahlung einer Lehrveranstaltung,
 ##       z.B. "unentgeltlich"
 ##     
-gebühr = element gebühr { common.attributes, text-content }
+gebühr = element gebühr { common.attributes, model.text }
 
 ## 
 ##       Textabsatz
 ##     
 absatz =
-  element absatz {
-    common.attributes, (text-content & veranstaltung* & ort*)
-  }
+  element absatz { common.attributes, (text-content & veranstaltung*) }
 
 ##
 model.text = text & seite* & sic*
 
 ##
-text-content = model.text & notiz* & antiqua* & gesperrt* & kursiv*
+text-content =
+  model.text & notiz* & verweis* & ort* & antiqua* & gesperrt* & kursiv*
 
 ## Seitenmarkierung
 seite =
@@ -189,6 +187,18 @@ seite =
       | xsd:NMTOKEN { pattern = "[a-z0-9]+" }
     }?,
     (empty | xsd:positiveInteger)
+  }
+
+## 
+##       zur Auszeichnung von Verweisen auf Sachgruppen oder
+##       Veranstaltungen innerhalb des gleichen Dokuments
+##       (z.B. "s. Dogmatik")
+##     
+verweis =
+  element verweis {
+    common.attributes,
+    attribute ref { text }?,
+    (model.text & notiz* & antiqua* & gesperrt* & kursiv*)
   }
 
 ##
