@@ -80,6 +80,15 @@ veranstaltung =
   element veranstaltung {
     common.attributes,
     attribute id { xsd:NMTOKEN }?,
+    # Die folgenden Attribute dienen der Angabe von
+    # Veranstaltungsdaten in Fällen, wo diese nicht über Elemente
+    # auszeichenbar sind sondern aus dem Kontext erschlossen
+    # werden. TODO: Eine konsistente Verwendung sollte über
+    # Schematron-Regeln sichergestellt werden.
+    attribute modus { text }?,
+    attribute gebühr { text }?,
+    attribute thema { text }?,
+    attribute zeit { text }?,
     (text-content
      & (# <dozent> bzw. <ders> sind optional um das Editieren zu
         # erleichtern. TODO: Eine Schematron-Regel könnte auf

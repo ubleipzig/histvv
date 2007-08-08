@@ -194,6 +194,27 @@
           <data type="NMTOKEN"/>
         </attribute>
       </optional>
+
+      <!-- 
+        Die folgenden Attribute dienen der Angabe von
+        Veranstaltungsdaten in Fällen, wo diese nicht über Elemente
+        auszeichenbar sind sondern aus dem Kontext erschlossen
+        werden. TODO: Eine konsistente Verwendung sollte über
+        Schematron-Regeln sichergestellt werden.
+      -->
+      <optional>
+        <attribute name="modus"/>
+      </optional>
+      <optional>
+        <attribute name="gebühr"/>
+      </optional>
+      <optional>
+        <attribute name="thema"/>
+      </optional>
+      <optional>
+        <attribute name="zeit"/>
+      </optional>
+
       <interleave>
         <ref name="text-content"/>
         <choice>
