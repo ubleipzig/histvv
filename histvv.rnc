@@ -102,7 +102,12 @@ dozent =
     # Um das Editieren zu erleichtern sind alle Kindelemente
     # optional. TODO: Eine Schematron-Regel könnte auf
     # unvollständige Dozentenangaben hinweisen.
-    (model.text & nachname? & vorname? & von? & grad? & funktion?)
+    (model.text
+     & nachname?
+     & vorname?
+     & nachnamenpräfix?
+     & grad?
+     & funktion?)
   }
 
 ## 
@@ -118,7 +123,7 @@ vorname = element vorname { common.attributes, model.text }
 ## 
 ##       "von", "van", "de" ...
 ##     
-von = element von { common.attributes, text }
+nachnamenpräfix = element nachnamenpräfix { common.attributes, text }
 
 ## 
 ##       akademischer Grad

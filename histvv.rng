@@ -246,7 +246,7 @@
           <ref name="vorname"/>
         </optional>
         <optional>
-          <ref name="von"/>
+          <ref name="nachnamenpräfix"/>
         </optional>
         <optional>
           <ref name="grad"/>
@@ -278,11 +278,11 @@
     </element>
   </define>
 
-  <define name="von">
+  <define name="nachnamenpräfix">
     <a:documentation>
       "von", "van", "de" ...
     </a:documentation>
-    <element name="von">
+    <element name="nachnamenpräfix">
       <ref name="common.attributes"/>
       <text/>
     </element>
