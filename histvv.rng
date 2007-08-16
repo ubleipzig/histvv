@@ -217,17 +217,17 @@
 
       <interleave>
         <ref name="text-content"/>
-        <choice>
-          <!-- 
-            <dozent> bzw. <ders> sind optional um das Editieren zu
-            erleichtern. TODO: Eine Schematron-Regel könnte auf
-            fehlende Dozentenangaben hinweisen.
-          -->
-          <zeroOrMore>
-            <ref name="dozent"/>
-          </zeroOrMore>
+        <!-- 
+          <dozent> bzw. <ders> sind optional um das Editieren zu
+          erleichtern. TODO: Eine Schematron-Regel könnte auf fehlende
+          Dozentenangaben hinweisen.
+        -->
+        <zeroOrMore>
+          <ref name="dozent"/>
+        </zeroOrMore>
+        <optional>
           <ref name="ders"/>
-        </choice>
+        </optional>
         <zeroOrMore>
           <ref name="thema"/>
         </zeroOrMore>
@@ -244,39 +244,52 @@
     </element>
   </define>
 
+  <define name="person">
+    <a:documentation>
+      allgemeine Angaben zu Personen
+    </a:documentation>
+    <element name="person">
+      <ref name="model.person"/>
+    </element>
+  </define>
+
   <define name="dozent">
     <a:documentation>
       Angaben zum Dozenten
     </a:documentation>
     <element name="dozent">
+      <ref name="model.person"/>
+    </element>
+  </define>
+
+  <define name="model.person">
+    <interleave>
       <ref name="common.attributes"/>
       <optional>
         <attribute name="ref"/>
       </optional>
       <!-- 
-        Um das Editieren zu erleichtern sind alle Kindelemente
-        optional. TODO: Eine Schematron-Regel könnte auf
-        unvollständige Dozentenangaben hinweisen.
+           Um das Editieren zu erleichtern sind alle Kindelemente
+           optional. TODO: Eine Schematron-Regel könnte auf
+           unvollständige Dozentenangaben hinweisen.
       -->
-      <interleave>
-        <ref name="model.text"/>
-        <optional>
-          <ref name="nachname"/>
-        </optional>
-        <optional>
-          <ref name="vorname"/>
-        </optional>
-        <optional>
-          <ref name="nachnamenpräfix"/>
-        </optional>
-        <optional>
-          <ref name="grad"/>
-        </optional>
-        <optional>
-          <ref name="funktion"/>
-        </optional>
-      </interleave>
-    </element>
+      <ref name="model.text"/>
+      <optional>
+        <ref name="nachname"/>
+      </optional>
+      <optional>
+        <ref name="vorname"/>
+      </optional>
+      <optional>
+        <ref name="nachnamenpräfix"/>
+      </optional>
+      <optional>
+        <ref name="grad"/>
+      </optional>
+      <optional>
+        <ref name="funktion"/>
+      </optional>
+    </interleave>
   </define>
 
   <define name="nachname">
@@ -402,6 +415,9 @@
         <ref name="text-content"/>
         <zeroOrMore>
           <ref name="veranstaltung"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="person"/>
         </zeroOrMore>
       </interleave>
     </element>

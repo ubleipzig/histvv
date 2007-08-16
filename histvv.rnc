@@ -90,11 +90,11 @@ veranstaltung =
     attribute thema { text }?,
     attribute zeit { text }?,
     (text-content
-     & (# <dozent> bzw. <ders> sind optional um das Editieren zu
-        # erleichtern. TODO: Eine Schematron-Regel könnte auf
-        # fehlende Dozentenangaben hinweisen.
-        dozent*
-        | ders)
+     & # <dozent> bzw. <ders> sind optional um das Editieren zu
+       # erleichtern. TODO: Eine Schematron-Regel könnte auf fehlende
+       # Dozentenangaben hinweisen.
+       dozent*
+     & ders?
      & thema*
      & zeit*
      & modus*
@@ -102,22 +102,26 @@ veranstaltung =
   }
 
 ## 
+##       allgemeine Angaben zu Personen
+##     
+person = element person { model.person }
+
+## 
 ##       Angaben zum Dozenten
 ##     
-dozent =
-  element dozent {
-    common.attributes,
-    attribute ref { text }?,
-    # Um das Editieren zu erleichtern sind alle Kindelemente
+dozent = element dozent { model.person }
+model.person =
+  common.attributes
+  & attribute ref { text }?
+  & # Um das Editieren zu erleichtern sind alle Kindelemente
     # optional. TODO: Eine Schematron-Regel könnte auf
     # unvollständige Dozentenangaben hinweisen.
-    (model.text
-     & nachname?
-     & vorname?
-     & nachnamenpräfix?
-     & grad?
-     & funktion?)
-  }
+    model.text
+  & nachname?
+  & vorname?
+  & nachnamenpräfix?
+  & grad?
+  & funktion?
 
 ## 
 ##       Nachname
@@ -181,7 +185,9 @@ gebühr = element gebühr { common.attributes, model.text }
 ##       Textabsatz
 ##     
 absatz =
-  element absatz { common.attributes, (text-content & veranstaltung*) }
+  element absatz {
+    common.attributes, (text-content & veranstaltung* & person*)
+  }
 
 ##
 model.text = text & seite* & sic*
