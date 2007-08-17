@@ -190,7 +190,7 @@ absatz =
   }
 
 ##
-model.text = text & seite* & sic*
+model.text = text & seite* & sic* & korrektur*
 
 ##
 text-content =
@@ -264,6 +264,21 @@ trennlinie = element trennlinie { basic.attributes, empty }
 sic =
   element sic {
     basic.attributes,
+    attribute beschreibung { text }?,
+    text
+  }
+
+## 
+##       Auszeichnung von Korrekturen bei Transkription
+##     
+korrektur =
+  element korrektur {
+    basic.attributes,
+    
+    ## 
+    ##           enthält den Originaltext, bleibt leer bei Ergänzungen
+    ##         
+    (attribute original { text }?),
     attribute beschreibung { text }?,
     text
   }

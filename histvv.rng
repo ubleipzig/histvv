@@ -433,6 +433,9 @@
       <zeroOrMore>
         <ref name="sic"/>
       </zeroOrMore>
+      <zeroOrMore>
+        <ref name="korrektur"/>
+      </zeroOrMore>
     </interleave>
   </define>
 
@@ -586,6 +589,25 @@
     </a:documentation>
     <element name="sic">
       <ref name="basic.attributes"/>
+      <optional>
+        <attribute name="beschreibung"/>
+      </optional>
+      <text/>
+    </element>
+  </define>
+
+  <define name="korrektur">
+    <a:documentation>
+      Auszeichnung von Korrekturen bei Transkription
+    </a:documentation>
+    <element name="korrektur">
+      <ref name="basic.attributes"/>
+      <optional>
+        <a:documentation>
+          enthält den Originaltext, bleibt leer bei Ergänzungen
+        </a:documentation>
+        <attribute name="original"/>
+      </optional>
       <optional>
         <attribute name="beschreibung"/>
       </optional>

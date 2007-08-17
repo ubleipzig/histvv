@@ -92,6 +92,9 @@ sic[beschreibung]:after { content: " [sic (" attr(beschreibung) ")]"; }
 
 scil:after { color: gray; content: " [scil. \"" attr(text) "\"]"; }
 
+korrektur:before { color: gray; content: "["; font-style: normal; }
+korrektur:after { color: gray; content: "]"; font-style: normal; }
+
 trennlinie 
 {
   display: block;
