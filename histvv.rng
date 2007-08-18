@@ -2,8 +2,11 @@
 <!-- $Id$ -->
 <grammar xmlns="http://relaxng.org/ns/structure/1.0"
          xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+         xmlns:s="http://purl.oclc.org/dsdl/schematron"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://hashtable.de/ns/histvv">
+
+  <s:ns prefix="v" uri="http://hashtable.de/ns/histvv"/>
 
   <start>
     <ref name="vv"/>
@@ -348,6 +351,14 @@
       "Derselbe", "Ders." etc.
     </a:documentation>
     <element name="ders">
+      <s:pattern id="ders">
+        <s:rule context="v:ders">
+          <s:assert test="not(string(.) and normalize-space(.) = '')">
+            Element 'ders' muß entweder leer bleiben oder Text
+            enthalten.
+          </s:assert>
+        </s:rule>
+      </s:pattern>
       <ref name="common.attributes"/>
       <ref name="model.text"/>
     </element>
@@ -523,6 +534,16 @@
       zur Textklärung
     </a:documentation>
     <element name="scil">
+      <s:pattern id="scil">
+        <s:rule context="v:scil">
+          <s:assert test="not(text()='')">
+            Leeres 'scil' ist nicht sinnvoll.
+          </s:assert>
+          <s:assert test="not(@text='???')">
+            Attribut 'text' enthält Platzhaltertext ('???').
+          </s:assert>
+        </s:rule>
+      </s:pattern>
       <ref name="common.attributes"/>
       <attribute name="text"/>
       <ref name="model.text"/>
@@ -532,6 +553,13 @@
   <define name="notiz">
     <a:documentation></a:documentation>
     <element name="notiz">
+      <s:pattern id="notiz">
+        <s:rule context="v:notiz">
+          <s:assert test="not(text()='')">
+            Leere 'notiz' ist nicht sinnvoll.
+          </s:assert>
+        </s:rule>
+      </s:pattern>
       <ref name="common.attributes"/>
       <optional>
         <attribute name="betreff"/>
@@ -588,6 +616,13 @@
       Markierung für ungewöhnliche Schreibweisen im Original
     </a:documentation>
     <element name="sic">
+      <s:pattern id="sic">
+        <s:rule context="v:sic">
+          <s:assert test="not(text()='')">
+            Leeres 'sic' ist nicht sinnvoll.
+          </s:assert>
+        </s:rule>
+      </s:pattern>
       <ref name="basic.attributes"/>
       <optional>
         <attribute name="beschreibung"/>

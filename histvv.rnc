@@ -2,7 +2,9 @@
 
 default namespace = "http://hashtable.de/ns/histvv"
 namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace s = "http://purl.oclc.org/dsdl/schematron"
 
+s:ns [ prefix = "v" uri = "http://hashtable.de/ns/histvv" ]
 start = vv
 xml.lang.attribute =
   attribute xml:lang {
@@ -152,7 +154,31 @@ funktion = element funktion { common.attributes, model.text }
 ##       Auszeichnung für Verweise auf vorhergehenden Dozenten:
 ##       "Derselbe", "Ders." etc.
 ##     
-ders = element ders { common.attributes, model.text }
+ders =
+  [
+    s:pattern [
+      id = "ders"
+      "\x{a}" ~
+      "        "
+      s:rule [
+        context = "v:ders"
+        "\x{a}" ~
+        "          "
+        s:assert [
+          test = "not(string(.) and normalize-space(.) = '')"
+          "\x{a}" ~
+          "            Element 'ders' muß entweder leer bleiben oder Text\x{a}" ~
+          "            enthalten.\x{a}" ~
+          "          "
+        ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+  ]
+  element ders { common.attributes, model.text }
 
 ## 
 ##       Auszeichnung für Text, der das Thema der Lehrveranstaltung
@@ -232,6 +258,36 @@ verweis =
 ##       zur Textklärung
 ##     
 scil =
+  [
+    s:pattern [
+      id = "scil"
+      "\x{a}" ~
+      "        "
+      s:rule [
+        context = "v:scil"
+        "\x{a}" ~
+        "          "
+        s:assert [
+          test = "not(text()='')"
+          "\x{a}" ~
+          "            Leeres 'scil' ist nicht sinnvoll.\x{a}" ~
+          "          "
+        ]
+        "\x{a}" ~
+        "          "
+        s:assert [
+          test = "not(@text='???')"
+          "\x{a}" ~
+          "            Attribut 'text' enthält Platzhaltertext ('???').\x{a}" ~
+          "          "
+        ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+  ]
   element scil {
     common.attributes,
     attribute text { text },
@@ -240,6 +296,28 @@ scil =
 
 ##
 notiz =
+  [
+    s:pattern [
+      id = "notiz"
+      "\x{a}" ~
+      "        "
+      s:rule [
+        context = "v:notiz"
+        "\x{a}" ~
+        "          "
+        s:assert [
+          test = "not(text()='')"
+          "\x{a}" ~
+          "            Leere 'notiz' ist nicht sinnvoll.\x{a}" ~
+          "          "
+        ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+  ]
   element notiz {
     common.attributes,
     attribute betreff { text }?,
@@ -262,6 +340,28 @@ trennlinie = element trennlinie { basic.attributes, empty }
 ##       Markierung für ungewöhnliche Schreibweisen im Original
 ##     
 sic =
+  [
+    s:pattern [
+      id = "sic"
+      "\x{a}" ~
+      "        "
+      s:rule [
+        context = "v:sic"
+        "\x{a}" ~
+        "          "
+        s:assert [
+          test = "not(text()='')"
+          "\x{a}" ~
+          "            Leeres 'sic' ist nicht sinnvoll.\x{a}" ~
+          "          "
+        ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+  ]
   element sic {
     basic.attributes,
     attribute beschreibung { text }?,

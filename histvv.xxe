@@ -12,6 +12,8 @@
   <relaxng location="histvv.rng"
            name="http://hashtable.de/ns/histvv"/>
 
+  <schematron location="histvv.rng"/>
+
   <css name="Textansicht (farbig)" location="css/view-colored.css" />
   <css name="Textansicht" location="css/view.css" alternate="true"/>
   <css name="Struktur" location="css/structure.css" alternate="true"/>
