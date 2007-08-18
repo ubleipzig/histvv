@@ -337,7 +337,7 @@ kursiv = element kursiv { common.attributes, model.text }
 trennlinie = element trennlinie { basic.attributes, empty }
 
 ## 
-##       Markierung für ungewöhnliche Schreibweisen im Original
+##       Markierung ungewöhnlicher Schreibweisen im Original
 ##     
 sic =
   [
@@ -362,11 +362,7 @@ sic =
       "      "
     ]
   ]
-  element sic {
-    basic.attributes,
-    attribute beschreibung { text }?,
-    text
-  }
+  element sic { basic.attributes, text }
 
 ## 
 ##       Auszeichnung von Korrekturen bei Transkription

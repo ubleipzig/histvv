@@ -613,7 +613,7 @@
 
   <define name="sic">
     <a:documentation>
-      Markierung für ungewöhnliche Schreibweisen im Original
+      Markierung ungewöhnlicher Schreibweisen im Original
     </a:documentation>
     <element name="sic">
       <s:pattern id="sic">
@@ -624,9 +624,6 @@
         </s:rule>
       </s:pattern>
       <ref name="basic.attributes"/>
-      <optional>
-        <attribute name="beschreibung"/>
-      </optional>
       <text/>
     </element>
   </define>
