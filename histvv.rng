@@ -643,9 +643,6 @@
         </a:documentation>
         <attribute name="original"/>
       </optional>
-      <optional>
-        <attribute name="beschreibung"/>
-      </optional>
       <text/>
     </element>
   </define>

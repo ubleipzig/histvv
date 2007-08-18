@@ -379,7 +379,6 @@ korrektur =
     ##           enthält den Originaltext, bleibt leer bei Ergänzungen
     ##         
     (attribute original { text }?),
-    attribute beschreibung { text }?,
     text
   }
 
