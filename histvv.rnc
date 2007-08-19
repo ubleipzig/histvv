@@ -27,6 +27,7 @@ vv =
       xsd:NMTOKEN { pattern = "[a-z]+-[0-9]{4}-(ws|ss)" }
     }?,
     kopf,
+    seite?,
     titel,
     element untertitel { common.attributes, text-content }?,
     ((sachgruppe | übersicht)+ & absatz* & seite* & trennlinie*)
