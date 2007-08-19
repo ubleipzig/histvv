@@ -32,4 +32,14 @@
     </sachgruppe>
   </elementTemplate>
 
+  <!--
+    aus irgendeinem Grund funktioniert das nicht mit
+    selectable="override"
+  --> 
+  <elementTemplate name="transkribent">
+    <status xmlns="http://hashtable.de/ns/histvv">
+      <transkribent/>
+    </status>
+  </elementTemplate>
+
 </configuration>

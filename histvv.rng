@@ -109,13 +109,51 @@
             <text/>
           </element>
         </optional>
+        <ref name="status"/>
       </interleave>
+    </element>
+  </define>
+
+  <define name="status">
+    <element name="status">
+      <optional>
+        <attribute name="komplett">
+          <value>ja</value>
+        </attribute>
+      </optional>
+      <ref name="transkribent"/>
+      <zeroOrMore>
+        <ref name="korrigiert"/>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="transkribent">
+    <element name="transkribent">
+      <s:pattern id="transkribent">
+        <s:rule context="v:transkribent">
+          <s:assert test="not(normalize-space(.) = '')">
+            Bitte Transkribenten eintragen.
+          </s:assert>
+        </s:rule>
+      </s:pattern>
+      <text/>
+    </element>
+  </define>
+
+  <define name="korrigiert">
+    <element name="korrigiert">
+      <element name="durch"><text/></element>
+      <element name="am"><text/></element>
+      <optional>
+        <element name="anmerkungen"><text/></element>
+      </optional>
     </element>
   </define>
 
   <define name="übersicht">
     <a:documentation>
-      Hauptgliederung späterer Vorlesungsverzeichnisse ("Sytematische
+      Hauptgliederung späterer Vorlesungsverzeichnisse ("Systematische
       Übersicht", "Übersicht nach der Ordnung der Lehrer", "Übersicht
       nach Tagesstunden" usw.)
     </a:documentation>

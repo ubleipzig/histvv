@@ -14,21 +14,79 @@ vv
 
 kopf
 {
-  color: gray;
+  margin-top: .5em;
+  margin-bottom: 2em;
+  padding: .5em;
+  border: 2px solid gray;
 }
 
-kopf > *
+kopf *:before { color: gray; }
+
+kopf > *,
+kopf > status > *
 {
   display: block;
+  margin-left: 6em;
 }
 
-kopf > universit\0000E4t:before { content: "Uni: "; }
-kopf > semester:before { content: "Semester: "; }
-kopf > beginn:before { content: "Beginn: "; }
-kopf > ende:before { content: "Ende: "; }
+kopf > status
+{
+  margin-left: 0;
+  margin-top: .5em; 
+}
 
-kopf > * > monat:before { content: " / "; }
-kopf > * > tag:before { content: " / "; }
+kopf > *:before,
+kopf > status > *:before
+{
+  display: marker;
+  content: element-label();
+}
+
+/*
+universit\0000E4t:before { content: "Universit\E4 t: "; }
+semester:before { content: "Semester: "; }
+beginn:before { content: "Beginn: "; }
+ende:before { content: "Ende: "; }
+status > transkribent:before { content: "Transkribent: "; }
+status > korrigiert:before { content: "korrigiert: "; }
+status > komplettiert:before { content: "komplettiert am: "; }
+*/
+
+kopf > * > monat:before { content: "-"; }
+kopf > * > tag:before { content: "-"; }
+
+kopf > semester { content: combo-box(values, "Sommer\A Winter"); }
+
+kopf > status:after
+{
+  display: block;
+  margin-left: 6em;
+  content: check-box(attribute, komplett,
+                     label, "komplett transkribiert",
+                     checked-value, "ja",
+                     remove-value, yes);
+}
+
+korrigiert > durch:before { content: "durch "; }
+korrigiert > am:before { content: "am "; }
+
+korrigiert > am,
+korrigiert > durch
+{
+  display: inline-block;
+  margin-right: .5em;
+}
+
+/*
+korrigiert > am
+{
+  padding: 1px;
+  content: date-field(pattern, "dd.MM.yyyy",
+                      data-type, date,
+                      language, de,
+                      country, "DE");
+}
+*/
 
 absatz { margin: .5em 0; }
 
