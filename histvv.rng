@@ -288,52 +288,39 @@
     </element>
   </define>
 
-  <define name="person">
-    <a:documentation>
-      allgemeine Angaben zu Personen
-    </a:documentation>
-    <element name="person">
-      <ref name="model.person"/>
-    </element>
-  </define>
-
   <define name="dozent">
     <a:documentation>
       Angaben zum Dozenten
     </a:documentation>
     <element name="dozent">
-      <ref name="model.person"/>
+      <interleave>
+        <ref name="common.attributes"/>
+        <optional>
+          <attribute name="ref"/>
+        </optional>
+        <!-- 
+             Um das Editieren zu erleichtern sind alle Kindelemente
+             optional. TODO: Eine Schematron-Regel könnte auf
+             unvollständige Dozentenangaben hinweisen.
+        -->
+        <ref name="model.text"/>
+        <optional>
+          <ref name="nachname"/>
+        </optional>
+        <optional>
+          <ref name="vorname"/>
+        </optional>
+        <optional>
+          <ref name="nachnamenpräfix"/>
+        </optional>
+        <optional>
+          <ref name="grad"/>
+        </optional>
+        <optional>
+          <ref name="funktion"/>
+        </optional>
+      </interleave>
     </element>
-  </define>
-
-  <define name="model.person">
-    <interleave>
-      <ref name="common.attributes"/>
-      <optional>
-        <attribute name="ref"/>
-      </optional>
-      <!-- 
-           Um das Editieren zu erleichtern sind alle Kindelemente
-           optional. TODO: Eine Schematron-Regel könnte auf
-           unvollständige Dozentenangaben hinweisen.
-      -->
-      <ref name="model.text"/>
-      <optional>
-        <ref name="nachname"/>
-      </optional>
-      <optional>
-        <ref name="vorname"/>
-      </optional>
-      <optional>
-        <ref name="nachnamenpräfix"/>
-      </optional>
-      <optional>
-        <ref name="grad"/>
-      </optional>
-      <optional>
-        <ref name="funktion"/>
-      </optional>
-    </interleave>
   </define>
 
   <define name="nachname">
@@ -469,7 +456,7 @@
           <ref name="veranstaltung"/>
         </zeroOrMore>
         <zeroOrMore>
-          <ref name="person"/>
+          <ref name="dozent"/>
         </zeroOrMore>
       </interleave>
     </element>
@@ -499,7 +486,7 @@
         <ref name="notiz"/>
       </zeroOrMore>
       <zeroOrMore>
-        <ref name="verweis"/>
+        <ref name="siehe"/>
       </zeroOrMore>
       <zeroOrMore>
         <ref name="ort"/>
@@ -541,13 +528,13 @@
     </element>
   </define>
 
-  <define name="verweis">
+  <define name="siehe">
     <a:documentation>
       zur Auszeichnung von Verweisen auf Sachgruppen oder
       Veranstaltungen innerhalb des gleichen Dokuments
       (z.B. "s. Dogmatik")
     </a:documentation>
-    <element name="verweis">
+    <element name="siehe">
       <ref name="common.attributes"/>
       <optional>
         <attribute name="ref"/>

@@ -142,26 +142,22 @@ veranstaltung =
   }
 
 ## 
-##       allgemeine Angaben zu Personen
-##     
-person = element person { model.person }
-
-## 
 ##       Angaben zum Dozenten
 ##     
-dozent = element dozent { model.person }
-model.person =
-  common.attributes
-  & attribute ref { text }?
-  & # Um das Editieren zu erleichtern sind alle Kindelemente
-    # optional. TODO: Eine Schematron-Regel könnte auf
-    # unvollständige Dozentenangaben hinweisen.
-    model.text
-  & nachname?
-  & vorname?
-  & nachnamenpräfix?
-  & grad?
-  & funktion?
+dozent =
+  element dozent {
+    common.attributes
+    & attribute ref { text }?
+    & # Um das Editieren zu erleichtern sind alle Kindelemente
+      # optional. TODO: Eine Schematron-Regel könnte auf
+      # unvollständige Dozentenangaben hinweisen.
+      model.text
+    & nachname?
+    & vorname?
+    & nachnamenpräfix?
+    & grad?
+    & funktion?
+  }
 
 ## 
 ##       Nachname
@@ -250,7 +246,7 @@ gebühr = element gebühr { common.attributes, model.text }
 ##     
 absatz =
   element absatz {
-    common.attributes, (text-content & veranstaltung* & person*)
+    common.attributes, (text-content & veranstaltung* & dozent*)
   }
 
 ##
@@ -260,7 +256,7 @@ model.text = text & seite* & sic* & korrektur*
 text-content =
   model.text
   & notiz*
-  & verweis*
+  & siehe*
   & ort*
   & scil*
   & antiqua*
@@ -285,8 +281,8 @@ seite =
 ##       Veranstaltungen innerhalb des gleichen Dokuments
 ##       (z.B. "s. Dogmatik")
 ##     
-verweis =
-  element verweis {
+siehe =
+  element siehe {
     common.attributes,
     attribute ref { text }?,
     (model.text & notiz* & antiqua* & gesperrt* & kursiv*)
