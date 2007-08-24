@@ -36,10 +36,11 @@ vv =
 ## Metadaten
 kopf =
   element kopf {
-    element semester { "Winter" | "Sommer" }
+    element quelle { text }?
+    & element universität { text }?
+    & element semester { "Winter" | "Sommer" }
     & element beginn { partial-date }
     & element ende { partial-date }
-    & element universität { text }?
     & status
   }
 status =

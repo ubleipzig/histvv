@@ -95,6 +95,16 @@
     <a:documentation>Metadaten</a:documentation>
     <element name="kopf">
       <interleave>
+        <optional>
+          <element name="quelle">
+            <text/>
+          </element>
+        </optional>
+        <optional>
+          <element name="universität">
+            <text/>
+          </element>
+        </optional>
         <element name="semester">
           <choice>
             <value>Winter</value>
@@ -107,11 +117,6 @@
         <element name="ende">
           <ref name="partial-date"/>
         </element>
-        <optional>
-          <element name="universität">
-            <text/>
-          </element>
-        </optional>
         <ref name="status"/>
       </interleave>
     </element>
