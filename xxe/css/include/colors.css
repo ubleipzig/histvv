@@ -1,11 +1,11 @@
 /* $Id$ */
 
-veranstaltung thema   { background-color: #f5ffc0; }
-veranstaltung zeit    { background-color: #e3ddbe; }
-veranstaltung modus   { background-color: #e9d8ab; }
-veranstaltung geb\0000FChr  { background-color: #f0d9bb; }
+thema        { background-color: #f5ffc0; }
+zeit         { background-color: #e3ddbe; }
+modus        { background-color: #e9d8ab; }
+geb\0000FChr { background-color: #f0d9bb; }
+ort          { background-color: #dbffdb; }
 
-ort { background-color: #dbffdb; }
 thema > ort
 {
   background-color: inherit;

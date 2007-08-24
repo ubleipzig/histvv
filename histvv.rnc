@@ -106,39 +106,50 @@ sachgruppe =
      # durch eine Schematron-Regel sichergestellt werden.
      sachgruppe*
      & veranstaltung*
+     & veranstaltungsverweis*
      & absatz*
      & seite*
      & trennlinie*)
   }
+model.veranstaltung =
+  text-content
+  & # <dozent> bzw. <ders> sind optional um das Editieren zu
+    # erleichtern. TODO: Eine Schematron-Regel könnte auf fehlende
+    # Dozentenangaben hinweisen.
+    dozent*
+  & ders?
+  & thema*
+  & zeit*
+  & modus*
+  & gebühr*
 
 ## 
 ##       einzelne Lehrveranstaltung
 ##     
 veranstaltung =
-  # Sollte das nach Veranstaltungstypen (Vorlesung, Übung, Seminar
-  # usw.) aufgegliedert werden?
   element veranstaltung {
     common.attributes,
-    attribute id { xsd:NMTOKEN }?,
     # Die folgenden Attribute dienen der Angabe von
     # Veranstaltungsdaten in Fällen, wo diese nicht über Elemente
     # auszeichenbar sind sondern aus dem Kontext erschlossen
     # werden. TODO: Eine konsistente Verwendung sollte über
     # Schematron-Regeln sichergestellt werden.
-    attribute modus { text }?,
+    attribute dozent { text }?,
     attribute gebühr { text }?,
+    attribute modus { text }?,
     attribute thema { text }?,
     attribute zeit { text }?,
-    (text-content
-     & # <dozent> bzw. <ders> sind optional um das Editieren zu
-       # erleichtern. TODO: Eine Schematron-Regel könnte auf fehlende
-       # Dozentenangaben hinweisen.
-       dozent*
-     & ders?
-     & thema*
-     & zeit*
-     & modus*
-     & gebühr*)
+    model.veranstaltung
+  }
+
+## 
+##       Verweis auf Veranstaltungsangabe an anderem Ort
+##     
+veranstaltungsverweis =
+  element veranstaltungsverweis {
+    common.attributes,
+    attribute ref { xsd:IDREF }?,
+    model.veranstaltung
   }
 
 ## 

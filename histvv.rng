@@ -211,6 +211,9 @@
           <ref name="veranstaltung"/>
         </zeroOrMore>
         <zeroOrMore>
+          <ref name="veranstaltungsverweis"/>
+        </zeroOrMore>
+        <zeroOrMore>
           <ref name="absatz"/>
         </zeroOrMore>
         <zeroOrMore>
@@ -223,22 +226,41 @@
     </element>
   </define>
 
+  <define name="model.veranstaltung">
+    <interleave>
+      <ref name="text-content"/>
+      <!-- 
+           <dozent> bzw. <ders> sind optional um das Editieren zu
+           erleichtern. TODO: Eine Schematron-Regel könnte auf fehlende
+           Dozentenangaben hinweisen.
+      -->
+      <zeroOrMore>
+        <ref name="dozent"/>
+      </zeroOrMore>
+      <optional>
+        <ref name="ders"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="thema"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="zeit"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="modus"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="gebühr"/>
+      </zeroOrMore>
+    </interleave>
+  </define>
+
   <define name="veranstaltung">
     <a:documentation>
       einzelne Lehrveranstaltung
     </a:documentation>
-    <!-- 
-       Sollte das nach Veranstaltungstypen (Vorlesung, Übung, Seminar
-       usw.) aufgegliedert werden?
-    -->
     <element name="veranstaltung">
       <ref name="common.attributes"/>
-      <optional>
-        <attribute name="id">
-          <data type="NMTOKEN"/>
-        </attribute>
-      </optional>
-
       <!-- 
         Die folgenden Attribute dienen der Angabe von
         Veranstaltungsdaten in Fällen, wo diese nicht über Elemente
@@ -247,10 +269,13 @@
         Schematron-Regeln sichergestellt werden.
       -->
       <optional>
-        <attribute name="modus"/>
+        <attribute name="dozent"/>
       </optional>
       <optional>
         <attribute name="gebühr"/>
+      </optional>
+      <optional>
+        <attribute name="modus"/>
       </optional>
       <optional>
         <attribute name="thema"/>
@@ -259,34 +284,25 @@
         <attribute name="zeit"/>
       </optional>
 
-      <interleave>
-        <ref name="text-content"/>
-        <!-- 
-          <dozent> bzw. <ders> sind optional um das Editieren zu
-          erleichtern. TODO: Eine Schematron-Regel könnte auf fehlende
-          Dozentenangaben hinweisen.
-        -->
-        <zeroOrMore>
-          <ref name="dozent"/>
-        </zeroOrMore>
-        <optional>
-          <ref name="ders"/>
-        </optional>
-        <zeroOrMore>
-          <ref name="thema"/>
-        </zeroOrMore>
-        <zeroOrMore>
-          <ref name="zeit"/>
-        </zeroOrMore>
-        <zeroOrMore>
-          <ref name="modus"/>
-        </zeroOrMore>
-        <zeroOrMore>
-          <ref name="gebühr"/>
-        </zeroOrMore>
-      </interleave>
+      <ref name="model.veranstaltung"/>
     </element>
   </define>
+
+  <define name="veranstaltungsverweis">
+    <a:documentation>
+      Verweis auf Veranstaltungsangabe an anderem Ort
+    </a:documentation>
+    <element name="veranstaltungsverweis">
+      <ref name="common.attributes"/>
+      <optional>
+        <attribute name="ref">
+          <data type="IDREF"/>
+        </attribute>
+      </optional>
+      <ref name="model.veranstaltung"/>
+    </element>
+  </define>
+
 
   <define name="dozent">
     <a:documentation>
