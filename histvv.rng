@@ -219,6 +219,9 @@
           <ref name="veranstaltungsverweis"/>
         </zeroOrMore>
         <zeroOrMore>
+          <ref name="veranstaltungsgruppe"/>
+        </zeroOrMore>
+        <zeroOrMore>
           <ref name="absatz"/>
         </zeroOrMore>
         <zeroOrMore>
@@ -290,6 +293,38 @@
       </optional>
 
       <ref name="model.veranstaltung"/>
+    </element>
+  </define>
+
+  <define name="veranstaltungsgruppe">
+    <a:documentation>
+      Gruppierung von Veranstaltungsangaben; die enthaltenen
+      Veranstaltungen erben Daten der Gruppe
+    </a:documentation>
+    <element name="veranstaltungsgruppe">
+      <s:pattern id="veranstaltungsgruppe">
+        <s:rule context="v:veranstaltungsgruppe">
+          <s:assert test="count(v:veranstaltung) +
+                          count(v:veranstaltungsgruppe) +
+                          count(v:veranstaltungsverweis)  > 1">
+            Veranstaltungsgruppe mit weniger als zwei Veranstaltungen
+            ist nicht sinnvoll.
+          </s:assert>
+        </s:rule>
+      </s:pattern>
+      <interleave>
+        <ref name="common.attributes"/>
+        <ref name="model.veranstaltung"/>
+        <oneOrMore>
+          <ref name="veranstaltung"/>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="veranstaltungsverweis"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="veranstaltungsgruppe"/>
+        </zeroOrMore>
+      </interleave>
     </element>
   </define>
 

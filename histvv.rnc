@@ -108,6 +108,7 @@ sachgruppe =
      sachgruppe*
      & veranstaltung*
      & veranstaltungsverweis*
+     & veranstaltungsgruppe*
      & absatz*
      & seite*
      & trennlinie*)
@@ -141,6 +142,43 @@ veranstaltung =
     attribute thema { text }?,
     attribute zeit { text }?,
     model.veranstaltung
+  }
+
+## 
+##       Gruppierung von Veranstaltungsangaben; die enthaltenen
+##       Veranstaltungen erben Daten der Gruppe
+##     
+veranstaltungsgruppe =
+  [
+    s:pattern [
+      id = "veranstaltungsgruppe"
+      "\x{a}" ~
+      "        "
+      s:rule [
+        context = "v:veranstaltungsgruppe"
+        "\x{a}" ~
+        "          "
+        s:assert [
+          test =
+            "count(v:veranstaltung) +                           count(v:veranstaltungsgruppe) +                           count(v:veranstaltungsverweis)  > 1"
+          "\x{a}" ~
+          "            Veranstaltungsgruppe mit weniger als zwei Veranstaltungen\x{a}" ~
+          "            ist nicht sinnvoll.\x{a}" ~
+          "          "
+        ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+  ]
+  element veranstaltungsgruppe {
+    common.attributes
+    & model.veranstaltung
+    & veranstaltung+
+    & veranstaltungsverweis*
+    & veranstaltungsgruppe*
   }
 
 ## 
