@@ -14,9 +14,9 @@
 
   <schematron location="histvv.rng"/>
 
-  <css name="Textansicht (farbig)" location="css/view-colored.css" />
-  <css name="Textansicht" location="css/view.css" alternate="true"/>
+  <css name="Editieransicht" location="css/edit.css" />
   <css name="Struktur" location="css/structure.css" alternate="true"/>
+  <css name="Textansicht" location="css/text.css" alternate="true"/>
 
   <template name="Vorlesungsverzeichnis" location="templates/vv.xml" />
 

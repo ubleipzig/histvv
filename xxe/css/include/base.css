@@ -1,7 +1,8 @@
 /* $Id$ */
 
 vv, kopf, \0000FCbersicht, sachgruppe,
-veranstaltung, veranstaltungsverweis, absatz, seite
+veranstaltung, veranstaltungsverweis,
+veranstaltungsgruppe, absatz, seite
 {
   display: block;
 }
@@ -92,12 +93,20 @@ korrigiert > am
 absatz { margin: .5em 0; }
 
 absatz > veranstaltung,
-absatz > veranstaltungsverweis
+absatz > veranstaltungsverweis,
+veranstaltungsgruppe > veranstaltung,
+veranstaltungsgruppe > veranstaltungsverweis,
+veranstaltungsgruppe > veranstaltungsgruppe
 {
   display: inline;
 }
 
-veranstaltung, veranstaltungsverweis { margin: .5em 0; }
+veranstaltung,
+veranstaltungsverweis,
+veranstaltungsgruppe
+{
+  margin: .5em 0;
+}
 
 antiqua { font-style: italic; }
 gesperrt { font-family: sans-serif; }

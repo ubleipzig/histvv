@@ -2,7 +2,12 @@
 
 @import "include/base.css";
 
-vv absatz, veranstaltung, sachgruppe absatz, seite, trennlinie { display: none; }
+vv absatz, sachgruppe absatz,
+veranstaltung, veranstaltungsverweis, veranstaltungsgruppe,
+seite, trennlinie
+{
+  display: none;
+}
 
 sachgruppe > titel { font-size: medium; }
 
