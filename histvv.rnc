@@ -97,6 +97,30 @@ korrigiert =
 ##       Gliederung der Fachgebiete, Themen etc.
 ##     
 sachgruppe =
+  [
+    s:pattern [
+      id = "sachgruppe"
+      "\x{a}" ~
+      "        "
+      s:rule [
+        context = "v:sachgruppe"
+        "\x{a}" ~
+        "          "
+        s:assert [
+          test =
+            "v:sachgruppe                           or v:veranstaltung                           or v:veranstaltungsgruppe                           or v:veranstaltungsverweis                           or v:absatz                           or .//v:siehe"
+          "\x{a}" ~
+          "            Sachgruppe muß Veranstaltungsangaben, weitere Sachgruppen\x{a}" ~
+          "            oder Verweis auf andere Sachgruppe enthalten.\x{a}" ~
+          "          "
+        ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+  ]
   element sachgruppe {
     common.attributes,
     attribute ref { text }?,

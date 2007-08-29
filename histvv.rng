@@ -195,6 +195,19 @@
       Gliederung der Fachgebiete, Themen etc.
     </a:documentation>
     <element name="sachgruppe">
+      <s:pattern id="sachgruppe">
+        <s:rule context="v:sachgruppe">
+          <s:assert test="v:sachgruppe
+                          or v:veranstaltung
+                          or v:veranstaltungsgruppe
+                          or v:veranstaltungsverweis
+                          or v:absatz
+                          or .//v:siehe">
+            Sachgruppe muß Veranstaltungsangaben, weitere Sachgruppen
+            oder Verweis auf andere Sachgruppe enthalten.
+          </s:assert>
+        </s:rule>
+      </s:pattern>
       <ref name="common.attributes"/>
       <optional>
         <attribute name="ref"/>
