@@ -1,0 +1,126 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Getopt::Long;
+use XML::LibXML;
+use XML::LibXML::XPathContext;
+
+
+my $usage = <<EOT;
+Usage: add-ids [-l] [-w] file
+
+Without any options the modified document is printed to
+standard output.
+
+Options:
+  -l, --list    list IDs and titles on standard output
+  -w, --write   write modified document to disk
+  -h, --help    show this message
+EOT
+
+my %opts = ( list => 0, write => 0, help => 0 );
+GetOptions ( \%opts, 'list|l', 'write|w', 'help|h') or die $usage;
+
+if ($opts{help}) {
+    print $usage;
+    exit;
+}
+
+my $file = shift or die $usage;
+
+# Histvv Namespace URI
+my $nsuri = 'http://hashtable.de/ns/histvv';
+
+# XML Namespace URI
+my $xmluri = 'http://www.w3.org/XML/1998/namespace';
+
+# regex matching titel numbers
+my $numrx = qr/^\s*([IVX]+|[0-9]+|[a-zA-z]+|[*]+|\p{Greek}+)(?:\.|\))\s/;
+
+# transliteration of special characters
+my %translit = (
+    '*' => 'x',
+    # Greek
+    "\x{03B1}" => 'alpha',
+    "\x{03B2}" => 'beta',
+    "\x{03B3}" => 'gamma',
+    "\x{03B4}" => 'delta',
+    "\x{03B5}" => 'epsilon',
+    "\x{03B6}" => 'zeta',
+    "\x{03B7}" => 'eta',
+    "\x{03B8}" => 'theta',
+    "\x{03B9}" => 'iota'
+);
+
+my $doc = XML::LibXML->new->parse_file($file);
+my $xc = XML::LibXML::XPathContext->new($doc);
+$xc->registerNs('v', $nsuri);
+$xc->registerFunctionNS('num', $nsuri, \&_num);
+
+binmode STDOUT, ":utf8" if $opts{list};
+my %cnt;
+
+foreach my $sg ($xc->findnodes('//v:sachgruppe')) {
+    my $id = get_sgid($sg);
+    die "ID '$id' is not unique\n" if $cnt{$id}++;
+    $sg->setAttribute('xml:id', $id);
+    if ($opts{list}) {
+        my $titel = $xc->findvalue('normalize-space(string(v:titel))', $sg);
+        printf "%-20s  %s\n", $id, $titel;
+    }
+}
+
+print $doc->toString(0) unless $opts{list} || $opts{write};
+
+if ($opts{write}) {
+    open F, ">$file" or die "Cannot write to $file: $!\n";
+    print F $doc->toString(0);
+    close F;
+}
+
+
+
+#
+# determine ID for 'sachgruppe'
+#
+sub get_sgid {
+    my $sg = shift;
+    my @nums;
+    for ($xc->findnodes('ancestor-or-self::v:sachgruppe', $sg)) {
+        push @nums, get_sgnum($_);
+    }
+    my $id = 'sg-' . join('.', @nums);
+}
+
+#
+# determine number for single 'sachgruppe'
+#
+sub get_sgnum {
+    my $node = shift;
+
+    my $xpath = <<EOT;
+count(preceding-sibling::v:sachgruppe
+        [ v:titel and not(v:num(v:titel)) ]) + 1
+EOT
+
+    my $num = $xc->findvalue( 'v:num(v:titel)', $node )
+      || sprintf( '%03d', $xc->findvalue( $xpath, $node ) );
+
+    $num =~ s/([\x{03B1}-\x{03B9}*])/$translit{$1}/g;
+    $num;
+}
+
+#
+# callback for custom XPath function
+#
+sub _num  {
+    my $nodelist =  shift;
+    my ($node) =  $nodelist->get_nodelist();
+    if ($node->textContent =~ $numrx) {
+        return $1;
+    } else {
+        return undef;
+    }
+}
