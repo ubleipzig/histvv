@@ -13,6 +13,17 @@ xml.lang.attribute =
 xml.id.attribute = attribute xml:id { xsd:ID }
 basic.attributes = xml.id.attribute?
 common.attributes = basic.attributes, xml.lang.attribute?
+
+## 
+##       macht kenntlich, daß der Text des aktuellen Elements (thema,
+##       titel) nur im Kontext verständlich ist und bei der Ausgabe
+##       ggf. um diesen ergänzt werden muß
+##     
+kontext.attribute =
+  # TODO: Der momentane Wert "sachgruppe" soll später durch
+  # XPath-Ausdrücke ersetzt werden, die das Kontext-Element
+  # referenzieren.
+  attribute kontext { "sachgruppe" }
 titel = element titel { common.attributes, text-content }
 
 ## 
@@ -124,7 +135,7 @@ sachgruppe =
   element sachgruppe {
     common.attributes,
     attribute ref { text }?,
-    titel?,
+    sachgruppentitel?,
     (# Um das Editieren zu erleichtern, wird das Vorhandensein
      # entweder einer <veranstaltung> oder einer <sachgruppe> an
      # dieser Stelle nicht erzwungen. TODO: Es sollte vielleicht
@@ -137,6 +148,8 @@ sachgruppe =
      & seite*
      & trennlinie*)
   }
+sachgruppentitel =
+  element titel { common.attributes, kontext.attribute?, text-content }
 model.veranstaltung =
   text-content
   & # <dozent> bzw. <ders> sind optional um das Editieren zu
@@ -292,7 +305,8 @@ ders =
 ##       Auszeichnung für Text, der das Thema der Lehrveranstaltung
 ##       beschreibt
 ##     
-thema = element thema { common.attributes, text-content }
+thema =
+  element thema { common.attributes, kontext.attribute?, text-content }
 
 ## 
 ##       zur Auszeichnung von Zeitangaben
@@ -358,7 +372,7 @@ seite =
 siehe =
   element siehe {
     common.attributes,
-    attribute ref { text }?,
+    attribute ref { xsd:IDREF }?,
     (model.text & notiz* & antiqua* & gesperrt* & kursiv*)
   }
 

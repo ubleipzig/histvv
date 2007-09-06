@@ -60,3 +60,10 @@ veranstaltungsgruppe > veranstaltungsgruppe:after
   color: gray;
   font-weight: bold;
 }
+
+*[kontext=sachgruppe]:before
+{
+  content: "\0021AA";
+  color: gray;
+  font-weight: bold;
+}
