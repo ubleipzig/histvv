@@ -306,7 +306,26 @@ ders =
 ##       beschreibt
 ##     
 thema =
-  element thema { common.attributes, kontext.attribute?, text-content }
+  element thema {
+    common.attributes
+    & kontext.attribute?
+    & text-content
+    & autor*
+    & schrift*
+  }
+
+## 
+##       in Lehrveranstaltungen behandelte oder verwendete Autoren
+##     
+autor = element autor { common.attributes, model.text }
+
+## 
+##       in Lehrveranstaltungen behandelte oder verwendete Texte
+##     
+schrift =
+  element schrift {
+    common.attributes & model.text & titel? & autor? & notiz*
+  }
 
 ## 
 ##       zur Auszeichnung von Zeitangaben

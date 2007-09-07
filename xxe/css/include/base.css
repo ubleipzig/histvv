@@ -190,3 +190,19 @@ dozent > grad,
 dozent > funktion { font-style: italic; }
 modus   { font-style: italic; }
 geb\0000FChr { font-style: italic; }
+
+thema autor
+{
+  font-family: sans-serif;
+  text-decoration: underline;
+}
+
+thema > schrift
+{
+  text-decoration: underline;
+}
+
+thema > schrift > titel
+{
+  font-style: italic;
+}

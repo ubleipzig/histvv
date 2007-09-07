@@ -495,11 +495,50 @@
       beschreibt
     </a:documentation>
     <element name="thema">
+      <interleave>
+        <ref name="common.attributes"/>
+        <optional>
+          <ref name="kontext.attribute"/>
+        </optional>
+        <ref name="text-content"/>
+        <zeroOrMore>
+          <ref name="autor"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="schrift"/>
+        </zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+
+  <define name="autor">
+    <a:documentation>
+      in Lehrveranstaltungen behandelte oder verwendete Autoren
+    </a:documentation>
+    <element name="autor">
       <ref name="common.attributes"/>
-      <optional>
-        <ref name="kontext.attribute"/>
-      </optional>
-      <ref name="text-content"/>
+      <ref name="model.text"/>
+    </element>
+  </define>
+
+  <define name="schrift">
+    <a:documentation>
+      in Lehrveranstaltungen behandelte oder verwendete Texte
+    </a:documentation>
+    <element name="schrift">
+      <interleave>
+        <ref name="common.attributes"/>
+        <ref name="model.text"/>
+        <optional>
+          <ref name="titel"/>
+        </optional>
+        <optional>
+          <ref name="autor"/>
+        </optional>
+        <zeroOrMore>
+          <ref name="notiz"/>
+        </zeroOrMore>
+      </interleave>
     </element>
   </define>
 
