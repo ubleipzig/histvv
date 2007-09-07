@@ -28,7 +28,6 @@ sachgruppe[xml|id]:before
 {
   display: none;
   color: gray;
-  display: inline;
   font-size: smaller;
   content: attr(xml|id);
 }
