@@ -20,3 +20,15 @@ sachgruppe
 }
 
 titel + sachgruppe { margin-top: 0; }
+
+sachgruppe { collapsible: yes; not-collapsible-head: 1; }
+sachgruppe > titel:before { content: collapser() " "; }
+
+sachgruppe[xml|id]:before
+{
+  display: none;
+  color: gray;
+  display: inline;
+  font-size: smaller;
+  content: attr(xml|id);
+}
