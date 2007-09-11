@@ -3,10 +3,10 @@
   xmlns="http://www.xmlmind.com/xmleditor/schema/configuration">
 
   <detect>
-    <or>
+    <and>
       <rootElementLocalName>vv</rootElementLocalName>
       <rootElementNamespace>http://hashtable.de/ns/histvv</rootElementNamespace>
-    </or>
+    </and>
   </detect>
 
   <relaxng location="histvv.rng"

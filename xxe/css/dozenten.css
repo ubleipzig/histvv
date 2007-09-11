@@ -1,0 +1,91 @@
+/* $Id$ */
+
+dozentenliste, universit\0000E4t,
+dozent, name, geboren, gestorben, absatz
+{
+  display: block;
+}
+
+dozentenliste
+{
+  font-family: serif; 
+  color: black;
+  background-color: white;
+}
+
+*:before, *:after { color: gray; }
+
+universit\0000E4t
+{
+  margin-bottom: 1em;
+  font-size: x-large;
+  text-align: center;
+  font-weight: bold;
+}
+
+universit\0000E4t:before
+{
+  display: block;
+  content: "Dozentenliste der Universit\0000E4t ";
+  margin-top: 1em;
+}
+
+
+dozentenliste > dozent
+{
+  margin-bottom: 1em;
+  padding: .3em;
+  border: 1px dotted gray;
+}
+
+dozentenliste > dozent:before
+{
+  content: "???";
+  display: block;
+  text-align: left;
+  margin: 0;
+  font-weight: bold;
+  background-color: gray;
+  color: white;
+  padding: 0 .3em;
+}
+
+dozentenliste > dozent[xml|id]:before
+{
+  content: attr(xml|id);
+}
+
+dozentenliste > dozent > * { margin: .3em 0; }
+
+dozentenliste > dozent > name { font-weight: bold; font-size: large; margin-top: 0; }
+
+dozent > name > vorname:before { content: ", "; }
+dozent > name > nachnamenpr\0000E4fix:before { content: " ("; }
+dozent > name > nachnamenpr\0000E4fix:after { content: ")"; }
+
+
+dozentenliste > dozent > geboren,
+dozentenliste > dozent > gestorben
+{
+  margin-left: 5em;
+}
+
+geboren:before, gestorben:before
+{
+  display: marker;
+  content: element-label() ":";
+}
+
+geboren > monat:before,
+geboren > tag:before,
+gestorben > monat:before,
+gestorben > tag:before
+{
+  content: "-";
+}
+
+geboren > ort:before,
+gestorben > ort:before
+{
+  content: ", in ";
+}

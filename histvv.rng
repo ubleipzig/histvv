@@ -9,7 +9,10 @@
   <s:ns prefix="v" uri="http://hashtable.de/ns/histvv"/>
 
   <start>
-    <ref name="vv"/>
+    <choice>
+      <ref name="vv"/>
+      <ref name="dozentenliste"/>
+    </choice>
   </start>
 
   <define name="xml.lang.attribute">
@@ -119,9 +122,7 @@
           </element>
         </optional>
         <optional>
-          <element name="universität">
-            <text/>
-          </element>
+          <ref name="universität"/>
         </optional>
         <element name="semester">
           <choice>
@@ -137,6 +138,12 @@
         </element>
         <ref name="status"/>
       </interleave>
+    </element>
+  </define>
+
+  <define name="universität">
+    <element name="universität">
+      <text/>
     </element>
   </define>
 
@@ -857,6 +864,61 @@
         <param name="minInclusive">1</param>
         <param name="maxInclusive">31</param>
       </data>
+    </element>
+  </define>
+
+
+  <define name="dozentenliste">
+    <a:documentation>Wurzelelement für Dozentenliste</a:documentation>
+    <element name="dozentenliste">
+      <ref name="common.attributes"/>
+      <ref name="universität"/>
+      <oneOrMore>
+        <element name="dozent">
+          <ref name="common.attributes"/>
+          <element name="name">
+            <ref name="nachname"/>
+            <optional>
+              <ref name="vorname"/>
+            </optional>
+            <optional>
+              <ref name="nachnamenpräfix"/>
+            </optional>
+          </element>
+          <optional>
+            <ref name="geboren"/>
+          </optional>
+          <optional>
+            <ref name="gestorben"/>
+          </optional>
+          <zeroOrMore>
+            <element name="absatz">
+              <text/>
+            </element>
+          </zeroOrMore>
+        </element>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <define name="eckdaten">
+    <ref name="partial-date"/>
+    <optional>
+      <element name="ort">
+        <text/>
+      </element>
+    </optional>
+  </define>
+
+  <define name="geboren">
+    <element name="geboren">
+      <ref name="eckdaten"/>
+    </element>
+  </define>
+
+  <define name="gestorben">
+    <element name="gestorben">
+      <ref name="eckdaten"/>
     </element>
   </define>
 

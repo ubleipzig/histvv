@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dozentenliste xmlns="http://hashtable.de/ns/histvv" xml:lang="de">
+  <universität></universität>
+  <dozent>
+    <name>
+      <nachname></nachname>
+      <vorname></vorname>
+      <nachnamenpräfix></nachnamenpräfix>
+    </name>
+    <geboren>
+      <jahr>YYYY</jahr>
+      <monat>MM</monat>
+      <tag>TT</tag>
+      <ort>Ort</ort>
+    </geboren>
+    <gestorben>
+      <jahr>YYYY</jahr>
+      <monat>MM</monat>
+      <tag>TT</tag>
+    </gestorben>
+    <absatz></absatz>
+  </dozent>
+</dozentenliste>
