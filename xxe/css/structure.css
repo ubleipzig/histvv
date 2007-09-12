@@ -24,10 +24,10 @@ titel + sachgruppe { margin-top: 0; }
 sachgruppe { collapsible: yes; not-collapsible-head: 1; }
 sachgruppe > titel:before { content: collapser() " "; }
 
-sachgruppe[xml|id]:before
+sachgruppe[xml|id] > titel:after
 {
-  display: none;
+  display: inline;
   color: gray;
-  font-size: smaller;
-  content: attr(xml|id);
+  font-weight: normal;
+  content: " " xpath("parent::*/@xml:id");
 }
