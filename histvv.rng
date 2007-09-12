@@ -896,6 +896,31 @@
               <text/>
             </element>
           </zeroOrMore>
+          <optional>
+            <element name="varianten">
+              <oneOrMore>
+                <element name="variante">
+                  <attribute name="vv"/>
+                  <attribute name="s"/>
+                  <optional>
+                    <ref name="nachname"/>
+                  </optional>
+                  <optional>
+                    <ref name="vorname"/>
+                  </optional>
+                  <optional>
+                    <ref name="nachnamenpräfix"/>
+                  </optional>
+                  <optional>
+                    <ref name="grad"/>
+                  </optional>
+                  <optional>
+                    <ref name="funktion"/>
+                  </optional>
+                </element>
+              </oneOrMore>
+            </element>
+          </optional>
         </element>
       </oneOrMore>
     </element>

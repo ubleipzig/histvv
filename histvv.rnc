@@ -556,7 +556,18 @@ dozentenliste =
       element name { nachname, vorname?, nachnamenpräfix? },
       geboren?,
       gestorben?,
-      element absatz { text }*
+      element absatz { text }*,
+      element varianten {
+        element variante {
+          attribute vv { text },
+          attribute s { text },
+          nachname?,
+          vorname?,
+          nachnamenpräfix?,
+          grad?,
+          funktion?
+        }+
+      }?
     }+
   }
 eckdaten =

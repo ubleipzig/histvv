@@ -60,8 +60,8 @@ dozentenliste > dozent > * { margin: .3em 0; }
 dozentenliste > dozent > name { font-weight: bold; font-size: large; margin-top: 0; }
 
 dozent > name > vorname:before { content: ", "; }
-dozent > name > nachnamenpr\0000E4fix:before { content: " ("; }
-dozent > name > nachnamenpr\0000E4fix:after { content: ")"; }
+nachnamenpr\0000E4fix:before { content: " ("; }
+nachnamenpr\0000E4fix:after { content: ")"; }
 
 
 dozentenliste > dozent > geboren,
@@ -89,3 +89,15 @@ gestorben > ort:before
 {
   content: ", in ";
 }
+
+varianten { font-size: small; display: block;  }
+varianten:before { content: "Varianten"; display: block; font-weight: bold; }
+
+variante { display: block; }
+variante:before { content: attr(vv) ", S." attr(s) ": "; }
+
+variante > nachname { font-weight: bold; }
+variante > nachname:after { content: ", "; font-weight: normal; }
+
+variante > grad:before, variante > funktion:before { content: ", "; }
+variante > grad { font-style: italic; }
