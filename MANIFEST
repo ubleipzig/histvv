@@ -1,5 +1,6 @@
 Build.PL
 Changes
+bin/dbxml-query
 histvv.rnc
 histvv.rng
 lib/Histvv.pm

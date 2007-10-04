@@ -1,0 +1,99 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Getopt::Long;
+use File::Spec;
+use File::Basename;
+use Sleepycat::DbXml 'simple';
+use Data::Dumper;
+
+sub usage { die "Usage: dbxml-query db file.xqy\n"; }
+
+my $usage = <<EOT;
+Usage: dbxml-query [-v] db file.xqy
+EOT
+
+my %opts = ( verbose => 0, help => 0 );
+GetOptions ( \%opts, 'verbose|v', 'help|h') or die $usage;
+
+if ($opts{help}) {
+    print $usage;
+    exit;
+}
+
+my $db = shift || die $usage;
+my $xqfile = shift || die $usage;
+
+die "database '$db' does not exist\n" unless -f $db;
+die "query file '$xqfile' does not exist\n" unless -f $xqfile;
+
+my $dbname = basename($db);
+my $dbpath = dirname($db);
+
+
+# slurp in query file
+my $query;
+open F, $xqfile or die $!;
+$query .= $_ while <F>;
+close F;
+
+#
+# set up database stuff
+#
+my $env = new DbEnv(0);
+$env->set_cachesize(0, 64 * 1024, 1);
+$env->open($dbpath,
+           Db::DB_INIT_MPOOL|Db::DB_CREATE|Db::DB_INIT_LOCK|Db::DB_INIT_TXN|Db::DB_PRIVATE, 0);
+my $mgr = new XmlManager($env);
+
+my $container;
+eval {
+    my $txn = $mgr->createTransaction();
+    $container = $mgr->openContainer($txn, $dbname);
+    $txn->commit();
+};
+if (my $e = catch XmlException) {
+    die "Cannot open container!\n", $e->what, "\n";
+}
+
+
+my $context;
+eval {
+    $context = $mgr->createQueryContext();
+};
+if (my $e = catch XmlException) {
+    die "Cannot create query context!\n", $e->what, "\n";
+}
+
+
+#print $container->getName, "\n";
+#my $txn = $mgr->createTransaction();
+#print $container->getNumDocuments($txn), "\n";
+
+
+print STDERR <<EOT if $opts{verbose};
+======================================================================
+$query
+======================================================================
+EOT
+
+eval {
+    my $results = $mgr->query($query);
+    my $value;
+    while( $results->next($value) ) {
+        print "$value\n";
+    }
+    printf STDERR "%d objects returned\n", $results->size if $opts{verbose};
+};
+if (my $e = catch std::exception) {
+    warn "Query failed\n";
+    warn $e->what(), "\n";
+    exit( -1 );
+}
+elsif ($@) {
+    warn "Query failed\n";
+    warn $@;
+    exit( -1 );
+}
