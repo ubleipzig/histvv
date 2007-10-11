@@ -5,9 +5,11 @@ histvv.rnc
 histvv.rng
 lib/Histvv.pm
 lib/Histvv/Build.pm
+lib/Histvv/Db.pm
 MANIFEST
 META.yml
 t/00-load.t
+t/01-db.t
 t/pod-coverage.t
 t/pod.t
 xxe/css/browser.css
