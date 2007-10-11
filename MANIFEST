@@ -3,6 +3,8 @@ Changes
 bin/dbxml-query
 histvv.rnc
 histvv.rng
+html.css
+html.xsl
 lib/Histvv.pm
 lib/Histvv/Apache.pm
 lib/Histvv/Build.pm

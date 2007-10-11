@@ -1,0 +1,70 @@
+/* $Id$ */
+
+html, body
+{
+  color: black;
+  background-color: white;
+}
+
+body
+{
+  margin: 2em 15%;
+}
+
+body > h1
+{
+  text-align: center;
+}
+
+
+em.gesperrt, span.autor
+{
+  font-style: normal;
+  letter-spacing: .3em;
+}
+
+span.schrift span.titel
+{
+  font-style: italic;
+}
+
+span.schrift { text-decoration: underline; }
+
+/* korrektur */
+ins { text-decoration: none; color: red; cursor: help;}
+ins:before { content: "["; }
+ins:after { content: "]"; }
+del { display: none; }
+
+/* scil */
+abbr { cursor: help; }
+
+
+span.seite
+{
+  display: block;
+  margin: 2em 0;
+  text-align: right;
+  color: maroon;
+}
+
+ul#seitennavigation
+{
+
+  list-style-type: none;
+  display: inline;
+  padding: 0;
+  margin: 1em 0;
+}
+
+ul#seitennavigation:before
+{
+  content: "Seiten: ";
+}
+
+ul#seitennavigation li
+{
+  display: inline;
+}
+
+hr { width: 40%; margin: 1.5em auto; }
