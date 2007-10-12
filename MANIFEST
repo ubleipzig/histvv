@@ -17,11 +17,14 @@ t/02-apache.t
 t/pod-coverage.t
 t/pod.t
 xxe/css/browser.css
+xxe/css/dozenten.css
 xxe/css/edit.css
 xxe/css/include/base.css
 xxe/css/include/colors.css
 xxe/css/structure.css
 xxe/css/text.css
+xxe/dozenten.xxe
 xxe/histvv.xxe
 xxe/histvv.xxe_addon
+xxe/templates/dozenten.xml
 xxe/templates/vv.xml
