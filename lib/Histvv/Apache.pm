@@ -37,11 +37,7 @@ use Histvv::Db ();
 
 use Apache2::Const -compile => qw(:common);
 
-#use Data::Dumper;
-#warn  Dumper \%ENV;
-
 my $Xp = XML::LibXML->new();
-#$Xp->keep_blanks(0);
 my $Xt = XML::LibXSLT->new();
 
 my $Xquery_index = q{
@@ -92,7 +88,7 @@ sub handler {
         $xquery = $Xquery_index;
     }
     else {
-        return Apache2::Const::NOT_FOUND;
+        return Apache2::Const::DECLINED;
     }
 
     my $db = Histvv::Db->new( $dbfile );
