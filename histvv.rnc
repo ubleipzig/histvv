@@ -243,8 +243,8 @@ dozent =
     & nachname?
     & vorname?
     & nachnamenpräfix?
-    & grad?
-    & funktion?
+    & grad*
+    & funktion*
   }
 
 ## 

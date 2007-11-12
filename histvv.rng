@@ -417,12 +417,12 @@
         <optional>
           <ref name="nachnamenpräfix"/>
         </optional>
-        <optional>
+        <zeroOrMore>
           <ref name="grad"/>
-        </optional>
-        <optional>
+        </zeroOrMore>
+        <zeroOrMore>
           <ref name="funktion"/>
-        </optional>
+        </zeroOrMore>
       </interleave>
     </element>
   </define>
