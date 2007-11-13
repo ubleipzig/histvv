@@ -150,9 +150,11 @@ sachgruppe > titel
   font-size: large;
 }
 
-seite { font-weight: bold; }
-seite:before { content: "[Seite "; }
-seite:after  { content: "]"; }
+seite { font-weight: bold; text-align: right; }
+seite:before { content: "[Seite "; color: gray; }
+seite:after  { content: "]"; color: gray; }
+
+seite[nr] { content: attr(nr); color: gray; }
 
 sic
 {
