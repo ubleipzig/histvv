@@ -372,6 +372,42 @@ text-content =
   & kursiv*
 
 ## Seitenmarkierung
+[
+  # Dass sich Elementtext und nr-Attribut gegenseitig
+  # ausschliessen, wird hier als Schematron-Regel festgehalten.
+  # Bei Implementierung als <choice> im RNG läßt sich das Attribut
+  # im XmlMind nicht setzen.
+  
+  s:pattern [
+    id = "seite"
+    "\x{a}" ~
+    "      "
+    s:rule [
+      context = "v:seite"
+      "\x{a}" ~
+      "        "
+      s:assert [
+        test = "@nr or not(text() = '')"
+        "\x{a}" ~
+        "          Seitenzahl fehlt.\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "        "
+      s:assert [
+        test = "not(@nr and not(text() = ''))"
+        "\x{a}" ~
+        "          Die Seitenzahl muss entweder im Text oder im Attribut 'nr'\x{a}" ~
+        "          angegeben werden, nicht in beiden.\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+]
 seite =
   element seite {
     basic.attributes,

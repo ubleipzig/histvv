@@ -654,6 +654,24 @@
 
   <define name="seite">
     <a:documentation>Seitenmarkierung</a:documentation>
+    <!--
+       Dass sich Elementtext und nr-Attribut gegenseitig
+       ausschliessen, wird hier als Schematron-Regel festgehalten.
+       Bei Implementierung als <choice> im RNG läßt sich das Attribut
+       im XmlMind nicht setzen.
+    -->
+    <s:pattern id="seite">
+      <s:rule context="v:seite">
+        <s:assert test="@nr or not(text() = '')">
+          Seitenzahl fehlt.
+        </s:assert>
+        <s:assert test="not(@nr and not(text() = ''))">
+          Die Seitenzahl muss entweder im Text oder im Attribut 'nr'
+          angegeben werden, nicht in beiden.
+        </s:assert>
+      </s:rule>
+    </s:pattern>
+
     <element name="seite">
       <ref name="basic.attributes"/>
       <optional>
