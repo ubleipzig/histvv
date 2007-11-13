@@ -22,7 +22,7 @@ kopf
   border: 2px solid gray;
 }
 
-kopf *:before { color: gray; }
+kopf *:before, kopf *:after { color: gray; }
 
 kopf > *,
 kopf > status > *
@@ -78,6 +78,9 @@ korrigiert > durch
   display: inline-block;
   margin-right: .5em;
 }
+
+korrigiert > anmerkungen:before { content: "("; }
+korrigiert > anmerkungen:after { content: ")"; }
 
 /*
 korrigiert > am
