@@ -1,0 +1,325 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<style type="text/css">
+	body, div, input, select {
+		font-family: Arial;
+		font-size: 13px;
+	}
+	div, form {
+		margin: 0px;
+		padding: 0px;
+		float: left;
+	}
+	p {
+		font-size: 12px;
+		padding: 10px;
+	}
+	.marginRight10 {
+		margin-right: 10px;
+	}
+	.tabs {
+		list-style: none;
+		float: left;
+		clear: left;
+		padding: 0px;
+		margin: 0px;
+		cursor: pointer;
+		width: 550px;
+	}
+	.tabs li {
+		font-size: 14px;
+		line-height: 16px;
+		float: left;
+		display: inline;
+		width: auto;
+		padding: 3px 8px 3px 12px;
+		margin-left: 4px;
+		background-color: #ddd;
+		color: grey;
+	}
+	.tabs a {
+		color: black;
+		text-decoration: none;
+	}
+	.tabs li.selected {
+		font-size: 15px;
+		background-color: #eee;
+		color: black;
+	}
+	.main {
+		clear: both;
+		width: 550px;
+		float: left;
+		margin-bottom: 20px;
+		background-color: #eee;
+	}
+	.text,
+	.select {
+		clear: both;
+		float: left;
+		margin: 5px 0px 0px 0px;
+		padding: 0px;
+		width: 100%;
+	}
+	* html .text {
+		margin-left: -10px;
+	}
+	select.select {
+		border: 1px solid grey;
+	}
+	.smallSelect {
+		float: left;
+		width: 40%;
+		border: 1px solid grey;
+	}
+	.smallerSelect {
+		float: left;
+		border: 1px solid grey;
+	}
+	.largerSelect {
+		float: left;
+		width: 66%;
+		border: 1px solid grey;
+	}
+	.labelAndInput {
+		margin: 10px;
+		padding: 5px;
+		float: left;
+		border: 1px solid #ddd;
+		width: 420px;
+	}
+	label {
+		float: left;
+	}
+	.labelAndInput span {
+		float: left;
+		margin: 4px 15px 0px 15px;
+	}
+	.info {
+		border: 1px solid #AAA;
+		color: black;
+		font-size: 9px;
+		background-color: white;
+		width: 11px;
+		float: right;
+		text-align: center;
+		text-decoration: none;
+	}
+	.invisible {
+		display:none;
+	}
+	.visible,
+	.alwaysVisible  {
+		display:block;
+		position: absolute;
+		top: 20px;
+		left: 20px;
+		border: 1px solid grey;
+		padding: 20px;
+		background-color: white;
+	}
+	.submit {
+		clear: both;
+		float: right;
+		margin: 15px 110px 15px 15px;
+		border: 1px solid grey;
+		background-color: #ddd;
+	}
+</style>
+</head>
+<body lang="de-DE">
+<ul class="tabs">
+<li class="selected">
+	<a href="suche.html">Suche</a>
+</li>
+<li>
+	Vorlesungsverzeichnisse
+</li>
+<li>
+	Statistiken
+</li>
+</ul>
+<div class="main">
+	<p>
+		Durchsuchen Sie die Vorlesungsverzeichnisse der Universit&auml;t Leipzig in den Jahren 1814 - 1914
+	</p>
+	<form>
+		<div class="labelAndInput">
+			<label>Volltext</label>
+			<a class="info" id="volltext" href="volltextHilfe.html">i</a>
+			<input type="text" name="volltext" class="text" value="Suchbegriff" id="volltextInput"/>
+		</div>
+		<div class="labelAndInput">
+			<label>Sachgruppe</label>
+			<a class="info" id="sachgruppe" href="sachgruppeHilfe.html">i</a>
+			<select class="select" name="sachgruppe" size="3" multiple="multiple">
+				<option>Philosophie</option>
+				<option>Theologie</option>
+				<option>Recht</option>
+			</select>
+		</div>
+		<div class="labelAndInput">
+			<label>Akademischer Grad und Name von Veranstaltungsdozenten</label>
+			<a class="info" id="dozenten" href="dozentenHilfe.html">i</a>
+			<div class="select">
+			<select class="smallerSelect marginRight10" name="grad" size="3" multiple="multiple">
+				<option>M.</option>
+				<option>Dr.</option>
+				<option>Prof.</option>
+				<option>Bac.</option>
+				<option>Lic.</option>
+			</select>
+			<select class="largerSelect" name="dozenten" size="3" multiple="multiple">
+				<option>Aalhaus, Albert</option>
+				<option>Abels, Albrecht</option>
+				<option>Achtermann, Bruno</option>
+				<option>Bode, Immanuel</option>
+			</select>
+			</div>
+		</div>
+		<div class="labelAndInput">
+			<label>Fakult&auml;ten</label>
+			<a class="info" id="fakultaeten" href="fakultaetenHilfe.html">i</a>
+			<select class="select" name="fakultaeten" size="3" multiple="multiple">
+				<option>Theologische Fakult&auml;t</option>
+				<option>Juristenfakult&auml;t</option>
+				<option>Medizinische Fakult&auml;t</option>
+			</select>
+		</div>
+		<div class="labelAndInput">
+			<label>Orte</label>
+			<a class="info" id="orte" href="orteHilfe.html">i</a>
+			<select class="select" name="orte" size="3" multiple="multiple">
+				<option>im Trier'schen Institute</option>
+				<option>im königl. klinischen Instit. im Jakobssp</option>
+			</select>
+		</div>
+		<div class="labelAndInput">
+			<label>Veranstaltungsart</label>
+			<a class="info" id="veranstaltungsart" href="veranstaltungsartHilfe.html">i</a>
+			<div class="select">
+			<select class="smallerSelect marginRight10" name="modus">
+				<option>&ouml;ffentlich</option>
+				<option>privat</option>
+			</select>
+			<select class="smallerSelect marginRight10" name="bezahlung">
+				<option>bitte ausw&auml;hlen</option>
+				<option>unengeltlich</option>
+				<option>zu bezahlen</option>
+			</select>
+			<select class="smallerSelect" name="veranstaltungsart">
+				<option>bitte ausw&auml;hlen</option>
+				<option>Vorlesung</option>
+				<option>&Uuml;bung</option>
+			</select>
+			</div>
+		</div>
+		<div class="labelAndInput">
+			<label>Semester</label>
+			<a class="info" id="semester" href="semesterHilfe.html">i</a>
+			<div class="select">
+			<select class="smallSelect" name="semesterVon">
+				<option>WS 1814</option>
+				<option>SS 1815</option>
+				<option>WS 1815</option>
+			</select>
+			<span>bis</span>
+			<select class="smallSelect" name="semesterBis">
+				<option>WS 1913</option>
+				<option>SS 1914</option>
+				<option selected="true">WS 1914</option>
+			</select>
+			</div>
+		</div>
+		<br>
+		<input class="submit" type="submit" value="Veranstaltungen suchen"/>
+	</form>
+
+	<div id="volltextHilfe" class="invisible">
+		Volltext-Hilfe 
+	</div>
+	<div id="sachgruppeHilfe" class="invisible">
+		Sachgruppe-Hilfe 
+	</div>
+	<div id="semesterHilfe" class="invisible">
+		Semester-Hilfe 
+	</div>
+	<div id="dozentenHilfe" class="invisible">
+		Dozenten-Hilfe 
+	</div>
+	<div id="fakultaetenHilfe" class="invisible">
+		Fakult&auml;ten-Hilfe 
+	</div>
+	<div id="orteHilfe" class="invisible">
+		Orte-Hilfe 
+	</div>
+	<div id="veranstaltungsartHilfe" class="invisible">
+		Veranstaltungsart-Hilfe 
+	</div>
+
+</div>
+<script>
+	function getEventTarget(e) {
+		if (e && e.target) {
+			return e.target;
+		}
+		else {
+			return window.event.srcElement;
+		}
+	}
+	(function() {
+		var infoIds = ['volltext','sachgruppe','fakultaeten','orte','semester','dozenten','veranstaltungsart'];
+		document.getElementById(infoIds[0]+'Input').onfocus = function(e) {getEventTarget(e).value='';};
+		for (var i = 0; i < infoIds.length; i++) {
+			var infoId = infoIds[i];
+			var infoObj = document.getElementById(infoId);
+			infoObj.onclick = function(e) {
+				var thisId = getEventTarget(e).id;
+				var hilfe = document.getElementById(thisId+'Hilfe');
+				if (hilfe) {
+					if (hilfe.className=='alwaysVisible') {
+						hilfe.className='invisible';
+					}
+					else {
+						hilfe.className='alwaysVisible';
+					}
+				}
+				for (var j = 0; j < infoIds.length; j++) {
+					var andereHilfe = document.getElementById(infoIds[j] +'Hilfe');
+					if (andereHilfe && thisId!=infoIds[j]) {
+						andereHilfe.className='invisible';
+					}
+				}
+				return false;
+			};
+			infoObj.onmouseover = function(e) {
+				var thisId = getEventTarget(e).id;
+				var hilfe = document.getElementById(thisId+'Hilfe');
+				if (hilfe) {
+					if (hilfe.className=='invisible') {
+						hilfe.className='visible';
+					}
+				}
+			};
+			infoObj.onmouseout = function(e) {
+				var thisId = getEventTarget(e).id;
+				var hilfe = document.getElementById(thisId+'Hilfe');
+				if (hilfe) {
+					if (hilfe.className=='visible') {
+						hilfe.className='invisible';
+					}
+				}
+			};
+			var helpObj = document.getElementById(infoId+'Hilfe');
+			helpObj.onclick = function(e) {
+				var hilfe = getEventTarget(e);
+				hilfe.className='invisible';
+				return false;
+			};
+		}
+	})();
+</script>
+</body>
+</html>
