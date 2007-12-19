@@ -47,11 +47,11 @@ declare namespace v = "http://hashtable.de/ns/histvv";
 for $d in collection()/v:vv
 let $k := $d/v:kopf
 let $sem := if ($k/v:semester = "Winter") then "ws" else "ss"
+let $name := concat($k/v:beginn/v:jahr, "-", $sem)
+let $title := concat($k/v:semester, "semester ", $k/v:beginn/v:jahr)
 where $k/v:status[@komplett = "ja"]
 return
-<vv>
-{concat($k/v:beginn/v:jahr, "-", $sem)}
-</vv>
+<vv name="{$name}">{$title}</vv>
 }
 </index>
 };

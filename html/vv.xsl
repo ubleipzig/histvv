@@ -25,10 +25,10 @@
 
   <xsl:template match="/index">
     <h1>Vorlesungsverzeichnisse</h1>
-    <ol>
+    <ol class="toc">
       <xsl:for-each select="vv">
         <li>
-          <a href="{.}.html"><xsl:value-of select="."/></a>
+          <a href="{@name}.html"><xsl:value-of select="."/></a>
         </li>
       </xsl:for-each>
     </ol>
@@ -137,19 +137,23 @@
 
   <!-- NAMED TEMPLATES -->
 
-
   <xsl:template name="seitentitel">
     <xsl:text>HistVV</xsl:text>
-    <xsl:if test="/v:vv">
-      <xsl:text>: </xsl:text>
-      <xsl:value-of select="/v:vv/v:kopf/v:semester"/>
-      <xsl:text>semester </xsl:text>
-      <xsl:value-of select="/v:vv/v:kopf/v:beginn/v:jahr"/>
-      <xsl:if test="/v:vv/v:kopf/v:semester = 'Winter'">
-        <xsl:text>/</xsl:text>
-        <xsl:value-of select="/v:vv/v:kopf/v:ende/v:jahr"/>
-      </xsl:if>
-    </xsl:if>
+    <xsl:choose>
+      <xsl:when test="/v:vv">
+        <xsl:text>: </xsl:text>
+        <xsl:value-of select="/v:vv/v:kopf/v:semester"/>
+        <xsl:text>semester </xsl:text>
+        <xsl:value-of select="/v:vv/v:kopf/v:beginn/v:jahr"/>
+        <xsl:if test="/v:vv/v:kopf/v:semester = 'Winter'">
+          <xsl:text>/</xsl:text>
+          <xsl:value-of select="/v:vv/v:kopf/v:ende/v:jahr"/>
+        </xsl:if>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:text>: Vorlesungsverzeichnisse</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="seitennavigation">
