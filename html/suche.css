@@ -1,0 +1,123 @@
+html, body
+{
+  color: black;
+  background-color: white;
+  font-family: Arial;
+  font-size: 12px;
+}
+
+
+ul#nav
+{
+  list-style: none;
+  float: left;
+  clear: left;
+  padding: 0px;
+  margin: 0px;
+  cursor: pointer;
+  width: 40em;
+}
+
+ul#nav li
+{
+  font-size: 14px;
+  line-height: 16px;
+  float: left;
+  display: inline;
+  width: auto;
+  padding: 3px 8px 3px 12px;
+  margin-left: 4px;
+  background-color: #ddd;
+  color: grey;
+}
+
+ul#nav a
+{
+  color: black;
+  text-decoration: none;
+}
+
+ul#nav li.selected
+{
+  font-size: 15px;
+  background-color: #eee;
+  color: black;
+}
+
+
+form.suche
+{
+  clear: both;
+  width: 40em;
+  padding: 1em;
+  margin-bottom: 1em;
+  background-color: #eee;
+  position: relative;
+}
+
+form > fieldset,
+form > p.widget
+{
+  margin: .6em 0;
+  padding: .5em;
+  border: 1px solid #ddd;
+}
+
+select, input
+{
+  border: 1px solid grey;
+  font-size: 12px;
+}
+
+input[type=reset],
+input[type=submit]
+{
+  background-color: #ddd;
+}
+
+p.widget select, p.widget input { width: 100%; }
+
+label a, legend a { color: blue; cursor: help; }
+
+p.buttonbar { text-align: right; }
+p.buttonbar input[type=reset] { float: left; }
+
+select#f-grad { min-width: 8em; }
+select#f-dozent { min-width: 20em; }
+select#f-von, select#f-bis { min-width: 10em; }
+
+fieldset span.widget,
+fieldset div.widget
+{
+  display: block;
+  float: left;
+  margin-right: 1em;
+}
+
+fieldset span.widget label,
+fieldset div.widget label
+{
+  display: block;
+  font-size: 90%;
+}
+
+fieldset div.widget br { display: none; }
+
+div#hilfe { margin-bottom: 50em; width: 45em; }
+
+#js-hilfe
+{
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 43em;
+  width: 30em;
+  color: black;
+  background-color: white;
+  border: 1px solid grey;
+  padding: .5em;
+}
+
+#js-hilfe h3 { margin-top: 0; }
+
+.clear { clear: both; }
