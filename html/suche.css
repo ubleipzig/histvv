@@ -108,9 +108,9 @@ div#hilfe { margin-bottom: 50em; width: 45em; }
 #js-hilfe
 {
   display: none;
-  position: absolute;
-  top: 0;
-  left: 43em;
+  position: fixed;
+  top: 3em;
+  left: 45em;
   width: 30em;
   color: black;
   background-color: white;
