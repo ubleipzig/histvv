@@ -95,15 +95,22 @@
     <xsl:if test="@original">
       <del><xsl:value-of select="@original"/></del>
     </xsl:if>
-    <ins>
-      <xsl:if test="@original">
+    <xsl:if test="text()">
+      <ins>
         <xsl:attribute name="title">
-          <xsl:text>im Original: </xsl:text>
-          <xsl:value-of select="@original"/>
+          <xsl:choose>
+            <xsl:when test="@original">
+              <xsl:text>im Original: </xsl:text>
+              <xsl:value-of select="@original"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:text>ergänzt</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
         </xsl:attribute>
-      </xsl:if>
-      <xsl:apply-templates/>
-    </ins>
+        <xsl:apply-templates/>
+      </ins>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="v:scil">
