@@ -214,7 +214,7 @@ veranstaltungsgruppe =
   element veranstaltungsgruppe {
     common.attributes
     & model.veranstaltung
-    & veranstaltung+
+    & veranstaltung*
     & veranstaltungsverweis*
     & veranstaltungsgruppe*
   }
@@ -354,7 +354,8 @@ gebühr = element gebühr { common.attributes, model.text }
 ##     
 absatz =
   element absatz {
-    common.attributes, (text-content & veranstaltung* & dozent*)
+    common.attributes,
+    (text-content & veranstaltung* & veranstaltungsverweis* & dozent*)
   }
 
 ##
