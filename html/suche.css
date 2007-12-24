@@ -55,8 +55,8 @@ form.suche
   position: relative;
 }
 
-form > fieldset,
-form > p.widget
+form fieldset,
+form p.widget
 {
   margin: .6em 0;
   padding: .5em;
