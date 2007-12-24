@@ -29,7 +29,9 @@ function initHelp () {
             var id = this.getAttribute('href').substr(1);
             var help = document.getElementById(id);
             if(help) {
-                helpBox.innerHTML = help.innerHTML;
+                if(helpBox.firstChild) helpBox.removeChild(helpBox.firstChild);
+                helpContent = help.cloneNode(true);
+                helpBox.appendChild(helpContent);
                 helpBox.style.display = 'block';
             }
         };
