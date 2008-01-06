@@ -83,7 +83,13 @@ input[type=submit]
 
 p.widget select, p.widget input { width: 100%; }
 
-label a, legend a { color: blue; cursor: help; }
+label a, legend a 
+{ 
+  color: #8fb635;
+  font-size: 13px;
+  text-decoration: none;
+  cursor: help; 
+}
 
 p.buttonbar { text-align: right; }
 p.buttonbar input[type=reset] { float: left; }
