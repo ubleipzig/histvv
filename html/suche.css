@@ -11,7 +11,7 @@ h1#header
   font-size: 27px;
   padding: 7px;
   clear:both;
-  background-color: #3875d7;
+  background-color: #8fb635;
   background-image: url(histvvfraktur.png);
   background-repeat: no-repeat;
   background-position: 8px;  
@@ -38,7 +38,7 @@ ul#nav li
 
 ul#nav li.selected
 {
-  background-color: #3875d7;
+  background-color: #8fb635;
 }
 
 ul#nav a
@@ -58,7 +58,7 @@ form.suche
   padding: 1em;
   margin-bottom: 1em;
   position: relative;
-  border-left: 1px solid #3875d7;
+  border-left: 1px solid #8fb635;
 }
 
 form fieldset,
