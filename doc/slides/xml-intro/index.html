@@ -1,0 +1,454 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>HistVV: Technische Einführung</title>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+
+    <!-- metadata -->
+    <meta name="generator" content="S5" />
+    <meta name="version" content="S5 1.1" />
+    <meta name="presdate" content="20050728" />
+    <meta name="author" content="Eric A. Meyer" />
+    <meta name="company" content="Complex Spiral Consulting" />
+
+    <!-- configuration parameters -->
+    <meta name="defaultView" content="slideshow" />
+    <meta name="controlVis" content="hidden" />
+
+    <!-- style sheet links -->
+    <link rel="stylesheet" href="ui/i18n/slides.css" type="text/css" media="projection" id="slideProj" />
+    <link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+    <link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+    <link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+
+    <!-- S5 JS -->
+    <script src="ui/default/slides.js" type="text/javascript"></script>
+
+    <style type="text/css">
+       pre, code { font-family: 'Luxi Mono', 'Andale Mono', monospace; }
+       pre.markup { font-size: 65%; }
+       pre.markup b { color: maroon; font-weight: normal; display: inline; }
+       code { color: maroon; }
+       blockquote { font-family: Georgia, serif; margin: 0; }
+    </style>
+
+
+  </head>
+  <body>
+
+    <div class="layout">
+      <div id="controls"><!-- DO NOT EDIT --></div>
+      <div id="currentSlide"><!-- DO NOT EDIT --></div>
+      <div id="header"></div>
+      <div id="footer">
+        <h1>Leipzig/2007-07-04</h1>
+        <h2>HistVV: Technische Einführung</h2>
+      </div>
+    </div>
+
+
+    <div class="presentation">
+
+      <div class="slide">
+        <h1>HistVV<br/><small>Technische Einführung</small></h1>
+        <h3>Carsten Milling</h3>
+        <h4><a href="mailto:cmil@hashtable.de">cmil@hashtable.de</a></h4>
+      </div>
+
+      <div class="slide">
+        <h1>Inhalt</h1>
+        <ol class="incrementall show-first">
+          <li>Einführung in XML</li>
+          <li>die Struktur unseres XML-Schemas</li>
+          <li>Vorstellung des XML-Editors (XMLmind)</li>
+          <li>Einführung in die Arbeitsorganisation mit <em>Subversion</em></li>
+        </ol>
+      </div>
+
+      <div class="slide">
+        <h1>XML</h1>
+        <ul>
+          <li>XML = eXtensible Markup Language</li>
+          <li>XML 1.0  (Februar 1998)</li>
+          <li>Vorbild SGML</li>
+          <li>"Ersatz" für HTML</li>
+          <li>textbasiert, menschen- und maschinenlesbar</li>
+        </ul>
+        <div class="handout">
+          <a href="http://www.w3.org/TR/xml" rel="external">http://www.w3.org/TR/xml</a>
+        </div>
+      </div>
+
+      <div class="slide">
+        <h1>SGML</h1>
+        <p>Oxford English Dictionary  1985</p>
+        <img src="oed-sgml.jpg" alt=""/>
+      </div>
+
+      <div class="slide">
+        <h1>Ein XML Beispiel</h1>
+
+        <blockquote>
+          Krug, <tt>D.</tt> W. T., <tt>P. O.</tt>, Geschichte
+          d. alten Philosophie, n. s. Lehrbuche, 10 U. 4
+          T. öffentlich.
+        </blockquote>
+
+        <pre class="markup">
+<b>&lt;veranstaltung></b>
+  <b>&lt;dozent></b><b>&lt;nachname></b>Krug<b>&lt;/nachname></b>, <b>&lt;grad></b>D.<b>&lt;/grad></b>
+  <b>&lt;vorname></b>W. T.<b>&lt;/vorname></b>, <b>&lt;funktion></b>P. O.<b>&lt;/funktion></b><b>&lt;/dozent></b>,
+  <b>&lt;thema></b>Geschichte d. alten Philosophie, n. s. Lehrbuche<b>&lt;/thema></b>,
+  <b>&lt;zeit></b>10 U. 4 T.<b>&lt;/zeit></b> <b>&lt;modus></b>öffentlich<b>&lt;/modus></b>.
+<b>&lt;/veranstaltung></b> </pre>
+
+         <p><br/> => Ein Text wird in seine semantischen Bestandteile
+         aufgebrochen und durch Tags ausgezeichnet.
+         </p>
+      </div>
+
+      <div class="slide">
+        <h1>XML Grundlagen</h1>
+        <ul>
+          <li>Was ist ein Tag?</li>
+          <li>Was ist ein Element?</li>
+          <li>Was ist ein Attribut?</li>
+          <li>Baumstruktur</li>
+          <li>Gültigkeit</li>
+        </ul>
+      </div>
+
+      <div class="slide">
+        <h1>Tags</h1>
+        <ul>
+          <li>Start-Tag: <code>&lt;name></code></li>
+          <li>End-Tag: <code>&lt;/name></code></li>
+        </ul>
+      </div>
+
+      <div class="slide">
+        <h1>Elemente</h1>
+        <ul>
+          <li><code>&lt;dozent>...&lt;/dozent></code></li>
+          <li>leeres Element:  <code>&lt;hr<b>/</b>></code></li>
+        </ul>
+      </div>
+
+      <div class="slide">
+        <h1>Attribute</h1>
+        <ul>
+          <li><code>&lt;veranstaltung <b>id="v4385"</b>></code></li>
+          <li>"Adjektive" von XML</li>
+          <li>können nur in Start-Tags vorkommen</li>
+        </ul>
+      </div>
+
+      <div class="slide">
+        <h1>Sonstiges</h1>
+        <ul class="incremental show-first">
+          <li>Kommentare: <code>&lt;!-- lorem ipsum --&gt;</code></li>
+          <li>
+            <em>Entity references</em>: <code>&amp;amp;</code> für
+            "&amp;",
+          </li>
+          <li>
+            <em>Character references</em>:
+             <code>&amp;#169;</code> für "&#xA9;"
+          </li>
+          <li>Namensräume
+            <pre class="markup">&lt;html <b>xmlns="http://www.w3.org/1999/xhtml"</b>>...&lt;/html></pre>
+          </li>
+        </ul>
+      </div>
+
+<!--
+      <div class="slide">
+        <h1>XML Namespaces</h1>
+        <ul>
+          <li>erlaubt Mischen verschiedener XML-Vokabulare</li>
+          <li>Kennzeichnung durch URIs (Uniform Resource Identifiers)</li>
+          <li><pre class="markup">&lt;html <b>xmlns="http://www.w3.org/1999/xhtml"</b>>...&lt;/html></pre></li>
+          <li><pre class="markup">
+&lt;foo <b>xmlns:h</b>="http://www.w3.org/1999/xhtml">
+  &lt;<b>h:</b>table>...&lt;/<b>h:</b>table>
+&lt;/foo></pre></li>
+          <li>Null-Namensraum: <code>xmlns=""</code></li>
+        </ul>
+      </div>
+
+      <div class="slide">
+        <h1>XML Hierarchie</h1>
+        <ul>
+          <li>Baumstruktur</li>
+          <li>Knoten (<em>nodes</em>): Elemente, Attribute, Text, Kommentare</li>
+          <li>Children, Siblings, Parent, Ancestors</li>
+        </ul>
+      </div>
+
+-->
+
+      <div class="slide">
+        <h1>XML: Baumstruktur</h1>
+<img src="tree.gif" alt="Baum" align="right"/>
+        <pre class="markup">
+<b>&lt;html></b>
+  <b>&lt;head></b>
+    <b>&lt;title></b>This is the title.<b>&lt;/title></b>
+  <b>&lt;/head></b>
+  <b>&lt;body></b>
+    <b>&lt;h1></b>This is a headline.<b>&lt;/h1></b>
+
+    This is the body.
+    And this is more of the body.
+  <b>&lt;/body></b>
+<b>&lt;/html></b></pre>
+
+
+        <ul>
+          <li>Knoten (<em>nodes</em>): Elemente, Attribute, Text, Kommentare</li>
+          <li>Children, Siblings, Parent, Ancestors</li>
+        </ul>
+      </div>
+
+
+      <div class="slide">
+        <h1>Wohlgeformtheit (<em>well-formed</em>)</h1>
+
+        <p>Dokument erfüllt die XML-Syntaxregeln:</p>
+
+        <ul>
+          <li>genau ein Wurzelelement</li>
+          <li>alle Elemente geschlossen (End-Tag bzw. "<code>/></code>")</li>
+          <li>korrekte Verschachtelung der Elemente</li>
+          <li>ein Element darf <em>nicht</em> mehrere gleichnamige Attribute besitzen</li>
+        </ul>
+
+        <p>=> Darum kümmert sich der Editor!</p>
+      </div>
+
+      <div class="slide">
+        <h1>Gültigkeit (<em>valid</em>)</h1>
+        <ul>
+          <li>Dokument ist wohlgeformt</li>
+          <li>gehorcht benutzerdefinierten semantischen Regeln => Schema</li>
+        </ul>
+      </div>
+
+      <div class="slide">
+        <h1>Schema-Sprachen</h1>
+        <ul>
+          <li>DTD (Document Type Definition)</li>
+          <li>W3C XML Schema</li>
+          <li>RELAX NG </li>
+          <li>Schematron</li>
+        </ul>
+      </div>
+
+      <div class="slide">
+        <h1>RELAX NG</h1>
+        <ul>
+          <li><a href="http://relaxng.org/" rel="external">http://relaxng.org/</a></li>
+          <li>wird internationaler Standard (ISO/IEC 19757-2)</li>
+          <li>pattern-basiert</li>
+        </ul>
+        <div class="handout">
+          Buch: <a href="http://books.xmlschemata.org/relaxng/" rel="external">http://books.xmlschemata.org/relaxng/</a>
+        </div>
+      </div>
+
+
+      <div class="slide">
+        <h1>HistVV Schema:  Grundgerüst</h1>
+
+        <pre class="markup">
+<b>&lt;vv xmlns="http://hashtable.de/ns/histvv"></b>
+  <b>&lt;kopf></b> ... <b>&lt;/kopf></b>
+  <b>&lt;titel></b>Verzeichnis der ...<b>&lt;/titel></b>
+
+  <b>&lt;sachgruppe></b>
+    <b>&lt;titel></b>Allgemeine Encyclopädie.<b>&lt;/titel></b>
+    <b>&lt;veranstaltung></b>...<b>&lt;/veranstaltung></b>
+  <b>&lt;/sachgruppe></b>
+
+  <b>&lt;sachgruppe></b>
+    ...
+  <b>&lt;/sachgruppe></b>
+
+<b>&lt;/vv></b>
+        </pre>
+
+      </div>
+
+      <div class="slide">
+        <h1>Schema: Kopf</h1>
+        <pre class="markup">
+ <b>&lt;kopf></b>
+   <b>&lt;universität></b>Leipzig<b>&lt;/universität></b>
+   <b>&lt;semester></b>Sommer<b>&lt;/semester></b>
+   <b>&lt;beginn></b>
+     <b>&lt;jahr></b>1821<b>&lt;/jahr></b>
+     <b>&lt;monat></b>5<b>&lt;/monat></b>
+     <b>&lt;tag></b>28<b>&lt;/tag></b>
+   <b>&lt;/beginn></b>
+   <b>&lt;ende></b>
+     <b>&lt;jahr></b>1821<b>&lt;/jahr></b>
+     ...
+   <b>&lt;/ende></b>
+ <b>&lt;/kopf></b>
+        </pre>
+      </div>
+
+      <div class="slide">
+        <h1>Schema: Sachgruppen</h1>
+        <pre class="markup">
+<b>&lt;sachgruppe></b>
+  <b>&lt;titel></b>III. Rechtswissenschaft.<b>&lt;/titel></b>
+
+  <b>&lt;sachgruppe></b>
+    <b>&lt;titel></b>Encyklopädie und Methodologie<b>&lt;/titel></b>
+    <b>&lt;veranstaltung></b>...<b>&lt;/veranstaltung></b>
+    <b>&lt;veranstaltung></b>...<b>&lt;/veranstaltung></b>
+    ...
+    <b>&lt;sachgruppe></b>
+    ...
+    <b>&lt;/sachgruppe></b>
+  <b>&lt;/sachgruppe></b>
+
+<b>&lt;/sachgruppe></b>
+        </pre>
+      </div>
+
+      <div class="slide">
+        <h1>Schema: Veranstaltung</h1>
+        <ul>
+          <li>dozent
+          <ul>
+            <li>vorname</li>
+            <li>nachname</li>
+            <li>grad</li>
+            <li>funktion</li>
+          </ul>
+          </li>
+          <li>thema</li>
+          <li>zeit</li>
+          <li>modus (z.B. "öffentlich")</li>
+          <li>entgelt (z.B. "gratis")</li>
+        </ul>
+      </div>
+
+      <div class="slide">
+        <h1>Schema: Veranstaltung (2)</h1>
+        <pre class="markup">
+<b>&lt;veranstaltung></b>
+  <b>&lt;dozent></b><b>&lt;nachname></b>Krug<b>&lt;/nachname></b>, <b>&lt;grad></b>D.<b>&lt;/grad></b>
+  <b>&lt;vorname></b>W. T.<b>&lt;/vorname></b>, <b>&lt;funktion></b>P. O.<b>&lt;/funktion></b><b>&lt;/dozent></b>,
+  <b>&lt;thema></b>Geschichte d. alten Philosophie, n. s. Lehrbuche<b>&lt;/thema></b>,
+  <b>&lt;zeit></b>10 U. 4 T.<b>&lt;/zeit></b> <b>&lt;modus></b>öffentlich<b>&lt;/modus></b>.
+<b>&lt;/veranstaltung></b>
+        </pre>
+        <ul>
+          <li>Text und Elemente gemischt ("mixed content")</li>
+          <li>Reihenfolge der Elemente beliebig</li>
+        </ul>
+      </div>
+
+      <div class="slide">
+        <h1>Schema: Textabsätze</h1>
+        <pre class="markup">
+&lt;vv xmlns="http://hashtable.de/ns/histvv">
+  ...
+  <b>&lt;p></b>Der Anfang dieser Vorlesungen ist auf den 28. May
+  festgesetzt.<b>&lt;/p></b>
+  ...
+&lt;/vv>
+        </pre>
+        <ul>
+          <li>p => <em>paragraph</em></li>
+        </ul>
+      </div>
+
+      <div class="slide">
+        <h1>Schema: Notiz</h1>
+        <pre class="markup">
+<b>&lt;p></b>
+  Der Anfang dieser Vorlesungen ist auf den 
+  <b>&lt;notiz betreff="datum"></b>28. May<b>&lt;/notiz></b> festgesetzt.
+<b>&lt;/p></b>
+        </pre>
+      </div>
+
+      <div class="slide">
+        <h1>XML-Editor</h1>
+        <ul>
+          <li>XMLmind XML Editor (XXE)</li>
+          <li><a href="http://www.xmlmind.com/xmleditor/" rel="external">http://www.xmlmind.com/xmleditor/</a></li>
+        </ul>
+      </div>
+
+      <div class="slide">
+        <h1>Editor: HistVV Add-on</h1>
+        <ul>
+          <li>http://hashtable.de/histvv.xxe_addon</li>
+          <li>hinzufügen unter: <tt>Options > Preferences... > Install add-ons</tt></li>
+          <li>Update mit <tt>Options > Install Add-ons...</tt></li>
+        </ul>
+      </div>
+<!--
+      <div class="slide">
+        <h1>Editor: Konfiguration</h1>
+        <ul>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+-->
+      <div class="slide">
+        <h1>Editor: Lektüre</h1>
+        <p>
+          <a href="http://www.xml.com/pub/a/2007/06/20/getting-productive-with-xmlmind.html" rel="external">http://www.xml.com/pub/a/2007/06/20/getting-productive-with-xmlmind.html</a>
+        </p>
+      </div>
+
+      <div class="slide">
+        <h1>Arbeitsorganisation</h1>
+        <img src="svn-filesharing.png" alt="" align="right"/>
+        <p>Problem: Wie verhindere ich versehentliches Überschreiben
+        von Änderungen anderer Projektteilnehmer?</p>
+      </div>
+
+      <div class="slide">
+        <h1>Subversion I</h1>
+        <img src="svn-copy-modify-merge-1.png" alt="" />
+      </div>
+
+      <div class="slide">
+        <h1>Subversion II</h1>
+        <img src="svn-copy-modify-merge-2.png" alt="" />
+      </div>
+
+      <div class="slide">
+        <h1>Subversion: typische Arbeitsschritte</h1>
+        <ol>
+          <li><em>Checkout</em> bzw. Aktualisieren der
+          Arbeitskopie</li>
+          <li>Bearbeiten einer oder mehrerer Dateien</li>
+          <li><em>Commit</em></li>
+        </ol>
+      </div>
+
+<!--
+      <div class="slide">
+        <h1></h1>
+        <ul>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+-->
+
+
+    </div>
+
+  </body>
+</html>
