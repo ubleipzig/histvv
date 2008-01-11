@@ -26,7 +26,8 @@
     <script src="ui/default/slides.js" type="text/javascript"></script>
 
     <style type="text/css">
-       .slide h1 { margin-bottom: .5em } 
+       .sslide h1 { margin-bottom: .5em; font-size: 1em; } 
+       .slide h1 { margin-bottom: .5em; } 
        p.imgcon { text-align: center; position: relative; width: 820px; margin: 0 auto; }
        p.imgcon img { position: absolute; top: 0; left: 0; }
     </style>
@@ -40,8 +41,8 @@
       <div id="currentSlide"><!-- DO NOT EDIT --></div>
       <div id="header"></div>
       <div id="footer">
-        <h1>Leipzig/2008-01-11</h1>
-        <h2>HistVV: Technologie</h2>
+        <h1>HistVV</h1>
+        <h2>Leipzig, 11.01.2008</h2>
       </div>
     </div>
 
@@ -49,54 +50,162 @@
     <div class="presentation">
 
       <div class="slide">
-        <h1>HistVV<br/><small>Technologie</small></h1>
-        <h3>Carsten Milling</h3>
-        <h4><a href="mailto:cmil@hashtable.de">cmil@hashtable.de</a></h4>
+        <h1>HistVV</h1>
+		<p>Vorlesungsverzeichnisse als Quellen disziplinär organisierter Wissenschaft</p>
+		<p>
+          <small>
+            Die Ausdifferenzierung wissenschaftlicher Fächer an der
+            Universität Leipzig 1814-1914
+          </small>
+        </p>
       </div>
 
+      <!-- I -->
+
       <div class="slide">
-        <h1>Inhalt</h1>
-        <ol class="incrementall show-first">
-          <li>Technologische Vorentscheidungen</li>
-          <li>Software-Architektur</li>
-          <li>Dateneingabe</li>
-          <li>Arbeitsorganisation</li>
-          <li>Web-Applikation</li>
+        <h1><small>Inhalt</small></h1>
+        <ol>
+          <li>Vorstellung der Quelle</li>
+          <li>Technische Umsetzung im Projekt</li>
+          <li>Arbeitsstand des Projekts</li>
         </ol>
       </div>
 
       <div class="slide">
-        <h1>Technologische Vorentscheidungen</h1>
+        <h1><small>Materialbasis</small></h1>
+        <img src="pix/Titelblaetter_1814ws_1914-ws.jpg" border="1" alt=""/>
+      </div>
+
+      <div class="slide">
+        <h1><small>Bestandslücken in Leipzig</small></h1>
+        <img src="pix/Uebersicht_fehlende_Verzeichnisse.jpg" border="1" alt=""/>
+      </div>
+
+      <div class="slide">
+        <h1><small>Verzeichnisse aus der Leipziger Literatur-Zeitung</small></h1>
+        <img src="pix/Titelblatt_1817-ss.jpg" border="1" alt=""/>
+      </div>
+
+      <div class="slide">
+        <h1><small>Unterschiede im Aufbau (1/4)</small></h1>
+        <img src="pix/Struktur_1817-ss.jpg" border="1" alt=""/>
+      </div>
+
+      <div class="slide">
+        <h1><small>Unterschiede im Aufbau (2/4)</small></h1>
+        <img src="pix/Struktur_1815-ws.jpg" border="1" alt=""/>
+      </div>
+
+      <div class="slide">
+        <h1><small>Unterschiede im Aufbau (3/4)</small></h1>
+        <img src="pix/Struktur_1814-ws.jpg" border="1" alt=""/>
+      </div>
+
+      <div class="slide">
+        <h1><small>Unterschiede im Aufbau (4/4)</small></h1>
+        <img src="pix/Struktur_1821-ws.jpg" border="1" alt=""/>
+      </div>
+
+      <div class="slide">
+        <h1><small>Anlage der Verzeichnisse (1/6)</small></h1>
+        <img src="pix/Titelblatt_1814-ws.jpg" border="1" alt=""/>
+      </div>
+
+      <div class="slide">
+        <h1><small>Anlage der Verzeichnisse (2/6)</small></h1>
+        <img src="pix/zwei_Ueberschriften.jpg" border="1" alt=""/>
+      </div>
+
+      <div class="slide">
+        <h1><small>Anlage der Verzeichnisse (3/6)</small></h1>
+        <img src="pix/Uebersicht_der_Lehrer_1841-ss.jpg" border="1" alt=""/>
+      </div>
+
+      <div class="slide">
+        <h1><small>Anlage der Verzeichnisse (4/6)</small></h1>
+        <img src="pix/Uebersicht_nach_Tagesstunden_1854-ss.jpg" border="1" alt=""/>
+      </div>
+
+      <div class="slide">
+        <h1><small>Anlage der Verzeichnisse (5/6)</small></h1>
+        <img src="pix/Titelblatt_1856-ss.jpg" border="1" alt=""/>
+      </div>
+
+      <div class="slide">
+        <h1><small>Anlage der Verzeichnisse (6/6)</small></h1>
+        <img src="pix/Seitenansicht_1869-ws-4.jpg" border="1" alt=""/>
+      </div>
+
+      <!-- II -->
+
+      <div class="slide">
+        <h1><small>Inhalt</small></h1>
+        <ol>
+          <li>Vorstellung der Quelle</li>
+          <li>Technische Umsetzung im Projekt
+          <ol>
+            <li>Technologische Vorentscheidungen</li>
+            <li>Software-Architektur</li>
+            <li>Dateneingabe</li>
+            <li>Arbeitsorganisation</li>
+            <li>Web-Applikation</li>
+          </ol>
+          </li>
+          <li>Arbeitsstand des Projekts</li>
+        </ol>
+      </div>
+
+      <div class="slide">
+        <h1><small>Technologische Vorentscheidungen</small></h1>
         <ul>
-          <li>XML</li>
-          <li>kein SQL</li>
+          <li>
+            Open Source
+            <ul>
+              <li>keine Lizenzgebühren</li>
+              <li>individuelle Anpassung</li>
+            </ul>
+          </li>
+          <li>
+            XML
+            <ul>
+              <li>besser als SQL, weil dokumentenorientiert</li>
+              <li>kontinuierliche Weiterentwicklung möglich</li>
+            </ul>
+          </li>
+          <li>
+            leichtgewichtige Infrastruktur
+            <ul>
+              <li>geringer Entwicklungs- und Pflegeaufwand</li>
+            </ul>
+          </li>
         </ul>
       </div>
 
       <div class="slide">
-        <h1>Software-Architektur</h1>
+        <h1><small>Software-Architektur</small></h1>
         <img src="pix/architektur.png" alt=""/>
       </div>
 
       <div class="slide">
-        <h1>Dateneingabe</h1>
-        <small>XMLmind XML-Editor</small><br/>
+        <h1><small>Software-Architektur: Dateneingabe</small></h1>
+        <small>XML-Editor XMLmind</small><br/>
         <img src="pix/xxe.png" alt="" id="xxe-img"/>
       </div>
 
       <div class="slide">
-        <h1>Arbeitsorganisation mit <em>Trac</em></h1>
+        <h1><small>Arbeitsorganisation mit Trac</small></h1>
         <p class="imgcon">
           <img src="pix/trac-wiki.png" alt=""/>
           <img src="pix/trac-timeline.png" alt="" class="incremental"/>
           <img src="pix/trac-timeline.png" alt="" class="incremental"/>
           <img src="pix/trac-ticket.png" alt="" class="incremental"/>
+          <img src="pix/architektur-subversion.png" alt="" class="incremental"/>
           <img src="pix/trac-source.png" alt="" class="incremental"/>
         </p>
       </div>
 
       <div class="slide">
-        <h1>Applikation: Suchen</h1>
+        <h1><small>Applikation: Suchen</small></h1>
         <p class="imgcon" id="app-suche">
           <img src="pix/app-suche01.png" alt=""/>
           <img src="pix/app-suche02.png" alt="" class="incremental"/>
@@ -104,7 +213,7 @@
       </div>
 
       <div class="slide">
-        <h1>Applikation: Browsen</h1>
+        <h1><small>Applikation: Browsen</small></h1>
         <p class="imgcon">
           <img src="pix/app-browse01.png" alt=""/>
           <img src="pix/app-browse02.png" alt="" class="incremental"/>
@@ -112,13 +221,28 @@
       </div>
 
       <div class="slide">
-        <h1>Applikation: Dozenten</h1>
+        <h1><small>Applikation: Dozenten</small></h1>
         <p class="imgcon">
           <img src="pix/app-dozent.png" alt=""/>
         </p>
       </div>
 
+      <!-- III  -->
 
+      <div class="slide">
+        <h1><small>Stand des Projekts</small></h1>
+        <ul>
+          <li>Transkription</li>
+          <li>Korrekturlesung</li>
+          <li>Server</li>
+          <li>Statistische Aufarbeitung (Grafik)</li>
+        </ul>
+      </div>
+
+      <div class="slide">
+        <h1><small>...</small></h1>
+        <p>noch Fragen?</p>
+      </div>
 
 <!--
       <div class="slide">
