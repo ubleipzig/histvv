@@ -7,7 +7,6 @@ use Getopt::Long;
 use XML::LibXML;
 use XML::LibXML::XPathContext;
 
-
 my $usage = <<EOT;
 Usage: add-ids [-l] [-w] file
 
@@ -37,7 +36,7 @@ my $nsuri = 'http://hashtable.de/ns/histvv';
 my $xmluri = 'http://www.w3.org/XML/1998/namespace';
 
 # regex matching titel numbers
-my $numrx = qr/^\s*([IVX]+|[0-9]+|[a-zA-z]+|[*]+|\p{Greek}+)(?:\.|\))\s/;
+my $numrx = qr/^\s*((?:[IVX]+|[0-9]+|[a-zA-z]+|[*]+|\p{Greek}+)(?=[.)]\s)|[*]+(?=\s))/;
 
 # transliteration of special characters
 my %translit = (
@@ -70,17 +69,39 @@ foreach my $sg ($xc->findnodes('//v:sachgruppe')) {
         my $titel = $xc->findvalue('normalize-space(string(v:titel))', $sg);
         printf "%-20s  %s\n", $id, $titel;
     }
+
+    my $vxpath = q{ v:veranstaltung |
+                    v:veranstaltungsgruppe//v:veranstaltung |
+                    v:absatz/v:veranstaltung };
+
+    my $n = 0;
+    foreach my $v ($xc->findnodes($vxpath, $sg)) {
+        my $vid = sprintf '%s-%03d', $id, ++$n;
+        $vid =~ s/^sg-/v-/;
+        $v->setAttribute('xml:id', $vid);
+        if ($opts{list}) {
+            my $thema = $xc->findvalue('normalize-space(string(v:thema))', $v);
+            printf "   %-20s  %s\n", $vid, $thema;
+        }
+    }
 }
 
 print $doc->toString(0) unless $opts{list} || $opts{write};
 
+# check for missing xml:id attributes
+my $err_sg = $xc->findvalue('count(//v:sachgruppe[not(@xml:id)])');
+warn "$err_sg elements of type 'sachgruppe' without xml:id\n"
+  if $err_sg > 0;
+my $err_v = $xc->findvalue('count(//v:veranstaltung[not(@xml:id)])');
+warn "$err_v elements of type 'veranstaltung' without xml:id\n"
+  if $err_v > 0;
+
+# write document back
 if ($opts{write}) {
     open F, ">$file" or die "Cannot write to $file: $!\n";
     print F $doc->toString(0);
     close F;
 }
-
-
 
 #
 # determine ID for 'sachgruppe'
