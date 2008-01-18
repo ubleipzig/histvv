@@ -547,6 +547,30 @@ sic =
 ##       Auszeichnung von Korrekturen bei Transkription
 ##     
 korrektur =
+  [
+    s:pattern [
+      id = "korrektur"
+      "\x{a}" ~
+      "        "
+      s:rule [
+        context = "v:korrektur"
+        "\x{a}" ~
+        "          "
+        s:assert [
+          test =
+            "not(normalize-space(.) = '' and normalize-space(@original) = '')"
+          "\x{a}" ~
+          "            Leeres Element 'korrektur' ohne Angabe des Originaltexts\x{a}" ~
+          "            ist nicht zulässig.\x{a}" ~
+          "          "
+        ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+  ]
   element korrektur {
     basic.attributes,
     
