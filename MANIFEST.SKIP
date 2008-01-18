@@ -18,3 +18,5 @@ CVS/
 ^tools/
 ^tmp/
 \.tar\.gz$
+^doc/slides/
+^xxx/
