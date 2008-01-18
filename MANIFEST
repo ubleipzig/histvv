@@ -1,6 +1,7 @@
+bin/dbxml-query
+bin/histvv-generate-ids
 Build.PL
 Changes
-bin/dbxml-query
 histvv.rnc
 histvv.rng
 html.css
