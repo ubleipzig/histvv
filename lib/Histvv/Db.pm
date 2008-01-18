@@ -56,11 +56,26 @@ sub new {
       Db::DB_CREATE | Db::DB_INIT_MPOOL | Db::DB_INIT_LOCK | Db::DB_INIT_TXN;
     $env_flags |= Db::DB_PRIVATE if $opts->{private};
 
-    my $env = new DbEnv(0);
-    $env->set_cachesize( 0, 64 * 1024, 1 );
-    $env->open( $self->{path}, $env_flags, 0 );
+    my $env;
+    eval {
+        $env = new DbEnv(0);
+        $env->set_cachesize( 0, 64 * 1024, 1 );
+        $env->open( $self->{path}, $env_flags, 0 );
+    };
+    if ( my $e = catch std::exception ) {
+        die "Cannot create environment!\n", $e->what, "\n";
+    }
+    elsif ($@) {
+        die "Cannot create environment!\n", $@, "\n";
+    }
 
-    $self->{mgr} = new XmlManager($env);
+    eval { $self->{mgr} = new XmlManager($env) };
+    if ( my $e = catch XmlException ) {
+        die "Cannot create XmlManager!\n", $e->what, "\n";
+    }
+    elsif ($@) {
+        die "Cannot create XmlManager!\n", $@, "\n";
+    }
 
     my $flag = $opts->{create} ? Db::DB_CREATE : 0;
     eval {
