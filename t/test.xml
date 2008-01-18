@@ -1,0 +1,1984 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vv xml:lang="de" xmlns="http://hashtable.de/ns/histvv"
+    xmlns:ns="http://hashtable.de/ns/histvv">
+  <kopf>
+    <universität>Leipzig</universität>
+
+    <semester>Sommer</semester>
+
+    <beginn>
+      <jahr>1821</jahr>
+
+      <monat>5</monat>
+
+      <tag>28</tag>
+    </beginn>
+
+    <ende>
+      <jahr>1821</jahr>
+    </ende>
+
+    <quelle/>
+
+    <status komplett="ja">
+      <transkribent>frank, cmil</transkribent>
+    </status>
+
+    <!--basiert auf HTML-Transkription 
+http://brawe.uni-leipzig.de/docuverse/uni_leipzig_sommerhalbjahr_1821.html  -->
+  </kopf>
+
+  <titel>Verzeichniß der im Sommerhalbjahre 1821 auf der Universität Leipzig
+  zu haltenden Vorlesungen</titel>
+
+  <absatz>Der Anfang dieser Vorlesungen ist auf den 28. May
+  festgesetzt.</absatz>
+
+  <sachgruppe xml:id="sg-001">
+    <titel>Allgemeine Encyclopädie.</titel>
+
+    <veranstaltung
+    xml:id="v-001-001"><dozent><nachname>Schuffenhauer</nachname>,
+    <grad>M.</grad> <vorname>J. C. A.</vorname></dozent>, <thema
+    kontext="sachgruppe">nach s. Entwurfe</thema>, <zeit>8 U. 4
+    T.</zeit></veranstaltung>
+  </sachgruppe>
+
+  <sachgruppe xml:id="sg-I">
+    <titel>I. Wissenschaften der philosophischen Facultät.</titel>
+
+    <sachgruppe xml:id="sg-I.1">
+      <titel>1) Sprachkunde.</titel>
+
+      <sachgruppe xml:id="sg-I.1.a">
+        <titel>a) Morgenländische Sprachen.</titel>
+
+        <sachgruppe xml:id="sg-I.1.a.001">
+          <titel>Hebräisch.</titel>
+
+          <veranstaltung
+          xml:id="v-I.1.a.001-001"><dozent><nachname>Winer</nachname>,
+          <grad>D.</grad> <vorname>G. B.</vorname>, <funktion>Theol. P.
+          E.</funktion></dozent>, <thema>Anfangsgründe der hebr. Sprache nach
+          <schrift><autor>Gesenius</autor> (4. Aufl. Halle
+          1820.)</schrift></thema> <zeit>2 T. in zu best St.</zeit>
+          <modus>privatissime</modus>.</veranstaltung>
+
+          <sachgruppe xml:id="sg-I.1.a.001.x">
+            <titel>*) Uebungen der hebräischen Gesellschaft.</titel>
+
+            <veranstaltung xml:id="v-I.1.a.001.x-001"><ders>Derselbe</ders>,
+            <zeit>in den best. St.</zeit>
+            <gebühr>unentgeltlich</gebühr>.</veranstaltung>
+          </sachgruppe>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-I.1.a.002">
+          <titel>Arabisch.</titel>
+
+          <veranstaltung
+          xml:id="v-I.1.a.002-001"><dozent><nachname>Rosenmüller</nachname>,
+          <grad>D.</grad> <vorname>E. F. K.</vorname>, <funktion>P.
+          O.</funktion></dozent>, <zeit>in zu best. St.</zeit>
+          <modus>privatissime</modus>.</veranstaltung>
+        </sachgruppe>
+
+        <seite>2</seite>
+
+        <sachgruppe xml:id="sg-I.1.a.003">
+          <titel>Persisch.</titel>
+
+          <veranstaltung
+          xml:id="v-I.1.a.003-001"><dozent><nachname>Rosenmüller</nachname>,
+          <grad>D.</grad> <vorname>E. F. K.</vorname>, <funktion>P.
+          O.</funktion></dozent>, <zeit>in zu best. St.</zeit>
+          <modus>privatissime</modus>.</veranstaltung>
+        </sachgruppe>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-I.1.b">
+        <titel>b) Klassische Sprachen.</titel>
+
+        <sachgruppe xml:id="sg-I.1.b.001">
+          <titel>Grundsätze der Kritik und Hermeneutik.</titel>
+
+          <veranstaltung
+          xml:id="v-I.1.b.001-001"><dozent><nachname>Beck</nachname>,
+          <vorname>C. D.</vorname>, <funktion>P. O. d. Z.
+          Dech.</funktion></dozent>, <thema kontext="sachgruppe"><schrift>nach
+          s. <titel>monogrammatt. artis crit. et
+          hermen.</titel></schrift></thema> <zeit>8 U. Dienst. u.
+          Freit.</zeit></veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-I.1.b.002">
+          <titel>Erklärung griechischer Schriftsteller.</titel>
+
+          <veranstaltung
+          xml:id="v-I.1.b.002-001"><dozent><nachname>Hermann</nachname>,
+          <vorname>G.</vorname>, <funktion>P. O.</funktion></dozent>,
+          <thema>über <schrift><autor>Sophokles</autor>
+          Trachinierinnen</schrift>, <notiz
+          betreff="fortsetzung">Forts.</notiz></thema> <zeit>11 U. 4 T.</zeit>
+          <modus>öffentlich</modus>.</veranstaltung>
+
+          <veranstaltung
+          xml:id="v-I.1.b.002-002"><dozent><nachname>Beier</nachname>,
+          <vorname>C. F.</vorname>, <funktion>P. E. des.</funktion></dozent>,
+          <thema>cursorische Erklärung der Bücher
+          <schrift><autor>Plato's</autor> <titel>de
+          republ.</titel></schrift></thema> <zeit>3 U. 2 T.</zeit>
+          <modus>öffentlich</modus>.</veranstaltung>
+
+          <veranstaltung
+          xml:id="v-I.1.b.002-003"><dozent><nachname>Otto</nachname>,
+          <grad>D.</grad> <vorname>C. E.</vorname></dozent>, <thema>über des
+          <schrift><autor>Demosthenes</autor> Rede <titel>in Spudiam de
+          dote</titel> (Tom. IV. der Tauchnitz. Ausg.)</schrift></thema>
+          <zeit>4 U. 2 T.</zeit> <notiz betreff="auszeichnung?">mit besonderer
+          Rücksicht auf Juristen</notiz>,
+          <gebühr>unentgeltlich</gebühr>.</veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-I.1.b.003">
+          <titel>Erklärung lateinischer Schriftsteller.</titel>
+
+          <veranstaltung
+          xml:id="v-I.1.b.003-001"><dozent><nachname>Spohn</nachname>,
+          <vorname>F. A. W.</vorname>, <funktion>P. O.</funktion></dozent>,
+          <thema>die <schrift>Sermonen des
+          <autor>Horaz</autor></schrift></thema>, <zeit>10 U. 4 T.</zeit>
+          <modus>öffentlich</modus>.</veranstaltung>
+
+          <veranstaltung
+          xml:id="v-I.1.b.003-002"><dozent><nachname>Rost</nachname>,
+          <vorname>F. W. E.</vorname>, <funktion>P. E.</funktion></dozent>,
+          <thema>über den <schrift><titel>Trinumus</titel> des
+          <autor>Plautus</autor></schrift></thema>, <zeit>5 U. 2 T.</zeit>
+          <modus>öffentlich</modus>.</veranstaltung>
+
+          <veranstaltung
+          xml:id="v-I.1.b.003-003"><dozent><nachname>Beier</nachname>,
+          <vorname>C. F.</vorname>, <funktion>P. E. des.</funktion></dozent>,
+          <thema>über ausgewählte <schrift>Oden des
+          <autor>Horaz</autor></schrift></thema>, <zeit>3 U. Mont. u.
+          Donnerst.</zeit></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-I.1.b.003-004"><dozent><nachname>Nobbe</nachname>,
+          <grad>M.</grad> <vorname>C. F. A.</vorname></dozent>, <thema>über
+          <schrift><autor>Virgils</autor> Eclogen</schrift></thema>, <zeit>4
+          U. Mont. u. Donnerst.</zeit></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-I.1.b.003-005"><dozent><nachname>Otto</nachname>,
+          <grad>D.</grad> <vorname>C. F.</vorname></dozent>, <thema>über
+          <schrift><autor>Cicero's</autor> <titel>Rede für
+          Archias</titel></schrift></thema>, <zeit>3 U. 2 T.</zeit>
+          <gebühr>unentgeltlich</gebühr>.</veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-I.1.b.004">
+          <titel>Theorie des lateinischen Styls.</titel>
+
+          <veranstaltung
+          xml:id="v-I.1.b.004-001"><dozent><nachname>Beck</nachname>,
+          <vorname>C. D.</vorname>, <funktion>P. O. u. d. Z.
+          Dech.</funktion></dozent>, <thema kontext="sachgruppe"><schrift>nach
+          s. <titel>Praeoeptt. artis lat. scrib.</titel></schrift></thema>
+          <zeit>8 U. Mont. u. Donnerst. 8 U. Dienst. u.
+          Freit.</zeit></veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-I.1.b.005">
+          <titel>Ueber die Dialekte der griechischen Sprache.</titel>
+
+          <veranstaltung
+          xml:id="v-I.1.b.005-001"><dozent><nachname>Nobbe</nachname>,
+          <grad>M.</grad> <vorname>C. F. A.</vorname></dozent>, <zeit>4 U. 2
+          T.</zeit> <gebühr>unentgeltlich</gebühr>.</veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-I.1.b.006">
+          <titel>Geschichte der griechischen Dichtkunst.</titel>
+
+          <veranstaltung
+          xml:id="v-I.1.b.006-001"><dozent><nachname>Hermann</nachname>,
+          <vorname>G.</vorname>, <funktion>P. O.</funktion></dozent>, <zeit>11
+          U. 2 T.</zeit></veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-I.1.b.x">
+          <titel>*) Philologische Uebungen.</titel>
+
+          <veranstaltung
+          xml:id="v-I.1.b.x-001"><dozent><nachname>Beck</nachname>,
+          <vorname>C. D.</vorname>, <funktion>P. O. u. d. Z.
+          Dech.</funktion></dozent>, <thema>philol. und didakt. <seite>3</seite>Uebungen
+          im kön. philol. Seminar</thema>, <zeit>3 u. 4 U. 2 T.</zeit>
+          <modus>öffentlich</modus></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-I.1.b.x-002"><dozent><nachname>Hermann</nachname>,
+          <vorname>G.</vorname>, <funktion>P. O.</funktion></dozent>,
+          <thema>Uebungen der griechischen Gesellschaft</thema> <zeit>in den
+          gew. T. und St.</zeit></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-I.1.b.x-003"><dozent><nachname>Spohn</nachname>,
+          <vorname>F. A. W.</vorname>, <funktion>P. O.</funktion></dozent>,
+          <thema>Uebungen der kritischen Gesellschaft</thema> <zeit>in best.
+          T. und St.</zeit></veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-I.1.b.xx">
+          <titel>**) Uebungen im Lateinisch-Schreiben und Sprechen.</titel>
+
+          <veranstaltung
+          xml:id="v-I.1.b.xx-001"><dozent><nachname>Rost</nachname>,
+          <vorname>F. W. E.</vorname>, <funktion>P. E.</funktion></dozent>,
+          <zeit>5 U. Dienst. u. Freit.</zeit></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-I.1.b.xx-002"><dozent><nachname>Rose</nachname>,
+          <grad>M.</grad> <vorname>J. G. C.</vorname></dozent>, <zeit>in den
+          best. St.</zeit></veranstaltung>
+        </sachgruppe>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-I.1.c">
+        <titel>c) Sprachen des neuern Europa.</titel>
+
+        <sachgruppe xml:id="sg-I.1.c.001">
+          <titel>Deutsche.</titel>
+
+          <veranstaltung
+          xml:id="v-I.1.c.001-001"><dozent><nachname>Kerndörffer</nachname>,
+          <grad>M.</grad> <vorname>H. A.</vorname>, <funktion>Lect.
+          publ.</funktion></dozent>, <thema>Anleitung zum tiefern Studium der
+          deutschen Sprache, mit besonderer Rücksicht auf guten schriftl.
+          Vortrag und in Verbindung mit dergl. schriftl. Uebungen</thema>
+          <zeit>in zu best. St.</zeit></veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-I.1.c.002">
+          <titel>Französische.</titel>
+
+          <veranstaltung
+          xml:id="v-I.1.c.002-001"><dozent><nachname>Dumas</nachname>,
+          <vorname>J. L. A.</vorname>, <funktion>Lect.
+          publ.</funktion></dozent>, <thema>theoret. und prakt. Cursus der
+          franz. Sprache</thema>, <zeit>4 T. Mont., Mittw. und Freit.</zeit>
+          <modus>öffentlich</modus>.</veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-I.1.c.003">
+          <titel>Englische.</titel>
+
+          <veranstaltung
+          xml:id="v-I.1.c.003-001"><dozent><nachname>Young</nachname>,
+          <grad>M.</grad> <vorname>Ph.</vorname>, <funktion>Lect.
+          publ.</funktion></dozent>, <thema>Anfangsgründe der engl.
+          Sprache</thema>, <zeit>1 U. 2 T.</zeit>
+          <modus>öffentlich</modus>.</veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-I.1.c.004">
+          <titel>Russische und Neugriechische.</titel>
+
+          <veranstaltung
+          xml:id="v-I.1.c.004-001"><dozent><nachname>Schmidt</nachname>,
+          <vorname>J. A. E.</vorname>, <funktion>Lect.
+          publ.</funktion></dozent>, <zeit>11 U. 2 T.</zeit></veranstaltung>
+        </sachgruppe>
+      </sachgruppe>
+    </sachgruppe>
+
+    <sachgruppe xml:id="sg-I.2">
+      <titel>2) Naturwissenschaften.</titel>
+
+      <sachgruppe xml:id="sg-I.2.001">
+        <titel>Naturgeschichte.</titel>
+
+        <veranstaltungsgruppe><dozent><nachname>Schwägrichen</nachname>,
+        <grad>D.</grad> <vorname>F.</vorname>, <funktion>P.
+        O.</funktion></dozent>, <veranstaltung
+        xml:id="v-I.2.001-001"><thema>über den zweiten Theil der
+        Naturgeschichte und Zoologie</thema>, <zeit>6 U. (früh) 4 T.</zeit>
+        <modus>öffentlich</modus></veranstaltung>, ingl. <veranstaltung
+        xml:id="v-I.2.001-002"><thema>praktische Botanik</thema>, <zeit>5 U.
+        Dienst. und Freit.</zeit> <modus>öffentlich</modus></veranstaltung>;
+        ingl. <veranstaltung xml:id="v-I.2.001-003"><thema>Allgemeine
+        Botanik</thema>, <zeit>7 U. 4
+        T.</zeit></veranstaltung></veranstaltungsgruppe>
+
+        <veranstaltungsgruppe><dozent><nachname>Kunze</nachname>,
+        <grad>D.</grad> <vorname>G.</vorname></dozent>, <veranstaltung
+        xml:id="v-I.2.001-004"><thema>Naturgeschichte der cryptogamischen
+        Gewächse, <notiz>Forts.</notiz></thema> <zeit>2 T. in zu best.
+        St.</zeit> <gebühr>unentgeltlich</gebühr></veranstaltung>, ingl.
+        <veranstaltung xml:id="v-I.2.001-005"><thema>Phytonomie oder Lehre vom
+        Bau u. den <seite>4</seite>Lebensverrichtungen der Gewächse</thema>,
+        <zeit>8 U. 4 T.</zeit></veranstaltung>; ingl. <veranstaltung
+        xml:id="v-I.2.001-006"><thema>Encyklopädie der theoret. Botanik mit
+        Excursionen</thema>, <zeit>11 U. 4
+        T.</zeit></veranstaltung></veranstaltungsgruppe>
+
+        <sachgruppe xml:id="sg-I.2.001.x">
+          <titel>*) Examinatorium über Oryktognosie.</titel>
+
+          <veranstaltung
+          xml:id="v-I.2.001.x-001"><dozent><nachname>Schwägrichen</nachname>,
+          <grad>D.</grad> <vorname>F.</vorname>, <funktion>P.
+          O.</funktion></dozent>, <zeit>in zu best. St.</zeit></veranstaltung>
+        </sachgruppe>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-I.2.002">
+        <titel>Physik.</titel>
+
+        <veranstaltung
+        xml:id="v-I.2.002-001"><dozent><nachname>Gilbert</nachname>,
+        <grad>D.</grad> <vorname>L. W.</vorname>, <funktion>P.
+        O.</funktion></dozent>, <thema>über die Gesetze des Falls, und über
+        die Lehre vom Pendel und von der allgemeinen Schwere</thema>, <zeit>11
+        U. 4 T.</zeit> <modus>öffentlich</modus>.</veranstaltung>
+
+        <veranstaltung xml:id="v-I.2.002-002"><ders>Derselbe</ders>,
+        <thema>Experimentalphysik <schrift>n. s. Lehrbuche</schrift>, nebst
+        einer Einleit. in die Naturwissenschaften überhaupt</thema>, <zeit>9
+        U. 6 T.</zeit></veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-I.2.003">
+        <titel>Chemie.</titel>
+
+        <veranstaltungsgruppe><dozent><nachname>Eschenbach</nachname>,
+        <grad>D.</grad> <vorname>C. G.</vorname>, <funktion>P.
+        O.</funktion></dozent>, <veranstaltung
+        xml:id="v-I.2.003-001"><thema>Experimentalchemie</thema> <zeit>9 U. 4
+        T.</zeit></veranstaltung> ingl. <veranstaltung
+        xml:id="v-I.2.003-002"><thema>chemische Experimente</thema>, <zeit>9
+        U. 2 T.</zeit></veranstaltung></veranstaltungsgruppe>
+      </sachgruppe>
+    </sachgruppe>
+
+    <sachgruppe xml:id="sg-I.3">
+      <titel>3) Mathematik.</titel>
+
+      <veranstaltungsgruppe><dozent><nachname>Mollweide</nachname>,
+      <vorname>K. B.</vorname>, <funktion>P. O.</funktion></dozent>,
+      <veranstaltung xml:id="v-I.3-001"><thema>Anfangsgründe der
+      Algebra</thema>, <zeit>3 U. 4 T.</zeit>
+      <modus>öffentlich</modus></veranstaltung>; ingl. <veranstaltung
+      xml:id="v-I.3-002"><thema>Arithmetik und Geometrie</thema>, <zeit>10 U.
+      6 T.</zeit></veranstaltung></veranstaltungsgruppe>
+
+      <veranstaltungsgruppe><dozent><nachname>Möbius</nachname>, <vorname>A.
+      F.</vorname>, <funktion>P. E. u. Observ.</funktion></dozent>,
+      <veranstaltung xml:id="v-I.3-003"><thema>theorische Astronomie</thema>,
+      <zeit>4 U. 2 T.</zeit> <modus>öffentlich</modus></veranstaltung>; ingl.
+      <veranstaltung xml:id="v-I.3-004"><thema>sphärische Trigonometrie, nebst
+      Anwendung derselben auf prakt. Astronomie</thema>, <zeit>5 U. 2
+      T.</zeit></veranstaltung></veranstaltungsgruppe>
+    </sachgruppe>
+
+    <sachgruppe xml:id="sg-I.4">
+      <titel>4) Anthropologie und Psychologie.</titel>
+
+      <veranstaltung xml:id="v-I.4-001"><dozent><nachname>Heinroth</nachname>,
+      <grad>D.</grad> <vorname>J. C. A.</vorname>, <funktion>Med. P. O.
+      des.</funktion></dozent>, <thema>Anthropologie</thema>, <zeit>8 U. 4
+      T.</zeit> <modus>privatissime</modus>.</veranstaltung>
+
+      <veranstaltung xml:id="v-I.4-002"><dozent><nachname>Wendt</nachname>,
+      <vorname>A.</vorname>, <funktion>P. O. des.</funktion></dozent>,
+      <thema>empirische Psychologie nach eignen Sätzen</thema>, <zeit>8 U. 4
+      T.</zeit></veranstaltung>
+
+      <veranstaltung
+      xml:id="v-I.4-003"><dozent><nachname>Michaelis</nachname>,
+      <grad>M.</grad> <vorname>C. F.</vorname></dozent>,
+      <thema>Psychologie</thema> <zeit>in zu best. St.</zeit></veranstaltung>
+
+      <sachgruppe xml:id="sg-I.4.001">
+        <titel>Uebungen der psycholog. Gesellschaft.</titel>
+
+        <veranstaltung
+        xml:id="v-I.4.001-001"><dozent><nachname>Wendt</nachname>,
+        <vorname>A.</vorname>, <funktion>P. O. des.</funktion></dozent>,
+        <zeit>in zu best. St.</zeit> <modus>privatiss.</modus></veranstaltung>
+      </sachgruppe>
+    </sachgruppe>
+
+    <sachgruppe xml:id="sg-I.5">
+      <titel>5) Philosophie.</titel>
+
+      <sachgruppe xml:id="sg-I.5.001">
+        <titel>Geschichte der Philosophie.</titel>
+
+        <veranstaltung
+        xml:id="v-I.5.001-001"><dozent><nachname>Krug</nachname>, <vorname>W.
+        T.</vorname>, <funktion>P. O.</funktion></dozent>, <thema>Geschichte
+        der alten Philosophie, <schrift>n. s. Lehrbuche</schrift></thema>,
+        <zeit>8 U. 4 T.</zeit> <modus>öffentlich</modus>.</veranstaltung>
+      </sachgruppe>
+
+      <seite>5</seite>
+
+      <sachgruppe xml:id="sg-I.5.002">
+        <titel>Philosophischer Cursus.</titel>
+
+        <veranstaltung
+        xml:id="v-I.5.002-001"><dozent><nachname>Krug</nachname>, <vorname>W.
+        T.</vorname>, <funktion>P. O.</funktion></dozent>, <thema>philos.
+        Encyklopädie in einem einjährigen Cursus, und zwar für dieses Halbjahr
+        Fundamentalphilosophie, Logik u. Metaphysik <schrift>nach s.
+        Handbuche</schrift></thema>, <zeit>11 U. 6 T.</zeit></veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-I.5.003">
+        <titel>Logik.</titel>
+
+        <veranstaltung
+        xml:id="v-I.5.003-001"><dozent><nachname>Wendt</nachname>,
+        <vorname>A.</vorname>, <funktion>P. O. des.</funktion></dozent>,
+        <zeit>7 U. 2 T.</zeit></veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-I.5.004">
+        <titel>Metaphysik.</titel>
+
+        <veranstaltung
+        xml:id="v-I.5.004-001"><dozent><nachname>Michaelis</nachname>,
+        <grad>M.</grad> <vorname>C. F.</vorname></dozent>, <zeit>in zu best.
+        St.</zeit></veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-I.5.005">
+        <titel>Aesthetik.</titel>
+
+        <veranstaltung
+        xml:id="v-I.5.005-001"><dozent><nachname>Clodius</nachname>,
+        <vorname>C. A. H.</vorname>, <funktion>P. O.</funktion></dozent>,
+        <thema>die allgemeine und besondere der schönen Künste, mit vorzügl.
+        Hinsicht auf die Poesie und <schrift>seinen <titel>Entwurf einer
+        systemat. Poetik</titel> (Lpz. Härtel)</schrift></thema> <zeit>7 U. 2
+        T.</zeit> <modus>öffentlich</modus>.</veranstaltung>
+
+        <veranstaltung
+        xml:id="v-I.5.005-002"><dozent><nachname>Michaelis</nachname>,
+        <grad>M.</grad> <vorname>C. F.</vorname></dozent>, <zeit>in zu best.
+        St.</zeit></veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-I.5.006">
+        <titel>Sittenlehre.</titel>
+
+        <veranstaltung
+        xml:id="v-I.5.006-001"><dozent><nachname>Clodius</nachname>,
+        <vorname>C. A. H.</vorname>, <funktion>P. O.</funktion></dozent>,
+        <thema>die besondere Sittenlehre von den besondern Pflichten des
+        freundschaftl. bürgerl. und weltbürgerl. Verhältnisses, und von den
+        besondern Anlagen und Hindernissen der Tugend, Temperamenten,
+        Neigungen etc.</thema> <zeit>7 U. Mont. und Donnerst.</zeit>
+        <modus>öffentlich</modus>.</veranstaltung>
+
+        <veranstaltung
+        xml:id="v-I.5.006-002"><dozent><nachname>Lindner</nachname>,
+        <vorname>F. W.</vorname>, <funktion>P. E. des.</funktion></dozent>,
+        <thema>allgemeine Moral</thema>, <zeit>4 T. in zu best.
+        St.</zeit></veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-I.5.007">
+        <titel>Rechtslehre.</titel>
+
+        <veranstaltung
+        xml:id="v-I.5.007-001"><dozent><nachname>Wieland</nachname>,
+        <vorname>E. K.</vorname>, <funktion>P. O.</funktion></dozent>,
+        <thema>Natur- und Völkerrecht, <schrift>nach s.
+        Sätzen</schrift></thema>, <zeit>7 U. 4 T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-I.5.007-002"><dozent><nachname>Pölitz</nachname>,
+        <vorname>K. H. L.</vorname>, <funktion>P. O.</funktion></dozent>,
+        <thema>Natur- Völker- u. Staatsrecht <schrift>nach s.
+        Sätzen</schrift></thema>, <zeit>10 U. 4 T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-I.5.007-003"><dozent><nachname>Wendt</nachname>,
+        <vorname>A.</vorname>, <funktion>P. O. des.</funktion></dozent>,
+        <thema><schrift>nach s. <titel>Grundzügen der philos.
+        Rechtslehre</titel></schrift></thema>, <zeit>7 U. 4
+        T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-I.5.007-004"><dozent><nachname>Wenck</nachname>,
+        <grad>D.</grad> <vorname>C. F. E.</vorname>, <funktion>P.
+        E.</funktion></dozent>, <thema kontext="sachgruppe"><schrift>n. s.
+        Sätzen</schrift></thema>, <zeit>4 U. 4 T.</zeit></veranstaltung>
+      </sachgruppe>
+    </sachgruppe>
+
+    <sachgruppe xml:id="sg-I.6">
+      <titel>6) Historische Wissenschaften.</titel>
+
+      <sachgruppe xml:id="sg-I.6.001">
+        <titel>Welt- Völker- und Staatengeschichte.</titel>
+
+        <veranstaltung
+        xml:id="v-I.6.001-001"><dozent><nachname>Beck</nachname>, <vorname>C.
+        D.</vorname>, <funktion>P. O. d. Z. Dech.</funktion></dozent>,
+        <thema>allgemeine Welt- und Völkergeschichte von Erschaffung der Welt
+        bis <seite>6</seite> auf die Theilung der Caroling. Monarchie im J.
+        843. <schrift>nach s. kurzgefaßten Anleitung z. Welt- und
+        Völkergeschichte</schrift></thema>, <zeit>10 U. 6
+        T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-I.6.001-002"><dozent><nachname>Beck</nachname>, <vorname>C.
+        D.</vorname>, <funktion>P. O. d. Z. Dech.</funktion></dozent>,
+        <thema>allgemeine christl. Kirchengeschichte für Studirende aller
+        Facultäten, <schrift>nach s. Sätzen</schrift></thema>, <zeit>3 U. 4
+        T.</zeit> <modus>öffentlich</modus>.</veranstaltung>
+
+        <veranstaltungsgruppe><dozent><nachname>Wieland</nachname>,
+        <vorname>E. K.</vorname>, <funktion>P. O.</funktion></dozent>,
+        <veranstaltung xml:id="v-I.6.001-003"><thema>Geschichte von Dänemark
+        u. Schweden n. Meusel</thema>, <zeit>11 U. 4 T.</zeit>
+        <modus>öffentlich</modus></veranstaltung>; ingl. <veranstaltung
+        xml:id="v-I.6.001-004"><thema>allgemeine Weltges. <schrift>n. eign.
+        Sätzen</schrift></thema> <zeit>10 U. 6
+        T.</zeit></veranstaltung></veranstaltungsgruppe>
+
+        <veranstaltung
+        xml:id="v-I.6.001-005"><dozent><nachname>Weiske</nachname>,
+        <vorname>B. G.</vorname>, <funktion>P. E.</funktion></dozent>,
+        <thema>allgemeine Culturgeschichte</thema>, <zeit>9 U. 4
+        T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-I.6.001-006"><dozent><nachname>Böttiger</nachname>,
+        <vorname>C. W.</vorname>, <funktion>P. E. des.</funktion></dozent>,
+        <thema>Geschichte des Königr. Sachsen</thema>, <zeit>4 U. Mont. und
+        Donnerst.</zeit> <modus>öffentlich</modus>.</veranstaltung>
+
+        <veranstaltungsgruppe><dozent><nachname>Schuffenhauer</nachname>,
+        <grad>M.</grad> <vorname>J. C. A.</vorname></dozent>, <veranstaltung
+        xml:id="v-I.6.001-007"><thema>Geschichte der ältern Völker bis auf die
+        mittlere Zeit</thema>, <zeit>3 U. 4 T.</zeit></veranstaltung>
+        <veranstaltung xml:id="v-I.6.001-008"><thema>Geschichte der neuern
+        Zeiten</thema>, <zeit>4 U. 4
+        T.</zeit></veranstaltung></veranstaltungsgruppe>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-I.6.002">
+        <titel>Geographie und Statistik.</titel>
+
+        <veranstaltungsgruppe><dozent><nachname>Kruse</nachname>,
+        <vorname>C.</vorname>, <funktion>P. O.</funktion></dozent>,
+        <veranstaltung xml:id="v-I.6.002-001"><thema>physische
+        Geographie</thema>, <zeit>2 U. 4 T.</zeit>
+        <modus>öffentlich</modus></veranstaltung>; ingl. <veranstaltung
+        xml:id="v-I.6.002-002"><thema>Geographie u. kurze Geschichte der
+        Juden</thema>, <zeit>3 U. 4
+        T.</zeit></veranstaltung></veranstaltungsgruppe>
+
+        <veranstaltungsgruppe><dozent><nachname>Böttiger</nachname>,
+        <vorname>C. W.</vorname>, <funktion>P. E. des.</funktion></dozent>,
+        <veranstaltung xml:id="v-I.6.002-003"><thema>Statistik des Königr.
+        Sachsen</thema>, <zeit>4 U. Dienst. u. Freit.</zeit></veranstaltung>;
+        ingl. <veranstaltung xml:id="v-I.6.002-004"><thema>Statistik der
+        wichtigst. Staaten Europa's, n. <autor>Meusel</autor></thema>,
+        <modus>privatis.</modus></veranstaltung></veranstaltungsgruppe>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-I.6.003">
+        <titel>Alterthumswissenschaft.</titel>
+
+        <veranstaltung
+        xml:id="v-I.6.003-001"><dozent><nachname>Beck</nachname>, <vorname>C.
+        D.</vorname>, <funktion>P. O. d. Z. Dech.</funktion></dozent>,
+        <thema>Archäologie der Kunst</thema>, <zeit>4 U. 4 T.</zeit>
+        <modus>privatissime</modus>.</veranstaltung>
+
+        <veranstaltung
+        xml:id="v-I.6.003-002"><dozent><nachname>Weiske</nachname>,
+        <vorname>B. G.</vorname>, <funktion>P. E.</funktion></dozent>,
+        <thema>über die Staatsverfassungen des alten Griechenlands</thema>,
+        <zeit>9 U. 2 T.</zeit> <modus>öffentlich</modus>.</veranstaltung>
+
+        <veranstaltung
+        xml:id="v-I.6.003-003"><dozent><nachname>Beier</nachname>, <vorname>K.
+        F.</vorname>, <funktion>P. E. des.</funktion></dozent>,
+        <thema>griechisch-römische Mythologie</thema>, <zeit>7 U. 4
+        T.</zeit></veranstaltung>
+      </sachgruppe>
+    </sachgruppe>
+
+    <sachgruppe xml:id="sg-I.7">
+      <titel>7) Staatswissenschaften.</titel>
+
+      <veranstaltung xml:id="v-I.7-001"><dozent><nachname>Pölitz</nachname>,
+      <vorname>K. H. L.</vorname>, <funktion>P. O.</funktion></dozent>,
+      <thema>Encyclopädie der gesammten Staatswissenschaften</thema>, <zeit>8
+      U. Mont. u. Donnerst.</zeit> <modus>öffentlich</modus>.</veranstaltung>
+
+      <veranstaltung xml:id="v-I.7-002"><ders>Derselbe</ders>,
+      <thema>allgemeines philosoph. Staatsrecht in Verbindung mit dem
+      Naturrechte</thema>, <zeit>10 U. 4 T.</zeit></veranstaltung>
+
+      <veranstaltung xml:id="v-I.7-003"><ders>Derselbe</ders>,
+      <thema>Nationalökonomie, Staatswirthschaft <seite>7</seite>und
+      Finanzwirtschaft</thema>, <zeit>in zu best. St.</zeit>
+      <modus>privatissime</modus>.</veranstaltung>
+    </sachgruppe>
+
+    <sachgruppe xml:id="sg-I.8">
+      <titel>8) Oekonomie und Kameralwissenschaft.</titel>
+
+      <veranstaltungsgruppe><dozent><nachname>Pohl</nachname>, <vorname>J.
+      F.</vorname>, <funktion>P. O.</funktion></dozent>, <veranstaltung
+      xml:id="v-I.8-001"><thema>Encyclopädie der Kameralwissenschaften
+      <schrift>n. s. Heften</schrift></thema>, <zeit>2 U. 4 T.</zeit>
+      <modus>öffentlich</modus></veranstaltung>; ingl. <veranstaltung
+      xml:id="v-I.8-002"><thema>Agronomie und Agricultur, oder physische
+      Kenntniß des Bodens und dessen Bearbeitung <schrift>nach s.
+      Sätzen</schrift></thema>, <zeit>11 U. 4
+      T.</zeit></veranstaltung></veranstaltungsgruppe>
+
+      <sachgruppe xml:id="sg-I.8.x">
+        <titel>*) Uebungen d. kameralistischen Gesellschaft.</titel>
+
+        <veranstaltung xml:id="v-I.8.x-001"><ders>Derselbe</ders>, <zeit>in
+        den best. St.</zeit></veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-I.8.xx">
+        <titel>**) Oeconomische Chemie.</titel>
+
+        <veranstaltung
+        xml:id="v-I.8.xx-001"><dozent><nachname>Eschenbach</nachname>,
+        <grad>D.</grad> <vorname>C. G.</vorname>, <funktion>P.
+        O.</funktion></dozent>, <zeit>7 U. 4 T.</zeit></veranstaltung>
+      </sachgruppe>
+    </sachgruppe>
+
+    <sachgruppe xml:id="sg-I.9">
+      <titel>9) Pädagogik.</titel>
+
+      <veranstaltung xml:id="v-I.9-001"><dozent><nachname>Höpfner</nachname>,
+      <grad>D.</grad> <vorname>J. G. C.</vorname>, <funktion>P. E.
+      des.</funktion></dozent>, <thema>über die phys. Erziehung der Jugend,
+      <schrift>n. s. Grundrisse, den er auf seine Kosten hat drucken
+      lassen</schrift></thema>, <zeit>Mont. u. Donnerst. 11 U.</zeit>
+      <gebühr>unentgeltlich</gebühr>.</veranstaltung>
+
+      <veranstaltungsgruppe><dozent><nachname>Lindner</nachname>, <vorname>F.
+      W.</vorname>, <funktion>P. E. des.</funktion></dozent>, <veranstaltung
+      xml:id="v-I.9-002"><thema>Pädagogik und Didaktik, nebst Anleit. zur
+      Katechetik und zweckmäß. Führung jedes Schulamts</thema>, <zeit>3 U. 4
+      T.</zeit></veranstaltung>; ingl. <veranstaltung
+      xml:id="v-I.9-003"><thema>prakt. Uebung in der Mittheilung der
+      verschiedenen Gegenstände des
+      Schulunterrichts</thema></veranstaltung>.</veranstaltungsgruppe>
+
+      <veranstaltung
+      xml:id="v-I.9-004"><dozent><nachname>Schuffenhauer</nachname>,
+      <grad>M.</grad> <vorname>J. C. A.</vorname></dozent>, <thema>Anleitung
+      zur Katechetik <schrift>nach s. Entwurfe</schrift></thema>, <zeit>9 U. 2
+      T.</zeit></veranstaltung>
+
+      <sachgruppe xml:id="sg-I.9.x">
+        <titel>*) Uebungen der pädagogisch-didaktischen Gesellschaft.</titel>
+
+        <veranstaltung
+        xml:id="v-I.9.x-001"><dozent><nachname>Kruse</nachname>,
+        <vorname>C.</vorname>, <funktion>P. O.</funktion></dozent>, <zeit>in
+        den best. St.</zeit></veranstaltung>
+      </sachgruppe>
+    </sachgruppe>
+
+    <sachgruppe xml:id="sg-I.10">
+      <titel>10) Schöne Künste.</titel>
+
+      <veranstaltung xml:id="v-I.10-001"><dozent><nachname>Pölitz</nachname>,
+      <vorname>K. H. L.</vorname>, <funktion>P. O.</funktion></dozent>,
+      <thema>Theorie der Dichtkunst u. Beredtsamkeit, mit steter Rücksicht auf
+      die teutschen Classiker, <schrift>nach s. Comp. <titel>die Sprache der
+      Teutschen</titel>, Lpz. 1820. b. Weidmanns</schrift></thema>, <zeit>8 U.
+      Dienst. u. Freit.</zeit> <modus>öffentlich</modus>.</veranstaltung>
+
+      <veranstaltung xml:id="v-I.10-002"><dozent><nachname>Wendt</nachname>,
+      <vorname>A.</vorname>, <funktion>P. O. des.</funktion></dozent>,
+      <thema>Rhetorik <schrift>nach <autor>Schotts</autor> Entwurf e. Theorie
+      der Beredtsamkeit (2. Afl. Lpz. 1815. 8.)</schrift></thema> <zeit>10 U.
+      4 T.</zeit> <modus>öffentlich</modus>.</veranstaltung>
+
+      <seite>8</seite>
+
+      <veranstaltung
+      xml:id="v-I.10-003"><dozent><nachname>Schuffenhauer</nachname>,
+      <grad>M.</grad> <vorname>J. C. A.</vorname></dozent>, <thema>Anleitung
+      z. Beredtsamkeit</thema>, <zeit>2 U. 2 T.</zeit></veranstaltung>
+
+      <veranstaltungsgruppe><dozent><nachname>Kerndörffer</nachname>,
+      <grad>M.</grad> <vorname>H. A.</vorname>, <funktion>Lect.
+      publ.</funktion></dozent>, <veranstaltung
+      xml:id="v-I.10-004"><thema>Theorie der Declamation mit Beispielen aus
+      deutschen Classikern</thema>, <zeit>11 U. 2 T.</zeit>
+      <modus>öffentlich</modus></veranstaltung>; ingl.
+      <veranstaltungsgruppe><thema>declamator. Uebungen</thema> <veranstaltung
+      xml:id="v-I.10-005"><thema>f. künft. Religionslehrer</thema> <zeit>5 U.
+      Mont. u. Donnerst.</zeit></veranstaltung>, <veranstaltung
+      xml:id="v-I.10-006"><thema>für Studierende aus andern
+      Facultäten</thema>, <zeit>5 U. Dienst. u.
+      Freit.</zeit></veranstaltung></veranstaltungsgruppe></veranstaltungsgruppe>
+
+      <sachgruppe xml:id="sg-I.10.x">
+        <titel>*) Geschichte der Poesie.</titel>
+
+        <veranstaltung
+        xml:id="v-I.10.x-001"><dozent><nachname>Clodius</nachname>,
+        <vorname>C. A. H.</vorname>, <funktion>P. O.</funktion></dozent>,
+        <modus>privatissime</modus>.</veranstaltung>
+      </sachgruppe>
+    </sachgruppe>
+  </sachgruppe>
+
+  <sachgruppe xml:id="sg-II">
+    <titel>II. Theologie.</titel>
+
+    <sachgruppe xml:id="sg-II.001">
+      <titel>Theologische Encyclopädie und Methodologie.</titel>
+
+      <veranstaltung
+      xml:id="v-II.001-001"><dozent><nachname>Tittmann</nachname>,
+      <grad>D.</grad> <vorname>J. A. H.</vorname>, <funktion>Theol. P.
+      Primar.</funktion></dozent>, <zeit>10 U. 4 T.</zeit>
+      <modus>öffentlich</modus>.</veranstaltung>
+
+      <veranstaltung
+      xml:id="v-II.001-002"><dozent><nachname>Cramer</nachname>,
+      <grad>D.</grad> <vorname>L. D.</vorname>, <funktion>P.
+      O.</funktion></dozent>, <thema kontext="sachgruppe"><schrift>nach s.
+      Grundrisse einer formalen Encyclop. und Methodol. der Theol. (Lpz. b.
+      Reclam 1821.)</schrift></thema> <zeit>8 U. 2 T.</zeit>
+      <modus>öffentlich</modus>.</veranstaltung>
+    </sachgruppe>
+
+    <sachgruppe xml:id="sg-II.002">
+      <titel>Historisch-litterarische Einleitung in die Theologie.</titel>
+
+      <veranstaltung xml:id="v-II.002-001"><dozent><nachname>Winer</nachname>,
+      <grad>D.</grad> <vorname>G. B.</vorname>, <funktion>Theol. P.
+      E.</funktion></dozent>, <thema kontext="sachgruppe"><schrift>n. eign.
+      Leitfaden</schrift></thema>, <zeit>4 U. Mont. und Donnerst. in den
+      ersten Wochen</zeit>, <gebühr>unentgeltlich</gebühr>.</veranstaltung>
+
+      <sachgruppe xml:id="sg-II.002.1">
+        <titel>1) Exegetische Theologie.</titel>
+
+        <sachgruppe xml:id="sg-II.002.1.001">
+          <titel>Erklärung A. T. Bücher</titel>
+
+          <veranstaltungsverweis
+          ref="v-II.002.1.002-001"><dozent><nachname>Winzer</nachname>,
+          <grad>D.</grad> <vorname>J. F.</vorname>, <funktion>P.
+          O.</funktion></dozent>, <thema>über ausgewählte
+          <schrift>Psalmen</schrift></thema>, <zeit>8 U. 4 T.</zeit>
+          <modus>öffentlich</modus>, <siehe ref="sg-II.002.1.002">s. unten
+          Erklär. N. T.</siehe></veranstaltungsverweis>
+
+          <veranstaltungsgruppe><dozent><nachname>Rosenmüller</nachname>,
+          <grad>D.</grad> <vorname>E. F. K.</vorname>, <funktion>P.
+          O.</funktion></dozent>, <veranstaltung
+          xml:id="v-II.002.1.001-001"><thema>über ausgewählte
+          <schrift>Psalmen</schrift></thema> <zeit>1 U. 4 T.</zeit>
+          <modus>öffentlich</modus></veranstaltung>; ingl. <veranstaltung
+          xml:id="v-II.002.1.001-002"><thema>über das <schrift>Buch
+          Hiob</schrift>, <notiz>Forts. u. Beschl.</notiz></thema> <zeit>1 U.
+          2 T.</zeit></veranstaltung></veranstaltungsgruppe>
+
+          <seite>9</seite>
+
+          <veranstaltung
+          xml:id="v-II.002.1.001-003"><dozent><nachname>Winer</nachname>,
+          <grad>D.</grad> <vorname>G. B.</vorname>, <funktion>Theol. P.
+          E.</funktion></dozent>, <thema>über auserlesene Stellen des
+          <schrift>Jesaias</schrift></thema>, <zeit>8 U. 2
+          T.</zeit></veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-II.002.1.002">
+          <titel>Erklärung N. T. Bücher.</titel>
+
+          <veranstaltungsgruppe><dozent><nachname>Winzer</nachname>,
+          <grad>D.</grad> <vorname>J. F.</vorname>, <funktion>P.
+          O.</funktion></dozent>, <veranstaltung
+          xml:id="v-II.002.1.002-001"><thema>über die Apostelgeschichte
+          (<notiz betreff="fortsetzung">Forts. u. Beschluß</notiz>); sodann
+          über ausgewählte Psalmen</thema> <zeit>8 U. 4 T.</zeit>
+          <modus>öffentlich</modus></veranstaltung>; – ingl. <veranstaltung
+          xml:id="v-II.002.1.002-002"><thema><notiz
+          betreff="fortsetzung">Anfang eines dreijähr. exeget. Cursus</notiz>
+          über das ganze N. T., in diesem Halbjahr über die <schrift>Evang.
+          des Matthäus u. Marcus</schrift></thema>, <zeit>7 U. 6
+          T.</zeit></veranstaltung></veranstaltungsgruppe>
+
+          <veranstaltung
+          xml:id="v-II.002.1.002-003"><dozent><nachname>Winer</nachname>,
+          <grad>D.</grad> <vorname>G. B.</vorname>, <funktion>Theol. P.
+          E.</funktion></dozent>, <thema>über den <schrift>Brief an die
+          Hebräer</schrift> und einige kleinere Paulinische</thema>, <zeit>8
+          U. 4 T.</zeit> (<notiz betreff="fortsetzung">Forts. des exeget.
+          Cursus</notiz>).</veranstaltung>
+
+          <veranstaltung
+          xml:id="v-II.002.1.002-004"><dozent><nachname>Höpfner</nachname>,
+          <grad>D.</grad> <vorname>J. G. C.</vorname>, <funktion>Phil. P. E.
+          des.</funktion></dozent>, <thema>über auserlesene evang.
+          Perikopen</thema>, <zeit>7 U. 2 T.</zeit></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-II.002.1.002-005"><dozent><nachname>Rose</nachname>,
+          <grad>M.</grad> <vorname>J. G. C.</vorname></dozent>, <thema>über
+          die <schrift>Briefe des Johannes</schrift></thema>, <zeit>Dienst. u.
+          Donnerst. 2 U.</zeit>
+          <gebühr>unentgeltlich</gebühr>.</veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-II.002.1.x">
+          <titel>*) Populär-praktische Bibelerklärung.</titel>
+
+          <veranstaltung
+          xml:id="v-II.002.1.x-001"><dozent><nachname>Lindner</nachname>,
+          <vorname>F. W.</vorname>, <funktion>Phil. P. E.
+          des.</funktion></dozent>, <thema>über die <schrift>Bergrede nach
+          Matthäus</schrift></thema>, <zeit>3 U. 2 T.</zeit>
+          <modus>öffentlich</modus>.</veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-II.002.1.xx">
+          <titel>**) Uebungen exegetischer Gesellschaften.</titel>
+
+          <veranstaltung
+          xml:id="v-II.002.1.xx-001"><dozent><nachname>Winzer</nachname>,
+          <grad>D.</grad> <vorname>J. F.</vorname>, <funktion>P.
+          O.</funktion></dozent>, <zeit>in best. T. und St.</zeit>
+          <modus>privatissime</modus>.</veranstaltung>
+
+          <veranstaltung
+          xml:id="v-II.002.1.xx-002"><dozent><nachname>Winer</nachname>,
+          <grad>D.</grad> <vorname>G. B.</vorname>, <funktion>Theol. P.
+          E.</funktion></dozent>, <zeit>in den best. St.</zeit>
+          <gebühr>unentgeltlich</gebühr>.</veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-II.002.1.003">
+          <titel>Exegetische Hülfswissenschaften.</titel>
+
+          <veranstaltung xml:id="v-II.002.1.003-001"><ders>Derselbe</ders>,
+          <thema>Geschichte des hebräischen Volks bis auf die Zerstörung
+          Jerusalems, <schrift>nach eign. Sätzen</schrift></thema>, <zeit>9 U.
+          2 T.</zeit> <modus>öffentlich</modus>.</veranstaltung>
+        </sachgruppe>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-II.002.2">
+        <titel>2) Systematische Theologie.</titel>
+
+        <sachgruppe xml:id="sg-II.002.2.001">
+          <titel>Dogmatik.</titel>
+
+          <veranstaltung
+          xml:id="v-II.002.2.001-001"><dozent><nachname>Tittmann</nachname>,
+          <grad>D.</grad> <vorname>J. A. H.</vorname>, <funktion>Theol. P.
+          Prim.</funktion></dozent>, <zeit>11 U. 4 T.</zeit></veranstaltung>
+
+          <veranstaltungsgruppe><dozent><nachname>Cramer</nachname>,
+          <grad>D.</grad> <vorname>L. D.</vorname>, <funktion>P.
+          O.</funktion></dozent>, <veranstaltung
+          xml:id="v-II.002.2.001-002"><thema
+          kontext="sachgruppe"><schrift>nach s. Sätzen</schrift> (<notiz
+          betreff="fortsetzung">auf ein Jahr</notiz>)</thema> <zeit>7 U. 4
+          T.</zeit></veranstaltung> verbunden mit einem <veranstaltung
+          xml:id="v-II.002.2.001-003"><zeit>Sonnab. früh 6 U.</zeit>
+          <gebühr>unentgeltlich</gebühr> zu haltenden
+          <thema>Examinatorium</thema></veranstaltung>.</veranstaltungsgruppe>
+
+          <veranstaltung
+          xml:id="v-II.002.2.001-004"><dozent><nachname>Winer</nachname>,
+          <grad>D.</grad> <vorname>G. B.</vorname>, <funktion>P.
+          E.</funktion></dozent>, <thema kontext="sachgruppe">nebst
+          Dogmengeschichte in einem einjährigen Cursus, <schrift>nach s.
+          Sätzen</schrift></thema>, <zeit>7 U. 4 T.</zeit></veranstaltung>
+
+          <seite>10</seite>
+
+          <veranstaltung
+          xml:id="v-II.002.2.001-005"><dozent><nachname>Höpfner</nachname>,
+          <grad>D.</grad> <vorname>J. G. C.</vorname>, <funktion>Phil. P. E.
+          des.</funktion></dozent>, <thema><notiz>Forts. und Beschluß</notiz>
+          der Erklär. <schrift>s. <titel>epitome theol. christ.</titel> 2te
+          Ausg.</schrift></thema> <zeit>11 U. 2 T.</zeit>
+          <modus>öffentlich</modus>.</veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-II.002.2.002">
+          <titel>Examinatorien über Dogmatik.</titel>
+
+          <veranstaltung
+          xml:id="v-II.002.2.002-001"><dozent><nachname>Tittmann</nachname>,
+          <grad>D.</grad> <vorname>J. A. H.</vorname>, <funktion>Theol. P.
+          Prim.</funktion></dozent>, <zeit>9 U. 4 T.</zeit></veranstaltung>
+
+          <veranstaltungsgruppe><dozent><nachname>Cramer</nachname>,
+          <grad>D.</grad> <vorname>L. D.</vorname>, <funktion>P.
+          O.</funktion></dozent>, <veranstaltung
+          xml:id="v-II.002.2.002-002"><zeit>6 U. 4 T.</zeit></veranstaltung>
+          ingl. <veranstaltung xml:id="v-II.002.2.002-003"><thema>Uebungen
+          seiner dogmatischen
+          Gesellschaft</thema></veranstaltung>.</veranstaltungsgruppe>
+
+          <sachgruppe xml:id="sg-II.002.2.002.x">
+            <titel>*) Einleitung in die Literaturgeschichte der
+            Dogmatik.</titel>
+
+            <veranstaltung
+            xml:id="v-II.002.2.002.x-001"><dozent><nachname>Höpfner</nachname>,
+            <grad>D.</grad> <vorname>J. G. C.</vorname>, <funktion>P. E.
+            des.</funktion></dozent>, <thema><schrift>nach s.
+            <titel>Introductio in theologiae dogmaticae historiam
+            literar.</titel> (Lpz. b. Schwickert, 1821)</schrift></thema>
+            <zeit>2 U. 2 T.</zeit></veranstaltung>
+          </sachgruppe>
+        </sachgruppe>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-II.002.3">
+        <titel>3) Historische Theologie.</titel>
+
+        <sachgruppe xml:id="sg-II.002.3.001">
+          <titel>Kirchengeschichte.</titel>
+
+          <veranstaltung
+          xml:id="v-II.002.3.001-001"><dozent><nachname>Tzschirner</nachname>,
+          <grad>D.</grad> <vorname>H. G.</vorname>, <funktion>P. O. z.
+          Dech.</funktion></dozent>, <zeit>10 U. 6 T.</zeit></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-II.002.3.001-002"><dozent><nachname>Illgen</nachname>,
+          <vorname>C. F.</vorname>, <funktion>Phil. P. E. des. Th.
+          Bacc.</funktion></dozent>, <thema>Kirchengeschichte der neuern Zeit
+          <schrift>nach <autor>Schmidts</autor> Lehrbuche</schrift></thema>,
+          <zeit>9 U. 6 T.</zeit> <modus>öffentlich</modus> u.
+          <gebühr>unentgeltlich</gebühr>.</veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-II.002.3.002">
+          <titel>Patristik.</titel>
+
+          <veranstaltung xml:id="v-II.002.3.002-001"><ders>Derselbe</ders>,
+          <thema>über des <schrift><autor>Lactantius</autor> christl.
+          Religionsunterricht</schrift></thema>, <zeit>in den best.
+          St.</zeit></veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-II.002.3.x">
+          <titel>*) Uebungen der histor. theol. Gesellschaft.</titel>
+
+          <veranstaltung xml:id="v-II.002.3.x-001"><ders>Derselbe</ders>
+          <zeit>in den best. St.</zeit></veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-II.002.3.xx">
+          <titel>**) Geschichte der symbolischen Bücher.</titel>
+
+          <veranstaltung
+          xml:id="v-II.002.3.xx-001"><dozent><nachname>Schuffenhauer</nachname>,
+          <grad>M.</grad> <vorname>J. C. A.</vorname></dozent>, <thema
+          kontext="sachgruppe"><schrift>nach s. Lehrbuche</schrift></thema>,
+          <zeit>8 U. 2 T.</zeit></veranstaltung>
+        </sachgruppe>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-II.002.4">
+        <titel>4) Praktische Theologie.</titel>
+
+        <sachgruppe xml:id="sg-II.002.4.001">
+          <titel>Pastoraltheologie.</titel>
+
+          <veranstaltung
+          xml:id="v-II.002.4.001-001"><dozent><nachname>Tzschirner</nachname>,
+          <grad>D.</grad> <vorname>H. G.</vorname>, <funktion>P. O. d. z.
+          Dech.</funktion></dozent>, <zeit>9 U. 4 T.</zeit>
+          <modus>öffentlich</modus>.</veranstaltung>
+        </sachgruppe>
+
+        <seite>11</seite>
+
+        <sachgruppe xml:id="sg-II.002.4.002">
+          <titel>Methodik des populären und prakt.
+          Religionsunterrichts.</titel>
+
+          <veranstaltung
+          xml:id="v-II.002.4.002-001"><dozent><nachname>Cramer</nachname>,
+          <grad>D.</grad> <vorname>L. D.</vorname>, <funktion>P.
+          O.</funktion></dozent>, <zeit>11 U. 2 T.</zeit>
+          <modus>öffentlich</modus>.</veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-II.002.4.003">
+          <titel>Homiletik.</titel>
+
+          <veranstaltung
+          xml:id="v-II.002.4.003-001"><dozent><nachname>Höpfner</nachname>,
+          <grad>D.</grad> <vorname>J. G. C.</vorname>, <funktion>Phil. P. E.
+          des.</funktion></dozent>, <thema>über die Behandlung auserlesener
+          evang. Perikopen auf der Kanzel (Winke, kurze Entwürfe u. ausführl.
+          Dispositionen mit steter Hinsicht auf die Regeln der
+          Homiletik)</thema> <zeit>7 U. 2 T.</zeit></veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-II.002.4.004">
+          <titel>Homiletische Uebungen.</titel>
+
+          <veranstaltung
+          xml:id="v-II.002.4.004-001"><dozent><nachname>Tittmann</nachname>,
+          <grad>D.</grad> <vorname>J. A. H.</vorname>, <funktion>Theol. P.
+          Primar.</funktion></dozent>, <thema>homilet. Collegium</thema>
+          <zeit>in den best. T. und St.</zeit></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-II.002.4.004-002"><dozent><nachname>Goldhorn</nachname>,
+          <grad>D.</grad> <vorname>J. D.</vorname>, <funktion>P. O.
+          des.</funktion></dozent>, <thema kontext="sachgruppe">mit den
+          Sachsen und Lausitzern</thema>, <zeit>in den best.
+          St.</zeit></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-II.002.4.004-003"><dozent><nachname>Wolf</nachname>,
+          <grad>M.</grad> <vorname>F. A.</vorname>, <funktion>Theol.
+          Bacc.</funktion></dozent>, <zeit>in den best.
+          St.</zeit></veranstaltung>
+        </sachgruppe>
+      </sachgruppe>
+    </sachgruppe>
+  </sachgruppe>
+
+  <sachgruppe xml:id="sg-III">
+    <titel>III. Rechtswissenschaft.</titel>
+
+    <sachgruppe xml:id="sg-III.001">
+      <titel>Encyklopädie und Methodologie</titel>
+
+      <veranstaltung
+      xml:id="v-III.001-001"><dozent><nachname>Wenck</nachname>,
+      <grad>D.</grad> <vorname>C. F. E.</vorname>, <funktion>P.
+      E.</funktion></dozent>, <thema kontext="sachgruppe"><schrift>nach s.
+      Lehrbuche</schrift></thema>, <zeit>2 U. 4 T.</zeit></veranstaltung>
+
+      <veranstaltung
+      xml:id="v-III.001-002"><dozent><nachname>Hänel</nachname>,
+      <grad>D.</grad> <vorname>F.</vorname>, <funktion>P. E.
+      des.</funktion></dozent>, <thema kontext="sachgruppe"><schrift>nach
+      eign. Sätzen</schrift></thema> <zeit>Dienst. Donnerst. u. Sonnab. 3
+      U.</zeit> <modus>öffentlich</modus>.</veranstaltung>
+
+      <veranstaltung xml:id="v-III.001-003"><dozent><nachname>Otto</nachname>,
+      <grad>D.</grad> <vorname>C. F.</vorname></dozent>, <thema
+      kontext="sachgruppe"><schrift>nach eign. Sätzen</schrift></thema>,
+      <zeit>2 U. 3 T.</zeit> <gebühr>unentgeltlich</gebühr>.</veranstaltung>
+
+      <sachgruppe xml:id="sg-III.001.1">
+        <titel>1) Civil-Recht.</titel>
+
+        <sachgruppe xml:id="sg-III.001.1.001">
+          <titel>Quellenkunde.</titel>
+
+          <veranstaltung
+          xml:id="v-III.001.1.001-001"><dozent><nachname>Otto</nachname>,
+          <grad>D.</grad> <vorname>C. F.</vorname></dozent>, <thema>über das
+          <schrift><titel>Fragment. Dosithean.</titel> oder vet. ICti de iuris
+          specieb. et de manumissionib. nach der Ausgabe von
+          <autor>Schilling</autor></schrift></thema>, <zeit>4 U.
+          Sonnab.</zeit> <notiz betreff="sprache">in lat.
+          Sprache</notiz>.</veranstaltung>
+        </sachgruppe>
+
+        <seite>12</seite>
+
+        <sachgruppe xml:id="sg-III.001.1.002">
+          <titel>Geschichte des röm. Rechts.</titel>
+
+          <veranstaltung
+          xml:id="v-III.001.1.002-001"><dozent><nachname>Haubold</nachname>,
+          <grad>D.</grad> <vorname>C. G.</vorname>, <funktion>P.
+          O.</funktion></dozent>, <thema kontext="sachgruppe">in Verbind. mit
+          den Institutionen <schrift>nach der 2. Ausg. s. <titel>Institutt.
+          iuris Rom. hist. dogm.</titel> (bei Hinrichs)</schrift></thema>,
+          <zeit>4 U. 6 T., 11 U. 3 T. (Dienst. Donnerst. u. Freit.) 8 U. 2 T.
+          also wöchentlich 11 St.</zeit></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-III.001.1.002-002"><dozent><nachname>Otto</nachname>,
+          <grad>D.</grad> <vorname>C. F.</vorname></dozent>, <thema
+          kontext="sachgruppe">in eign. Sätzen doch mit Rücksicht auf
+          <autor>Haubold</autor> u. <autor>Hugo</autor> in lat.
+          Sprache</thema>, <zeit>3 U. 4 T.</zeit></veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-III.001.1.003">
+          <titel>Erklärung der Institutionen.</titel>
+
+          <veranstaltungsverweis
+          ref="v-III.001.1.002-001"><dozent><nachname>Haubold</nachname>,
+          <grad>D.</grad> <vorname>C. G.</vorname>, <funktion>P.
+          O.</funktion></dozent> <siehe ref="sg-III.001.1.002">s.
+          oben</siehe>.</veranstaltungsverweis>
+
+          <veranstaltung
+          xml:id="v-III.001.1.003-001"><dozent><nachname>Reichel</nachname>,
+          <grad>M.</grad> <vorname>V. F.</vorname>, <funktion>I. V.
+          B.</funktion></dozent>, <thema kontext="sachgruppe">n.
+          <autor>Heineccius</autor></thema>, <zeit>8 U. 6
+          T.</zeit></veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-III.001.1.004">
+          <titel>Erklärung der Pandekten.</titel>
+
+          <veranstaltung
+          xml:id="v-III.001.1.004-001"><dozent><nachname>Liekefett</nachname>,
+          <vorname>S. G.</vorname>, <funktion>I. V. B.</funktion></dozent>,
+          <thema kontext="sachgruppe">besonderer Theil n. s. Erläut.</thema>
+          <zeit>9 u. 2 U. 6 T.</zeit></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-III.001.1.004-002"><dozent><nachname>Reichel</nachname>,
+          <grad>M.</grad> <vorname>V. F.</vorname>, <funktion>I. V.
+          B.</funktion></dozent>, <thema kontext="sachgruppe">n.
+          <autor>Hellfeld</autor></thema>, <zeit>7 u. 2 U. 6
+          T.</zeit></veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-III.001.1.005">
+          <titel>Erklärung der neu entdeckten Institutionen des Gajus.</titel>
+
+          <veranstaltung
+          xml:id="v-III.001.1.005-001"><dozent><nachname>Wenck</nachname>,
+          <grad>D.</grad> <vorname>C. F. E.</vorname>, <funktion>P.
+          E.</funktion></dozent>, <thema kontext="sachgruppe"><schrift>nach d.
+          Ausg. Berl. b. Reimer</schrift></thema>, <zeit>3 U. 4 T.</zeit>
+          <modus>öffentlich</modus>.</veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-III.001.1.x">
+          <titel>*) Ueber das römische Gerichtswesen.</titel>
+
+          <veranstaltung
+          xml:id="v-III.001.1.x-001"><dozent><nachname>Haubold</nachname>,
+          <grad>D.</grad> <vorname>C. G.</vorname>, <funktion>P.
+          O.</funktion></dozent>, <thema kontext="sachgruppe">als
+          integrirender Theil s. histor. dogm. Vorträge über d. röm. Recht
+          <schrift>nach der 2. Ausg. s. <titel>Institutt. iuris rom. hist.
+          dogm.</titel></schrift></thema> <zeit>7 U. 2
+          T.</zeit></veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-III.001.1.xx">
+          <titel>**) Ueber einzelne Controversen im Civilrechte.</titel>
+
+          <veranstaltung
+          xml:id="v-III.001.1.xx-001"><dozent><nachname>Beck</nachname>,
+          <grad>D.</grad> <vorname>J. L. W.</vorname>, <funktion>P. E.
+          des.</funktion></dozent>, <zeit>11 U. Mont. u. Freit.</zeit>
+          <modus>öffentlich</modus>.</veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-III.001.1.006">
+          <titel>Pfandrecht.</titel>
+
+          <veranstaltung
+          xml:id="v-III.001.1.006-001"><dozent><nachname>Langenn</nachname>,
+          <vorname>F. A. v.</vorname>, <funktion>I. V. B.</funktion></dozent>,
+          <thema kontext="sachgruppe"><schrift>nach <autor>Haubolds</autor>
+          <titel>lineam. doct. Pandect.</titel></schrift></thema>, <zeit>2 U.
+          4 T.</zeit> <gebühr>unentgeltlich</gebühr>.</veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-III.001.1.007">
+          <titel>Erbrecht.</titel>
+
+          <veranstaltung
+          xml:id="v-III.001.1.007-001"><dozent><nachname>Hänel</nachname>,
+          <grad>D.</grad> <vorname>F.</vorname>, <funktion>P. E.
+          des.</funktion></dozent>, <thema kontext="sachgruppe"><schrift>nach
+          <autor>Günthers</autor> <titel>principis iuris rom. priv.
+          noviss.</titel></schrift> in lat. Sprache</thema>, <zeit>10 U. 4
+          T.</zeit></veranstaltung>
+        </sachgruppe>
+
+        <seite>13</seite>
+
+        <sachgruppe xml:id="sg-III.001.1.008">
+          <titel>Deutsches Privatrecht.</titel>
+
+          <veranstaltung
+          xml:id="v-III.001.1.008-001"><dozent><nachname>Weisse</nachname>,
+          <grad>D.</grad> <vorname>C. F.</vorname>, <funktion>P.
+          O.</funktion></dozent>, <thema kontext="sachgruppe"><schrift>nach s.
+          Einleit. in das gemeine deutsche Privatrecht, Leipz. v. Fleischer d.
+          J.</schrift></thema> <zeit>8 U. 6 T.</zeit></veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-III.001.1.009">
+          <titel>Kön. Sächsisches Privatrecht.</titel>
+
+          <veranstaltung
+          xml:id="v-III.001.1.009-001"><dozent><nachname>Haubold</nachname>,
+          <grad>D.</grad> <vorname>C. G.</vorname>, <funktion>P.
+          O.</funktion></dozent>, <thema kontext="sachgruppe"><schrift>nach s.
+          Lehrbuche, (b. Hahn)</schrift></thema> <zeit>10 U. 4 T.</zeit>
+          <modus>öffentlich</modus>.</veranstaltung>
+        </sachgruppe>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-III.001.2">
+        <titel>2) Criminalrecht.</titel>
+
+        <veranstaltung
+        xml:id="v-III.001.2-001"><dozent><nachname>Weisse</nachname>,
+        <grad>D.</grad> <vorname>C. F.</vorname>, <funktion>P.
+        O.</funktion></dozent>, <thema>philosoph. Criminalrecht oder
+        allgemeiner Theil des Criminalrechts n.
+        <autor>Feuerbach</autor></thema>, <zeit>11 U. 4 T.</zeit>
+        <modus>öffentlich</modus>.</veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-III.001.3">
+        <titel>3) Kirchenrecht.</titel>
+
+        <veranstaltung
+        xml:id="v-III.001.3-001"><dozent><nachname>Klien</nachname>,
+        <grad>D.</grad> <vorname>E.</vorname>, <funktion>P.
+        O.</funktion></dozent>, <zeit>2 U. 4 T.</zeit>
+        <modus>öffentlich</modus>.</veranstaltung>
+
+        <veranstaltung
+        xml:id="v-III.001.3-002"><dozent><nachname>Müller</nachname>,
+        <grad>D.</grad> <vorname>J. G.</vorname>, <funktion>P. O. des. u. d.
+        Z. Rect. Univ.</funktion></dozent> <thema kontext="sachgruppe">n.
+        <autor>Böhmer</autor></thema>, <zeit>7 U. 6 T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-III.001.3-003"><dozent><nachname>Wenck</nachname>,
+        <grad>D.</grad> <vorname>C. F. E.</vorname>, <funktion>P.
+        E.</funktion></dozent>, <thema>Anleitung zur Kenntniß u. dem Gebrauch
+        der Quellen des canonischen Rechts</thema>, <zeit>2 U. 2
+        T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-III.001.3-004"><dozent><nachname>Rüffer</nachname>,
+        <grad>D.</grad> <vorname>K.</vorname></dozent>, <thema
+        kontext="sachgruppe">nach <autor>G. L. Böhmer</autor></thema>, <zeit>6
+        T. in zu best St.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-III.001.3-005"><dozent><nachname>Steinacker</nachname>,
+        <grad>M.</grad> <vorname>F.</vorname>, <funktion>I. V.
+        B.</funktion></dozent>, <thema kontext="sachgruppe">n. <autor>G. L.
+        Böhmer</autor></thema>, <zeit>6 T. in zu best
+        St.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-III.001.3-006"><dozent><nachname>Schilling</nachname>,
+        <vorname>B.</vorname>, <funktion>I. V. B.</funktion></dozent>, <thema
+        kontext="sachgruppe">n. <scil
+        text="G. L. Böhmer">demselben</scil></thema>, <zeit>4 U. 6
+        T.</zeit></veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-III.001.4">
+        <titel>4) Lehnrecht.</titel>
+
+        <veranstaltung
+        xml:id="v-III.001.4-001"><dozent><nachname>Weisse</nachname>,
+        <grad>D.</grad> <vorname>C. F.</vorname>, <funktion>P.
+        O.</funktion></dozent>, <thema kontext="sachgruppe">n.
+        <autor>Böhmer</autor></thema>, <zeit>9 U. 4 T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-III.001.4-002"><dozent><nachname>Müller</nachname>,
+        <grad>D.</grad> <vorname>J. G.</vorname>, <funktion>P. O. des. u. d.
+        Z. Rect. Univ.</funktion></dozent>, <thema kontext="sachgruppe">n.
+        <autor>Böhmer</autor></thema>, <zeit>8 U. 6 T.</zeit>
+        <modus>öffentlich</modus>.</veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-III.001.5">
+        <titel>5) Gerichtlicher Proceß.</titel>
+
+        <veranstaltung
+        xml:id="v-III.001.5-001"><dozent><nachname>Biener</nachname>,
+        <grad>D.</grad> <vorname>C. G.</vorname>, <funktion>P. Primar. u. d.
+        Z. Dechant</funktion></dozent>, <thema>über summarische Prozesse
+        <schrift>nach s. <titel>Systema process. indic.</titel> vom 6. Kap. d.
+        z. B. an</schrift></thema> <zeit>10 U. 4 T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-III.001.5-002"><dozent><nachname>Klien</nachname>,
+        <grad>D.</grad> <vorname>E.</vorname>, <funktion>P.
+        O.</funktion></dozent>, <thema>ordentl. Civilprozeß nach
+        <autor>Biener</autor> u. unter Mitgebrauch eigner tabellarisch
+        geordneter Uebersichten</thema>, <zeit>11 U. 6 Tage u. 2 U. 2
+        T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-III.001.5-003"><dozent><nachname>Rüffer</nachname>,
+        <grad>D.</grad> <vorname>K.</vorname></dozent>, <thema>ordentl.
+        Civilprozeß nach <gesperrt>Biener</gesperrt> nebst Mittheilung der bei
+        gerichtl. und außergerichtl. Rechtsgeschäften vorkomm. prakt.
+        Aufsätze</thema>, <zeit>2 U. 4 T.</zeit></veranstaltung>
+
+        <seite>14</seite>
+
+        <veranstaltung
+        xml:id="v-III.001.5-004"><dozent><nachname>Liekefett</nachname>,
+        <vorname>S. G.</vorname>, <funktion>I. V. B.</funktion></dozent>,
+        <thema>ordentl. u. summar. Prozeß u. s. Erläut.</thema> <zeit>11 u. 3
+        U. 6 T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-III.001.5-005"><dozent><nachname>Reichel</nachname>,
+        <grad>M.</grad> <vorname>V. F.</vorname>, <funktion>I. V.
+        B.</funktion></dozent>, <thema>über den gemeinen u. sächsischen Prozeß
+        <schrift>nach s. Sätzen</schrift></thema>, <zeit>9 U. 6
+        T.</zeit></veranstaltung>
+
+        <veranstaltungsgruppe><dozent><nachname>Schellwitz</nachname>,
+        <vorname>H.</vorname>, <funktion>I. V. B.</funktion></dozent>,
+        <veranstaltung xml:id="v-III.001.5-006"><thema>Grundzüge des sächs. u.
+        preuß. Prozesses</thema>, <zeit>7 U. 4 T.</zeit></veranstaltung>,
+        ingl. <veranstaltung xml:id="v-III.001.5-007"><thema>über den Concurs
+        der Gläubiger</thema>, <zeit>7 U. 2
+        T.</zeit></veranstaltung></veranstaltungsgruppe>
+
+        <sachgruppe xml:id="sg-III.001.5.x">
+          <titel>*) Geschichte des gerichtlichen Prozesses.</titel>
+
+          <veranstaltung
+          xml:id="v-III.001.5.x-001"><dozent><nachname>Biener</nachname>,
+          <grad>D.</grad> <vorname>C. G.</vorname>, <funktion>P. Iur. Prim. u.
+          d. Z. Dechant</funktion></dozent> <thema
+          kontext="sachgruppe"><schrift>nach eignen Sätzen</schrift></thema>,
+          <zeit>9 U. 4 T.</zeit> <modus>öffentlich</modus>.</veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-III.001.5.xx">
+          <titel>**) Ueber gerichtl. Klagen u. Einreden.</titel>
+
+          <veranstaltung
+          xml:id="v-III.001.5.xx-001"><dozent><nachname>Kees</nachname>,
+          <grad>D.</grad> <vorname>J. F.</vorname></dozent>, <thema
+          kontext="sachgruppe">n. <autor>Böhmer</autor></thema>, <zeit>9 U. 4
+          T.</zeit></veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-III.001.5.xxx">
+          <titel>***) Ueber die Gerichtsverfassung der Athenienser.</titel>
+
+          <veranstaltung
+          xml:id="v-III.001.5.xxx-001"><dozent><nachname>Otto</nachname>,
+          <grad>D.</grad> <vorname>C. F.</vorname></dozent>, <thema
+          kontext="sachgruppe">in lat. Sprache</thema>, <zeit>7 U. 2 T.</zeit>
+          <gebühr>unentgeltlich</gebühr>.</veranstaltung>
+        </sachgruppe>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-III.001.6">
+        <titel>6) Referir- und Decretir-Kunst.</titel>
+
+        <veranstaltung
+        xml:id="v-III.001.6-001"><dozent><nachname>Klien</nachname>,
+        <grad>D.</grad> <vorname>K.</vorname>, <funktion>P.
+        O.</funktion></dozent>, <zeit>10 U. 2 T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-III.001.6-002"><dozent><nachname>Beck</nachname>,
+        <grad>D.</grad> <vorname>J. L. W.</vorname>, <funktion>P. E.
+        des.</funktion></dozent>, <zeit>Dienst. Donnerst. u. Sonnab. 8
+        U.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-III.001.6-003"><dozent><nachname>Kees</nachname>,
+        <grad>D.</grad> <vorname>J. F.</vorname></dozent>, <thema
+        kontext="sachgruppe">nach s. Lehrb.</thema>, <zeit>8 U. 4
+        T.</zeit></veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-III.001.7">
+        <titel>7) Anleitung zur gerichtl. Geschäftsführung.</titel>
+
+        <veranstaltung
+        xml:id="v-III.001.7-001"><dozent><nachname>Liekefett</nachname>,
+        <vorname>S. G.</vorname>, <funktion>I. V. B.</funktion></dozent>,
+        <thema>Uebungen in der jurist. Praxis nach
+        <schrift><autor>Bischoffs</autor> Kanzleipraxis</schrift></thema>,
+        <zeit>10 U. 6 T.</zeit></veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-III.001.8">
+        <titel>8) Examinirübungen.</titel>
+
+        <sachgruppe xml:id="sg-III.001.8.001">
+          <titel>Allgemeine über alle Theile d. Rechtswissens.</titel>
+
+          <veranstaltung
+          xml:id="v-III.001.8.001-001"><dozent><nachname>Kees</nachname>,
+          <grad>D.</grad> <vorname>J. F.</vorname></dozent>, <zeit>in bel.
+          St.</zeit></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-III.001.8.001-002"><dozent><nachname>Reichel</nachname>,
+          <grad>M.</grad> <vorname>V. F.</vorname>, <funktion>I. V.
+          B.</funktion></dozent></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-III.001.8.001-003"><dozent><nachname>Steinacker</nachname>,
+          <vorname>W. F.</vorname>, <funktion>I. V.
+          B.</funktion></dozent></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-III.001.8.001-004"><dozent><nachname>Schellwitz</nachname>,
+          <vorname>H.</vorname>, <funktion>I. V.
+          B.</funktion></dozent></veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-III.001.8.002">
+          <titel>Ueber Römisches Recht.</titel>
+
+          <veranstaltung
+          xml:id="v-III.001.8.002-001"><dozent><nachname>Langenn</nachname>,
+          <vorname>F. A. v.</vorname>, <funktion>I. V. B.</funktion></dozent>,
+          <zeit>in zu best. St.</zeit></veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-III.001.8.003">
+          <titel>Ueber die Institutionen.</titel>
+
+          <veranstaltung
+          xml:id="v-III.001.8.003-001"><dozent><nachname>Rüffer</nachname>,
+          <grad>D.</grad> <vorname>K.</vorname></dozent>, <zeit>4 T. in zu
+          best. St.</zeit></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-III.001.8.003-002"><dozent><nachname>Otto</nachname>,
+          <grad>D.</grad> <vorname>C. E.</vorname></dozent></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-III.001.8.003-003"><dozent><nachname>Schuster</nachname>,
+          <vorname>C.</vorname>, <funktion>I. V. B.</funktion></dozent>,
+          <zeit>in zu best. St.</zeit></veranstaltung>
+        </sachgruppe>
+
+        <seite>15</seite>
+
+        <sachgruppe xml:id="sg-III.001.8.004">
+          <titel>Ueber die Pandekten.</titel>
+
+          <veranstaltung
+          xml:id="v-III.001.8.004-001"><dozent><nachname>Müller</nachname>,
+          <grad>D.</grad> <vorname>J. G.</vorname>, <funktion>P. O. des. u. d.
+          Z. Rect. Univ.</funktion></dozent>, <zeit>6 T. in z. best
+          St.</zeit></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-III.001.8.004-002"><dozent><nachname>Rüffer</nachname>,
+          <grad>D.</grad> <vorname>K.</vorname></dozent>, <zeit>6 T. in best.
+          St.</zeit></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-III.001.8.004-003"><dozent><nachname>Otto</nachname>,
+          <grad>D.</grad> <vorname>C. F.</vorname></dozent></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-III.001.8.004-004"><dozent><nachname>Liekefett</nachname>,
+          <vorname>S. G.</vorname>, <funktion>I. V. B.</funktion></dozent>,
+          <zeit>6 T.</zeit></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-III.001.8.004-005"><dozent><nachname>Schuster</nachname>,
+          <vorname>C.</vorname>, <funktion>I. V. B.</funktion></dozent>,
+          <zeit>in zu best. St.</zeit></veranstaltung>
+        </sachgruppe>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-III.001.9">
+        <titel>9) Disputirübungen.</titel>
+
+        <veranstaltung
+        xml:id="v-III.001.9-001"><dozent><nachname>Beck</nachname>,
+        <grad>D.</grad> <vorname>J. L. W.</vorname>, <funktion>P. E.
+        des.</funktion></dozent></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-III.001.9-002"><dozent><nachname>Otto</nachname>,
+        <grad>D.</grad> <vorname>C. F.</vorname></dozent> <zeit>2
+        T.</zeit></veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-III.001.10">
+        <titel>10) Beliebige Privatissima.</titel>
+
+        <veranstaltung
+        xml:id="v-III.001.10-001"><dozent><nachname>Wenck</nachname>,
+        <grad>D.</grad> <vorname>C. F. E.</vorname>, <funktion>P.
+        E.</funktion></dozent>, <thema>Disputir- u.
+        Examinirübungen</thema>.</veranstaltung>
+
+        <veranstaltung
+        xml:id="v-III.001.10-002"><dozent><nachname>Beck</nachname>,
+        <grad>D.</grad> <vorname>J. L. W.</vorname>, <funktion>P. E.
+        des.</funktion></dozent></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-III.001.10-003"><dozent><nachname>Liekefett</nachname>,
+        <vorname>S. G.</vorname>, <funktion>I. V.
+        B.</funktion></dozent></veranstaltung>
+      </sachgruppe>
+    </sachgruppe>
+  </sachgruppe>
+
+  <sachgruppe xml:id="sg-IV">
+    <titel>IV. Arzneiwissenschaft.</titel>
+
+    <sachgruppe xml:id="sg-IV.001">
+      <titel>Encyclopädie und Methodologie</titel>
+
+      <veranstaltung
+      xml:id="v-IV.001-001"><dozent><nachname>Puchelt</nachname>,
+      <grad>D.</grad> <vorname>F. A. B.</vorname>, <funktion>P. O.
+      des.</funktion></dozent>, <zeit>3 U. Mont. u. Donnerst.</zeit>
+      <modus>öffentlich</modus>.</veranstaltung>
+
+      <sachgruppe xml:id="sg-IV.001.1">
+        <titel>1) Anatomie.</titel>
+
+        <veranstaltungsgruppe><dozent><nachname>Weber</nachname>,
+        <grad>D.</grad> <vorname>E. H.</vorname>, <funktion>P.
+        O.</funktion></dozent>, <veranstaltung
+        xml:id="v-IV.001.1-001"><thema>Osteologie und Syndesmologie</thema>,
+        <zeit>10 U. 4 T.</zeit> <modus>öffentlich</modus></veranstaltung>;
+        ingl. <veranstaltung xml:id="v-IV.001.1-002"><thema>allgemeine
+        Anatomie, Angiologie und Neurologie</thema>, <zeit>10 u. 1 U. 2
+        T.</zeit></veranstaltung></veranstaltungsgruppe>
+
+        <veranstaltungsgruppe><dozent><nachname>Bock</nachname>,
+        <grad>D.</grad> <vorname>A. C.</vorname>, <funktion>Theatr. Anat.
+        Prosect.</funktion></dozent>, <veranstaltung
+        xml:id="v-IV.001.1-003"><thema>gesammte Anatomie</thema> <zeit>4 U. 4
+        T.</zeit></veranstaltung>, ingl. <veranstaltung
+        xml:id="v-IV.001.1-004"><thema>über Gefäß- u. Nervenlehre</thema>,
+        <zeit>2 U. 4 T.</zeit></veranstaltung></veranstaltungsgruppe>
+
+        <veranstaltung
+        xml:id="v-IV.001.1-005"><dozent><nachname>Hoppe</nachname>,
+        <grad>M.</grad> <vorname>J. G.</vorname>, <funktion>Med.
+        Bacc.</funktion></dozent> <thema>Osteologie</thema> <zeit>in zu best.
+        St.</zeit></veranstaltung>
+
+        <sachgruppe xml:id="sg-IV.001.1.x">
+          <titel>*) Pathologische Anatomie.</titel>
+
+          <veranstaltung
+          xml:id="v-IV.001.1.x-001"><dozent><nachname>Cerutti</nachname>,
+          <grad>D.</grad> <vorname>L.</vorname>, <funktion>P. E.
+          des.</funktion></dozent>, <thema kontext="sachgruppe">nebst
+          Demonstrationen an den pathol. Präparaten des anatom.
+          Theaters</thema>, <zeit>8 U. 2 T.</zeit>
+          <modus>öffentlich</modus>.</veranstaltung>
+        </sachgruppe>
+      </sachgruppe>
+
+      <seite>16</seite>
+
+      <sachgruppe xml:id="sg-IV.001.2">
+        <titel>2) Physiologie.</titel>
+
+        <veranstaltung
+        xml:id="v-IV.001.2-001"><dozent><nachname>Kühn</nachname>,
+        <grad>D.</grad> <vorname>C. G.</vorname>, <funktion>P.
+        O.</funktion></dozent>, <thema>über einige Kapitel der
+        Physiologie</thema>, <zeit>11 U. 4 T.</zeit>
+        <modus>öffentlich</modus>.</veranstaltung>
+
+        <veranstaltung
+        xml:id="v-IV.001.2-002"><dozent><nachname>Puchelt</nachname>,
+        <grad>D.</grad> <vorname>F. A. B.</vorname>, <funktion>P. O.
+        des.</funktion></dozent>, <zeit>8 U. 4 T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-IV.001.2-003"><dozent><nachname>Leune</nachname>,
+        <grad>D.</grad> <vorname>J. C. F.</vorname></dozent>, <thema
+        kontext="sachgruppe"><autor>nach eign. Sätzen</autor></thema>, <zeit>9
+        U. 4 T.</zeit></veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-IV.001.3">
+        <titel>3) Diätetik.</titel>
+
+        <veranstaltung
+        xml:id="v-IV.001.3-001"><dozent><nachname>Ludwig</nachname>,
+        <grad>D.</grad> <vorname>C. F.</vorname>, <funktion>P.
+        O.</funktion></dozent>, <thema kontext="sachgruppe"><schrift>nach s.
+        Sätzen</schrift></thema>, <zeit>9 U. 2 T.</zeit></veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-IV.001.4">
+        <titel>4) Pathologie.</titel>
+
+        <veranstaltung
+        xml:id="v-IV.001.4-001"><dozent><nachname>Wendler</nachname>,
+        <grad>D.</grad> <vorname>C. A.</vorname>, <funktion>P.
+        E.</funktion></dozent>, <zeit>4 U. 4 T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-IV.001.4-002"><dozent><nachname>Leune</nachname>,
+        <grad>D.</grad> <vorname>J. C. F.</vorname></dozent>, <thema
+        kontext="sachgruppe">nach <autor>Burdach</autor></thema>, <zeit>3 U. 4
+        T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-IV.001.4-003"><dozent><nachname>Radius</nachname>,
+        <grad>M.</grad> <vorname>J.</vorname>, <funktion>Med.
+        Bacc.</funktion></dozent>, <thema>über ausgewählte Abschnitte der
+        Semiotik</thema> <zeit>2 T. in bel. St.</zeit>
+        <gebühr>unentgeltlich</gebühr>.</veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-IV.001.5">
+        <titel>5) Therapie.</titel>
+
+        <sachgruppe xml:id="sg-IV.001.5.001">
+          <titel>Therapeutischer Cursus.</titel>
+
+          <veranstaltungsgruppe><dozent><nachname>Haase</nachname>,
+          <grad>D.</grad> <vorname>W. A.</vorname>, <funktion>P. O. d. Z.
+          Dech.</funktion></dozent>, <thema>die gesammte specielle Therapie,
+          in einem einjähr. Cursus, wovon in dem gegenwärt.
+          Sommerhalbjahr</thema> <veranstaltung
+          xml:id="v-IV.001.5.001-001"><thema>die Fieberlehre</thema> <zeit>2
+          U. 4 T.</zeit> <modus>öffentlich</modus></veranstaltung>,
+          <veranstaltung xml:id="v-IV.001.5.001-002"><thema>die acuten
+          Exantheme</thema> <zeit>8 U. 6
+          T.</zeit></veranstaltung></veranstaltungsgruppe>
+
+          <veranstaltung
+          xml:id="v-IV.001.5.001-003"><dozent><nachname>Puchelt</nachname>,
+          <grad>D.</grad> <vorname>F. A. B.</vorname>, <funktion>P. O.
+          des.</funktion></dozent>, <thema>Cursus der gesammten allgemeinen u.
+          speciellen Therapie</thema>, <zeit>7 U. 6 U.</zeit></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-IV.001.5.001-004"><dozent><nachname>Hahnemann</nachname>,
+          <grad>D.</grad> <vorname>S.</vorname></dozent>, <thema>die Kunst
+          Krankheiten zu heilen, <schrift>nach s. <titel>Organon</titel> (2.
+          Aufl.)</schrift></thema> <zeit>2 U. 2 T.</zeit>
+          <modus>privatiss.</modus></veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-IV.001.5.002">
+          <titel>Ueber einzelne Krankheiten.</titel>
+
+          <veranstaltung
+          xml:id="v-IV.001.5.002-001"><dozent><nachname>Kühn</nachname>,
+          <grad>D.</grad> <vorname>C. G.</vorname>, <funktion>P.
+          O.</funktion></dozent>, <thema>über sympathische
+          Augenentzündung</thema>, <zeit>11 U. 2 T.</zeit>
+          <modus>öffentlich</modus>.</veranstaltung>
+
+          <veranstaltung
+          xml:id="v-IV.001.5.002-002"><dozent><nachname>Jörg</nachname>,
+          <grad>D.</grad> <vorname>J. C. G.</vorname>, <funktion>P.
+          O.</funktion></dozent>, <thema>über die Krankheiten der Weiber,
+          Schwangern, Gebährenden und Wöchnerinnen, <schrift>nach s. Handbuche
+          (Lpz. b. Cnobloch 1821.)</schrift></thema> <zeit>8 U. 2
+          T.</zeit></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-IV.001.5.002-003"><dozent><nachname>Heinroth</nachname>,
+          <grad>D.</grad> <vorname>J. C. A.</vorname>, <funktion>P. O.
+          des.</funktion></dozent>, <thema>über die Krankheiten der
+          Gelehrten</thema>, <zeit>5 U. 4 T.</zeit>
+          <modus>öffentlich</modus>.</veranstaltung>
+
+          <veranstaltung
+          xml:id="v-IV.001.5.002-004"><dozent><nachname>Puchelt</nachname>,
+          <grad>D.</grad> <vorname>F. A. B.</vorname>, <funktion>P. O.
+          des.</funktion></dozent>, <thema>über die Entzündungen</thema>,
+          <zeit>3 U. Dienst. u. Freit.</zeit>
+          <modus>öffentlich</modus>.</veranstaltung>
+
+          <veranstaltung
+          xml:id="v-IV.001.5.002-005"><dozent><nachname>Wendler</nachname>,
+          <grad>D.</grad> <vorname>C. A.</vorname>, <funktion>P.
+          E.</funktion></dozent>, <thema>über Ausschläge, <notiz
+          betreff="fortsetzung">Forts.</notiz></thema> <zeit>11 U. 2 T.</zeit>
+          <modus>öffentlich</modus>.</veranstaltung>
+
+          <seite>17</seite>
+
+          <veranstaltung
+          xml:id="v-IV.001.5.002-006"><dozent><nachname>Kuhl</nachname>,
+          <grad>D.</grad> <vorname>C. A.</vorname>, <funktion>P. E.
+          des.</funktion></dozent>, <thema>über einige
+          Augenkrankheiten</thema>, <zeit>11 U. 2 T.</zeit>
+          <modus>öffentlich</modus>.</veranstaltung>
+
+          <veranstaltung
+          xml:id="v-IV.001.5.002-007"><dozent><nachname>Leune</nachname>,
+          <grad>D.</grad> <vorname>J. C. F.</vorname></dozent>, <thema>über
+          Augenkrankheiten</thema>, <zeit>2 U. 2 T.</zeit></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-IV.001.5.002-008"><dozent><nachname>Haase</nachname>,
+          <grad>D.</grad> <vorname>C. F.</vorname></dozent>, <thema>über
+          Kinderkrankheiten</thema>, <zeit>3 U. 4 T.</zeit></veranstaltung>
+
+          <veranstaltung
+          xml:id="v-IV.001.5.002-009"><dozent><nachname>Meißner</nachname>,
+          <grad>D.</grad> <vorname>F. L.</vorname></dozent>, <thema>über
+          einige Krankheiten der Gebärmutter</thema>, <zeit>11 U. 2 T.</zeit>
+          <gebühr>unentgeltlich</gebühr>.</veranstaltung>
+        </sachgruppe>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-IV.001.6">
+        <titel>6) Arzneimittellehre.</titel>
+
+        <veranstaltung
+        xml:id="v-IV.001.6-001"><dozent><nachname>Haase</nachname>,
+        <grad>D.</grad> <vorname>W. A.</vorname>, <funktion>P. O. u. d. Z.
+        Dech.</funktion></dozent>, <thema kontext="sachgruppe">nach eigner
+        Ordnung</thema>, <zeit>11 U. 4 T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-IV.001.6-002"><dozent><nachname>Schwartze</nachname>,
+        <grad>D.</grad> <vorname>G. W.</vorname>, <funktion>P. E.
+        des.</funktion></dozent>, <thema kontext="sachgruppe"><schrift>nach s.
+        Pharmakolog. Tabellen (Lpz. 1819. b. Barth)</schrift></thema> <zeit>3
+        U. 4 T.</zeit></veranstaltung>
+
+        <sachgruppe xml:id="sg-IV.001.6.x">
+          <titel>*) Ueber die Heilkräfte der Metalle.</titel>
+
+          <veranstaltung
+          xml:id="v-IV.001.6.x-001"><dozent><nachname>Eschenbach</nachname>,
+          <grad>D.</grad> <vorname>C. G.</vorname>, <funktion>P.
+          O.</funktion></dozent>, <zeit>3 U. 4 T.</zeit>
+          <modus>öffentlich</modus>.</veranstaltung>
+        </sachgruppe>
+
+        <sachgruppe xml:id="sg-IV.001.6.xx">
+          <titel>**) Ueber die Hindernisse, welche Aberglaube, zu großes
+          Mißtrauen und allzugroßes Vertrauen der Ausübung der Heilkunst
+          entgegenstellen.</titel>
+
+          <veranstaltung
+          xml:id="v-IV.001.6.xx-001"><dozent><nachname>Eisfeld</nachname>,
+          <grad>D.</grad> <vorname>J. F. A.</vorname>, <funktion>P. E.
+          des.</funktion></dozent>, <zeit>11 U. 2 T.</zeit>
+          <modus>öffentl.</modus></veranstaltung>
+        </sachgruppe>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-IV.001.7">
+        <titel>7) Pharmacie.</titel>
+
+        <veranstaltung
+        xml:id="v-IV.001.7-001"><dozent><nachname>Eschenbach</nachname>,
+        <grad>D.</grad> <vorname>C. G.</vorname>, <funktion>P.
+        O.</funktion></dozent>, <thema>Experimentalpharmacie</thema>,
+        <zeit>1U. 4 T.</zeit></veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-IV.001.8">
+        <titel>8) Receptir-Kunst.</titel>
+
+        <veranstaltung
+        xml:id="v-IV.001.8-001"><dozent><nachname>Schwartze</nachname>,
+        <grad>D.</grad> <vorname>G. W.</vorname>, <funktion>P. E.
+        des.</funktion></dozent>, <zeit>3 U. 2 T.</zeit>
+        <modus>öffentlich</modus>.</veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-IV.001.9">
+        <titel>9) Chirurgie.</titel>
+
+        <veranstaltung
+        xml:id="v-IV.001.9-001"><dozent><nachname>Ludwig</nachname>,
+        <grad>D.</grad> <vorname>C. F.</vorname>, <funktion>P.
+        O.</funktion></dozent>, <thema>den ersten Theil des chirurg. Cursus
+        von den allgemeinen chirurg. Krankheiten <schrift>nach eign.
+        Sätzen</schrift></thema>, <zeit>4 U. 4 T.</zeit>
+        <modus>öffentlich</modus>.</veranstaltung>
+
+        <veranstaltungsgruppe><dozent><nachname>Kuhl</nachname>,
+        <grad>D.</grad> <vorname>C. A.</vorname>, <funktion>P. E.
+        des.</funktion></dozent>, <veranstaltung
+        xml:id="v-IV.001.9-002"><thema>Chirurgie,
+        <notiz>Forts.</notiz></thema> <zeit>11 U. 4 T.</zeit></veranstaltung>;
+        ingl. <veranstaltung xml:id="v-IV.001.9-003"><thema>chirurgische
+        Demonstrationen <ort>im Jakobsspitale</ort></thema>, <zeit>3 U. 2
+        T.</zeit></veranstaltung></veranstaltungsgruppe>
+
+        <veranstaltung
+        xml:id="v-IV.001.9-004"><dozent><nachname>Ritterich</nachname>,
+        <grad>D.</grad> <vorname>F. Ph.</vorname></dozent>, <thema>Anweisung,
+        einen chirurgischen Verband anzulegen</thema>, <zeit>4 U. 2
+        T.</zeit></veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-IV.001.10">
+        <titel>10) Entbindungskunst.</titel>
+
+        <veranstaltungsgruppe><dozent><nachname>Jörg</nachname>,
+        <grad>D.</grad> <vorname>J. C. G.</vorname>, <funktion>P.
+        O.</funktion></dozent>, <veranstaltung
+        xml:id="v-IV.001.10-001"><thema><schrift>nach s. systemat. Handb. der
+        Geburtshülfe (2te verm. Afl. Lpz. b. Hinrichs <seite>18</seite>
+        1820.)</schrift></thema> <zeit>8 U. 4 T.</zeit>
+        <modus>öffentlich</modus></veranstaltung>; ingl. <veranstaltung
+        xml:id="v-IV.001.10-002"><thema>geburtshülfl. Klinik</thema>, <zeit>7
+        U. 6 T.</zeit></veranstaltung></veranstaltungsgruppe>
+
+        <veranstaltung
+        xml:id="v-IV.001.10-003"><dozent><nachname>Richter</nachname>,
+        <grad>D.</grad> <vorname>C. F.</vorname></dozent>, <thema
+        kontext="sachgruppe">nach <schrift><autor>Stein's</autor>
+        Handb.</schrift></thema> <zeit>3 U. 4 T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-IV.001.10-004"><dozent><nachname>Haase</nachname>,
+        <grad>D.</grad> <vorname>C. F.</vorname></dozent>,
+        <thema>gebürtshülfl. Uebungen am Phantom</thema>, <zeit>2 U. 2
+        T.</zeit> <gebühr>unentgeltlich</gebühr>.</veranstaltung>
+
+        <veranstaltung
+        xml:id="v-IV.001.10-005"><dozent><nachname>Meißner</nachname>,
+        <grad>D.</grad> <vorname>F. L.</vorname></dozent>,
+        <thema>vergleichende Darstellung der verschiedenen Ansichten über die
+        Gegenstände der Entbindungskunst</thema>, <zeit>4 T. in zu best.
+        St.</zeit> <gebühr>unentgeltl</gebühr>.</veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-IV.001.11">
+        <titel>11) Klinik.</titel>
+
+        <veranstaltung
+        xml:id="v-IV.001.11-001"><dozent><nachname>Clarus</nachname>,
+        <grad>D.</grad> <vorname>J. C. A.</vorname>, <funktion>P. O.
+        des.</funktion></dozent>, <ort>im Jacobsspitale</ort>, <zeit>9-11 U. 6
+        T.</zeit> <modus>öffentlich</modus>.</veranstaltung>
+
+        <veranstaltung
+        xml:id="v-IV.001.11-002"><dozent><nachname>Puchelt</nachname>,
+        <grad>D.</grad> <vorname>F. A. B.</vorname>, <funktion>P. O.
+        des.</funktion></dozent>, <ort>Poliklinikum</ort>, <zeit>2 U. 7
+        T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-IV.001.11-003"><dozent><nachname>Cerutti</nachname>,
+        <grad>D.</grad> <vorname>L.</vorname>, <funktion>P. E.
+        des.</funktion></dozent>, <zeit>8 U. 4 T.</zeit></veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-IV.001.12">
+        <titel>12) Psychische Medicin.</titel>
+
+        <veranstaltung
+        xml:id="v-IV.001.12-001"><dozent><nachname>Heinroth</nachname>,
+        <grad>D.</grad> <vorname>J. C. A.</vorname>, <funktion>P. O.
+        des.</funktion></dozent>, <zeit>3 U. 4 T.</zeit></veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-IV.001.13">
+        <titel>13) Gerichtliche Arzneywissenschaft.</titel>
+
+        <veranstaltung
+        xml:id="v-IV.001.13-001"><dozent><nachname>Ludwig</nachname>,
+        <grad>D.</grad> <vorname>C. F.</vorname>, <funktion>P.
+        O.</funktion></dozent>, <thema kontext="sachgruppe"><schrift>nach s.
+        Sätzen</schrift></thema>, <zeit>10 U. 2 T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-IV.001.13-002"><dozent><nachname>Kühn</nachname>,
+        <grad>D.</grad> <vorname>C. G.</vorname>, <funktion>P.
+        O.</funktion></dozent>, <thema kontext="sachgruppe">nach
+        <autor>Metzger</autor></thema>, <zeit>3 U. 4 T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-IV.001.13-003"><dozent><nachname>Wendler</nachname>,
+        <grad>D.</grad> <vorname>C. A.</vorname>, <funktion>P.
+        E.</funktion></dozent>, <thema kontext="sachgruppe"><schrift>nach s.
+        Sätzen</schrift></thema>, <zeit>11 U. 4 T.</zeit></veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-IV.001.14">
+        <titel>14) Examinirübungen.</titel>
+
+        <veranstaltung
+        xml:id="v-IV.001.14-001"><dozent><nachname>Eschenbach</nachname>,
+        <grad>D.</grad> <vorname>C. G.</vorname>, <funktion>P.
+        O.</funktion></dozent>, <thema>über Chemie, Anatomie u.
+        Physiologie</thema>, <zeit>8 U. 2 T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-IV.001.14-002"><dozent><nachname>Leune</nachname>,
+        <grad>D.</grad> <vorname>J. C. F.</vorname></dozent>, <thema>über
+        Anatomie und Physiologie</thema>, <zeit>3 U. 2
+        T.</zeit></veranstaltung>
+      </sachgruppe>
+
+      <sachgruppe xml:id="sg-IV.001.15">
+        <titel>15) Disputirübungen.</titel>
+
+        <veranstaltung
+        xml:id="v-IV.001.15-001"><dozent><nachname>Eschenbach</nachname>,
+        <grad>D.</grad> <vorname>C. G.</vorname>, <funktion>P.
+        O.</funktion></dozent>, <thema>über physische, chemische und medicin.
+        Gegenstände</thema>, <zeit>3 U. 2 T.</zeit></veranstaltung>
+
+        <veranstaltung
+        xml:id="v-IV.001.15-002"><dozent><nachname>Leune</nachname>,
+        <grad>D.</grad> <vorname>J. C. F.</vorname></dozent>, <thema>Uebungen
+        im Schreiben und Disputiren über medicin. Gegenstände</thema>, <zeit>4
+        U. 2 T.</zeit></veranstaltung>
+      </sachgruppe>
+    </sachgruppe>
+  </sachgruppe>
+
+  <trennlinie/>
+
+  <absatz>Uebrigens wird der Stallmeister <gesperrt>Richter</gesperrt>, der
+  Fechtmeister <gesperrt>Werner</gesperrt>, ingleichen der Tanzmeister
+  <gesperrt>Klemm</gesperrt>, und der Universitäts-Zeichenmeister, wie auch
+  Zeichner für anatomische und pathologische Ge-<seite>19</seite>genstände,
+  <gesperrt>Joh. Friedr. Schröter</gesperrt>, auf Verlangen gehörigen
+  Unterricht ertheilen. Auch können sich die Studirenden des Unterrichts der
+  bei hiesiger Zeichnungs- Maler- und Architektur-Akademie angestellten Lehrer
+  bedienen.</absatz>
+
+  <absatz>Zur höhern Ausbildung in der Tonkunst gibt die mit der Universität
+  vereinigte und unter der Leitung des Hrn. Universitäts-Musikdirectors u.
+  Musiklehrers Schulz bestehende Singakademie Gelegenheit.</absatz>
+
+  <absatz>Wöchentliche zweimal, Mittwochs und Sonnabends, werden die
+  öffentlichen Bibliothekn, als die
+  <gesperrt>Universitäts-Bibliothek</gesperrt> von 10 bis 12 Uhr, und die
+  <gesperrt>Raths-Bibliothek</gesperrt> von 2 bis 4 Uhr, erstere auch in der
+  Messe alle Tage, geöffnet.</absatz>
+</vv>

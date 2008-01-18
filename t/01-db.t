@@ -1,6 +1,6 @@
 #!perl -T
 
-use Test::More tests => 2;
+use Test::More tests => 5;
 
 use File::Spec;
 use File::Temp;
@@ -17,3 +17,15 @@ BEGIN {
 
 my $db = Histvv::Db->new($test_db, { create => 1, private => 1 });
 isa_ok($db, 'Histvv::Db');
+
+ok(
+    $db->add_index(
+        'http://hashtable.de/ns/histvv',
+        'vv', 'node-element-presence'
+    ),
+    'add_index() succeeds'
+);
+
+ok( $db->put_doc( '<foo>bar</foo>', 'foo.xml' ), 'put_doc()' );
+
+ok( $db->put_files('t/test.xml'), 'put_files()' );

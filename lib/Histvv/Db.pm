@@ -158,6 +158,73 @@ sub query_all {
     return @results;
 }
 
+=head2 add_index
+
+  $db->add_index($nsuri, $name, $spec);
+
+=cut
+
+sub add_index {
+    my ($self, $uri, $name, $spec) = @_;
+    my $uc = $self->{mgr}->createUpdateContext();
+    eval {
+        $self->{container}->addIndex($uri, $name, $spec, $uc);
+    };
+    if ( my $e = catch std::exception ) {
+        die $e->what();
+    }
+    elsif ($@) {
+        die $@;
+    }
+    1;
+}
+
+=head2 put_doc
+
+  $ok = $db->put_doc($xml, $name);
+
+=cut
+
+sub put_doc {
+    my ($self, $xml, $name) = @_;
+
+    my $txn = $self->{mgr}->createTransaction();
+    my $uc = $self->{mgr}->createUpdateContext();
+
+    eval {
+        $self->{container}->putDocument($txn, $name, $xml, $uc);
+    };
+    if ( my $e = catch std::exception ) {
+        $txn->abort();
+        die $e->what();
+    } elsif ($@) {
+        $txn->abort();
+        die $@;
+    }
+    $txn->commit();
+    1;
+}
+
+=head2 put_files
+
+  $n = $db->put_files(@files);
+
+=cut
+
+sub put_files {
+    my $self = shift;
+    my $n = 0;
+    foreach my $file (@_) {
+        my $name = basename($file);
+        my $xml = '';
+        open F, $file or die $!;
+        $xml .= $_ while (<F>);
+        close F;
+        $self->put_doc($xml, $name) && $n++;
+    }
+    $n;
+}
+
 
 =head1 AUTHOR
 
