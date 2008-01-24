@@ -21,18 +21,35 @@
     </ul>
 
     <form id="suchformular" class="suche" action="#">
-      <p>
-        Durchsuchen Sie die Vorlesungsverzeichnisse der Universität
-        Leipzig in den Jahren 1814 - 1914.
-      </p>
-
       <p class="widget">
-        <label for="f-volltext">Volltext <a href="#hilfe-volltext">[i]</a></label><br/>
+        <label for="f-volltext">Volltext <a href="#hilfe-volltext">[i]</a></label>
+        <br/>
         <input type="text" id="f-volltext" name="volltext" value=""/>
       </p>
 
+      <fieldset>
+        <legend>Semester <a href="#hilfe-semester">[i]</a></legend>
+        <span class="widget">
+          <label for="f-von">von</label>
+          <select name="semester-von" id="f-von">
+            <option>Wintersemester 1814/15</option>
+            <option>Sommersemester 1815</option>
+            <option>Wintersemester 1815/16</option>
+          </select>
+        </span>
+        <span class="widget">
+          <label for="f-bis">bis</label>
+          <select name="semester-bis" id="f-bis">
+            <option>Wintersemester 1913/14</option>
+            <option>Sommersemester 1914</option>
+            <option selected="selected">Wintersemester 1914/15</option>
+          </select>
+        </span>
+      </fieldset>
+
       <p class="widget">
-        <label for="f-sachgruppe">Sachgruppe <a href="#hilfe-sachgruppe">[i]</a></label><br/>
+        <label for="f-sachgruppe">Sachgruppe <a href="#hilfe-sachgruppe">[i]</a></label>
+        <br/>
         <select id="f-sachgruppe" name="sachgruppe" size="3" multiple="multiple">
           <option>Literatur</option>
           <option>Medizin</option>
@@ -66,69 +83,51 @@
         </div>
       </fieldset>
 
-      <p class="widget">
-        <label for="f-fakultaet">Fakultäten <a href="#hilfe-fakultaeten">[i]</a></label>
-        <br/>
-        <select id="f-fakultaet" name="fakultaet" size="3" multiple="multiple">
-          <option value="philosophie">Philosophische Fakultät</option>
-          <option value="theologie">Theologische Fakultät</option>
-          <option value="jura">Juristische Fakultät</option>
-          <option value="medizin">Medizinische Fakultät</option>
-        </select>
-      </p>
-
-      <p class="widget">
-        <label for="f-ort">Orte <a href="#hilfe-orte">[i]</a></label>
-        <br/>
-        <select id="f-ort" name="ort" size="3" multiple="multiple">
-          <option>im Trier'schen Institute</option>
-          <option>im königl. klinischen Instit. im Jakobssp</option>
-        </select>
-      </p>
-
       <fieldset>
-        <legend>Veranstaltungsart <a href="#hilfe-veranstaltungsart">[i]</a></legend>
-        <span class="widget">
-          <label for="f-modus">Modus</label>
-          <select id="f-modus" name="modus">
-            <option>öffentlich</option>
-            <option>privat</option>
-          </select>
-        </span>
-        <span class="widget">
-          <label for="f-bezahlung">Bezahlung</label>
-          <select id="f-bezahlung" name="bezahlung">
-            <option>unengeltlich</option>
-            <option>zu bezahlen</option>
-          </select>
-        </span>
-        <span class="widget">
-          <label for="f-typ">Veranstaltungsart</label>
-          <select id="f-typ" name="veranstaltungsart">
-            <option>Vorlesung</option>
-            <option>Übung</option>
-          </select>
-        </span>
+        <legend>Fakultäten <a href="#hilfe-fakultaeten">[i]</a></legend>
+        <label class="widget">
+          <input type="checkbox" value="theologie" /> Theologische Fakultät
+        </label>
+        <label class="widget">
+          <input type="checkbox" value="philosophie" /> Philosophische Fakultät
+        </label>
+        <br />
+        <label class="widget">
+          <input type="checkbox" value="jura" /> Juristische Fakultät
+        </label>
+        <label class="widget">
+          <input type="checkbox" value="medizin" /> Medizinische Fakultät
+        </label>
       </fieldset>
 
       <fieldset>
-        <legend>Semester <a href="#hilfe-semester">[i]</a></legend>
-        <span class="widget">
-          <label for="f-von">von</label>
-          <select name="semester-von" id="f-von">
-            <option>WS 1814</option>
-            <option>SS 1815</option>
-            <option>WS 1815</option>
-          </select>
-        </span>
-        <span class="widget">
-          <label for="f-bis">bis</label>
-          <select name="semester-bis" id="f-bis">
-            <option>WS 1913</option>
-            <option>SS 1914</option>
-            <option selected="selected">WS 1914</option>
-          </select>
-        </span>
+        <legend>Lehrform <a href="#hilfe-lehrform">[i]</a></legend>
+        <label class="widget">
+          <input type="checkbox" value="publice" /> Vorlesung
+        </label>
+        <label class="widget">
+          <input type="checkbox" value="gratis" /> Übung
+        </label>
+        <label class="widget">
+          <input type="checkbox" value="privatim" /> Examinatorium
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Veranstaltungsmodus <a href="#hilfe-modus">[i]</a></legend>
+        <label class="widget">
+          <input type="checkbox" value="publice" /> publice/öffentlich
+        </label>
+        <label class="widget">
+          <input type="checkbox" value="gratis" /> gratis/unentgeltlich
+        </label>
+        <label class="widget">
+          <input type="checkbox" value="privatim" />&#160;privatim
+        </label>
+        <br />
+        <label class="widget">
+          <input type="checkbox" value="privatissime" />&#160;privatissime
+        </label>
       </fieldset>
 
       <p class="buttonbar">
@@ -213,8 +212,22 @@
         </p>
       </div>
 
-      <div id="hilfe-veranstaltungsart">
-        <h3>Veranstaltungsart</h3>
+      <div id="hilfe-lehrform">
+        <h3>Lehrform</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+          sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+          magna aliquam erat volutpat. Duis autem vel eum iriure dolor
+          in hendrerit in vulputate velit esse molestie consequat, vel
+          illum dolore eu feugiat nulla facilisis at vero eros et
+          accumsan et iusto odio dignissim qui blandit praesent
+          luptatum zzril delenit augue duis dolore te feugait nulla
+          facilisi.
+        </p>
+      </div>
+
+      <div id="hilfe-modus">
+        <h3>Veranstaltungsmodus</h3>
         <p>
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
           sed diam nonummy nibh euismod tincidunt ut laoreet dolore
