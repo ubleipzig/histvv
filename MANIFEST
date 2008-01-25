@@ -8,10 +8,13 @@ html/dozent.css
 html/dozent.xhtml
 html/general.css
 html/histvvfraktur.png
+html/home.css
+html/home.xhtml
 html/suche.css
 html/suche.html
 html/suche.js
 html/suche.xhtml
+html/titelblatt.jpg
 html/vv.css
 html/vv.xsl
 lib/Histvv.pm
