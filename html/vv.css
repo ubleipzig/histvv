@@ -100,3 +100,16 @@ ul#seitennavigation li
 }
 
 hr { width: 40%; margin: 1.5em auto; }
+
+.veranstaltungsverweis
+{
+  color: #555;
+  cursor: help;
+}
+
+.veranstaltungsverweis:before
+{
+  content: "\002197  ";
+  color: #555;
+  font-weight: bold;
+}

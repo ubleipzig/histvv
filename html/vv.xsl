@@ -92,7 +92,10 @@
 
   <xsl:template match="v:veranstaltung|v:veranstaltungsgruppe">
     <xsl:variable name="name" select="local-name()"/>
-    <p class="{$name}"><xsl:apply-templates/></p>
+    <p class="{$name}">
+      <xsl:call-template name="xml-id-to-html-id"/>
+      <xsl:apply-templates/>
+    </p>
   </xsl:template>
 
   <xsl:template match="v:thema | v:modus | v:zeit | v:siehe |
@@ -100,7 +103,32 @@
                        v:schrift | v:autor | v:schrift/v:titel |
                        v:veranstaltungsgruppe/v:veranstaltung">
     <xsl:variable name="name" select="local-name()"/>
-    <span class="{$name}"><xsl:apply-templates/></span>
+    <span class="{$name}">
+      <xsl:call-template name="xml-id-to-html-id"/>
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="v:veranstaltungsverweis">
+    <xsl:choose>
+      <xsl:when test="parent::v:sachgruppe">
+        <p><xsl:call-template name="veranstaltungsverweis"/></p>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="veranstaltungsverweis"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="veranstaltungsverweis">
+    <span class="veranstaltungsverweis">
+      <xsl:call-template name="xml-id-to-html-id"/>
+      <xsl:attribute name="title">
+        <xsl:text>Verweis auf: </xsl:text>
+        <xsl:value-of select="@ref"/>
+      </xsl:attribute>
+      <xsl:apply-templates/>
+    </span>
   </xsl:template>
 
   <xsl:template match="v:antiqua | v:gesperrt | v:dozent/v:grad | v:dozent/v:funktion">
@@ -208,6 +236,17 @@
     <xsl:attribute name="title">
       <xsl:value-of select="parent::*/@xml:id"/>
     </xsl:attribute>
+  </xsl:template>
+
+  <xsl:template name="xml-id-to-html-id">
+    <xsl:if test="@xml:id">
+      <xsl:attribute name="id">
+        <xsl:value-of select="@xml:id"/>
+      </xsl:attribute>
+      <xsl:attribute name="title">
+        <xsl:value-of select="@xml:id"/>
+      </xsl:attribute>
+    </xsl:if>
   </xsl:template>
 
 </xsl:stylesheet>
