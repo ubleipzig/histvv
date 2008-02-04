@@ -7,6 +7,8 @@
   <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="no" indent="yes"/>
 
   <xsl:param name="cssurl" select="'vv.css'"/>
+  <xsl:param name="jquery-url" select="'jquery.js'"/>
+  <xsl:param name="js-url" select="'vv.js'"/>
 
   <xsl:template match="/">
     <html xmlns="http://www.w3.org/1999/xhtml">
@@ -15,6 +17,8 @@
           <xsl:call-template name="seitentitel"/>
         </title>
         <link rel="stylesheet" href="{$cssurl}"/>
+        <script type="text/javascript" src="{$jquery-url}"><xsl:text> </xsl:text></script>
+        <script type="text/javascript" src="{$js-url}"><xsl:text> </xsl:text></script>
       </head>
       <body>
         <xsl:apply-templates select="v:vv|/index"/>

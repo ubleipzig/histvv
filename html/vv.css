@@ -9,6 +9,7 @@ html, body
 body
 {
   margin: 2em 15%;
+  position: relative;
 }
 
 body > h1
@@ -112,4 +113,15 @@ hr { width: 40%; margin: 1.5em auto; }
   content: "\002197  ";
   color: #555;
   font-weight: bold;
+}
+
+div#verweis-tooltip
+{
+  display: none;
+  position: absolute;
+  width: 60%;
+  padding: 1em;
+  margin: 2em;
+  border: 1px solid gray;
+  background-color: white;
 }
