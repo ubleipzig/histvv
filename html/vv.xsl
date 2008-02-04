@@ -7,8 +7,8 @@
   <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="no" indent="yes"/>
 
   <xsl:param name="cssurl" select="'vv.css'"/>
-  <xsl:param name="jquery-url" select="'jquery.js'"/>
-  <xsl:param name="js-url" select="'vv.js'"/>
+  <xsl:param name="jquery-url" select="'../js/jquery.js'"/>
+  <xsl:param name="js-url" select="'../js/vv.js'"/>
 
   <xsl:template match="/">
     <html xmlns="http://www.w3.org/1999/xhtml">

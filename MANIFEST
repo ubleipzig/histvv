@@ -10,9 +10,11 @@ html/general.css
 html/histvvfraktur.png
 html/home.css
 html/home.xhtml
+html/js/form.js
+html/js/jquery.js
+html/js/vv.js
 html/suche.css
 html/suche.html
-html/suche.js
 html/suche.xhtml
 html/titelblatt.jpg
 html/vv.css
