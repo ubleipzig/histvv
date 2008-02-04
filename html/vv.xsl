@@ -95,8 +95,8 @@
     <p class="{$name}"><xsl:apply-templates/></p>
   </xsl:template>
 
-  <xsl:template match="v:thema | v:modus | v:zeit |
-                       v:dozent| v:vorname |v:nachname |v:grad | v:funktion |
+  <xsl:template match="v:thema | v:modus | v:zeit | v:siehe |
+                       v:dozent | v:vorname | v:nachname | v:grad | v:funktion |
                        v:schrift | v:autor | v:schrift/v:titel |
                        v:veranstaltungsgruppe/v:veranstaltung">
     <xsl:variable name="name" select="local-name()"/>
@@ -156,6 +156,10 @@
           <xsl:value-of select="."/>
       <xsl:text>]</xsl:text>
     </span>
+  </xsl:template>
+
+  <xsl:template match="v:siehe[@ref]">
+    <a href="#{@ref}" class="siehe"><xsl:apply-templates/></a>
   </xsl:template>
 
 
