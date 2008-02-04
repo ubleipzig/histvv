@@ -18,6 +18,37 @@ body > h1
 
 ol.toc { -moz-column-count: 3; }
 
+div.uebersicht > h2
+{
+  text-align: center;
+  font-variant: small-caps;
+}
+
+div.sachgruppe > h2
+{
+  text-align: center;
+  margin: 2em auto 1em;
+}
+
+div.sachgruppe div.sachgruppe div.sachgruppe div.sachgruppe h4
+{ margin-left: 1.5em; }
+
+div.sachgruppe div.sachgruppe div.sachgruppe div.sachgruppe
+div.sachgruppe h4
+{ margin-left: 3em; }
+
+div.sachgruppe div.sachgruppe div.sachgruppe div.sachgruppe
+div.sachgruppe div.sachgruppe h4
+{ margin-left: 4.5em; }
+
+div.sachgruppe div.sachgruppe div.sachgruppe div.sachgruppe
+div.sachgruppe div.sachgruppe div.sachgruppe h4
+{ margin-left: 6em; }
+
+div.sachgruppe div.sachgruppe div.sachgruppe div.sachgruppe
+div.sachgruppe div.sachgruppe div.sachgruppe div.sachgruppe h4
+{ margin-left: 7.5em; }
+
 em.gesperrt, span.autor
 {
   font-style: normal;

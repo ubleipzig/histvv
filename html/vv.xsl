@@ -6,7 +6,7 @@
 
   <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="no" indent="yes"/>
 
-  <xsl:param name="cssurl" select="'html.css'"/>
+  <xsl:param name="cssurl" select="'vv.css'"/>
 
   <xsl:template match="/">
     <html xmlns="http://www.w3.org/1999/xhtml">
@@ -65,12 +65,29 @@
     <div class="uebersicht"><xsl:apply-templates/></div>
   </xsl:template>
 
-  <xsl:template match="v:vv/v:sachgruppe/v:titel | v:vv/v:übersicht/v:titel">
+  <xsl:template match="v:übersicht/v:titel">
     <h2><xsl:apply-templates/></h2>
   </xsl:template>
 
   <xsl:template match="v:sachgruppe/v:titel">
-    <h4><xsl:apply-templates/></h4>
+    <h2>
+      <xsl:call-template name="sachgruppentitel-attr"/>
+      <xsl:apply-templates/>
+    </h2>
+  </xsl:template>
+
+  <xsl:template match="v:sachgruppe/v:sachgruppe/v:titel">
+    <h3>
+      <xsl:call-template name="sachgruppentitel-attr"/>
+      <xsl:apply-templates/>
+    </h3>
+  </xsl:template>
+
+  <xsl:template match="v:sachgruppe/v:sachgruppe/v:sachgruppe/v:titel">
+    <h4>
+      <xsl:call-template name="sachgruppentitel-attr"/>
+      <xsl:apply-templates/>
+    </h4>
   </xsl:template>
 
   <xsl:template match="v:veranstaltung|v:veranstaltungsgruppe">
@@ -181,6 +198,12 @@
         </li>
       </xsl:for-each>
     </ul>
+  </xsl:template>
+
+  <xsl:template name="sachgruppentitel-attr">
+    <xsl:attribute name="title">
+      <xsl:value-of select="parent::*/@xml:id"/>
+    </xsl:attribute>
   </xsl:template>
 
 </xsl:stylesheet>
