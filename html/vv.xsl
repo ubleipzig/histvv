@@ -6,7 +6,7 @@
 
   <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="no" indent="yes"/>
 
-  <xsl:param name="cssurl" select="'vv.css'"/>
+  <xsl:param name="cssurl" select="'../css/vv.css'"/>
   <xsl:param name="jquery-url" select="'../js/jquery.js'"/>
   <xsl:param name="js-url" select="'../js/vv.js'"/>
 

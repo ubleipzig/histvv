@@ -1,0 +1,39 @@
+@import "include/general.css";
+@import "include/form.css";
+
+#home
+{
+  padding: 0px 0px 0px 20px;
+  border-left: 1px solid #8fb635;
+  width: 500px;
+  float: left;
+}
+
+img.ws1814 
+{
+  filter:alpha(opacity=20); /* IE */
+  -moz-opacity:0.2; /* Gecko-Browser */
+  opacity:0.2; /* Opera 9+ */
+  float: right;
+  margin-right: -50px;
+  clear: right;
+}
+
+h2
+{
+  color: #8fb635;
+}
+
+form.suche
+{
+  float: right;
+  width: 25em;
+}
+
+#js-hilfe
+{
+  position: absolute;
+  top: 100%;
+  left: 1em;
+  width: auto;
+}

@@ -1,42 +1,45 @@
 form.suche
 {
-  float: left;
   width: 31em;
   padding: 1em;
-  padding-bottom: 0;
   position: relative;
-  border-left: 1px solid #8fb635;
 }
 
-form fieldset,
-form p.widget
+form.suche fieldset,
+form.suche p.widget
 {
   margin: .6em 0;
   padding: .5em;
   border: 1px solid #ddd;
 }
 
-select, input
+form.suche select,
+form.suche input
 {
   border: 1px solid grey;
   font-size: 12px;
 }
 
-input[type=reset],
-input[type=submit]
+form.suche input[type=reset],
+form.suche input[type=submit]
 {
   background-color: #ddd;
 }
 
-p.widget select, p.widget input
+form.suche p.widget select,
+form.suche p.widget input
 {
   width: 100%;
   margin-top: -.6em;
 }
 
-form p.widget { margin-top: 1em; position: relative;  }
+form.suche p.widget
+{
+  margin-top: 1em;
+  position: relative;
+}
 
-p.widget label
+form.suche p.widget label
 {
   position: relative;
   top: -1.2em;
@@ -44,7 +47,8 @@ p.widget label
   padding: 0 2px;
 }
 
-label a, legend a 
+form.suche label a,
+form.suche legend a 
 { 
   color: #8fb635;
   font-size: 13px;
@@ -52,29 +56,30 @@ label a, legend a
   cursor: help; 
 }
 
-p.buttonbar { text-align: right; }
-p.buttonbar input[type=reset] { float: left; }
+form.suche p.buttonbar { text-align: right; }
+form.suche p.buttonbar input[type=reset] { float: left; }
 
-select#f-grad { min-width: 8em; }
-select#f-dozent { min-width: 17em; }
-select#f-von, select#f-bis { min-width: 10em; }
+form.suche select#f-grad { min-width: 8em; }
+form.suche select#f-dozent { min-width: 17em; }
+form.suche select#f-von,
+form.suche select#f-bis { min-width: 10em; }
 
-fieldset span.widget,
-fieldset div.widget
+form.suche fieldset span.widget,
+form.suche fieldset div.widget
 {
   display: block;
   float: left;
   margin-right: 1em;
 }
 
-fieldset span.widget label,
-fieldset div.widget label
+form.suche fieldset span.widget label,
+form.suche fieldset div.widget label
 {
   display: block;
   font-size: 90%;
 }
 
-fieldset div.widget br { display: none; }
+form.suche fieldset div.widget br { display: none; }
 
 div#hilfe { margin-bottom: 50em; width: 45em; }
 
@@ -92,5 +97,3 @@ div#hilfe { margin-bottom: 50em; width: 45em; }
 }
 
 #js-hilfe h3 { margin-top: 0; }
-
-.clear { clear: both; }

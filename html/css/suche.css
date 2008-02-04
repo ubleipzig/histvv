@@ -1,0 +1,8 @@
+@import "include/general.css";
+@import "include/form.css";
+
+form.suche
+{
+  border-left: 1px solid #8fb635;
+  float: left;
+}
