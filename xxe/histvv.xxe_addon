@@ -2,7 +2,7 @@
 <a:addon xmlns="http://www.w3.org/1999/xhtml"
          xmlns:html="http://www.w3.org/1999/xhtml"
          xmlns:a="http://www.xmlmind.com/xmleditor/schema/addon"
-         location="http://hashtable.de/histvv_config.zip">
+         location="http://histvv.uni-leipzig.de/histvv_config.zip">
 
   <a:category>
     <a:configuration />
@@ -10,7 +10,7 @@
 
   <a:name>HistVV configuration</a:name>
 
-  <a:version>1.1</a:version>
+  <a:version>1.2</a:version>
 
   <a:author>
     Carsten Milling
