@@ -33,6 +33,7 @@ t/pod.t
 t/test.xml
 xxe/css/browser.css
 xxe/css/dozenten.css
+xxe/css/dozenten-mit-id.css
 xxe/css/edit.css
 xxe/css/include/base.css
 xxe/css/include/colors.css
