@@ -5,6 +5,7 @@
 \.bak$
 ^MANIFEST\.SKIP$
 CVS/
+\.git/
 \.svn/
 ^\.cvsignore
 ^\.gitignore

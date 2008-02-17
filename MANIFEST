@@ -30,6 +30,7 @@ t/01-db.t
 t/02-apache.t
 t/pod-coverage.t
 t/pod.t
+t/test.xml
 xxe/css/browser.css
 xxe/css/dozenten.css
 xxe/css/edit.css
