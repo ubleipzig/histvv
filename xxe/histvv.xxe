@@ -5,12 +5,12 @@
   <detect>
     <and>
       <rootElementLocalName>vv</rootElementLocalName>
-      <rootElementNamespace>http://hashtable.de/ns/histvv</rootElementNamespace>
+      <rootElementNamespace>http://histvv.uni-leipzig.de/ns/2007</rootElementNamespace>
     </and>
   </detect>
 
   <relaxng location="histvv.rng"
-           name="http://hashtable.de/ns/histvv"/>
+           name="http://histvv.uni-leipzig.de/ns/2007"/>
 
   <schematron location="histvv.rng"/>
 
@@ -23,11 +23,11 @@
   <saveOptions favorInteroperability="false"/>
 
   <elementTemplate name="default" selectable="override">
-    <veranstaltung xmlns="http://hashtable.de/ns/histvv"/>
+    <veranstaltung xmlns="http://histvv.uni-leipzig.de/ns/2007"/>
   </elementTemplate>
 
   <elementTemplate name="default" selectable="override">
-    <sachgruppe xmlns="http://hashtable.de/ns/histvv">
+    <sachgruppe xmlns="http://histvv.uni-leipzig.de/ns/2007">
       <titel/>
     </sachgruppe>
   </elementTemplate>
@@ -37,7 +37,7 @@
     selectable="override"
   --> 
   <elementTemplate name="transkribent">
-    <status xmlns="http://hashtable.de/ns/histvv">
+    <status xmlns="http://histvv.uni-leipzig.de/ns/2007">
       <transkribent/>
     </status>
   </elementTemplate>

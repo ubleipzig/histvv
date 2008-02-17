@@ -20,7 +20,7 @@ isa_ok($db, 'Histvv::Db');
 
 ok(
     $db->add_index(
-        'http://hashtable.de/ns/histvv',
+        'http://histvv.uni-leipzig.de/ns/2007',
         'vv', 'node-element-presence'
     ),
     'add_index() succeeds'

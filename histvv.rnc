@@ -1,10 +1,10 @@
 # $Id$
 
-default namespace = "http://hashtable.de/ns/histvv"
+default namespace = "http://histvv.uni-leipzig.de/ns/2007"
 namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 namespace s = "http://purl.oclc.org/dsdl/schematron"
 
-s:ns [ prefix = "v" uri = "http://hashtable.de/ns/histvv" ]
+s:ns [ prefix = "v" uri = "http://histvv.uni-leipzig.de/ns/2007" ]
 start = vv | dozentenliste
 xml.lang.attribute =
   attribute xml:lang {

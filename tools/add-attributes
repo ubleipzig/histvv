@@ -39,7 +39,7 @@ die "Missing attribute name or value!\n$usage"
 
 
 # Histvv Namespace URI
-my $nsuri = 'http://hashtable.de/ns/histvv';
+my $nsuri = 'http://histvv.uni-leipzig.de/ns/2007';
 # XML Namespace URI
 my $xmluri = 'http://www.w3.org/XML/1998/namespace';
 

@@ -4,9 +4,9 @@
          xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
          xmlns:s="http://purl.oclc.org/dsdl/schematron"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
-         ns="http://hashtable.de/ns/histvv">
+         ns="http://histvv.uni-leipzig.de/ns/2007">
 
-  <s:ns prefix="v" uri="http://hashtable.de/ns/histvv"/>
+  <s:ns prefix="v" uri="http://histvv.uni-leipzig.de/ns/2007"/>
 
   <start>
     <choice>

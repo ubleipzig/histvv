@@ -5,12 +5,12 @@
   <detect>
     <and>
       <rootElementLocalName>dozentenliste</rootElementLocalName>
-      <rootElementNamespace>http://hashtable.de/ns/histvv</rootElementNamespace>
+      <rootElementNamespace>http://histvv.uni-leipzig.de/ns/2007</rootElementNamespace>
     </and>
   </detect>
 
   <relaxng location="histvv.rng"
-           name="http://hashtable.de/ns/histvv"/>
+           name="http://histvv.uni-leipzig.de/ns/2007"/>
 
   <schematron location="histvv.rng"/>
 
@@ -22,25 +22,25 @@
   <saveOptions favorInteroperability="false"/>
 
   <elementTemplate name="default" selectable="override">
-    <geboren xmlns="http://hashtable.de/ns/histvv">
+    <geboren xmlns="http://histvv.uni-leipzig.de/ns/2007">
       <jahr></jahr><monat></monat><tag></tag>
     </geboren>
   </elementTemplate>
 
   <elementTemplate name="datum_ort">
-    <geboren xmlns="http://hashtable.de/ns/histvv">
+    <geboren xmlns="http://histvv.uni-leipzig.de/ns/2007">
       <jahr></jahr><monat></monat><tag></tag><ort></ort>
     </geboren>
   </elementTemplate>
 
   <elementTemplate name="default" selectable="override">
-    <gestorben xmlns="http://hashtable.de/ns/histvv">
+    <gestorben xmlns="http://histvv.uni-leipzig.de/ns/2007">
       <jahr></jahr><monat></monat><tag></tag>
     </gestorben>
   </elementTemplate>
 
   <elementTemplate name="datum_ort">
-    <gestorben xmlns="http://hashtable.de/ns/histvv">
+    <gestorben xmlns="http://histvv.uni-leipzig.de/ns/2007">
       <jahr></jahr><monat></monat><tag></tag><ort></ort>
     </gestorben>
   </elementTemplate>

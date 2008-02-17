@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<vv xml:lang="de" xmlns="http://hashtable.de/ns/histvv"
-    xmlns:ns="http://hashtable.de/ns/histvv">
+<vv xml:lang="de" xmlns="http://histvv.uni-leipzig.de/ns/2007"
+    xmlns:ns="http://histvv.uni-leipzig.de/ns/2007">
   <kopf>
     <universität>Leipzig</universität>
 

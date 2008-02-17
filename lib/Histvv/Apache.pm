@@ -41,7 +41,7 @@ my $Xp = XML::LibXML->new();
 my $Xt = XML::LibXSLT->new();
 
 my $Xquery_index = q{
-declare namespace v = "http://hashtable.de/ns/histvv";
+declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
 <index>
 {
 for $d in collection()/v:vv
@@ -57,7 +57,7 @@ return
 };
 
 my $Xquery_semester = q{
-declare namespace v = "http://hashtable.de/ns/histvv";
+declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
 for $d in collection()/v:vv
 let $k := $d/v:kopf
 where $k/v:status[@komplett = "ja"]
