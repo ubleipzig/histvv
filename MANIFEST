@@ -31,6 +31,7 @@ t/02-apache.t
 t/pod-coverage.t
 t/pod.t
 t/test.xml
+tools/add-attributes
 xxe/css/browser.css
 xxe/css/dozenten.css
 xxe/css/dozenten-mit-id.css

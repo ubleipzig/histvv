@@ -1,0 +1,94 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Getopt::Long;
+use XML::LibXML;
+use XML::LibXML::XPathContext;
+
+my $usage = <<EOT;
+Usage: add-attributes -x <xpath> -n <attrname> -d <attrvalue> file1.xml ...
+       add-attributes -x <xpath> -l file1.xml ...
+
+Options:
+  -x, --xpath <string> XPath expression to select elements
+  -n, --name <name>    attribute name
+  -d, --data <value>   attribute value
+  -l, --list           list matching elements on standard output
+  -v, --verbose        verbose output
+  -h, --help    show this message
+EOT
+
+my %opts = ( list => 0, verbose => 0, help => 0 );
+GetOptions(
+    \%opts,   'xpath|x=s', 'name|n=s', 'data|d=s',
+    'list|l', 'verbose|v', 'help|h'
+) or die $usage;
+
+if ($opts{help}) {
+    print $usage;
+    exit;
+}
+
+die "Missing XPath expression!\n$usage" unless $opts{xpath};
+
+die "Missing attribute name or value!\n$usage"
+  unless ( $opts{list}
+    || ( $opts{name} && $opts{data} ) );
+
+
+# Histvv Namespace URI
+my $nsuri = 'http://hashtable.de/ns/histvv';
+# XML Namespace URI
+my $xmluri = 'http://www.w3.org/XML/1998/namespace';
+
+my $xp = XML::LibXML->new();
+
+binmode STDOUT, ":utf8" if $opts{list};
+
+foreach my $file (@ARGV) {
+    print "$file\n";
+
+    my $doc = $xp->parse_file( $file );
+    my $xc = XML::LibXML::XPathContext->new( $doc );
+    $xc->registerNs('v', $nsuri);
+
+    my (@nodes, $cnt);
+    eval { @nodes = $xc->findnodes($opts{xpath}) };
+    die $@ if $@;
+    next unless @nodes;
+
+
+    foreach my $n (@nodes) {
+        unless ($n->nodeType == XML_ELEMENT_NODE) {
+            warn "Skipping non element node\n";
+            next;
+        }
+
+        if ($opts{name} && $opts{data}) {
+            $n->setAttribute($opts{name}, $opts{data});
+            $cnt++;
+        }
+
+        if ( $opts{list} ) {
+            if ( $opts{verbose} ) {
+                print $n->toString(0), "\n";
+            }
+            else {
+                my $txt = $n->findvalue('normalize-space(.)');
+                print "$txt\n";
+            }
+        }
+
+    }
+
+    unless ( $opts{list} ) {
+        open F, ">$file" or die $!;
+        print F $doc->toString(0);
+        close F;
+        print scalar @nodes, " elements found, $cnt attributes set\n";
+    }
+}
+
+__END__
