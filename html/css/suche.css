@@ -1,5 +1,6 @@
 @import "include/general.css";
 @import "include/form.css";
+@import "include/tooltip.css";
 
 form.suche
 {

@@ -18,7 +18,6 @@
         <title>
           <xsl:call-template name="seitentitel"/>
         </title>
-        <link rel="stylesheet" href="../css/include/general.css"/>
         <link rel="stylesheet" href="{$cssurl}"/>
         <script type="text/javascript" src="../js/jquery.js"><xsl:text> </xsl:text></script>
         <script type="text/javascript" src="../js/jquery.dimensions.js"><xsl:text> </xsl:text></script>

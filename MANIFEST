@@ -10,6 +10,7 @@ html/css/gfx/histvvfraktur.png
 html/css/home.css
 html/css/include/form.css
 html/css/include/general.css
+html/css/include/tooltip.css
 html/css/suche.css
 html/css/vv.css
 html/dozent.xhtml
@@ -19,6 +20,7 @@ html/js/jquery.js
 html/js/jquery.dimensions.js
 html/js/jquery.tooltip.js
 html/js/vv.js
+html/ns.xhtml
 html/suche.html
 html/suche.xhtml
 html/titelblatt.jpg

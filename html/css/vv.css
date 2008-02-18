@@ -1,9 +1,12 @@
 /* $Id$ */
 
+@import "include/tooltip.css";
+
 html, body
 {
   color: black;
   background-color: white;
+  font-family: Georgia, serif;
 }
 
 body
