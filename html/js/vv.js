@@ -8,7 +8,7 @@ $(document).ready(function(){
     // the bodyHandler function.
     var idPrefix = '_';
 
-    $('span.veranstaltungsverweis').tooltip({
+    $('span[id].veranstaltungsverweis').tooltip({
         bodyHandler: function() {
             var id = this.getAttribute('id').substr(idPrefix.length);
             return $(document.getElementById(id)).html();

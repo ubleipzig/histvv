@@ -131,18 +131,20 @@
   <xsl:template name="veranstaltungsverweis">
     <span class="veranstaltungsverweis">
       <xsl:call-template name="xml-id-to-html-id"/>
-      <xsl:attribute name="id">
-        <!--
+      <xsl:if test="@ref">
+        <xsl:attribute name="id">
+          <!--
           we currently (ab)use the id attribute to propagate the ref
           to the jQuery tooltip plugin
-        -->
-        <xsl:text>_</xsl:text>
-        <xsl:value-of select="@ref"/>
-      </xsl:attribute>
-      <xsl:attribute name="title">
-        <xsl:text>Verweis auf: </xsl:text>
-        <xsl:value-of select="@ref"/>
-      </xsl:attribute>
+          -->
+          <xsl:text>_</xsl:text>
+          <xsl:value-of select="@ref"/>
+        </xsl:attribute>
+        <xsl:attribute name="title">
+          <xsl:text>Verweis auf: </xsl:text>
+          <xsl:value-of select="@ref"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:apply-templates/>
     </span>
   </xsl:template>
