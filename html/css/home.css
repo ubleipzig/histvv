@@ -29,11 +29,3 @@ form.suche
   float: right;
   width: 25em;
 }
-
-#js-hilfe
-{
-  position: absolute;
-  top: 100%;
-  left: 1em;
-  width: auto;
-}

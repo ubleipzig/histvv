@@ -82,18 +82,3 @@ form.suche fieldset div.widget label
 form.suche fieldset div.widget br { display: none; }
 
 div#hilfe { margin-bottom: 50em; width: 45em; }
-
-#js-hilfe
-{
-  display: none;
-  position: fixed;
-  top: 3em;
-  left: 47em;
-  width: 18em;
-  color: black;
-  background-color: white;
-  border: 1px solid grey;
-  padding: .5em;
-}
-
-#js-hilfe h3 { margin-top: 0; }
