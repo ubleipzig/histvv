@@ -16,6 +16,8 @@ html/dozent.xhtml
 html/home.xhtml
 html/js/form.js
 html/js/jquery.js
+html/js/jquery.dimensions.js
+html/js/jquery.tooltip.js
 html/js/vv.js
 html/suche.html
 html/suche.xhtml
