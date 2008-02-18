@@ -10,7 +10,6 @@
   <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="no" indent="yes"/>
 
   <xsl:param name="cssurl" select="'../css/vv.css'"/>
-  <xsl:param name="jquery-url" select="'../js/jquery.js'"/>
   <xsl:param name="js-url" select="'../js/vv.js'"/>
 
   <xsl:template match="/">
@@ -19,8 +18,11 @@
         <title>
           <xsl:call-template name="seitentitel"/>
         </title>
+        <link rel="stylesheet" href="../css/include/general.css"/>
         <link rel="stylesheet" href="{$cssurl}"/>
-        <script type="text/javascript" src="{$jquery-url}"><xsl:text> </xsl:text></script>
+        <script type="text/javascript" src="../js/jquery.js"><xsl:text> </xsl:text></script>
+        <script type="text/javascript" src="../js/jquery.dimensions.js"><xsl:text> </xsl:text></script>
+        <script type="text/javascript" src="../js/jquery.tooltip.js"><xsl:text> </xsl:text></script>
         <script type="text/javascript" src="{$js-url}"><xsl:text> </xsl:text></script>
       </head>
       <body>
@@ -130,6 +132,14 @@
   <xsl:template name="veranstaltungsverweis">
     <span class="veranstaltungsverweis">
       <xsl:call-template name="xml-id-to-html-id"/>
+      <xsl:attribute name="id">
+        <!--
+          we currently (ab)use the id attribute to propagate the ref
+          to the jQuery tooltip plugin
+        -->
+        <xsl:text>_</xsl:text>
+        <xsl:value-of select="@ref"/>
+      </xsl:attribute>
       <xsl:attribute name="title">
         <xsl:text>Verweis auf: </xsl:text>
         <xsl:value-of select="@ref"/>
