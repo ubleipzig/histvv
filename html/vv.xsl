@@ -25,7 +25,7 @@
         <script type="text/javascript" src="{$js-url}"><xsl:text> </xsl:text></script>
       </head>
       <body>
-        <xsl:apply-templates select="v:vv|/index"/>
+        <xsl:apply-templates select="v:vv|/index|v:dozentenliste|/v:dozent"/>
       </body>
     </html>
   </xsl:template>
@@ -48,6 +48,77 @@
     <h1><xsl:value-of select="v:titel"/></h1>
     <xsl:apply-templates select="v:absatz|v:übersicht|v:sachgruppe|v:seite|v:trennlinie"/>
     <a href="index.html">Index</a>
+  </xsl:template>
+
+  <xsl:template match="v:dozentenliste">
+    <h1>Dozenten</h1>
+    <ol class="toc">
+      <xsl:for-each select="v:dozent">
+        <li>
+          <xsl:choose>
+            <xsl:when test="@xml:id">
+              <a href="{@xml:id}.html">
+                <xsl:apply-templates select="v:name"/>
+              </a>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:apply-templates select="v:name"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </li>
+      </xsl:for-each>
+    </ol>
+  </xsl:template>
+
+  <xsl:template match="/v:dozent">
+    <h1>
+      <xsl:apply-templates select="v:name"/>
+    </h1>
+    <xsl:if test="v:geboren or v:gestorben">
+      <p>
+        <xsl:if test="v:geboren">
+          <span>
+            <xsl:text>* </xsl:text>
+            <xsl:apply-templates select="v:geboren"/>
+          </span>
+        </xsl:if>
+        <br/>
+        <xsl:text> </xsl:text>
+        <xsl:if test="v:gestorben">
+          <span>
+            <xsl:text>† </xsl:text>
+            <xsl:apply-templates select="v:gestorben"/>
+          </span>
+        </xsl:if>
+      </p>
+    </xsl:if>
+    <xsl:apply-templates select="v:absatz"/>
+  </xsl:template>
+
+  <xsl:template match="v:dozent/v:geboren | v:dozent/v:gestorben">
+    <xsl:if test="v:tag">
+      <xsl:value-of select="v:tag"/>
+      <xsl:text>.</xsl:text>
+      <xsl:value-of select="v:monat"/>
+      <xsl:text>.</xsl:text>
+    </xsl:if>
+    <xsl:value-of select="v:jahr"/>
+    <xsl:if test="v:ort">
+      <xsl:text>, in </xsl:text>
+      <xsl:value-of select="v:ort"/>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="v:dozentenliste/v:dozent/v:name | /v:dozent/v:name">
+    <xsl:value-of select="v:nachname"/>
+    <xsl:if test="v:vorname">
+      <xsl:text>, </xsl:text>
+      <xsl:value-of select="v:vorname"/>
+      <xsl:if test="v:nachnamenpräfix">
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="v:nachnamenpräfix"/>
+      </xsl:if>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="v:trennlinie">
@@ -149,6 +220,16 @@
     </span>
   </xsl:template>
 
+  <xsl:template match="v:dozent[@ref]">
+    <xsl:variable name="name" select="local-name()"/>
+    <a class="dozent" href="../dozenten/{@ref}.html">
+      <xsl:attribute name="title">
+        <xsl:text>zur Dozentenseite</xsl:text>
+      </xsl:attribute>
+      <xsl:apply-templates/>
+    </a>
+  </xsl:template>
+
   <xsl:template match="v:antiqua | v:gesperrt | v:dozent/v:grad | v:dozent/v:funktion">
     <xsl:variable name="name" select="local-name()"/>
     <em class="{$name}"><xsl:apply-templates/></em>
@@ -223,6 +304,13 @@
           <xsl:text>/</xsl:text>
           <xsl:value-of select="/v:vv/v:kopf/v:ende/v:jahr"/>
         </xsl:if>
+      </xsl:when>
+      <xsl:when test="/v:dozentenliste">
+        <xsl:text>: Dozenten</xsl:text>
+      </xsl:when>
+      <xsl:when test="/v:dozent">
+        <xsl:text>: </xsl:text>
+        <xsl:apply-templates select="/v:dozent/v:name"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:text>: Vorlesungsverzeichnisse</xsl:text>

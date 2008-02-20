@@ -17,7 +17,7 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-  PerlModule Apache::Histvv
+  PerlModule Histvv::Apache
   <Location /vv>
     SetHandler perl-script
     PerlResponseHandler Histvv::Apache
@@ -40,7 +40,8 @@ use Apache2::Const -compile => qw(:common);
 my $Xp = XML::LibXML->new();
 my $Xt = XML::LibXSLT->new();
 
-my $Xquery_index = q{
+my %Queries = (
+    index => q{
 declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
 <index>
 {
@@ -54,9 +55,9 @@ return
 <vv name="{$name}">{$title}</vv>
 }
 </index>
-};
+},
 
-my $Xquery_semester = q{
+    semester => q{
 declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
 for $d in collection()/v:vv
 let $k := $d/v:kopf
@@ -64,7 +65,21 @@ where $k/v:status[@komplett = "ja"]
   and $k/v:semester = "%s"
   and $k/v:beginn/v:jahr = "%d"
 return $d
-};
+},
+
+    dozenten => q{
+declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
+for $d in collection()/v:dozentenliste[1]
+return $d
+},
+
+    dozent => q{
+declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
+for $d in collection()/v:dozentenliste/v:dozent
+where $d/@xml:id = "%s"
+return $d
+}
+);
 
 
 sub handler {
@@ -79,16 +94,26 @@ sub handler {
 
     my $xquery;
 
-    if ( $url =~ /^\/([0-9]{4})-(ws|ss)\.html$/ ) { # single VV
-        my $year = $1;
-        my $semester = $2 eq 'ws' ? 'Winter' : 'Sommer';
-        $xquery = sprintf $Xquery_semester, $semester, $year;
-    }
-    elsif ( $url =~ /^\/(index\.html)?$/ ) { # list of VVs
-        $xquery = $Xquery_index;
-    }
-    else {
-        return Apache2::Const::DECLINED;
+    if ($loc eq '/dozenten') {
+        if ($url =~ /^\/(index\.html)?$/) {
+            $xquery = $Queries{dozenten};
+        } elsif ($url =~ /^\/([-_a-z0-9]+)\.html$/) {
+            $xquery = sprintf $Queries{dozent}, $1;
+        } else {
+            return Apache2::Const::DECLINED;
+        }
+    } elsif ($loc eq '/vv') {
+        if ( $url =~ /^\/([0-9]{4})-(ws|ss)\.html$/ ) { # single VV
+            my $year = $1;
+            my $semester = $2 eq 'ws' ? 'Winter' : 'Sommer';
+            $xquery = sprintf $Queries{semester}, $semester, $year;
+        }
+        elsif ( $url =~ /^\/(index\.html)?$/ ) { # list of VVs
+            $xquery = $Queries{index};
+        }
+        else {
+            return Apache2::Const::DECLINED;
+        }
     }
 
     my $db = Histvv::Db->new( $dbfile );
