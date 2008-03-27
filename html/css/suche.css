@@ -7,3 +7,65 @@ form.suche
   border-left: 1px solid #8fb635;
   float: left;
 }
+
+#suchergebnis 
+{
+  border-left: 1px solid #8fb635;
+  float: left;
+}
+#suchergebnis p
+{
+  margin-left: 15px;
+}
+#suchergebnis table
+{
+  clear: both;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  width: 750px;
+  border-spacing: 0px;
+}
+#suchergebnis th
+{
+  border-left: 1px solid #8fb635;
+  border-top: 1px solid #8fb635;
+  border-bottom: 1px solid #8fb635;
+  color: #8fb635;
+  text-align: left;
+  padding: 3px;
+  margin: 0px;
+}
+#suchergebnis .dozent
+{
+  width: 100px;
+  border-left: 1px solid #8fb635;
+}
+#suchergebnis .semester
+{
+  width: 70px;
+}
+#suchergebnis .last
+{
+  border-right: 1px solid #8fb635;
+}
+#suchergebnis td
+{
+  padding: 3px;
+}
+#suchergebnis .no
+{
+  color: #8fb635;
+  border-bottom: 1px solid #8fb635;
+  border-left: 1px solid #8fb635;
+}
+#suchergebnis .treffer,
+#suchergebnis .proSeite,
+#suchergebnis .geheZu
+{
+  float: left;
+  margin-left: 15px;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  vertical-align: middle;
+}
