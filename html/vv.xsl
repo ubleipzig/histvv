@@ -281,21 +281,24 @@
     </abbr>
   </xsl:template>
 
+  <xsl:template match="v:seite[@nr]">
+    <span class="seite" id="seite{@nr}">
+      <xsl:text>[</xsl:text>
+      <xsl:call-template name="seitenlink">
+        <xsl:with-param name="nr" select="@nr"/>
+      </xsl:call-template>
+      <xsl:text>]</xsl:text>
+    </span>
+  </xsl:template>
+
   <xsl:template match="v:seite">
     <xsl:variable name="nr">
-      <xsl:choose>
-        <xsl:when test="@nr">
-          <xsl:value-of select="@nr"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:value-of select="."/>
-        </xsl:otherwise>
-      </xsl:choose>
+      <xsl:value-of select="normalize-space(.)"/>
     </xsl:variable>
     <span class="seite" id="seite{$nr}">
-      <xsl:text>[Seite </xsl:text>
-          <xsl:value-of select="."/>
-      <xsl:text>]</xsl:text>
+      <xsl:call-template name="seitenlink">
+        <xsl:with-param name="nr" select="$nr"/>
+      </xsl:call-template>
     </span>
   </xsl:template>
 
@@ -330,6 +333,47 @@
         <xsl:text>: Vorlesungsverzeichnisse</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="seitenlink">
+    <xsl:param name="nr"/>
+    <a title="Seite {$nr}: zum Scan">
+      <xsl:attribute name="href">
+        <xsl:call-template name="seitenzahl2scan-url">
+          <xsl:with-param name="nr" select="$nr"/>
+        </xsl:call-template>
+      </xsl:attribute>
+      <xsl:value-of select="$nr"/>
+    </a>
+  </xsl:template>
+
+  <xsl:template name="seitenzahl2scan-url">
+    <xsl:param name="nr"/>
+    <xsl:text>../scans/</xsl:text>
+    <xsl:call-template name="semester-id"/>
+    <xsl:text>/</xsl:text>
+    <xsl:choose>
+      <xsl:when test="$nr > 300"> <!-- FIXME -->
+        <!-- Spaltenzahl -->
+        <xsl:choose>
+          <xsl:when test="$nr mod 2 > 0">
+            <xsl:number value="$nr" format="0001"/>
+            <xsl:text>-</xsl:text>
+            <xsl:number value="$nr + 1" format="0001"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:number value="$nr - 1" format="0001"/>
+            <xsl:text>-</xsl:text>
+            <xsl:number value="$nr" format="0001"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:when>
+      <xsl:otherwise>
+        <!-- normale Seitenzahl -->
+        <xsl:number value="$nr" format="001"/>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:text>.png</xsl:text>
   </xsl:template>
 
   <xsl:template name="seitennavigation">
@@ -367,6 +411,19 @@
         <xsl:value-of select="@xml:id"/>
       </xsl:attribute>
     </xsl:if>
+  </xsl:template>
+
+  <xsl:template name="semester-id">
+    <xsl:value-of select="/v:vv/v:kopf/v:beginn/v:jahr"/>
+    <xsl:text>-</xsl:text>
+    <xsl:choose>
+      <xsl:when test="/v:vv/v:kopf/v:semester = 'Sommer'">
+        <xsl:text>ss</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:text>ws</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
 </xsl:stylesheet>

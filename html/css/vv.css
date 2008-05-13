@@ -81,7 +81,10 @@ span.seite
   display: block;
   margin: 2em 0;
   text-align: right;
-  color: maroon;
+}
+
+span.seite a {
+  text-decoration: none;
 }
 
 ul#seitennavigation
