@@ -557,8 +557,7 @@ korrektur =
         "\x{a}" ~
         "          "
         s:assert [
-          test =
-            "not(normalize-space(.) = '' and normalize-space(@original) = '')"
+          test = "not(. = '' and not(@original))"
           "\x{a}" ~
           "            Leeres Element 'korrektur' ohne Angabe des Originaltexts\x{a}" ~
           "            ist nicht zulässig.\x{a}" ~

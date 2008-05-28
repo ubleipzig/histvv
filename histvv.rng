@@ -832,7 +832,7 @@
     <element name="korrektur">
       <s:pattern id="korrektur">
         <s:rule context="v:korrektur">
-          <s:assert test="not(normalize-space(.) = '' and normalize-space(@original) = '')">
+          <s:assert test="not(. = '' and not(@original))">
             Leeres Element 'korrektur' ohne Angabe des Originaltexts
             ist nicht zulässig.
           </s:assert>
