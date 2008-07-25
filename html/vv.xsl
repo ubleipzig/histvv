@@ -36,7 +36,15 @@
     <ol class="toc">
       <xsl:for-each select="vv">
         <li>
-          <a href="{@name}.html"><xsl:value-of select="."/></a>
+          <a href="{@name}.html">
+            <xsl:value-of select="titel"/>
+          </a>
+          <xsl:text> </xsl:text>
+          <small>
+            <xsl:text> (</xsl:text>
+            <xsl:value-of select="vnum"/>
+            <xsl:text>)</xsl:text>
+          </small>
         </li>
       </xsl:for-each>
     </ol>
