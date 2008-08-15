@@ -6,5 +6,5 @@ use File::Spec;
 use File::Temp;
 
 BEGIN {
-	use_ok( 'Histvv::Apache' );
+	use_ok( 'Apache::Histvv' );
 }

@@ -26,8 +26,8 @@ html/suche.html
 html/suche.xhtml
 html/titelblatt.jpg
 html/vv.xsl
+lib/Apache/Histvv.pm
 lib/Histvv.pm
-lib/Histvv/Apache.pm
 lib/Histvv/Build.pm
 lib/Histvv/Db.pm
 MANIFEST

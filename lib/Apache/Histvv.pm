@@ -1,11 +1,11 @@
-package Histvv::Apache;
+package Apache::Histvv;
 
 use strict;
 use warnings;
 
 =head1 NAME
 
-Histvv::Apache - the Histvv Apache handler
+Apache::Histvv - the Histvv Apache handler
 
 =head1 VERSION
 
@@ -17,10 +17,10 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-  PerlModule Histvv::Apache
+  PerlModule Apache::Histvv
   <Location /vv>
     SetHandler perl-script
-    PerlResponseHandler Histvv::Apache
+    PerlResponseHandler Apache::Histvv
   </Location>
 
 =head1 DESCRIPTION
