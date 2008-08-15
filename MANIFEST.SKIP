@@ -19,6 +19,7 @@ CVS/
 ^patches/
 ^tools/
 ^tmp/
+^_tmp/
 \.tar\.gz$
 ^doc/slides/
-^xxx/
+^histvv-....../

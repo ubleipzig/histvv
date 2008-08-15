@@ -1,3 +1,7 @@
 /Build
 /_build
 /blib
+/_tmp
+/tmp
+/histvv-??????/
+/*.patch
