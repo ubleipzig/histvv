@@ -53,13 +53,13 @@ sub new {
     $self->{path} = dirname($file);
 
     my $env_flags =
-      Db::DB_CREATE | Db::DB_INIT_MPOOL | Db::DB_INIT_LOCK | Db::DB_INIT_TXN;
+      Db::DB_CREATE | Db::DB_INIT_MPOOL | Db::DB_INIT_LOCK;
     $env_flags |= Db::DB_PRIVATE if $opts->{private};
 
     my $env;
     eval {
         $env = new DbEnv(0);
-        $env->set_cachesize( 0, 64 * 1024, 1 );
+        $env->set_cachesize( 0, 64 * 1024 * 1024, 1 );
         $env->open( $self->{path}, $env_flags, 0 );
     };
     if ( my $e = catch std::exception ) {
@@ -79,10 +79,8 @@ sub new {
 
     my $flag = $opts->{create} ? Db::DB_CREATE : 0;
     eval {
-        my $txn = $self->{mgr}->createTransaction();
         $self->{container} =
-          $self->{mgr}->openContainer( $txn, $self->{name}, $flag );
-        $txn->commit();
+          $self->{mgr}->openContainer(  $self->{name}, $flag );
     };
     if ( my $e = catch XmlException ) {
         die "Cannot open container!\n", $e->what, "\n";
@@ -188,20 +186,16 @@ sub add_index {
 sub put_doc {
     my ($self, $xml, $name) = @_;
 
-    my $txn = $self->{mgr}->createTransaction();
     my $uc = $self->{mgr}->createUpdateContext();
 
     eval {
-        $self->{container}->putDocument($txn, $name, $xml, $uc);
+        $self->{container}->putDocument($name, $xml, $uc);
     };
     if ( my $e = catch std::exception ) {
-        $txn->abort();
         die $e->what();
     } elsif ($@) {
-        $txn->abort();
         die $@;
     }
-    $txn->commit();
     1;
 }
 
@@ -232,7 +226,7 @@ Carsten Milling, C<< <cmil at hashtable.de> >>
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2007 Carsten Milling, all rights reserved.
+Copyright 2007,2008 Carsten Milling, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
