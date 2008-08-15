@@ -9,15 +9,15 @@ my $builder = Histvv::Build->new(
     dist_name           => 'histvv',
     license             => 'restrictive',
     dist_author         => 'Carsten Milling <cmil@hashtable.de>',
-    dist_version        => '0.1',
     build_requires => {
+        'Module::Build' => 0.28,
         'Test::More' => 0
     },
     requires =>
     {
      'XML::LibXML'       => 0,
      'XML::LibXSLT'      => 0,
-     'Sleepycat::DbXml'  => 2.003
+     'Sleepycat::DbXml'  => 2.0040013
     }
 );
 
