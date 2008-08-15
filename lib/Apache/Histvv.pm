@@ -74,12 +74,38 @@ for $d in collection()/v:dozentenliste[1]
 return $d
 },
 
-    dozent => q{
+    dozent => <<'EOT'
 declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
-for $d in collection()/v:dozentenliste/v:dozent
-where $d/@xml:id = "%s"
-return $d
-}
+
+let $id := "%s"
+
+let $daten := collection()/v:dozentenliste/v:dozent[@xml:id=$id]
+let $stellen := collection()/v:vv[v:kopf/v:status/@komplett]
+  //v:dozent[@ref=$id]
+
+return
+<report>
+  {$daten}
+  <stellen >
+  {
+    for $d in $stellen
+    let $node := $d/..
+    let $s := $node/preceding::v:seite[1]
+    let $snr := if ($s)
+                then (if ($s/@nr) then $s/@nr else $s/string())
+                else '1'
+    let $kopf := $d/ancestor::v:vv/v:kopf
+    let $sem := $kopf/v:semester/string()
+    let $jahr := $kopf/v:beginn/v:jahr/string()
+    return
+    <stelle semester="{$sem}" jahr="{$jahr}" seite="{$snr}">
+    {$node}
+    </stelle>
+  }
+  </stellen>
+</report>
+EOT
+
 );
 
 

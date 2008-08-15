@@ -25,7 +25,7 @@
         <script type="text/javascript" src="{$js-url}"><xsl:text> </xsl:text></script>
       </head>
       <body>
-        <xsl:apply-templates select="v:vv|/index|v:dozentenliste|/v:dozent"/>
+        <xsl:apply-templates select="v:vv|/index|/report|v:dozentenliste|/v:dozent"/>
       </body>
     </html>
   </xsl:template>
@@ -114,7 +114,13 @@
     </ol>
   </xsl:template>
 
-  <xsl:template match="/v:dozent">
+  <xsl:template match="/report[v:dozent]">
+    <xsl:apply-templates select="v:dozent"/>
+    <h3>Veranstaltungen</h3>
+    <xsl:apply-templates select="stellen"/>
+  </xsl:template>
+
+  <xsl:template match="report/v:dozent">
     <h1>
       <xsl:apply-templates select="v:name"/>
     </h1>
@@ -159,7 +165,7 @@
     <p class="pnd">PND: <xsl:value-of select="."/></p>
   </xsl:template>
 
-  <xsl:template match="v:dozentenliste/v:dozent/v:name | /v:dozent/v:name">
+  <xsl:template match="v:dozentenliste/v:dozent/v:name | /report/v:dozent/v:name">
     <xsl:value-of select="v:nachname"/>
     <xsl:if test="v:vorname">
       <xsl:text>, </xsl:text>
@@ -169,6 +175,54 @@
         <xsl:value-of select="v:nachnamenpräfix"/>
       </xsl:if>
     </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="/report[v:dozent]/stellen">
+    <table class="veranstaltungsliste">
+      <xsl:apply-templates select="stelle"/>
+    </table>
+  </xsl:template>
+
+  <xsl:template match="/report/stellen/stelle">
+    <tr>
+      <td class="nr">
+        <xsl:value-of select="position()"/>.
+      </td>
+      <td class="semester" style="white-space: nowrap;">
+        <a>
+          <xsl:attribute name="href">
+            <xsl:text>/vv/</xsl:text>
+            <xsl:value-of select="@jahr"/>
+            <xsl:text>-</xsl:text>
+            <xsl:choose>
+              <xsl:when test="@semester = 'Sommer'">
+                <xsl:text>ss</xsl:text>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:text>ws</xsl:text>
+              </xsl:otherwise>
+            </xsl:choose>
+            <xsl:text>.html#seite</xsl:text>
+            <xsl:value-of select="@seite"/>
+          </xsl:attribute>
+          <xsl:choose>
+            <xsl:when test="@semester = 'Sommer'">
+              <xsl:text>SS</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:text>WS</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="@jahr"/>
+          <xsl:text>, S. </xsl:text>
+          <xsl:value-of select="@seite"/>
+        </a>
+      </td>
+      <td>
+        <xsl:value-of select="."/>
+      </td>
+    </tr>
   </xsl:template>
 
   <xsl:template match="v:trennlinie">

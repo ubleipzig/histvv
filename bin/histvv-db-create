@@ -37,13 +37,16 @@ my $ns_histvv = 'http://histvv.uni-leipzig.de/ns/2007';
 
 print "Adding indices...\n" if $opts{verbose};
 $db->add_index($ns_xml, 'id', 'node-attribute-presence');
+$db->add_index($ns_xml, 'id', 'node-attribute-equality-string');
 $db->add_index($ns_histvv, 'vv', 'node-element-presence');
 $db->add_index($ns_histvv, 'dozentenliste', 'node-element-presence');
 $db->add_index($ns_histvv, 'veranstaltung', 'node-element-presence');
 $db->add_index($ns_histvv, 'nachname', 'node-element-equality-string');
+$db->add_index($ns_histvv, 'nachname', 'node-element-substring-string');
 $db->add_index($ns_histvv, 'nachname', 'node-element-presence');
 $db->add_index($ns_histvv, 'vorname', 'node-element-equality-string');
 $db->add_index($ns_histvv, 'vorname', 'node-element-equality-string');
+$db->add_index('', 'ref', 'node-attribute-equality-string');
 
 print "Loading files...\n" if $opts{verbose};
 foreach my $file (@ARGV) {
