@@ -616,18 +616,13 @@ dozentenliste =
       element name { nachname, vorname?, nachnamenpräfix? },
       geboren?,
       gestorben?,
-      element absatz { text }*,
-      element varianten {
-        element variante {
-          attribute vv { text },
-          attribute s { text },
-          nachname?,
-          vorname?,
-          nachnamenpräfix?,
-          grad?,
-          funktion?
-        }+
-      }?
+      
+      ## PND-Nummer
+      element pnd {
+        xsd:token { pattern = "[0-9]+X?" }
+      }?,
+      (element absatz { text }*
+       & element url { text }*)
     }+
   }
 eckdaten =

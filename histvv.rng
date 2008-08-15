@@ -920,36 +920,26 @@
           <optional>
             <ref name="gestorben"/>
           </optional>
-          <zeroOrMore>
-            <element name="absatz">
-              <text/>
-            </element>
-          </zeroOrMore>
           <optional>
-            <element name="varianten">
-              <oneOrMore>
-                <element name="variante">
-                  <attribute name="vv"/>
-                  <attribute name="s"/>
-                  <optional>
-                    <ref name="nachname"/>
-                  </optional>
-                  <optional>
-                    <ref name="vorname"/>
-                  </optional>
-                  <optional>
-                    <ref name="nachnamenpräfix"/>
-                  </optional>
-                  <optional>
-                    <ref name="grad"/>
-                  </optional>
-                  <optional>
-                    <ref name="funktion"/>
-                  </optional>
-                </element>
-              </oneOrMore>
+            <element name="pnd">
+              <a:documentation>PND-Nummer</a:documentation>
+              <data type="token">
+                <param name="pattern">[0-9]+X?</param>
+              </data>
             </element>
           </optional>
+          <interleave>
+            <zeroOrMore>
+              <element name="absatz">
+                <text/>
+              </element>
+            </zeroOrMore>
+            <zeroOrMore>
+              <element name="url">
+                <text/>
+              </element>
+            </zeroOrMore>
+          </interleave>
         </element>
       </oneOrMore>
     </element>

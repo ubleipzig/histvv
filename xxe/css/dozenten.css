@@ -1,7 +1,8 @@
 /* $Id$ */
 
 dozentenliste, universit\0000E4t,
-dozent, name, geboren, gestorben, absatz
+dozent, name, geboren, gestorben,
+pnd, absatz, url
 {
   display: block;
 }
@@ -65,7 +66,8 @@ nachnamenpr\0000E4fix:after { content: ")"; }
 
 
 dozentenliste > dozent > geboren,
-dozentenliste > dozent > gestorben
+dozentenliste > dozent > gestorben,
+dozentenliste > dozent > pnd
 {
   margin-left: 5em;
 }
@@ -90,14 +92,12 @@ gestorben > ort:before
   content: ", in ";
 }
 
-varianten { font-size: small; display: block;  }
-varianten:before { content: "Varianten"; display: block; font-weight: bold; }
+dozent > pnd:before {
+  display: marker;
+  content: "PND:";
+}
 
-variante { display: block; }
-variante:before { content: attr(vv) ", S." attr(s) ": "; }
-
-variante > nachname { font-weight: bold; }
-variante > nachname:after { content: ", "; font-weight: normal; }
-
-variante > grad:before, variante > funktion:before { content: ", "; }
-variante > grad { font-style: italic; }
+dozent > url {
+  font-size: small;
+  color: blue;
+}

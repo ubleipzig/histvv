@@ -137,6 +137,8 @@
       </p>
     </xsl:if>
     <xsl:apply-templates select="v:absatz"/>
+    <xsl:apply-templates select="v:url"/>
+    <xsl:apply-templates select="v:pnd"/>
   </xsl:template>
 
   <xsl:template match="v:dozent/v:geboren | v:dozent/v:gestorben">
@@ -151,6 +153,10 @@
       <xsl:text>, in </xsl:text>
       <xsl:value-of select="v:ort"/>
     </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="v:dozent/v:pnd">
+    <p class="pnd">PND: <xsl:value-of select="."/></p>
   </xsl:template>
 
   <xsl:template match="v:dozentenliste/v:dozent/v:name | /v:dozent/v:name">
@@ -173,7 +179,7 @@
     <p><xsl:apply-templates/></p>
   </xsl:template>
 
-  <xsl:template match="v:absatz[starts-with(., 'http://') or starts-with(., 'https://')]">
+  <xsl:template match="v:url">
     <xsl:variable name="url" select="normalize-space(.)"/>
     <p>
       <xsl:choose>
