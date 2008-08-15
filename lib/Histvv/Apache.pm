@@ -131,6 +131,7 @@ sub handler {
     my $html;
     eval { $html = $stylesheet->transform($xmldom, %params) };
     if ($@) {
+        warn "$@\n";
         return Apache2::Const::SERVER_ERROR;
     }
 
