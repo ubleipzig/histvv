@@ -1,0 +1,58 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Getopt::Long;
+use File::Basename;
+use Histvv::Db;
+use Data::Dumper;
+
+my $usage = <<EOT;
+Usage: mkdb [-v] dbfile file1.xml ...
+EOT
+
+my %opts = ( verbose => 0, help => 0 );
+GetOptions ( \%opts, 'verbose|v', 'help|h') or die $usage;
+
+if ($opts{help}) { print $usage; exit; }
+
+my $dbfile = shift || die $usage;
+die "No input files!\n$usage" unless @ARGV;
+
+if (-f $dbfile) {
+    print "File $dbfile exists. Replace? [y/N]: ";
+    my $y = <STDIN>;
+    chomp $y if defined $y;
+    exit unless $y =~ /^y(es)?$/i;
+
+    print "Deleting $dbfile...\n" if $opts{verbose};
+    unlink $dbfile or die "Cannot delete $dbfile.\n";
+}
+
+my $db = Histvv::Db->new( $dbfile, { create => 1, private => 1 } );
+
+my $ns_xml = 'http://www.w3.org/XML/1998/namespace';
+my $ns_histvv = 'http://histvv.uni-leipzig.de/ns/2007';
+
+print "Adding indices...\n" if $opts{verbose};
+$db->add_index($ns_xml, 'id', 'node-attribute-presence');
+$db->add_index($ns_histvv, 'vv', 'node-element-presence');
+$db->add_index($ns_histvv, 'dozentenliste', 'node-element-presence');
+$db->add_index($ns_histvv, 'veranstaltung', 'node-element-presence');
+$db->add_index($ns_histvv, 'nachname', 'node-element-equality-string');
+$db->add_index($ns_histvv, 'nachname', 'node-element-presence');
+$db->add_index($ns_histvv, 'vorname', 'node-element-equality-string');
+$db->add_index($ns_histvv, 'vorname', 'node-element-equality-string');
+
+print "Loading files...\n" if $opts{verbose};
+foreach my $file (@ARGV) {
+    print "  $file .." if $opts{verbose};
+    my $name = basename($file);
+    my $xml = '';
+    open F, $file or die $!;
+    $xml .= $_ while (<F>);
+    close F;
+    $db->put_doc($xml, $name);
+    print " ok\n" if $opts{verbose};
+}

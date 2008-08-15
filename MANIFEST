@@ -1,4 +1,5 @@
 bin/dbxml-query
+bin/histvv-db-create
 bin/histvv-generate-ids
 Build.PL
 Changes
