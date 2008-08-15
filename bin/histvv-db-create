@@ -9,7 +9,7 @@ use Histvv::Db;
 use Data::Dumper;
 
 my $usage = <<EOT;
-Usage: mkdb [-v] dbfile file1.xml ...
+Usage: histvv-db-create [-v] dbfile file1.xml ...
 EOT
 
 my %opts = ( verbose => 0, help => 0 );
