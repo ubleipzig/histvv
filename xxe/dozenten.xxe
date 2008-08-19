@@ -27,6 +27,12 @@
     </geboren>
   </elementTemplate>
 
+  <elementTemplate name="jahr">
+    <geboren xmlns="http://histvv.uni-leipzig.de/ns/2007">
+      <jahr></jahr>
+    </geboren>
+  </elementTemplate>
+
   <elementTemplate name="datum_ort">
     <geboren xmlns="http://histvv.uni-leipzig.de/ns/2007">
       <jahr></jahr><monat></monat><tag></tag><ort></ort>
@@ -36,6 +42,12 @@
   <elementTemplate name="default" selectable="override">
     <gestorben xmlns="http://histvv.uni-leipzig.de/ns/2007">
       <jahr></jahr><monat></monat><tag></tag>
+    </gestorben>
+  </elementTemplate>
+
+  <elementTemplate name="jahr">
+    <gestorben xmlns="http://histvv.uni-leipzig.de/ns/2007">
+      <jahr></jahr>
     </gestorben>
   </elementTemplate>
 
