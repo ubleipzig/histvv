@@ -1,4 +1,5 @@
 bin/dbxml-query
+bin/histvv-add-attribute
 bin/histvv-db-create
 bin/histvv-generate-ids
 Build.PL
@@ -37,7 +38,6 @@ t/02-apache.t
 t/pod-coverage.t
 t/pod.t
 t/test.xml
-tools/add-attributes
 xqy/dozentenliste.xq
 xxe/css/browser.css
 xxe/css/dozenten.css
