@@ -24,13 +24,10 @@ table {
   border-spacing: none;
 }
 
-table tr {
-  vertical-align: top;
-}
-
 table td, table th {
   text-align: left;
   padding: .1em .3em;
+  vertical-align: top;
 }
 
 table td.nr, table th.nr {
