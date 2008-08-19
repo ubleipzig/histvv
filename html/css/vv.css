@@ -156,3 +156,7 @@ div#verweis-tooltip
   border: 1px solid gray;
   background-color: white;
 }
+
+table.veranstaltungsliste td.semester {
+  white-space: nowrap;
+}

@@ -188,7 +188,7 @@
       <td class="nr">
         <xsl:value-of select="position()"/>.
       </td>
-      <td class="semester" style="white-space: nowrap;">
+      <td class="semester">
         <a>
           <xsl:attribute name="href">
             <xsl:text>/vv/</xsl:text>
