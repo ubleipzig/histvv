@@ -17,7 +17,8 @@ my $builder = Histvv::Build->new(
     {
      'XML::LibXML'       => 0,
      'XML::LibXSLT'      => 0,
-     'Sleepycat::DbXml'  => 2.0040013
+     'Sleepycat::DbXml'  => 2.0040013,
+     'Apache2::Request'  => 0
     }
 );
 

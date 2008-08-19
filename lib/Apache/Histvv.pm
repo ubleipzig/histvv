@@ -31,6 +31,7 @@ FIXME
 
 use Apache2::RequestRec ();
 use Apache2::RequestIO  ();
+use Apache2::Request ();
 use XML::LibXML ();
 use XML::LibXSLT ();
 use Histvv::Db ();
@@ -74,7 +75,7 @@ for $d in collection()/v:dozentenliste[1]
 return $d
 },
 
-    dozent => <<'EOT'
+    dozent => <<'EOT',
 declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
 
 let $id := "%s"
@@ -86,6 +87,37 @@ let $stellen := collection()/v:vv[v:kopf/v:status/@komplett]
 return
 <report>
   {$daten}
+  <stellen >
+  {
+    for $d in $stellen
+    let $node := $d/..
+    let $s := $node/preceding::v:seite[1]
+    let $snr := if ($s)
+                then (if ($s/@nr) then $s/@nr else $s/string())
+                else '1'
+    let $kopf := $d/ancestor::v:vv/v:kopf
+    let $sem := $kopf/v:semester/string()
+    let $jahr := $kopf/v:beginn/v:jahr/string()
+    return
+    <stelle semester="{$sem}" jahr="{$jahr}" seite="{$snr}">
+    {$node}
+    </stelle>
+  }
+  </stellen>
+</report>
+EOT
+
+    dozentenlookup => <<'EOT',
+declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
+
+let $name := "%s"
+
+let $stellen := collection()/v:vv[v:kopf/v:status/@komplett]
+  //v:dozent[not(@ref) and %s=$name]
+
+return
+<report>
+  <name>{$name}</name>
   <stellen >
   {
     for $d in $stellen
@@ -124,6 +156,12 @@ sub handler {
     if ($loc eq '/dozenten') {
         if ($url =~ /^\/(index\.html)?$/) {
             $xquery = $Queries{dozenten};
+        } elsif ($url =~ /^\/lookup$/) {
+            my $rq = Apache2::Request->new($r);
+            my $name = $rq->param('name') || return Apache2::Const::DECLINED;
+            $name =~ s/"/""/g;
+            my $query = $name =~ /\s/ ? 'normalize-space(v:nachname)' : 'v:nachname';
+            $xquery = sprintf $Queries{dozentenlookup}, $name, $query;
         } elsif ($url =~ /^\/([-_a-z0-9]+)\.html$/) {
             $xquery = sprintf $Queries{dozent}, $1;
         } else {
@@ -174,6 +212,7 @@ sub handler {
     print "URI: " . $r->uri . "\n";
     print "Location: " . $r->location . "\n";
     print "URL: " . $url . "\n";
+    print "ARGS: " . $r->args . "\n";
     print "DB: $dbfile\n";
     print "XSL: $xslfile\n";
     print "CSS: $cssurl\n";
@@ -190,7 +229,7 @@ Carsten Milling, C<< <cmil at hashtable.de> >>
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2007 Carsten Milling, all rights reserved.
+Copyright 2007, 2008 Carsten Milling, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

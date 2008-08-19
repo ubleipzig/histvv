@@ -107,6 +107,15 @@
             </xsl:when>
             <xsl:otherwise>
               <xsl:apply-templates select="v:name"/>
+              <xsl:text> </xsl:text>
+              <a>
+                <xsl:attribute name="href">                  
+                  <xsl:text>lookup?name=</xsl:text>
+                  <!-- FIXME: this needs to be URL encoded -->
+                  <xsl:value-of select="v:name/v:nachname"/>
+                </xsl:attribute>
+                <xsl:text>?</xsl:text>
+              </a>
             </xsl:otherwise>
           </xsl:choose>
         </li>
@@ -116,6 +125,12 @@
 
   <xsl:template match="/report[v:dozent]">
     <xsl:apply-templates select="v:dozent"/>
+    <h3>Veranstaltungen</h3>
+    <xsl:apply-templates select="stellen"/>
+  </xsl:template>
+
+  <xsl:template match="/report[name]">
+    <h1><xsl:value-of select="name"/></h1>
     <h3>Veranstaltungen</h3>
     <xsl:apply-templates select="stellen"/>
   </xsl:template>
@@ -177,7 +192,7 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="/report[v:dozent]/stellen">
+  <xsl:template match="/report/stellen">
     <table class="veranstaltungsliste">
       <xsl:apply-templates select="stelle"/>
     </table>
