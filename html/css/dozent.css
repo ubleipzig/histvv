@@ -1,32 +1,31 @@
 @import "include/general.css";
 
-#dozent
-{
+#dozent {
   padding: 0px 0px 0px 20px;
   border-left: 1px solid #8fb635;
   width: 600px;
   float: left;
 }
-h2
-{
+
+h2 {
   font-size: 14px;
   float: left;
   width: 410px;
   margin-bottom: 2px;
 }
-h3
-{
+
+h3 {
   font-size: 12px;
   float: left;
   width: 410px;
 }
-h4
-{
+
+h4 {
   font-size: 12px;
   margin-bottom: 2px;
 }
-img#portrait
-{
+
+img#portrait {
   float: right;
   border: 1px solid #8fb635;
   width: 180px;

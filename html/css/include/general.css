@@ -1,5 +1,4 @@
-html, body
-{
+html, body {
   color: black;
   background-color: white;
   font-family: Arial;
@@ -7,8 +6,7 @@ html, body
   padding-right: 40px;
 }
 
-h1#header
-{
+h1#header {
   font-size: 27px;
   padding: 7px;
   clear:both;
@@ -20,8 +18,8 @@ h1#header
   font-style: italic;
   margin: 0px 0px 6px 0px;
 }
-ul#nav
-{
+
+ul#nav {
   float: left;
   list-style: none;
   background-color: white;
@@ -30,25 +28,22 @@ ul#nav
   height: 100%;
 }
 
-ul#nav li
-{
+ul#nav li {
   font-size: 12px;
   line-height: 12px;
   padding: 3px 8px 3px 6px;
 }
 
-ul#nav li.selected
-{
+ul#nav li.selected {
   background-color: #8fb635;
 }
 
-ul#nav a
-{
+ul#nav a {
   color: black;
   text-decoration: none;
 }
-ul#nav li.selected a
-{
+
+ul#nav li.selected a {
   color: white;
 }
 

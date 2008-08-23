@@ -1,12 +1,10 @@
 dozentenliste, universit\0000E4t,
 dozent, name, geboren, gestorben,
-pnd, absatz, url
-{
+pnd, absatz, url {
   display: block;
 }
 
-dozentenliste
-{
+dozentenliste {
   font-family: serif; 
   color: black;
   background-color: white;
@@ -14,31 +12,27 @@ dozentenliste
 
 *:before, *:after { color: gray; }
 
-universit\0000E4t
-{
+universit\0000E4t {
   margin-bottom: 1em;
   font-size: x-large;
   text-align: center;
   font-weight: bold;
 }
 
-universit\0000E4t:before
-{
+universit\0000E4t:before {
   display: block;
   content: "Dozentenliste der Universit\0000E4t ";
   margin-top: 1em;
 }
 
 
-dozentenliste > dozent
-{
+dozentenliste > dozent {
   margin-bottom: 1em;
   padding: .3em;
   border: 1px dotted gray;
 }
 
-dozentenliste > dozent:before
-{
+dozentenliste > dozent:before {
   content: "???";
   display: block;
   text-align: left;
@@ -49,8 +43,7 @@ dozentenliste > dozent:before
   padding: 0 .3em;
 }
 
-dozentenliste > dozent[xml|id]:before
-{
+dozentenliste > dozent[xml|id]:before {
   content: attr(xml|id);
 }
 
@@ -65,13 +58,11 @@ nachnamenpr\0000E4fix:after { content: ")"; }
 
 dozentenliste > dozent > geboren,
 dozentenliste > dozent > gestorben,
-dozentenliste > dozent > pnd
-{
+dozentenliste > dozent > pnd {
   margin-left: 5em;
 }
 
-geboren:before, gestorben:before
-{
+geboren:before, gestorben:before {
   display: marker;
   content: element-label() ":";
 }
@@ -79,14 +70,12 @@ geboren:before, gestorben:before
 geboren > monat:before,
 geboren > tag:before,
 gestorben > monat:before,
-gestorben > tag:before
-{
+gestorben > tag:before {
   content: "-";
 }
 
 geboren > ort:before,
-gestorben > ort:before
-{
+gestorben > ort:before {
   content: ", in ";
 }
 

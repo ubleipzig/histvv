@@ -2,15 +2,13 @@
 
 vv absatz, sachgruppe absatz,
 veranstaltung, veranstaltungsverweis, veranstaltungsgruppe,
-seite, trennlinie
-{
+seite, trennlinie {
   display: none;
 }
 
 sachgruppe > titel { font-size: medium; }
 
-sachgruppe
-{
+sachgruppe {
   border: 1px dotted gray;
   padding: 3px;
   margin-top: 3px;
@@ -19,11 +17,16 @@ sachgruppe
 
 titel + sachgruppe { margin-top: 0; }
 
-sachgruppe { collapsible: yes; not-collapsible-head: 1; }
-sachgruppe > titel:before { content: collapser() " "; }
+sachgruppe {
+  collapsible: yes;
+  not-collapsible-head: 1;
+}
 
-sachgruppe[xml|id] > titel:after
-{
+sachgruppe > titel:before {
+  content: collapser() " ";
+}
+
+sachgruppe[xml|id] > titel:after {
   display: inline;
   color: gray;
   font-weight: normal;

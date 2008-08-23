@@ -2,31 +2,29 @@
 @import "include/form.css";
 @import "include/tooltip.css";
 
-form.suche
-{
+form.suche {
   border-left: 1px solid #8fb635;
   float: left;
 }
 
-#suchergebnis 
-{
+#suchergebnis {
   border-left: 1px solid #8fb635;
   float: left;
 }
-#suchergebnis p
-{
+
+#suchergebnis p {
   margin-left: 15px;
 }
-#suchergebnis table
-{
+
+#suchergebnis table {
   clear: both;
   margin-left: 15px;
   margin-bottom: 15px;
   width: 750px;
   border-spacing: 0px;
 }
-#suchergebnis th
-{
+
+#suchergebnis th {
   border-left: 1px solid #8fb635;
   border-top: 1px solid #8fb635;
   border-bottom: 1px solid #8fb635;
@@ -35,33 +33,33 @@ form.suche
   padding: 3px;
   margin: 0px;
 }
-#suchergebnis .dozent
-{
+
+#suchergebnis .dozent {
   width: 100px;
   border-left: 1px solid #8fb635;
 }
-#suchergebnis .semester
-{
+
+#suchergebnis .semester {
   width: 70px;
 }
-#suchergebnis .last
-{
+
+#suchergebnis .last {
   border-right: 1px solid #8fb635;
 }
-#suchergebnis td
-{
+
+#suchergebnis td {
   padding: 3px;
 }
-#suchergebnis .no
-{
+
+#suchergebnis .no {
   color: #8fb635;
   border-bottom: 1px solid #8fb635;
   border-left: 1px solid #8fb635;
 }
+
 #suchergebnis .treffer,
 #suchergebnis .proSeite,
-#suchergebnis .geheZu
-{
+#suchergebnis .geheZu {
   float: left;
   margin-left: 15px;
   width: 200px;

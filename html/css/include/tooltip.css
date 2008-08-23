@@ -1,7 +1,6 @@
 /* jQuery Tooltip Plugin */
 
-#tooltip
-{
+#tooltip {
   position: absolute;
   z-index: 3000;
   border: 1px solid #111;
@@ -10,4 +9,6 @@
   width: 30%;
 }
 
-#tooltip h3, #tooltip div { margin: 0; }
+#tooltip h3, #tooltip div {
+  margin: 0;
+}

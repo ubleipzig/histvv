@@ -2,16 +2,14 @@
 @import "include/form.css";
 @import "include/tooltip.css";
 
-#home
-{
+#home {
   padding: 0px 0px 0px 20px;
   border-left: 1px solid #8fb635;
   width: 500px;
   float: left;
 }
 
-img.ws1814 
-{
+img.ws1814 {
   filter:alpha(opacity=20); /* IE */
   -moz-opacity:0.2; /* Gecko-Browser */
   opacity:0.2; /* Opera 9+ */
@@ -20,13 +18,11 @@ img.ws1814
   clear: right;
 }
 
-h2
-{
+h2 {
   color: #8fb635;
 }
 
-form.suche
-{
+form.suche {
   float: right;
   width: 25em;
 }

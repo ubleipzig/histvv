@@ -1,46 +1,39 @@
-form.suche
-{
+form.suche {
   width: 31em;
   padding: 1em;
   position: relative;
 }
 
 form.suche fieldset,
-form.suche p.widget
-{
+form.suche p.widget {
   margin: .6em 0;
   padding: .5em;
   border: 1px solid #ddd;
 }
 
 form.suche select,
-form.suche input
-{
+form.suche input {
   border: 1px solid grey;
   font-size: 12px;
 }
 
 form.suche input[type=reset],
-form.suche input[type=submit]
-{
+form.suche input[type=submit] {
   background-color: #ddd;
 }
 
 form.suche p.widget select,
-form.suche p.widget input
-{
+form.suche p.widget input {
   width: 100%;
   margin-top: -.6em;
 }
 
-form.suche p.widget
-{
+form.suche p.widget {
   margin-top: 1em;
   position: relative;
 }
 
-form.suche p.widget label
-{
+form.suche p.widget label {
   position: relative;
   top: -1.2em;
   background-color: white;
@@ -48,8 +41,7 @@ form.suche p.widget label
 }
 
 form.suche label a,
-form.suche legend a 
-{ 
+form.suche legend a {
   color: #8fb635;
   font-size: 13px;
   text-decoration: none;
@@ -65,20 +57,22 @@ form.suche select#f-von,
 form.suche select#f-bis { min-width: 10em; }
 
 form.suche fieldset span.widget,
-form.suche fieldset div.widget
-{
+form.suche fieldset div.widget {
   display: block;
   float: left;
   margin-right: 1em;
 }
 
 form.suche fieldset span.widget label,
-form.suche fieldset div.widget label
-{
+form.suche fieldset div.widget label {
   display: block;
   font-size: 90%;
 }
 
-form.suche fieldset div.widget br { display: none; }
+form.suche fieldset div.widget br {
+  display: none;
+}
 
-div#hilfe { margin-bottom: 50em; width: 45em; }
+div#hilfe {
+  margin-bottom: 50em; width: 45em;
+}

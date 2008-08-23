@@ -1,8 +1,7 @@
 @import "include/base.css";
 @import "include/colors.css";
 
-sachgruppe
-{
+sachgruppe {
   border: 1px dotted gray;
   padding: 3px;
   margin-top: 4px;
@@ -11,15 +10,13 @@ sachgruppe
 
 titel + sachgruppe { margin-top: 0; }
 
-absatz:after
-{
+absatz:after {
   content: "\0000b6";
   color: gray;
   font-weight: bold;
 }
 
-veranstaltungsverweis:before
-{
+veranstaltungsverweis:before {
   content: "\002197";
   color: gray;
   font-weight: bold;
@@ -27,8 +24,7 @@ veranstaltungsverweis:before
 
 absatz veranstaltung:before,
 veranstaltungsgruppe veranstaltung:before,
-veranstaltungsgruppe veranstaltungsverweis:before
-{
+veranstaltungsgruppe veranstaltungsverweis:before {
   content: "{";
   color: gray;
   font-weight: bold;
@@ -38,29 +34,25 @@ veranstaltungsgruppe veranstaltungsverweis:before { content: "{\002197"; }
 
 absatz veranstaltung:after,
 veranstaltungsgruppe veranstaltung:after,
-veranstaltungsgruppe veranstaltungsverweis:after
-{
+veranstaltungsgruppe veranstaltungsverweis:after {
   content: "}";
   color: gray;
   font-weight: bold;
 }
 
-veranstaltungsgruppe > veranstaltungsgruppe:before
-{  
+veranstaltungsgruppe > veranstaltungsgruppe:before {
   content: "{{";
   color: gray;
   font-weight: bold;
 }
 
-veranstaltungsgruppe > veranstaltungsgruppe:after
-{  
+veranstaltungsgruppe > veranstaltungsgruppe:after {
   content: "}}";
   color: gray;
   font-weight: bold;
 }
 
-*[kontext=sachgruppe]:before
-{
+*[kontext=sachgruppe]:before {
   content: "\0021AA";
   color: gray;
   font-weight: bold;

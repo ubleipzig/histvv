@@ -1,19 +1,16 @@
 vv, kopf, \0000FCbersicht, sachgruppe,
 veranstaltung, veranstaltungsverweis,
-veranstaltungsgruppe, absatz, seite
-{
+veranstaltungsgruppe, absatz, seite {
   display: block;
 }
 
-vv
-{
+vv {
   font-family: serif; 
   color: black;
   background-color: white;
 }
 
-kopf
-{
+kopf {
   margin-top: .5em;
   margin-bottom: 2em;
   padding: .5em;
@@ -23,21 +20,18 @@ kopf
 kopf *:before, kopf *:after { color: gray; }
 
 kopf > *,
-kopf > status > *
-{
+kopf > status > * {
   display: block;
   margin-left: 6em;
 }
 
-kopf > status
-{
+kopf > status {
   margin-left: 0;
   margin-top: .5em; 
 }
 
 kopf > *:before,
-kopf > status > *:before
-{
+kopf > status > *:before {
   display: marker;
   content: element-label();
 }
@@ -57,8 +51,7 @@ kopf > * > tag:before { content: "-"; }
 
 kopf > semester { content: combo-box(values, "Sommer\A Winter"); }
 
-kopf > status:after
-{
+kopf > status:after {
   display: block;
   margin-left: 6em;
   content: check-box(attribute, komplett,
@@ -71,8 +64,7 @@ korrigiert > durch:before { content: "durch "; }
 korrigiert > am:before { content: "am "; }
 
 korrigiert > am,
-korrigiert > durch
-{
+korrigiert > durch {
   display: inline-block;
   margin-right: .5em;
 }
@@ -81,8 +73,7 @@ korrigiert > anmerkungen:before { content: "("; }
 korrigiert > anmerkungen:after { content: ")"; }
 
 /*
-korrigiert > am
-{
+korrigiert > am {
   padding: 1px;
   content: date-field(pattern, "dd.MM.yyyy",
                       data-type, date,
@@ -97,15 +88,13 @@ absatz > veranstaltung,
 absatz > veranstaltungsverweis,
 veranstaltungsgruppe > veranstaltung,
 veranstaltungsgruppe > veranstaltungsverweis,
-veranstaltungsgruppe > veranstaltungsgruppe
-{
+veranstaltungsgruppe > veranstaltungsgruppe {
   display: inline;
 }
 
 veranstaltung,
 veranstaltungsverweis,
-veranstaltungsgruppe
-{
+veranstaltungsgruppe {
   margin: .5em 0;
 }
 
@@ -114,21 +103,18 @@ gesperrt { font-family: sans-serif; }
 kursiv { font-style: italic; }
 
 
-vv > titel, vv > untertitel
-{
+vv > titel, vv > untertitel {
   display: block;
   font-weight: bold;
   margin-top: 1em;
   text-align: center;
 }
 
-vv > titel
-{
+vv > titel {
   font-size: xx-large;
 }
 
-\0000FCbersicht > titel
-{
+\0000FCbersicht > titel {
   display: block;
   margin: 1em 0;
   font-weight: bold;
@@ -136,13 +122,11 @@ vv > titel
   text-align: center;
 }
 
-sachgruppe > sachgruppe
-{
+sachgruppe > sachgruppe {
   margin-left: 1em;
 }
 
-sachgruppe > titel
-{
+sachgruppe > titel {
   display: block;
   font-weight: bold;
   font-size: large;
@@ -154,8 +138,7 @@ seite:after  { content: "]"; color: gray; }
 
 seite[nr] { content: attr(nr); color: gray; }
 
-sic
-{
+sic {
   display: inline-block; 
   border: 1px solid transparent;
   border-bottom-color: gray;
@@ -169,8 +152,7 @@ scil:after { color: gray; content: " [scil. \"" attr(text) "\"]"; }
 korrektur:before { color: gray; content: "["; font-style: normal; }
 korrektur:after { color: gray; content: "]"; font-style: normal; }
 
-trennlinie 
-{
+trennlinie {
   display: block;
   margin: .5em 0;
   border: 1px solid gray;
@@ -194,18 +176,15 @@ dozent > funktion { font-style: italic; }
 modus   { font-style: italic; }
 geb\0000FChr { font-style: italic; }
 
-thema autor
-{
+thema autor {
   font-family: sans-serif;
   text-decoration: underline;
 }
 
-thema > schrift
-{
+thema > schrift {
   text-decoration: underline;
 }
 
-thema > schrift > titel
-{
+thema > schrift > titel {
   font-style: italic;
 }

@@ -1,20 +1,17 @@
 @import "include/tooltip.css";
 
-html, body
-{
+html, body {
   color: black;
   background-color: white;
   font-family: Georgia, serif;
 }
 
-body
-{
+body {
   margin: 2em 15%;
   position: relative;
 }
 
-body > h1
-{
+body > h1 {
   text-align: center;
 }
 
@@ -42,45 +39,46 @@ ol.toc ~ img {
   margin: 2em auto;
 }
 
-div.uebersicht > h2
-{
+div.uebersicht > h2 {
   text-align: center;
   font-variant: small-caps;
 }
 
-div.sachgruppe > h2
-{
+div.sachgruppe > h2 {
   text-align: center;
   margin: 2em auto 1em;
 }
 
-div.sachgruppe div.sachgruppe div.sachgruppe div.sachgruppe h4
-{ margin-left: 1.5em; }
+div.sachgruppe div.sachgruppe div.sachgruppe div.sachgruppe h4 {
+  margin-left: 1.5em;
+}
 
 div.sachgruppe div.sachgruppe div.sachgruppe div.sachgruppe
-div.sachgruppe h4
-{ margin-left: 3em; }
+div.sachgruppe h4 {
+  margin-left: 3em;
+}
 
 div.sachgruppe div.sachgruppe div.sachgruppe div.sachgruppe
-div.sachgruppe div.sachgruppe h4
-{ margin-left: 4.5em; }
+div.sachgruppe div.sachgruppe h4 {
+  margin-left: 4.5em;
+}
 
 div.sachgruppe div.sachgruppe div.sachgruppe div.sachgruppe
-div.sachgruppe div.sachgruppe div.sachgruppe h4
-{ margin-left: 6em; }
+div.sachgruppe div.sachgruppe div.sachgruppe h4 {
+  margin-left: 6em;
+}
 
 div.sachgruppe div.sachgruppe div.sachgruppe div.sachgruppe
-div.sachgruppe div.sachgruppe div.sachgruppe div.sachgruppe h4
-{ margin-left: 7.5em; }
+div.sachgruppe div.sachgruppe div.sachgruppe div.sachgruppe h4 {
+  margin-left: 7.5em;
+}
 
-em.gesperrt, span.autor
-{
+em.gesperrt, span.autor {
   font-style: normal;
   letter-spacing: .3em;
 }
 
-span.schrift span.titel
-{
+span.schrift span.titel {
   font-style: italic;
 }
 
@@ -96,8 +94,7 @@ del { display: none; }
 abbr { cursor: help; }
 
 
-span.seite
-{
+span.seite {
   display: block;
   margin: 2em 0;
   text-align: right;
@@ -107,8 +104,7 @@ span.seite a {
   text-decoration: none;
 }
 
-ul#seitennavigation
-{
+ul#seitennavigation {
 
   list-style-type: none;
   display: inline;
@@ -116,33 +112,28 @@ ul#seitennavigation
   margin: 1em 0;
 }
 
-ul#seitennavigation:before
-{
+ul#seitennavigation:before {
   content: "Seiten: ";
 }
 
-ul#seitennavigation li
-{
+ul#seitennavigation li {
   display: inline;
 }
 
 hr { width: 40%; margin: 1.5em auto; }
 
-.veranstaltungsverweis
-{
+.veranstaltungsverweis {
   color: #555;
   cursor: help;
 }
 
-.veranstaltungsverweis:before
-{
+.veranstaltungsverweis:before {
   content: "\002197  ";
   color: #555;
   font-weight: bold;
 }
 
-div#verweis-tooltip
-{
+div#verweis-tooltip {
   display: none;
   position: absolute;
   width: 60%;

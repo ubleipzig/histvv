@@ -4,8 +4,7 @@ modus        { background-color: #e9d8ab; }
 geb\0000FChr { background-color: #f0d9bb; }
 ort          { background-color: #dbffdb; }
 
-thema > ort
-{
+thema > ort {
   background-color: inherit;
   display: inline-block;
   border: 1px solid transparent;
