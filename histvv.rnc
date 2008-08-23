@@ -620,7 +620,7 @@ dozentenliste =
         xsd:token { pattern = "[0-9]+X?" }
       }?,
       (element absatz { text }*
-       & element url { text }*)
+       & element url { http-url }*)
     }+
   }
 eckdaten =
@@ -628,3 +628,4 @@ eckdaten =
   element ort { text }?
 geboren = element geboren { eckdaten }
 gestorben = element gestorben { eckdaten }
+http-url = xsd:anyURI { pattern = "https?://.+" }

@@ -935,7 +935,7 @@
             </zeroOrMore>
             <zeroOrMore>
               <element name="url">
-                <text/>
+                <ref name="http-url"/>
               </element>
             </zeroOrMore>
           </interleave>
@@ -963,6 +963,12 @@
     <element name="gestorben">
       <ref name="eckdaten"/>
     </element>
+  </define>
+
+  <define name="http-url">
+    <data type="anyURI">
+      <param name="pattern">https?://.+</param>
+    </data>
   </define>
 
 </grammar>
