@@ -8,7 +8,7 @@ use XML::LibXML;
 use XML::LibXML::XPathContext;
 
 my $usage = <<EOT;
-Usage: add-ids [-l] [-w] file
+Usage: histvv-generate-ids [-l] [-w] file
 
 Without any options the modified document is printed to
 standard output.
@@ -57,6 +57,12 @@ my $doc = XML::LibXML->new->parse_file($file);
 my $xc = XML::LibXML::XPathContext->new($doc);
 $xc->registerNs('v', $nsuri);
 $xc->registerFunctionNS('num', $nsuri, \&_num);
+
+my $jahr = $xc->findvalue('/v:vv/v:kopf/v:beginn/v:jahr')
+  || die "Cannot find element 'beginn/jahr'\n";
+my $sem = $xc->findvalue('/v:vv/v:kopf/v:semester')
+  || die "Cannot find element 'semester'\n";
+my $prefix = sprintf "%s%s", $jahr, $sem eq 'Winter' ? 'w' : 's';
 
 binmode STDOUT, ":utf8" if $opts{list};
 my %cnt;
@@ -112,7 +118,7 @@ sub get_sgid {
     for ($xc->findnodes('ancestor-or-self::v:sachgruppe', $sg)) {
         push @nums, get_sgnum($_);
     }
-    my $id = 'sg-' . join('.', @nums);
+    my $id = sprintf 'sg-%s-%s', $prefix, join('.', @nums);
 }
 
 #
