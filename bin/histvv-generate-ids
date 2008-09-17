@@ -112,13 +112,21 @@ if ($opts{write}) {
 #
 # determine ID for 'sachgruppe'
 #
+my %track;
 sub get_sgid {
     my $sg = shift;
-    my @nums;
-    for ($xc->findnodes('ancestor-or-self::v:sachgruppe', $sg)) {
-        push @nums, get_sgnum($_);
+    my $num = get_sgnum($sg);
+
+    my $id;
+    if (my $parent = $xc->findvalue('parent::v:sachgruppe/@xml:id', $sg)) {
+        $id = "$parent.$num";
+    } else {
+        $id = "sg-$prefix-$num";
     }
-    my $id = sprintf 'sg-%s-%s', $prefix, join('.', @nums);
+    # deal with inconsistent numbering
+    $id .= "_$track{$id}" if ($track{$id}++);
+
+    return $id;
 }
 
 #
