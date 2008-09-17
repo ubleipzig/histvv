@@ -176,7 +176,16 @@
   </xsl:template>
 
   <xsl:template match="v:dozent/v:pnd">
-    <p class="pnd">PND: <xsl:value-of select="."/></p>
+    <p class="pnd">
+      PND:
+      <a>
+        <xsl:attribute name="href">
+          <xsl:text>http://d-nb.info/gnd/</xsl:text>
+          <xsl:value-of select="."/>
+        </xsl:attribute>
+        <xsl:value-of select="."/>
+      </a>
+    </p>
   </xsl:template>
 
   <xsl:template match="v:dozentenliste/v:dozent/v:name | /report/v:dozent/v:name">
