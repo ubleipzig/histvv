@@ -617,7 +617,7 @@ dozentenliste =
       
       ## PND-Nummer
       element pnd {
-        xsd:token { pattern = "[0-9]+X?" }
+        xsd:token { pattern = "[0-9]{8}[0-9X]" }
       }?,
       (element absatz { text }*
        & element url { http-url }*)
