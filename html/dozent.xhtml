@@ -3,26 +3,21 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="icon" href="css/gfx/favicon.png" type="image/png" />
-    <link rel="stylesheet" href="css/dozent.css"/>
-    <title>Histvv-Dozent [Entwurf]</title>
+    <link rel="stylesheet" href="css/histvv.css"/>
+    <title>Histvv: Dozent</title>
   </head>
 
   <body>
+    <div id="header">
+      <strong>Histvv</strong>
+    </div>
 
-    <h1 id="header">hist-vv</h1>
+    <div id="content" class="dozent">
+      <h1>Prof. Dr. <span class="name">Karl Lamprecht</span></h1>
 
-    <ul id="nav">
-      <li><a href="home.xhtml">Home</a></li>
-      <li><a href="suche.xhtml">Suche</a></li>
-      <li><a href="#vv/">Vorlesungsverzeichnisse</a></li>
-      <li class="selected"><a href="dozent.xhtml">Dozenten</a></li>
-      <li><a href="#statistiken/">Statistiken</a></li>
-    </ul>
-
-    <div id="dozent">
-      <h2 class="name">Prof. Dr. Karl Lamprecht</h2>
-
-      <img id="portrait" src="http://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Karl_Lamprecht.jpg/180px-Karl_Lamprecht.jpg" alt="Karl Lamprecht"/>
+      <img class="portrait"
+           alt="Karl Lamprecht"
+           src="http://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Karl_Lamprecht.jpg/180px-Karl_Lamprecht.jpg" />
 
       <h3>geb. am 25. Februar 1856 in Jessen, gest. am 10. Mai 1915 in Leipzig</h3> 
 
@@ -66,5 +61,24 @@
         <li><a href="http://de.wikipedia.org/wiki/Karl_Lamprecht">Wikipedia</a></li>
       </ul>
     </div>
+
+    <hr/>
+
+    <div id="sidebar">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/vv/">Vorlesungsverzeichnisse</a></li>
+        <li class="current"><a href="/dozenten/">Dozenten</a></li>
+        <li><a href="/suche/">Suche</a></li>
+        <li><a href="#statistiken/">Statistiken</a></li>
+      </ul>
+    </div>
+
+    <hr/>
+
+    <div id="footer">
+      © <a href="http://www.ub.uni-leipzig.de/">Universitätsbibliothek Leipzig</a>
+    </div>
+
   </body>
 </html>

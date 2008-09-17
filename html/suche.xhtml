@@ -3,245 +3,259 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="icon" href="css/gfx/favicon.png" type="image/png" />
-    <link rel="stylesheet" href="css/suche.css"/>
+    <link rel="stylesheet" href="css/histvv.css"/>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.dimensions.js"></script>
     <script type="text/javascript" src="js/jquery.tooltip.js"></script>
     <script type="text/javascript" src="js/form.js"></script>
-    <title>Histvv-Suche [Entwurf]</title>
+    <title>Histvv: Suche</title>
   </head>
 
   <body>
+    <div id="header">
+      <strong>Histvv</strong>
+    </div>
 
-    <h1 id="header">hist-vv</h1>
+    <div id="content">
+      <h1>Veranstaltungssuche</h1>
 
-    <ul id="nav">
-      <li><a href="home.xhtml">Home</a></li>
-      <li class="selected"><a href="#">Suche</a></li>
-      <li><a href="#vv/">Vorlesungsverzeichnisse</a></li>
-      <li><a href="dozent.xhtml">Dozenten</a></li>
-      <li><a href="#statistiken/">Statistiken</a></li>
-    </ul>
-
-    <form id="suchformular" class="suche" action="#">
-      <p class="widget">
-        <label for="f-volltext">Volltext <a href="#hilfe-volltext">[i]</a></label>
-        <br/>
-        <input type="text" id="f-volltext" name="volltext" value=""/>
-      </p>
-
-      <fieldset>
-        <legend>Semester <a href="#hilfe-semester">[i]</a></legend>
-        <span class="widget">
-          <label for="f-von">von</label>
-          <select name="semester-von" id="f-von">
-            <option>Wintersemester 1814/15</option>
-            <option>Sommersemester 1815</option>
-            <option>Wintersemester 1815/16</option>
-          </select>
-        </span>
-        <span class="widget">
-          <label for="f-bis">bis</label>
-          <select name="semester-bis" id="f-bis">
-            <option>Wintersemester 1913/14</option>
-            <option>Sommersemester 1914</option>
-            <option selected="selected">Wintersemester 1914/15</option>
-          </select>
-        </span>
-      </fieldset>
-
-      <p class="widget">
-        <label for="f-sachgruppe">Sachgruppe <a href="#hilfe-sachgruppe">[i]</a></label>
-        <br/>
-        <select id="f-sachgruppe" name="sachgruppe" size="3" multiple="multiple">
-          <option>Literatur</option>
-          <option>Medizin</option>
-          <option>Philosophie</option>
-          <option>Recht</option>
-          <option>Theologie</option>
-        </select>
-      </p>
-
-      <fieldset>
-        <legend>Dozenten <a href="#hilfe-dozenten">[i]</a></legend>
-        <div class="widget">
-          <label for="f-grad">Akad. Grad</label><br/>
-          <select id="f-grad" name="grad" size="3" multiple="multiple">
-            <option>M.</option>
-            <option>Dr.</option>
-            <option>Prof.</option>
-            <option>Bac.</option>
-            <option>Lic.</option>
-          </select>
-        </div>
-        <div class="widget">
-          <label for="f-dozent">Name</label>
+      <form id="suchformular" class="suche" action="#">
+        <p class="widget">
+          <label for="f-volltext">Volltext <a href="#hilfe-volltext">[i]</a></label>
           <br/>
-          <select id="f-dozent" name="dozent" size="3" multiple="multiple">
-            <option>Aalhaus, Albert</option>
-            <option>Abels, Albrecht</option>
-            <option>Achtermann, Bruno</option>
-            <option>Bode, Immanuel</option>
+          <input type="text" id="f-volltext" name="volltext" value=""/>
+        </p>
+
+        <fieldset>
+          <legend>Semester <a href="#hilfe-semester">[i]</a></legend>
+          <span class="widget">
+            <label for="f-von">von</label>
+            <select name="semester-von" id="f-von">
+              <option>Wintersemester 1814/15</option>
+              <option>Sommersemester 1815</option>
+              <option>Wintersemester 1815/16</option>
+            </select>
+          </span>
+          <span class="widget">
+            <label for="f-bis">bis</label>
+            <select name="semester-bis" id="f-bis">
+              <option>Wintersemester 1913/14</option>
+              <option>Sommersemester 1914</option>
+              <option selected="selected">Wintersemester 1914/15</option>
+            </select>
+          </span>
+        </fieldset>
+
+        <p class="widget">
+          <label for="f-sachgruppe">Sachgruppe <a href="#hilfe-sachgruppe">[i]</a></label>
+          <br/>
+          <select id="f-sachgruppe" name="sachgruppe" size="3" multiple="multiple">
+            <option>Literatur</option>
+            <option>Medizin</option>
+            <option>Philosophie</option>
+            <option>Recht</option>
+            <option>Theologie</option>
           </select>
+        </p>
+
+        <fieldset>
+          <legend>Dozenten <a href="#hilfe-dozenten">[i]</a></legend>
+          <div class="widget">
+            <label for="f-grad">Akad. Grad</label><br/>
+            <select id="f-grad" name="grad" size="3" multiple="multiple">
+              <option>M.</option>
+              <option>Dr.</option>
+              <option>Prof.</option>
+              <option>Bac.</option>
+              <option>Lic.</option>
+            </select>
+          </div>
+          <div class="widget">
+            <label for="f-dozent">Name</label>
+            <br/>
+            <select id="f-dozent" name="dozent" size="3" multiple="multiple">
+              <option>Aalhaus, Albert</option>
+              <option>Abels, Albrecht</option>
+              <option>Achtermann, Bruno</option>
+              <option>Bode, Immanuel</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Fakultäten <a href="#hilfe-fakultaeten">[i]</a></legend>
+          <label class="widget">
+            <input type="checkbox" value="theologie" /> Theologische Fakultät
+          </label>
+          <label class="widget">
+            <input type="checkbox" value="philosophie" /> Philosophische Fakultät
+          </label>
+          <br />
+          <label class="widget">
+            <input type="checkbox" value="jura" /> Juristische Fakultät
+          </label>
+          <label class="widget">
+            <input type="checkbox" value="medizin" /> Medizinische Fakultät
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Lehrform <a href="#hilfe-lehrform">[i]</a></legend>
+          <label class="widget">
+            <input type="checkbox" value="publice" /> Vorlesung
+          </label>
+          <label class="widget">
+            <input type="checkbox" value="gratis" /> Übung
+          </label>
+          <label class="widget">
+            <input type="checkbox" value="privatim" /> Examinatorium
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Veranstaltungsmodus <a href="#hilfe-modus">[i]</a></legend>
+          <label class="widget">
+            <input type="checkbox" value="publice" /> publice/öffentlich
+          </label>
+          <label class="widget">
+            <input type="checkbox" value="gratis" /> gratis/unentgeltlich
+          </label>
+          <label class="widget">
+            <input type="checkbox" value="privatim" />&#160;privatim
+          </label>
+          <br />
+          <label class="widget">
+            <input type="checkbox" value="privatissime" />&#160;privatissime
+          </label>
+        </fieldset>
+
+        <p class="buttonbar">
+          <input type="submit" value="Veranstaltungen suchen"/>
+          <br class="clear"/>
+        </p>
+      </form>
+
+      <div id="hilfe">
+        <h2>Hilfe</h2>
+
+        <div id="hilfe-volltext">
+          <h3>Volltext</h3>
+
+          <p>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+            sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+            magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
+            quis nostrud exerci tation ullamcorper suscipit lobortis
+            nisl ut aliquip ex ea commodo consequat.
+          </p>
         </div>
-      </fieldset>
 
-      <fieldset>
-        <legend>Fakultäten <a href="#hilfe-fakultaeten">[i]</a></legend>
-        <label class="widget">
-          <input type="checkbox" value="theologie" /> Theologische Fakultät
-        </label>
-        <label class="widget">
-          <input type="checkbox" value="philosophie" /> Philosophische Fakultät
-        </label>
-        <br />
-        <label class="widget">
-          <input type="checkbox" value="jura" /> Juristische Fakultät
-        </label>
-        <label class="widget">
-          <input type="checkbox" value="medizin" /> Medizinische Fakultät
-        </label>
-      </fieldset>
+        <div id="hilfe-sachgruppe">
+          <h3>Sachgruppen</h3>
+          <p>
+            Duis autem vel eum iriure <em>dolor</em> in hendrerit in
+            vulputate velit esse molestie consequat, vel illum dolore eu
+            feugiat nulla facilisis at vero eros et accumsan et iusto
+            odio dignissim qui blandit praesent luptatum zzril delenit
+            augue duis dolore te feugait nulla facilisi.
+          </p>
+        </div>
 
-      <fieldset>
-        <legend>Lehrform <a href="#hilfe-lehrform">[i]</a></legend>
-        <label class="widget">
-          <input type="checkbox" value="publice" /> Vorlesung
-        </label>
-        <label class="widget">
-          <input type="checkbox" value="gratis" /> Übung
-        </label>
-        <label class="widget">
-          <input type="checkbox" value="privatim" /> Examinatorium
-        </label>
-      </fieldset>
+        <div id="hilfe-semester">
+          <h3>Semester</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+            sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+            magna aliquam erat volutpat.
+          </p>
+        </div>
 
-      <fieldset>
-        <legend>Veranstaltungsmodus <a href="#hilfe-modus">[i]</a></legend>
-        <label class="widget">
-          <input type="checkbox" value="publice" /> publice/öffentlich
-        </label>
-        <label class="widget">
-          <input type="checkbox" value="gratis" /> gratis/unentgeltlich
-        </label>
-        <label class="widget">
-          <input type="checkbox" value="privatim" />&#160;privatim
-        </label>
-        <br />
-        <label class="widget">
-          <input type="checkbox" value="privatissime" />&#160;privatissime
-        </label>
-      </fieldset>
+        <div id="hilfe-dozenten">
+          <h3>Dozenten</h3>
+          <p>
+            Ut wisi enim ad minim veniam, quis nostrud exerci tation
+            ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
+            consequat. Duis autem vel eum iriure dolor in hendrerit in
+            vulputate velit esse molestie consequat, vel illum dolore eu
+            <a href="http://hashtable.de/">feugiat</a> nulla facilisis
+            at vero eros et accumsan et iusto odio dignissim qui blandit
+            praesent luptatum zzril delenit augue duis dolore te feugait
+            nulla facilisi.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+            sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+            magna aliquam erat volutpat.
+          </p>
+        </div>
 
-      <p class="buttonbar">
-        <input type="reset" value="Zurücksetzen"/>
-        <input type="submit" value="Veranstaltungen suchen" onclick="document.location='suchergebnis.xhtml'"/>
-        <br class="clear"/>
-      </p>
-    </form>
+        <div id="hilfe-fakultaeten">
+          <h3>Fakultäten</h3>
+          <p>
+            Duis autem vel eum iriure dolor in hendrerit in vulputate
+            velit esse molestie consequat, vel illum dolore eu feugiat
+            nulla facilisis at vero eros et accumsan et iusto odio
+            dignissim qui <strong>blandit</strong> praesent luptatum
+            zzril delenit augue duis dolore te feugait nulla facilisi.
+          </p>
+        </div>
 
-    <div id="hilfe">
-      <h2>Hilfe</h2>
+        <div id="hilfe-orte">
+          <h3>Orte</h3>
+          <p>
+            Ut wisi enim ad minim <a title="Google Maps"
+            href="http://maps.google.de/">veniam</a>, quis nostrud
+            exerci tation ullamcorper suscipit lobortis nisl ut aliquip
+            ex ea commodo consequat.
+          </p>
+        </div>
 
-      <div id="hilfe-volltext">
-        <h3>Volltext</h3>
+        <div id="hilfe-lehrform">
+          <h3>Lehrform</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+            sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+            magna aliquam erat volutpat. Duis autem vel eum iriure dolor
+            in hendrerit in vulputate velit esse molestie consequat, vel
+            illum dolore eu feugiat nulla facilisis at vero eros et
+            accumsan et iusto odio dignissim qui blandit praesent
+            luptatum zzril delenit augue duis dolore te feugait nulla
+            facilisi.
+          </p>
+        </div>
 
-        <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-          sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-          magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-          quis nostrud exerci tation ullamcorper suscipit lobortis
-          nisl ut aliquip ex ea commodo consequat.
-        </p>
+        <div id="hilfe-modus">
+          <h3>Veranstaltungsmodus</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+            sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+            magna aliquam erat volutpat. Duis autem vel eum iriure dolor
+            in hendrerit in vulputate velit esse molestie consequat, vel
+            illum dolore eu feugiat nulla facilisis at vero eros et
+            accumsan et iusto odio dignissim qui blandit praesent
+            luptatum zzril delenit augue duis dolore te feugait nulla
+            facilisi.
+          </p>
+        </div>
       </div>
+    </div>
 
-      <div id="hilfe-sachgruppe">
-        <h3>Sachgruppen</h3>
-        <p>
-          Duis autem vel eum iriure <em>dolor</em> in hendrerit in
-          vulputate velit esse molestie consequat, vel illum dolore eu
-          feugiat nulla facilisis at vero eros et accumsan et iusto
-          odio dignissim qui blandit praesent luptatum zzril delenit
-          augue duis dolore te feugait nulla facilisi.
-        </p>
-      </div>
+    <hr/>
 
-      <div id="hilfe-semester">
-        <h3>Semester</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-          sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-          magna aliquam erat volutpat.
-        </p>
-      </div>
+    <div id="sidebar">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/vv/">Vorlesungsverzeichnisse</a></li>
+        <li><a href="/dozenten/">Dozenten</a></li>
+        <li class="current"><a href="/suche/">Suche</a></li>
+        <li><a href="#statistiken/">Statistiken</a></li>
+      </ul>
+    </div>
 
-      <div id="hilfe-dozenten">
-        <h3>Dozenten</h3>
-        <p>
-          Ut wisi enim ad minim veniam, quis nostrud exerci tation
-          ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-          consequat. Duis autem vel eum iriure dolor in hendrerit in
-          vulputate velit esse molestie consequat, vel illum dolore eu
-          <a href="http://hashtable.de/">feugiat</a> nulla facilisis
-          at vero eros et accumsan et iusto odio dignissim qui blandit
-          praesent luptatum zzril delenit augue duis dolore te feugait
-          nulla facilisi.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-          sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-          magna aliquam erat volutpat.
-        </p>
-      </div>
+    <hr/>
 
-      <div id="hilfe-fakultaeten">
-        <h3>Fakultäten</h3>
-        <p>
-          Duis autem vel eum iriure dolor in hendrerit in vulputate
-          velit esse molestie consequat, vel illum dolore eu feugiat
-          nulla facilisis at vero eros et accumsan et iusto odio
-          dignissim qui <strong>blandit</strong> praesent luptatum
-          zzril delenit augue duis dolore te feugait nulla facilisi.
-        </p>
-      </div>
-
-      <div id="hilfe-orte">
-        <h3>Orte</h3>
-        <p>
-          Ut wisi enim ad minim <a title="Google Maps"
-          href="http://maps.google.de/">veniam</a>, quis nostrud
-          exerci tation ullamcorper suscipit lobortis nisl ut aliquip
-          ex ea commodo consequat.
-        </p>
-      </div>
-
-      <div id="hilfe-lehrform">
-        <h3>Lehrform</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-          sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-          magna aliquam erat volutpat. Duis autem vel eum iriure dolor
-          in hendrerit in vulputate velit esse molestie consequat, vel
-          illum dolore eu feugiat nulla facilisis at vero eros et
-          accumsan et iusto odio dignissim qui blandit praesent
-          luptatum zzril delenit augue duis dolore te feugait nulla
-          facilisi.
-        </p>
-      </div>
-
-      <div id="hilfe-modus">
-        <h3>Veranstaltungsmodus</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-          sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-          magna aliquam erat volutpat. Duis autem vel eum iriure dolor
-          in hendrerit in vulputate velit esse molestie consequat, vel
-          illum dolore eu feugiat nulla facilisis at vero eros et
-          accumsan et iusto odio dignissim qui blandit praesent
-          luptatum zzril delenit augue duis dolore te feugait nulla
-          facilisi.
-        </p>
-      </div>
+    <div id="footer">
+      © <a href="http://www.ub.uni-leipzig.de/">Universitätsbibliothek Leipzig</a>
     </div>
 
   </body>

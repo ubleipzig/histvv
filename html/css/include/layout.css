@@ -1,0 +1,84 @@
+html {
+  margin: 0px;
+}
+
+body {
+  width: 900px;
+}
+
+body  hr {
+  display: none;
+}
+
+#header {
+  background-color: #8fb635;
+  background-image: url("../gfx/histvvfraktur.png");
+  background-repeat: no-repeat;
+  background-position: 8px;  
+  color: white;
+  font-style: italic;
+  font-size: 27px;
+  padding: 7px;
+  margin-bottom: 6px;
+}
+
+#content {
+  float: left;
+  width: 670px;
+  padding: 0 15px;
+  border-left: 1px solid #8fb635;
+  margin-left: 200px;
+  margin-bottom: 6px;
+}
+
+* html #content { display: inline; }
+
+#sidebar {
+  float: left;
+  width: 199px;
+  margin-left: -900px;
+  padding-bottom: 200px;
+  border-right: 1px solid #8fb635;
+}
+
+#footer {
+  clear: both;
+  margin-top: 16px;
+  border-top: 1px dotted #8fb635;
+  padding: 3px;
+}
+
+#sidebar ul {
+  list-style: none;
+  background-color: white;
+  padding: 0px;
+  margin: 0px;
+}
+
+#sidebar ul li {
+  font-size: 12px;
+  line-height: 12px;
+}
+
+#sidebar ul li.current {
+  background-color: #8fb635;
+}
+
+#sidebar ul a {
+  display: block;
+  width: 185px;
+  padding: 3px 8px 3px 6px;
+  padding: 3px 3%; 
+  width: 94%;
+  color: black;
+  text-decoration: none;
+}
+
+#sidebar ul a:hover {
+  color: #8fb635;
+}
+
+#sidebar ul li.current a,
+#sidebar ul li.current a:hover {
+  color: white;
+}

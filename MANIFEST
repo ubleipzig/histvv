@@ -6,14 +6,12 @@ Build.PL
 Changes
 histvv.rnc
 histvv.rng
-html/css/dozent.css
 html/css/gfx/favicon.png
 html/css/gfx/histvvfraktur.png
-html/css/home.css
+html/css/histvv.css
 html/css/include/form.css
-html/css/include/general.css
+html/css/include/layout.css
 html/css/include/tooltip.css
-html/css/suche.css
 html/css/vv.css
 html/dozent.xhtml
 html/home.xhtml
@@ -25,6 +23,7 @@ html/js/vv.js
 html/ns.xhtml
 html/suche.html
 html/suche.xhtml
+html/suchergebnis.xhtml
 html/titelblatt.jpg
 html/vv.xsl
 lib/Apache/Histvv.pm
