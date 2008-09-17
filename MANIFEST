@@ -24,7 +24,7 @@ html/suche.html
 html/suche.xhtml
 html/suchergebnis.xhtml
 html/titelblatt.jpg
-html/vv.xsl
+html/xsl/vv.xsl
 lib/Apache/Histvv.pm
 lib/Histvv.pm
 lib/Histvv/Build.pm
