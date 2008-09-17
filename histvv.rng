@@ -482,14 +482,6 @@
       "Derselbe", "Ders." etc.
     </a:documentation>
     <element name="ders">
-      <s:pattern id="ders">
-        <s:rule context="v:ders">
-          <s:assert test="not(string(.) and normalize-space(.) = '')">
-            Element 'ders' muß entweder leer bleiben oder Text
-            enthalten.
-          </s:assert>
-        </s:rule>
-      </s:pattern>
       <ref name="common.attributes"/>
       <ref name="model.text"/>
     </element>
@@ -732,9 +724,6 @@
     <element name="scil">
       <s:pattern id="scil">
         <s:rule context="v:scil">
-          <s:assert test="not(text()='')">
-            Leeres 'scil' ist nicht sinnvoll.
-          </s:assert>
           <s:assert test="not(@text='???')">
             Attribut 'text' enthält Platzhaltertext ('???').
           </s:assert>
@@ -749,13 +738,6 @@
   <define name="notiz">
     <a:documentation></a:documentation>
     <element name="notiz">
-      <s:pattern id="notiz">
-        <s:rule context="v:notiz">
-          <s:assert test="not(text()='')">
-            Leere 'notiz' ist nicht sinnvoll.
-          </s:assert>
-        </s:rule>
-      </s:pattern>
       <ref name="common.attributes"/>
       <optional>
         <attribute name="betreff"/>
@@ -812,13 +794,6 @@
       Markierung ungewöhnlicher Schreibweisen im Original
     </a:documentation>
     <element name="sic">
-      <s:pattern id="sic">
-        <s:rule context="v:sic">
-          <s:assert test="not(text()='')">
-            Leeres 'sic' ist nicht sinnvoll.
-          </s:assert>
-        </s:rule>
-      </s:pattern>
       <ref name="basic.attributes"/>
       <text/>
     </element>
@@ -970,5 +945,16 @@
       <param name="pattern">https?://.+</param>
     </data>
   </define>
+
+  <s:pattern id="nonempty-elements">
+    <s:rule context="v:nachname | v:vorname | v:nachnamenpräfix |
+                     v:funktion | v:grad | v:ders |
+                     v:thema | v:gebühr | v:modus | v:zeit | v:ort |
+                     v:siehe | v:scil | v:sic | v:notiz">
+      <s:assert test="not(text()='' or normalize-space(.)='')">
+        Dieses Element darf nicht leer sein.
+      </s:assert>
+    </s:rule>
+  </s:pattern>
 
 </grammar>

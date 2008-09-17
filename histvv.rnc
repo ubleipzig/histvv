@@ -274,31 +274,7 @@ funktion = element funktion { common.attributes, model.text }
 ##       Auszeichnung für Verweise auf vorhergehenden Dozenten:
 ##       "Derselbe", "Ders." etc.
 ##     
-ders =
-  [
-    s:pattern [
-      id = "ders"
-      "\x{a}" ~
-      "        "
-      s:rule [
-        context = "v:ders"
-        "\x{a}" ~
-        "          "
-        s:assert [
-          test = "not(string(.) and normalize-space(.) = '')"
-          "\x{a}" ~
-          "            Element 'ders' muß entweder leer bleiben oder Text\x{a}" ~
-          "            enthalten.\x{a}" ~
-          "          "
-        ]
-        "\x{a}" ~
-        "        "
-      ]
-      "\x{a}" ~
-      "      "
-    ]
-  ]
-  element ders { common.attributes, model.text }
+ders = element ders { common.attributes, model.text }
 
 ## 
 ##       Auszeichnung für Text, der das Thema der Lehrveranstaltung
@@ -445,14 +421,6 @@ scil =
         "\x{a}" ~
         "          "
         s:assert [
-          test = "not(text()='')"
-          "\x{a}" ~
-          "            Leeres 'scil' ist nicht sinnvoll.\x{a}" ~
-          "          "
-        ]
-        "\x{a}" ~
-        "          "
-        s:assert [
           test = "not(@text='???')"
           "\x{a}" ~
           "            Attribut 'text' enthält Platzhaltertext ('???').\x{a}" ~
@@ -473,28 +441,6 @@ scil =
 
 ##
 notiz =
-  [
-    s:pattern [
-      id = "notiz"
-      "\x{a}" ~
-      "        "
-      s:rule [
-        context = "v:notiz"
-        "\x{a}" ~
-        "          "
-        s:assert [
-          test = "not(text()='')"
-          "\x{a}" ~
-          "            Leere 'notiz' ist nicht sinnvoll.\x{a}" ~
-          "          "
-        ]
-        "\x{a}" ~
-        "        "
-      ]
-      "\x{a}" ~
-      "      "
-    ]
-  ]
   element notiz {
     common.attributes,
     attribute betreff { text }?,
@@ -516,30 +462,7 @@ trennlinie = element trennlinie { basic.attributes, empty }
 ## 
 ##       Markierung ungewöhnlicher Schreibweisen im Original
 ##     
-sic =
-  [
-    s:pattern [
-      id = "sic"
-      "\x{a}" ~
-      "        "
-      s:rule [
-        context = "v:sic"
-        "\x{a}" ~
-        "          "
-        s:assert [
-          test = "not(text()='')"
-          "\x{a}" ~
-          "            Leeres 'sic' ist nicht sinnvoll.\x{a}" ~
-          "          "
-        ]
-        "\x{a}" ~
-        "        "
-      ]
-      "\x{a}" ~
-      "      "
-    ]
-  ]
-  element sic { basic.attributes, text }
+sic = element sic { basic.attributes, text }
 
 ## 
 ##       Auszeichnung von Korrekturen bei Transkription
@@ -629,3 +552,24 @@ eckdaten =
 geboren = element geboren { eckdaten }
 gestorben = element gestorben { eckdaten }
 http-url = xsd:anyURI { pattern = "https?://.+" }
+s:pattern [
+  id = "nonempty-elements"
+  "\x{a}" ~
+  "    "
+  s:rule [
+    context =
+      "v:nachname | v:vorname | v:nachnamenpräfix |                      v:funktion | v:grad | v:ders |                      v:thema | v:gebühr | v:modus | v:zeit | v:ort |                      v:siehe | v:scil | v:sic | v:notiz"
+    "\x{a}" ~
+    "      "
+    s:assert [
+      test = "not(text()='' or normalize-space(.)='')"
+      "\x{a}" ~
+      "        Dieses Element darf nicht leer sein.\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "  "
+]
