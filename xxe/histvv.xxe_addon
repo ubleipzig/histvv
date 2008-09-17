@@ -2,7 +2,7 @@
 <a:addon xmlns="http://www.w3.org/1999/xhtml"
          xmlns:html="http://www.w3.org/1999/xhtml"
          xmlns:a="http://www.xmlmind.com/xmleditor/schema/addon"
-         location="http://histvv.uni-leipzig.de/histvv_config.zip">
+         location="http://histvv.uni-leipzig.de/xxe/histvv_config.zip">
 
   <a:category>
     <a:configuration />
