@@ -11,8 +11,7 @@ html/css/gfx/histvvfraktur.png
 html/css/histvv.css
 html/css/include/form.css
 html/css/include/layout.css
-html/css/include/tooltip.css
-html/css/vv.css
+html/css/include/vv.css
 html/dozent.xhtml
 html/home.xhtml
 html/js/form.js

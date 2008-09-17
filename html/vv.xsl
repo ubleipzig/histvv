@@ -8,7 +8,7 @@
 
   <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="no" indent="yes"/>
 
-  <xsl:param name="cssurl" select="'../css/vv.css'"/>
+  <xsl:param name="cssurl" select="'../css/histvv.css'"/>
   <xsl:param name="js-url" select="'../js/vv.js'"/>
 
   <xsl:template match="/">
@@ -23,7 +23,7 @@
         <script type="text/javascript" src="../js/jquery.tooltip.js"><xsl:text> </xsl:text></script>
         <script type="text/javascript" src="{$js-url}"><xsl:text> </xsl:text></script>
       </head>
-      <body>
+      <body class="vv">
         <xsl:apply-templates select="v:vv|/index|/report|v:dozentenliste|/v:dozent"/>
       </body>
     </html>
