@@ -9,11 +9,11 @@ use Histvv::Db;
 use Data::Dumper;
 
 my $usage = <<EOT;
-Usage: histvv-db-create [-v] dbfile file1.xml ...
+Usage: histvv-db-create [-v]  [--force] dbfile file1.xml ...
 EOT
 
 my %opts = ( verbose => 0, help => 0 );
-GetOptions ( \%opts, 'verbose|v', 'help|h') or die $usage;
+GetOptions ( \%opts, 'force|f', 'verbose|v', 'help|h') or die $usage;
 
 if ($opts{help}) { print $usage; exit; }
 
@@ -21,11 +21,12 @@ my $dbfile = shift || die $usage;
 die "No input files!\n$usage" unless @ARGV;
 
 if (-f $dbfile) {
-    print "File $dbfile exists. Replace? [y/N]: ";
-    my $y = <STDIN>;
-    chomp $y if defined $y;
-    exit unless $y =~ /^y(es)?$/i;
-
+    unless ($opts{force}) {
+        print "File $dbfile exists. Replace? [Y/n]: ";
+        my $y = <STDIN>;
+        chomp $y if defined $y;
+        exit if $y =~ /^n(o)?$/i;
+    }
     print "Deleting $dbfile...\n" if $opts{verbose};
     unlink $dbfile or die "Cannot delete $dbfile.\n";
 }
