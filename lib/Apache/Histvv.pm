@@ -34,6 +34,7 @@ use Apache2::RequestIO  ();
 use Apache2::Request ();
 use XML::LibXML ();
 use XML::LibXSLT ();
+use File::Spec ();
 use Histvv::Db ();
 
 use Apache2::Const -compile => qw(:common);
@@ -151,7 +152,7 @@ sub handler {
     (my $loc = $r->location) =~ s/\/$//;
     (my $url = $r->uri) =~ s/^$loc//;
 
-    my $xquery;
+    my ($xquery, $xml);
 
     if ($loc eq '/dozenten') {
         if ($url =~ /^\/(index\.html)?$/) {
@@ -179,13 +180,27 @@ sub handler {
         else {
             return Apache2::Const::DECLINED;
         }
+    } elsif ($r->uri =~ /^\/(\w+\.html)?$/) {
+        my $uri = $1 ? $r->uri : '/index.html';
+        my $file = File::Spec->catfile($r->document_root, $uri);
+        if (-f $file && -r $file) {
+            open F, $file;
+            $xml .= $_ while (<F>);
+            close F;
+        } else {
+            return Apache2::Const::DECLINED;
+        }
+    } else {
+        return Apache2::Const::DECLINED;
     }
 
-    my $db = Histvv::Db->new( $dbfile );
-    my @results = $db->query_all( $xquery );
-    return Apache2::Const::NOT_FOUND unless @results > 0;
+    if ($xquery && ! $xml) {
+        my $db = Histvv::Db->new( $dbfile );
+        my @results = $db->query_all( $xquery );
+        return Apache2::Const::NOT_FOUND unless @results > 0;
+        $xml = $results[0];
+    }
 
-    my $xml = $results[0];
     my $xmldom = $Xp->parse_string($xml);
     my $xsldom = $Xp->parse_file($xslfile);
     my $stylesheet = $Xt->parse_stylesheet($xsldom);
@@ -211,6 +226,7 @@ sub handler {
     print "<!--\n";
     print "URI: " . $r->uri . "\n";
     print "Location: " . $r->location . "\n";
+    print "Document Root: " . $r->document_root . "\n";
     print "URL: " . $url . "\n";
     print "ARGS: " . $r->args . "\n";
     print "DB: $dbfile\n";
