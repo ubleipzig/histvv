@@ -50,6 +50,12 @@ th.nr, td.nr {
 
 /* ======================== */
 
+#content.vv h1 {
+  text-align: center;
+}
+
+/* ======================== */
+
 #content.dozent img.portrait {
   float: right;
   border: 1px solid #8fb635;
