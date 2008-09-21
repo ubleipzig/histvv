@@ -16,8 +16,8 @@ $(document).ready(function(){
         // top and left are a workaround for the positioning issues
         // probably due to the relative (i.e. non-pixel) measurements
         // used in the css
-        top: -10,
-        left: -40
+        top: 10,
+        left: 10
     });
 
 });
