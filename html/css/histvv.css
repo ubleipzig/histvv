@@ -29,6 +29,10 @@ th.nr, td.nr {
   text-align: right;
 }
 
+abbr, acronym {
+  border: none;
+}
+
 .clear { clear: both; }
 
 

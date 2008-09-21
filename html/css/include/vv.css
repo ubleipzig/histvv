@@ -72,8 +72,10 @@ ins:after { content: "]"; }
 del { display: none; }
 
 /* scil */
-abbr { cursor: help; }
-
+#content.vv abbr {
+  cursor: help;
+  border-bottom: 1px dotted;
+}
 
 span.seite {
   display: block;
