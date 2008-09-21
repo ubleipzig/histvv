@@ -24,10 +24,10 @@ body  hr {
 
 #content {
   float: left;
-  width: 670px;
+  width: 700px;
   padding: 0 15px;
   border-left: 1px solid #8fb635;
-  margin-left: 200px;
+  margin-left: 170px;
   margin-bottom: 6px;
 }
 
@@ -35,7 +35,7 @@ body  hr {
 
 #sidebar {
   float: left;
-  width: 199px;
+  width: 169px;
   margin-left: -900px;
   padding-bottom: 200px;
   border-right: 1px solid #8fb635;
