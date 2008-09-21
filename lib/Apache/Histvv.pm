@@ -40,6 +40,9 @@ use Histvv::Db ();
 use Apache2::Const -compile => qw(:common);
 
 my $Xp = XML::LibXML->new();
+$Xp->no_network(1);
+$Xp->load_ext_dtd(0);
+$Xp->clean_namespaces(1);
 my $Xt = XML::LibXSLT->new();
 
 my %Queries = (
