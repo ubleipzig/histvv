@@ -101,3 +101,25 @@ th.nr, td.nr {
 #tooltip h3, #tooltip div {
   margin: 0;
 }
+
+@media print {
+
+  div#header, div#sidebar, div#footer, ul#seitennavigation {
+    display: none;
+  }
+
+  body {
+    width: auto;
+    margin: 1cm;
+  }
+
+  #content {
+    width: auto;
+    float: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    font-family: Georgia, serif;
+  }
+
+}
