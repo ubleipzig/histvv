@@ -24,6 +24,9 @@ html/suche.html
 html/suche.xhtml
 html/suchergebnis.xhtml
 html/titelblatt.jpg
+html/xsl/common.xsl
+html/xsl/dozenten.xsl
+html/xsl/histvv2html.xsl
 html/xsl/vv.xsl
 lib/Apache/Histvv.pm
 lib/Histvv.pm
