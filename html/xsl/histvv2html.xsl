@@ -119,16 +119,14 @@
 
   <xsl:template match="v:url">
     <xsl:variable name="url" select="normalize-space(.)"/>
-    <p>
-      <xsl:choose>
-        <xsl:when test="not(contains($url, ' '))">
-          <a href="{$url}"><xsl:value-of select="$url"/></a>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:apply-templates/>
-        </xsl:otherwise>
-      </xsl:choose>
-    </p>
+    <xsl:choose>
+      <xsl:when test="not(contains($url, ' '))">
+        <a href="{$url}"><xsl:value-of select="$url"/></a>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="v:veranstaltung|v:veranstaltungsgruppe">

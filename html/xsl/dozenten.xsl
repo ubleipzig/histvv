@@ -112,7 +112,9 @@
       </p>
     </xsl:if>
     <xsl:apply-templates select="v:absatz"/>
-    <xsl:apply-templates select="v:url"/>
+    <xsl:for-each select="v:url">
+      <p><xsl:apply-templates select="."/></p>
+    </xsl:for-each>
     <xsl:apply-templates select="v:pnd"/>
   </xsl:template>
 
