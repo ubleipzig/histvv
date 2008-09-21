@@ -147,7 +147,6 @@ sub handler {
 
     my $dbfile = $r->dir_config('HISTVV_DB');
     my $xslfile = $r->dir_config('HISTVV_XSL');
-    my $cssurl = $r->dir_config('HISTVV_CSS');
 
     (my $loc = $r->location) =~ s/\/$//;
     (my $url = $r->uri) =~ s/^$loc//;
@@ -231,8 +230,7 @@ sub handler {
     print "ARGS: " . $r->args . "\n";
     print "DB: $dbfile\n";
     print "XSL: $xslfile\n";
-    print "CSS: $cssurl\n";
-    print "$xquery\n";
+    print "$xquery\n" if $xquery;
     #print Dumper \%ENV;
     print "-->\n";
 
