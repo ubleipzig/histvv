@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:v="http://histvv.uni-leipzig.de/ns/2007"
+                xmlns="http://www.w3.org/1999/xhtml"
                 exclude-result-prefixes="v">
 
   <xsl:import href="common.xsl"/>
