@@ -69,12 +69,21 @@
   <xsl:template name="navigation">
     <ul>
       <li>
+        <xsl:if test="$url = '/' or $url = '/index.html'">
+          <xsl:attribute name="class">current</xsl:attribute>
+        </xsl:if>
         <a href="/">Home</a>
       </li>
       <li>
+        <xsl:if test="starts-with($url, '/vv/')">
+          <xsl:attribute name="class">current</xsl:attribute>
+        </xsl:if>
         <a href="/vv/">Vorlesungsverzeichnisse</a>
       </li>
       <li>
+        <xsl:if test="starts-with($url, '/dozenten/')">
+          <xsl:attribute name="class">current</xsl:attribute>
+        </xsl:if>
         <a href="/dozenten/">Dozenten</a>
       </li>
     </ul>

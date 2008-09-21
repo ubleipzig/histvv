@@ -190,7 +190,7 @@ sub handler {
     my $xsldom = $Xp->parse_file($xslfile);
     my $stylesheet = $Xt->parse_stylesheet($xsldom);
 
-    my %params = ( cssurl => "'$cssurl'" );
+    my %params = ( url => "'" . $r->uri . "'" );
 
     my $html;
     eval { $html = $stylesheet->transform($xmldom, %params) };
