@@ -810,6 +810,9 @@
             Leeres Element 'korrektur' ohne Angabe des Originaltexts
             ist nicht zulässig.
           </s:assert>
+          <s:assert test="not(@original and @original='')">
+            Attribut 'original' darf nicht leer sein.
+          </s:assert>
         </s:rule>
       </s:pattern>
       <ref name="basic.attributes"/>

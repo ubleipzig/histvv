@@ -485,6 +485,14 @@ korrektur =
           "          "
         ]
         "\x{a}" ~
+        "          "
+        s:assert [
+          test = "not(@original and @original='')"
+          "\x{a}" ~
+          "            Attribut 'original' darf nicht leer sein.\x{a}" ~
+          "          "
+        ]
+        "\x{a}" ~
         "        "
       ]
       "\x{a}" ~
