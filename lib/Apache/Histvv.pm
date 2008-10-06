@@ -207,7 +207,7 @@ sub handler {
     my $xsldom = $Xp->parse_file($xslfile);
     my $stylesheet = $Xt->parse_stylesheet($xsldom);
 
-    my %params = ( url => "'" . $r->uri . "'" );
+    my %params = ( 'histvv-url' => "'" . $r->uri . "'" );
 
     my $html;
     eval { $html = $stylesheet->transform($xmldom, %params) };

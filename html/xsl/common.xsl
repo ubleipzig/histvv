@@ -9,7 +9,7 @@
     doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
     doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"/>
 
-  <xsl:param name="url"/>
+  <xsl:param name="histvv-url"/>
 
   <xsl:template match="/">
     <xsl:call-template name="skeleton"/>
@@ -70,19 +70,19 @@
   <xsl:template name="navigation">
     <ul>
       <li>
-        <xsl:if test="$url = '/' or $url = '/index.html'">
+        <xsl:if test="$histvv-url = '/' or $histvv-url = '/index.html'">
           <xsl:attribute name="class">current</xsl:attribute>
         </xsl:if>
         <a href="/">Home</a>
       </li>
       <li>
-        <xsl:if test="starts-with($url, '/vv/')">
+        <xsl:if test="starts-with($histvv-url, '/vv/')">
           <xsl:attribute name="class">current</xsl:attribute>
         </xsl:if>
         <a href="/vv/">Vorlesungsverzeichnisse</a>
       </li>
       <li>
-        <xsl:if test="starts-with($url, '/dozenten/')">
+        <xsl:if test="starts-with($histvv-url, '/dozenten/')">
           <xsl:attribute name="class">current</xsl:attribute>
         </xsl:if>
         <a href="/dozenten/">Dozenten</a>
