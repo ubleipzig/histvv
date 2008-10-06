@@ -40,6 +40,9 @@
         <xsl:text>Name: </xsl:text>
         <xsl:value-of select="/report/name"/>
       </xsl:when>
+      <xsl:when test="/v:dozentenliste and $histvv-url='/dozenten/namen.html'">
+        <xsl:text>Dozentennamen</xsl:text>
+      </xsl:when>
       <xsl:when test="/v:dozentenliste">
         <xsl:text>Dozentenliste</xsl:text>
       </xsl:when>
@@ -50,7 +53,19 @@
   </xsl:template>
 
   <xsl:template match="v:dozentenliste">
-    <h1>Dozenten</h1>
+    <xsl:choose>
+      <xsl:when test="$histvv-url = '/dozenten/namen.html'">
+        <h1>Dozentennamen</h1>
+      </xsl:when>
+      <xsl:otherwise>
+        <h1>Dozenten</h1>
+        <p>
+          <i>Diese Liste enthält die bereits eindeutig identifizierten
+          Dozenten. Vgl. auch die <a href="/dozenten/namen.html">Liste aller
+          Dozentennamen</a>.</i>
+        </p>
+      </xsl:otherwise>
+    </xsl:choose>
     <ol class="toc">
       <xsl:for-each select="v:dozent">
         <li>

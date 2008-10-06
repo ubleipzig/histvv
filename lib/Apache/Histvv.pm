@@ -79,6 +79,33 @@ for $d in collection()/v:dozentenliste[1]
 return $d
 },
 
+   dozentennamen => q{
+declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
+
+let $namen := collection()/v:vv[v:kopf/v:status/@komplett]
+                         //v:dozent[not(@ref)]
+                          /v:nachname[not(v:seite)]/normalize-space()
+
+let $neu := for $n in distinct-values($namen)
+            return
+            <dozent xmlns="http://histvv.uni-leipzig.de/ns/2007">
+              <name><nachname>{$n}</nachname></name>
+            </dozent>
+
+let $alt := collection()/v:dozentenliste/v:dozent[@xml:id]
+
+return
+<dozentenliste xmlns="http://histvv.uni-leipzig.de/ns/2007" xml:lang="de">
+  <universität>Leipzig</universität>
+  {
+    for $d in ( $alt | $neu )
+    let $name := $d/v:name
+    order by $name/v:nachname, not($name/v:vorname), $name/v:vorname
+    return $d
+  }
+</dozentenliste>
+},
+
     dozent => <<'EOT',
 declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
 
@@ -159,6 +186,8 @@ sub handler {
     if ($loc eq '/dozenten') {
         if ($url =~ /^\/(index\.html)?$/) {
             $xquery = $Queries{dozenten};
+        } elsif ($url =~ /^\/namen\.html$/) {
+            $xquery = $Queries{dozentennamen};
         } elsif ($url =~ /^\/lookup$/) {
             my $rq = Apache2::Request->new($r);
             my $name = $rq->param('name') || return Apache2::Const::DECLINED;
