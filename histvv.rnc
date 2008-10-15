@@ -360,7 +360,12 @@ funktion = element funktion { common.attributes, model.text }
 ##       Auszeichnung für Verweise auf vorhergehenden Dozenten:
 ##       "Derselbe", "Ders." etc.
 ##     
-ders = element ders { common.attributes, model.text }
+ders =
+  element ders {
+    common.attributes,
+    attribute ref { xsd:NMTOKEN }?,
+    model.text
+  }
 
 ## 
 ##       Auszeichnung für Text, der das Thema der Lehrveranstaltung

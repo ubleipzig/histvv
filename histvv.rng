@@ -523,6 +523,11 @@
     </a:documentation>
     <element name="ders">
       <ref name="common.attributes"/>
+      <optional>
+        <attribute name="ref">
+          <data type="NMTOKEN"/>
+        </attribute>
+      </optional>
       <ref name="model.text"/>
     </element>
   </define>
