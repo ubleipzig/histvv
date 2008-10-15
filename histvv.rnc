@@ -224,8 +224,7 @@ sachgruppe =
     sachgruppentitel?,
     (# Um das Editieren zu erleichtern, wird das Vorhandensein
      # entweder einer <veranstaltung> oder einer <sachgruppe> an
-     # dieser Stelle nicht erzwungen. TODO: Es sollte vielleicht
-     # durch eine Schematron-Regel sichergestellt werden.
+     # dieser Stelle nicht erzwungen.
      sachgruppe*
      & veranstaltung*
      & veranstaltungsverweis*
