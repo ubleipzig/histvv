@@ -195,9 +195,6 @@
     <element name="übersicht">
       <ref name="common.attributes"/>
       <optional>
-        <attribute name="ref"/>
-      </optional>
-      <optional>
         <ref name="titel"/>
       </optional>
       <interleave>
@@ -236,9 +233,6 @@
         </s:rule>
       </s:pattern>
       <ref name="common.attributes"/>
-      <optional>
-        <attribute name="ref"/>
-      </optional>
       <optional>
         <attribute name="fakultät">
           <choice>

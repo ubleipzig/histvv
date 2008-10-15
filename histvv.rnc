@@ -99,7 +99,6 @@ korrigiert =
 übersicht =
   element übersicht {
     common.attributes,
-    attribute ref { text }?,
     titel?,
     (sachgruppe* & absatz* & seite* & trennlinie*)
   }
@@ -134,7 +133,6 @@ sachgruppe =
   ]
   element sachgruppe {
     common.attributes,
-    attribute ref { text }?,
     attribute fakultät {
       ("Philosophie" | "Theologie" | "Jura" | "Medizin")
       >> s:pattern [
