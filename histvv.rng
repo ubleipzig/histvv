@@ -108,6 +108,9 @@
           <ref name="trennlinie"/>
         </zeroOrMore>
       </interleave>
+      <optional>
+        <ref name="ocr"/>
+      </optional>
     </element>
   </define>
 
@@ -947,6 +950,37 @@
     <data type="anyURI">
       <param name="pattern">https?://.+</param>
     </data>
+  </define>
+
+  <define name="ocr">
+    <a:documentation>Container für OCR-Text</a:documentation>
+    <element name="ocr">
+      <interleave>
+        <attribute name="xml:space">
+          <value>preserve</value>
+        </attribute>
+        <zeroOrMore>
+          <choice>
+            <ref name="sachgruppe"/>
+            <ref name="veranstaltung"/>
+            <ref name="veranstaltungsgruppe"/>
+            <ref name="veranstaltungsverweis"/>
+            <ref name="absatz"/>
+            <ref name="trennlinie"/>
+            <ref name="seite"/>          
+          </choice>
+        </zeroOrMore>
+        <text/>
+      </interleave>
+    </element>
+    <s:pattern id="ocr">
+      <s:rule context="/v:vv[v:kopf/v:status/@komplett]/v:ocr">
+        <s:assert test="false()">
+          Ein komplett transkribiertes Verzeichnis darf kein
+          ocr-Element mehr enthalten.
+        </s:assert>
+      </s:rule>
+    </s:pattern>
   </define>
 
   <s:pattern id="nonempty-elements">

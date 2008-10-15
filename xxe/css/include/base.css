@@ -1,6 +1,6 @@
 vv, kopf, \0000FCbersicht, sachgruppe,
 veranstaltung, veranstaltungsverweis,
-veranstaltungsgruppe, absatz, seite {
+veranstaltungsgruppe, absatz, seite, ocr {
   display: block;
 }
 
@@ -187,4 +187,18 @@ thema > schrift {
 
 thema > schrift > titel {
   font-style: italic;
+}
+
+ocr {
+  display: block;
+  border: 2px solid gray;
+  padding: .5em;
+}
+
+ocr:before {
+  content: "OCR";
+  color: gray;
+  font-weight: bold;
+  display: block;
+  margin-top: 20px;
 }

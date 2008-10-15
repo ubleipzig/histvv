@@ -39,7 +39,8 @@ vv =
     seite?,
     titel,
     element untertitel { common.attributes, text-content }?,
-    ((sachgruppe | übersicht)+ & absatz* & seite* & trennlinie*)
+    ((sachgruppe | übersicht)+ & absatz* & seite* & trennlinie*),
+    ocr?
   }
 
 ## Metadaten
@@ -560,6 +561,41 @@ eckdaten =
 geboren = element geboren { eckdaten }
 gestorben = element gestorben { eckdaten }
 http-url = xsd:anyURI { pattern = "https?://.+" }
+
+## Container für OCR-Text
+ocr =
+  element ocr {
+    attribute xml:space { "preserve" }
+    & (sachgruppe
+       | veranstaltung
+       | veranstaltungsgruppe
+       | veranstaltungsverweis
+       | absatz
+       | trennlinie
+       | seite)*
+    & text
+  }
+  >> s:pattern [
+       id = "ocr"
+       "\x{a}" ~
+       "      "
+       s:rule [
+         context = "/v:vv[v:kopf/v:status/@komplett]/v:ocr"
+         "\x{a}" ~
+         "        "
+         s:assert [
+           test = "false()"
+           "\x{a}" ~
+           "          Ein komplett transkribiertes Verzeichnis darf kein\x{a}" ~
+           "          ocr-Element mehr enthalten.\x{a}" ~
+           "        "
+         ]
+         "\x{a}" ~
+         "      "
+       ]
+       "\x{a}" ~
+       "    "
+     ]
 s:pattern [
   id = "nonempty-elements"
   "\x{a}" ~
