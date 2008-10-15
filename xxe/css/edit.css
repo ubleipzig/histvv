@@ -1,3 +1,5 @@
+@namespace v "http://histvv.uni-leipzig.de/ns/2007";
+
 @import "include/base.css";
 @import "include/colors.css";
 
@@ -56,4 +58,14 @@ veranstaltungsgruppe > veranstaltungsgruppe:after {
   content: "\0021AA";
   color: gray;
   font-weight: bold;
+}
+
+vv > sachgruppe:after,
+\0000FCbersicht > sachgruppe:after,
+\0000FCbersicht:after {
+  content: "Ende \"" xpath("./v:titel")  "\"";
+  display: block;
+  font-size: 80%;
+  font-style: italic;
+  color: gray;
 }
