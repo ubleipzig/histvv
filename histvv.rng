@@ -240,6 +240,44 @@
         <attribute name="ref"/>
       </optional>
       <optional>
+        <attribute name="fakultät">
+          <choice>
+            <value>Philosophie</value>
+            <value>Theologie</value>
+            <value>Jura</value>
+            <value>Medizin</value>
+          </choice>
+          <s:pattern id="fakultät-jura">
+            <s:rule context="v:sachgruppe[@fakultät='Jura']">
+              <s:assert test="not(count(//v:sachgruppe[@fakultät='Jura']) > 1)">
+                Fakultät "Jura" mehr als einmal ausgezeichnet.
+              </s:assert>
+            </s:rule>
+          </s:pattern>
+          <s:pattern id="fakultät-medizin">
+            <s:rule context="v:sachgruppe[@fakultät='Medizin']">
+              <s:assert test="not(count(//v:sachgruppe[@fakultät='Medizin']) > 1)">
+                Fakultät "Medizin" mehr als einmal ausgezeichnet.
+              </s:assert>
+            </s:rule>
+          </s:pattern>
+          <s:pattern id="fakultät-philosophie">
+            <s:rule context="v:sachgruppe[@fakultät='Philosophie']">
+              <s:assert test="not(count(//v:sachgruppe[@fakultät='Philosophie']) > 1)">
+                Fakultät "Philosophie" mehr als einmal ausgezeichnet.
+              </s:assert>
+            </s:rule>
+          </s:pattern>
+          <s:pattern id="fakultät-theologie">
+            <s:rule context="v:sachgruppe[@fakultät='Theologie']">
+              <s:assert test="not(count(//v:sachgruppe[@fakultät='Theologie']) > 1)">
+                Fakultät "Theologie" mehr als einmal ausgezeichnet.
+              </s:assert>
+            </s:rule>
+          </s:pattern>
+        </attribute>
+      </optional>
+      <optional>
         <ref name="sachgruppentitel"/>
       </optional>
       <interleave>
@@ -994,4 +1032,16 @@
     </s:rule>
   </s:pattern>
 
+  <s:pattern id="fakultäten">
+    <s:rule context="v:vv[v:kopf/v:status/@komplett='ja']">
+      <s:assert test="count(//v:sachgruppe/@fakultät) = 4">
+        Es muss vier Fakultätssachgruppen geben.
+      </s:assert>
+    </s:rule>
+    <s:rule context="v:sachgruppe[@fakultät]">
+      <s:assert test="not(ancestor::v:sachgruppe[@fakultät])">
+        Fakulätssachgruppen können nicht verschachtelt sein.
+      </s:assert>
+    </s:rule>
+  </s:pattern>
 </grammar>

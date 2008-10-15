@@ -135,6 +135,92 @@ sachgruppe =
   element sachgruppe {
     common.attributes,
     attribute ref { text }?,
+    attribute fakultät {
+      ("Philosophie" | "Theologie" | "Jura" | "Medizin")
+      >> s:pattern [
+           id = "fakultät-jura"
+           "\x{a}" ~
+           "            "
+           s:rule [
+             context = "v:sachgruppe[@fakultät='Jura']"
+             "\x{a}" ~
+             "              "
+             s:assert [
+               test = "not(count(//v:sachgruppe[@fakultät='Jura']) > 1)"
+               "\x{a}" ~
+               '                Fakultät "Jura" mehr als einmal ausgezeichnet.\x{a}' ~
+               "              "
+             ]
+             "\x{a}" ~
+             "            "
+           ]
+           "\x{a}" ~
+           "          "
+         ]
+      >> s:pattern [
+           id = "fakultät-medizin"
+           "\x{a}" ~
+           "            "
+           s:rule [
+             context = "v:sachgruppe[@fakultät='Medizin']"
+             "\x{a}" ~
+             "              "
+             s:assert [
+               test =
+                 "not(count(//v:sachgruppe[@fakultät='Medizin']) > 1)"
+               "\x{a}" ~
+               '                Fakultät "Medizin" mehr als einmal ausgezeichnet.\x{a}' ~
+               "              "
+             ]
+             "\x{a}" ~
+             "            "
+           ]
+           "\x{a}" ~
+           "          "
+         ]
+      >> s:pattern [
+           id = "fakultät-philosophie"
+           "\x{a}" ~
+           "            "
+           s:rule [
+             context = "v:sachgruppe[@fakultät='Philosophie']"
+             "\x{a}" ~
+             "              "
+             s:assert [
+               test =
+                 "not(count(//v:sachgruppe[@fakultät='Philosophie']) > 1)"
+               "\x{a}" ~
+               '                Fakultät "Philosophie" mehr als einmal ausgezeichnet.\x{a}' ~
+               "              "
+             ]
+             "\x{a}" ~
+             "            "
+           ]
+           "\x{a}" ~
+           "          "
+         ]
+      >> s:pattern [
+           id = "fakultät-theologie"
+           "\x{a}" ~
+           "            "
+           s:rule [
+             context = "v:sachgruppe[@fakultät='Theologie']"
+             "\x{a}" ~
+             "              "
+             s:assert [
+               test =
+                 "not(count(//v:sachgruppe[@fakultät='Theologie']) > 1)"
+               "\x{a}" ~
+               '                Fakultät "Theologie" mehr als einmal ausgezeichnet.\x{a}' ~
+               "              "
+             ]
+             "\x{a}" ~
+             "            "
+           ]
+           "\x{a}" ~
+           "          "
+         ]
+    }?,
     sachgruppentitel?,
     (# Um das Editieren zu erleichtern, wird das Vorhandensein
      # entweder einer <veranstaltung> oder einer <sachgruppe> an
@@ -609,6 +695,41 @@ s:pattern [
       test = "not(text()='' or normalize-space(.)='')"
       "\x{a}" ~
       "        Dieses Element darf nicht leer sein.\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "  "
+]
+s:pattern [
+  id = "fakultäten"
+  "\x{a}" ~
+  "    "
+  s:rule [
+    context = "v:vv[v:kopf/v:status/@komplett='ja']"
+    "\x{a}" ~
+    "      "
+    s:assert [
+      test = "count(//v:sachgruppe/@fakultät) = 4"
+      "\x{a}" ~
+      "        Es muss vier Fakultätssachgruppen geben.\x{a}" ~
+      "      "
+    ]
+    "\x{a}" ~
+    "    "
+  ]
+  "\x{a}" ~
+  "    "
+  s:rule [
+    context = "v:sachgruppe[@fakultät]"
+    "\x{a}" ~
+    "      "
+    s:assert [
+      test = "not(ancestor::v:sachgruppe[@fakultät])"
+      "\x{a}" ~
+      "        Fakulätssachgruppen können nicht verschachtelt sein.\x{a}" ~
       "      "
     ]
     "\x{a}" ~
