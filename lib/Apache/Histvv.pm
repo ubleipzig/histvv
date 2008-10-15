@@ -113,7 +113,7 @@ let $id := "%s"
 
 let $daten := collection()/v:dozentenliste/v:dozent[@xml:id=$id]
 let $stellen := collection()/v:vv[v:kopf/v:status/@komplett]
-  //v:dozent[@ref=$id]
+  //(v:dozent[@ref=$id] | v:ders[@ref=$id])
 
 return
 <report>
