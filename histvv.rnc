@@ -256,7 +256,7 @@ veranstaltung =
     # auszeichenbar sind sondern aus dem Kontext erschlossen
     # werden. TODO: Eine konsistente Verwendung sollte über
     # Schematron-Regeln sichergestellt werden.
-    attribute dozent { text }?,
+    attribute dozent { xsd:NMTOKEN }?,
     attribute gebühr { text }?,
     attribute modus { text }?,
     attribute thema { text }?,
@@ -317,7 +317,7 @@ veranstaltungsverweis =
 dozent =
   element dozent {
     common.attributes
-    & attribute ref { text }?
+    & attribute ref { xsd:NMTOKEN }?
     & # Um das Editieren zu erleichtern sind alle Kindelemente
       # optional. TODO: Eine Schematron-Regel könnte auf
       # unvollständige Dozentenangaben hinweisen.

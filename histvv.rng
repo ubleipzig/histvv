@@ -358,7 +358,9 @@
         Schematron-Regeln sichergestellt werden.
       -->
       <optional>
-        <attribute name="dozent"/>
+        <attribute name="dozent">
+          <data type="NMTOKEN"/>
+        </attribute>
       </optional>
       <optional>
         <attribute name="gebühr"/>
@@ -372,7 +374,6 @@
       <optional>
         <attribute name="zeit"/>
       </optional>
-
       <ref name="model.veranstaltung"/>
     </element>
   </define>
@@ -433,7 +434,9 @@
       <interleave>
         <ref name="common.attributes"/>
         <optional>
-          <attribute name="ref"/>
+          <attribute name="ref">
+            <data type="NMTOKEN"/>
+          </attribute>
         </optional>
         <!-- 
              Um das Editieren zu erleichtern sind alle Kindelemente
