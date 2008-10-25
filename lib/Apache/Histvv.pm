@@ -226,7 +226,7 @@ sub handler {
     }
 
     if ($xquery && ! $xml) {
-        my $db = Histvv::Db->new( $dbfile );
+        my $db = Histvv::Db->new( $dbfile, { private => 1 } );
         my @results = $db->query_all( $xquery );
         return Apache2::Const::NOT_FOUND unless @results > 0;
         $xml = $results[0];
