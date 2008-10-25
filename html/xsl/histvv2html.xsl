@@ -36,6 +36,17 @@
     </a>
   </xsl:template>
 
+  <xsl:template match="v:vv//v:ders[@ref]">
+    <xsl:variable name="dozent" select="preceding::v:dozent[1]"/>
+    <a class="dozent" href="../dozenten/{@ref}.html">
+      <xsl:attribute name="title">
+        <xsl:value-of select="normalize-space($dozent)"/>
+        <xsl:text>; zur Dozentenseite</xsl:text>
+      </xsl:attribute>
+      <xsl:apply-templates/>
+    </a>
+  </xsl:template>
+
   <xsl:template match="v:korrektur">
     <xsl:if test="@original">
       <del><xsl:value-of select="@original"/></del>
