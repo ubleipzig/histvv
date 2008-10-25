@@ -1,0 +1,214 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Histvv;
+use Histvv::CLI;
+use XML::LibXML;
+use XML::LibXML::XPathContext;
+use File::Basename;
+use Text::Wrap ();
+
+my $cli  = Histvv::CLI->new();
+my %opts = $cli->get_opts(
+    'list|l'    => 0,
+    'all|a'     => 0,
+    'name|n=s'  => undef,
+    'xpath|x=s' => undef,
+    'ref|r=s'   => undef
+);
+
+$cli->error("You need to specify a name and/or xpath expression!")
+  unless ( $opts{name} || $opts{xpath} );
+
+$cli->error("The value given for ref is not a valid ID!")
+   if ( $opts{ref} && $opts{ref} !~ /^[a-z][_a-z]+$/ );
+
+## contructing the XPath expression
+#
+# first we create a predicate expression from "name" and "xpath"
+# parameters to match the "dozent" element
+my @predicate;
+if ( $opts{name} ) {
+    my $name = $opts{name};
+    # escape and normalize space
+    $name =~ s/"/&quot;/g;
+    $name =~ s/\s+/ /g;
+    $name =~ s/(^ +| +$)//g;
+    push @predicate, qq{v:nachname="$name"};
+}
+push( @predicate, "($opts{xpath})" ) if $opts{xpath};
+my $predicate = join(' and ', @predicate);
+
+# now we use this predicate expression to construct separate paths to
+# the "dozent" and "ders" elements
+my $doz_path  = "//v:dozent[ $predicate ]";
+my $ders_path = "//v:ders[ preceding::v:dozent[1][$predicate] ]";
+
+# putting it all together and adding a filter to ignore elements that
+# already carry the "ref" attribute
+my $xpath = "($doz_path | $ders_path)";
+$xpath .= '[/v:vv/v:kopf/v:status/@komplett="ja"]';
+$xpath .= '[not(@ref)]' unless $opts{all};
+
+# create XML parser
+my $xp = XML::LibXML->new();
+
+binmode STDOUT, ":utf8";
+$Text::Wrap::columns = 80;
+
+foreach my $file (@ARGV) {
+    my $doc = $xp->parse_file( $file );
+
+    my $xc = XML::LibXML::XPathContext->new( $doc );
+    $xc->registerNs('v', $Histvv::XMLNS);
+
+    my $cnt = 0; # counting set attibutes
+    my $fname = basename $file;
+    my @dozenten = $xc->findnodes( $xpath );
+    $cli->say($fname) if @dozenten > 0 && @ARGV > 1;
+
+    foreach my $d ( @dozenten ) {
+        my $dozent = $xc->findvalue( 'normalize-space(.)', $d );
+
+        # determine page number
+        my $page = $xc->findvalue( 'preceding::v:seite[1]/@nr', $d )
+          || $xc->findvalue( 'preceding::v:seite[1]', $d )
+          || '';
+
+        if ( $opts{verbose} ) {
+            $cli->say("S. $page: ", 1);
+
+            my $txt;
+            if ( $opts{verbose} > 1 ) {
+                $txt = $xc->findvalue( 'normalize-space(..)', $d );
+                $cli->say( Text::Wrap::wrap( "", "  ", $txt ) );
+            }
+            else {
+                $txt = $xc->findvalue( 'normalize-space(../v:thema)', $d )
+                  || $xc->findvalue(
+                    'normalize-space('
+                      . 'concat("[", ancestor::v:sachgruppe[1]/v:titel, "]")'
+                      . ')',
+                    $d
+                  );
+                $cli->say( Text::Wrap::wrap( "", "  ", "$dozent -- $txt" ) );
+            }
+        }
+        else {
+            $cli->say( $dozent );
+        }
+
+        # setting ref attribute
+        if ( $opts{ref} ) {
+            $d->setAttribute( 'ref', $opts{ref} );
+            $cnt++;
+        }
+    }
+
+    if ( $cnt ) {
+        $cli->say( "writing to $file" );
+        open F, ">$file" or die $!;
+        print F $doc->toString(0);
+        close F;
+    }
+
+    $cli->say('') if @dozenten > 0 && @ARGV > 1;
+}
+
+__END__
+
+=head1 NAME
+
+histvv-dozenten - manipulate C<dozent> elements Histvv documents
+
+=head1 SYNOPSIS
+
+  histvv-dozenten  --list -n lastname [-x xpath] file.xml ...
+  histvv-dozenten  --ref id -n lastname [-x xpath] file.xml ...
+  histvv-dozenten --help | --man
+
+=head1 DESCRIPTION
+
+I<histvv-dozenten> lists or manipulates those C<dozent> elements in
+the passed file(s) which are matched by the B<--name> and/or the
+B<--xpath> option.
+
+=head2 Using XPath
+
+In addition or as an alternative to the B<--name> option an XPath
+expression can be used to select the C<dozent> elements to manipulate.
+This expression is expected to be suitable as a predicate expression
+in the context of a C<dozent> element:
+
+  v:dozent[ EXPR ]
+
+Note that the expression may get combined with other expressions by an
+C<and> operator, e.g.:
+
+  v:dozent[ not(@ref) and EXPR ]
+
+When refering to elements in your XPath expression remember to specify
+the B<namespace> appropriately. For the Histvv namespace the prefix
+C<v> is registered by default.
+
+=head1 OPTIONS
+
+=over
+
+=item B<--name>, B<-n>
+
+The last name, i.e. the value of the C<nachname> child element of
+C<dozent> to manipulate.
+
+=item B<--xpath>, B<-x>
+
+An XPath predicate expression to select the C<dozent> element(s) to
+manipulate (see L</Using XPath>).
+
+=item B<--list>, B<-l>
+
+Print the string cotent of the C<dozent> elements matching the name
+and/or XPath expression to standard output.  With B<-v>, a sibling
+C<thema> element will be displayed if there is one. If B<-v> is used
+more than once the content of the entire parent element is displayed.
+
+=item B<--ref>, B<-r>
+
+The value of the C<ref> attribute for the selected C<dozent> elements.
+
+=item B<--all>, B<-a>
+
+Display or manipulate all C<dozent> elements matching the name and/or
+XPath expresson regardless whether they already carry a C<ref>
+attribute or not. By default only those elements without a C<ref>
+attribute are considered.
+
+=item B<--verbose>, B<-v>
+
+Display more detail in element listing.
+
+=item B<--help>, B<-h>
+
+Display short help message and exit. If used together with B<-v> the
+entire manpage will be displayed.
+
+=item B<--man>
+
+Display manpage and exit. This is equivalent to B<-h> B<-v>.
+
+=back
+
+=head1 AUTHOR
+
+Carsten Milling, C<< <cmil at hashtable.de> >>
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright 2008 Carsten Milling, all rights reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+=cut
