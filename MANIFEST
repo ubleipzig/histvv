@@ -32,12 +32,14 @@ html/xsl/vv.xsl
 lib/Apache/Histvv.pm
 lib/Histvv.pm
 lib/Histvv/Build.pm
+lib/Histvv/CLI.pm
 lib/Histvv/Db.pm
 lib/Histvv/Util.pm
 MANIFEST
 t/00-load.t
 t/01-db.t
 t/02-apache.t
+t/cli.t
 t/pod-coverage.t
 t/pod.t
 t/test.xml
