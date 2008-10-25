@@ -3,46 +3,27 @@
 use strict;
 use warnings;
 
-use Getopt::Long;
+use Histvv::CLI;
 use Histvv::Util;
 
-my $usage = <<EOT;
-Usage: histvv-add-attributes -x <xpath> -n <attrname> -d <attrvalue> file1.xml ...
-       histvv-add-attributes -x <xpath> -l file1.xml ...
+my $cli  = Histvv::CLI->new();
+my %opts = $cli->get_opts(
+    'list|l'      => 0,
+    'xpath|x=s'   => undef,
+    'name|n=s'    => undef,
+    'value|V|d=s' => undef
+);
 
-Options:
-  -x, --xpath <string> XPath expression to select elements
-  -n, --name <name>    attribute name
-  -d, --data <value>   attribute value
-  -l, --list           list matching elements on standard output
-  -v, --verbose        verbose output
-  -h, --help    show this message
-EOT
-
-my %opts = ( list => 0, verbose => 0, help => 0 );
-GetOptions(
-    \%opts,   'xpath|x=s', 'name|n=s', 'value|data|d=s',
-    'list|l', 'verbose|v', 'help|h'
-) or die $usage;
-
-if ($opts{help}) {
-    print $usage;
-    exit;
-}
-
-die "Missing XPath expression!\n$usage" unless $opts{xpath};
-
-die "Missing attribute name or value!\n$usage"
-  unless ( $opts{list}
-    || ( $opts{name} && $opts{data} ) );
-
+$cli->error("Missing XPath expression!") unless $opts{xpath};
+$cli->error("Missing attribute name or value!")
+  unless ( $opts{list} || ( $opts{name} && $opts{data} ) );
 
 my $xp = XML::LibXML->new();
 
 binmode STDOUT, ":utf8" if $opts{list};
 
 foreach my $file (@ARGV) {
-    print "$file\n";
+    $cli->say($file);
 
     my $doc = $xp->parse_file( $file );
     my @nodes;
@@ -55,13 +36,8 @@ foreach my $file (@ARGV) {
 
     foreach my $n (@nodes) {
         if ( $opts{list} ) {
-            if ( $opts{verbose} ) {
-                print $n->toString(0), "\n";
-            }
-            else {
-                my $txt = $n->findvalue('normalize-space(.)');
-                print "$txt\n";
-            }
+            $cli->chatter( $n->toString(0) )
+              || $cli->say( $n->findvalue('normalize-space(.)') || '' );
         }
     }
 
@@ -69,8 +45,74 @@ foreach my $file (@ARGV) {
         open F, ">$file" or die $!;
         print F $doc->toString(0);
         close F;
-        print scalar @nodes, " elements found\n";
+        $cli->say( scalar @nodes, " elements found" );
     }
 }
 
 __END__
+
+=head1 NAME
+
+histvv-add-attribute - add attributes to XML documents
+
+=head1 SYNOPSIS
+
+  histvv-add-attribute  [-l] -x xpath -n attrname -V attrvalue file.xml ...
+  histvv-add-attribute --help | --man
+
+=head1 DESCRIPTION
+
+I<histvv-add-attribute> adds an attribute to one or more elements
+selected by an XPath epression to the file(s) specified on the
+commandline.
+
+=head1 OPTIONS
+
+=over
+
+=item B<--xpath>, B<-x>
+
+An XPath expression to select the element(s) to modify.
+
+=item B<--name>, B<-n>
+
+The name of the attribute to add.
+
+=item B<--value>, B<-V>, B<-d>
+
+The attribute value to set.
+
+=item B<--list>, B<-l>
+
+List the elements matched by the XPath expression without actually
+altering the file(s). By default this prints the normalized element
+content. If used with B<-v> the XML markup of the element with
+possible child elements is displayed.
+
+=item B<--verbose>, B<-v>
+
+Display more detail in element listing.
+
+=item B<--help>, B<-h>
+
+Display short help message and exit. If used together with B<-v> the
+entire manpage will be displayed.
+
+=item B<--man>
+
+Display manpage and exit. This is equivalent to B<-h> B<-v>.
+
+=back
+
+=head1 AUTHOR
+
+Carsten Milling, C<< <cmil at hashtable.de> >>
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright 2008 Carsten Milling, all rights reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+=cut

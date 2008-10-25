@@ -3,33 +3,22 @@
 use strict;
 use warnings;
 
-use Getopt::Long;
+use Histvv::CLI;
 use Histvv::Db;
 
-sub usage { die "Usage: dbxml-query db file.xqy\n"; }
+my $cli  = Histvv::CLI->new();
+my %opts = $cli->get_opts('db|d=s' => undef, 'query|xquery|q=s' => undef);
 
-my $usage = <<EOT;
-Usage: dbxml-query [-v] db file.xqy
-EOT
+my $dbfile = $opts{db} || $cli->error("Please specify a database!");
 
-my %opts = ( verbose => 0, help => 0 );
-GetOptions ( \%opts, 'verbose|v', 'help|h') or die $usage;
-
-if ($opts{help}) {
-    print $usage;
-    exit;
+my $query = $opts{query};
+unless ($query) {
+    my $file = shift || $cli->error("Please specify a query!");
+    $cli->error("query file '$file' does not exist") unless -f $file;
+    open F, $file or die $!;
+    $query .= $_ while <F>;
+    close F;
 }
-
-my $dbfile = shift || die $usage;
-my $xqfile = shift || die $usage;
-
-die "query file '$xqfile' does not exist\n" unless -f $xqfile;
-
-# slurp in query file
-my $query;
-open F, $xqfile or die $!;
-$query .= $_ while <F>;
-close F;
 
 my $db = Histvv::Db->new($dbfile, { private => 1 });
 
@@ -40,4 +29,67 @@ $query
 EOT
 
 my @results = $db->query_all($query);
-print "$_\n" for @results;
+$cli->say($_) for @results;
+
+__END__
+
+=head1 NAME
+
+dbxml-query - query a Berkeley DB XML database
+
+=head1 SYNOPSIS
+
+  dbxml-query  [-v] -d dbfile query.xq
+  dbxml-query  [-v] -d dbfile -q xquery
+  dbxml-query --help | --man
+
+=head1 DESCRIPTION
+
+I<dbxml-query> sends an XQuery to the Berkeley DB XML database and
+prints the result(s) to standard output. The XQuery can be specified
+on the commandline using the B<--query> parameter. Alternatively a
+file containing the query can be passed to the programm.
+
+=head1 OPTIONS
+
+=over
+
+=item B<--db>, B<-d>
+
+The path to the database file.
+
+=item B<--query>, B<-q>
+
+The XQuery to execute.
+
+=item B<--verbose>, B<-v>
+
+Verbose feedback.
+
+=item B<--help>, B<-h>
+
+Display short help message and exit. If used together with B<-v> the
+entire manpage will be displayed.
+
+=item B<--man>
+
+Display manpage and exit. This is equivalent to B<-h> B<-v>.
+
+=back
+
+=head1 SEE ALSO
+
+L<Histvv::Db>
+
+=head1 AUTHOR
+
+Carsten Milling, C<< <cmil at hashtable.de> >>
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright 2008 Carsten Milling, all rights reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+=cut

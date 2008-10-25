@@ -3,40 +3,19 @@
 use strict;
 use warnings;
 
-use Getopt::Long;
+use Histvv;
+use Histvv::CLI;
 use XML::LibXML;
 use XML::LibXML::XPathContext;
 
-my $usage = <<EOT;
-Usage: histvv-generate-ids [-l] [-w] file
+my $cli = Histvv::CLI->new();
+my %opts = $cli->get_opts( 'list|l' => 0, 'write|w' => 0 );
 
-Without any options the modified document is printed to
-standard output.
-
-Options:
-  -l, --list    list IDs and titles on standard output
-  -w, --write   write modified document to disk
-  -h, --help    show this message
-EOT
-
-my %opts = ( list => 0, write => 0, help => 0 );
-GetOptions ( \%opts, 'list|l', 'write|w', 'help|h') or die $usage;
-
-if ($opts{help}) {
-    print $usage;
-    exit;
-}
-
-my $file = shift or die $usage;
-
-# Histvv Namespace URI
-my $nsuri = 'http://histvv.uni-leipzig.de/ns/2007';
-
-# XML Namespace URI
-my $xmluri = 'http://www.w3.org/XML/1998/namespace';
+my $file = shift or $cli->error( 'Please specify a file!' );
 
 # regex matching titel numbers
-my $numrx = qr/^\s*((?:[IVX]+|[0-9]+|[a-zA-z]+|[*]+|\p{Greek}+)(?=[.)]\s)|[*]+(?=\s))/;
+my $numrx =
+  qr/^\s*((?:[IVX]+|[0-9]+|[a-zA-z]+|[*]+|\p{Greek}+)(?=[.)]\s)|[*]+(?=\s))/;
 
 # transliteration of special characters
 my %translit = (
@@ -55,8 +34,8 @@ my %translit = (
 
 my $doc = XML::LibXML->new->parse_file($file);
 my $xc = XML::LibXML::XPathContext->new($doc);
-$xc->registerNs('v', $nsuri);
-$xc->registerFunctionNS('num', $nsuri, \&_num);
+$xc->registerNs('v', $Histvv::XMLNS);
+$xc->registerFunctionNS('num', $Histvv::XMLNS, \&_num);
 
 my $jahr = $xc->findvalue('/v:vv/v:kopf/v:beginn/v:jahr')
   || die "Cannot find element 'beginn/jahr'\n";
@@ -159,3 +138,73 @@ sub _num  {
         return undef;
     }
 }
+
+__END__
+
+=head1 NAME
+
+histvv-generate-ids - add C<xml:id> attributes to histvv documents
+
+=head1 SYNOPSIS
+
+  histvv-generate-ids [--list] [--write] file.xml
+  histvv-generate-ids --help | --man
+
+=head1 DESCRIPTION
+
+I<histvv-generate-ids> sets C<xml:id> attributes for the elements
+C<sachgruppe> and C<veranstaltung> in a histvv document. Without any
+options the modified document is printed to standard output.
+
+The generated IDs are based on the section numbers of the document.
+Inconsistencies in the original numbering are detected and worked
+around to ensure uniqueness. Greek letters are transliterated.
+
+The IDs for C<sachgruppe> are prefixed with C<sg-> while the IDs for
+C<veranstaltung> get a C<v-> prefix. Both prefixes are followed by a
+semester identifier.
+
+=head1 OPTIONS
+
+=over
+
+=item B<--list>, B<-l>
+
+Display generated IDs and corresponding section titles
+(C<sachgruppe/titel> or C<veranstaltung/thema>) on standard output.
+
+=item B<--write>, B<-w>
+
+Write the modified document to disk.
+
+=item B<--verbose>, B<-v>
+
+Verbose feedback.
+
+=item B<--help>, B<-h>
+
+Display short help message and exit. If used together with B<-v> the
+entire manpage will be displayed.
+
+=item B<--man>
+
+Display manpage and exit. This is equivalent to B<-h> B<-v>.
+
+=back
+
+=head1 SEE ALSO
+
+L<Histvv::Db>
+
+=head1 AUTHOR
+
+Carsten Milling, C<< <cmil at hashtable.de> >>
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright 2008 Carsten Milling, all rights reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+=cut

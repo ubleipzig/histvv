@@ -3,22 +3,17 @@
 use strict;
 use warnings;
 
-use Getopt::Long;
-use File::Basename;
+use Histvv;
+use Histvv::CLI;
 use Histvv::Db;
-use Data::Dumper;
+use File::Basename;
 
-my $usage = <<EOT;
-Usage: histvv-db-create [-v]  [--force] dbfile file1.xml ...
-EOT
+my $cli  = Histvv::CLI->new();
+my %opts = $cli->get_opts('db|d=s' => undef, 'force|f' => 0, 'cleanup' => 0);
 
-my %opts = ( verbose => 0, help => 0 );
-GetOptions ( \%opts, 'force|f', 'verbose|v', 'help|h') or die $usage;
+my $dbfile = $opts{db} || $cli->error("Please specify a database!");
 
-if ($opts{help}) { print $usage; exit; }
-
-my $dbfile = shift || die $usage;
-die "No input files!\n$usage" unless @ARGV;
+$cli->error( "No input files!" ) unless @ARGV;
 
 if (-f $dbfile) {
     unless ($opts{force}) {
@@ -34,29 +29,91 @@ if (-f $dbfile) {
 my $db = Histvv::Db->new( $dbfile, { create => 1, private => 1 } );
 
 my $ns_xml = 'http://www.w3.org/XML/1998/namespace';
-my $ns_histvv = 'http://histvv.uni-leipzig.de/ns/2007';
+my $ns_histvv = $Histvv::XMLNS;
 
-print "Adding indices...\n" if $opts{verbose};
-$db->add_index($ns_xml, 'id', 'node-attribute-presence');
-$db->add_index($ns_xml, 'id', 'node-attribute-equality-string');
-$db->add_index($ns_histvv, 'vv', 'node-element-presence');
-$db->add_index($ns_histvv, 'dozentenliste', 'node-element-presence');
-$db->add_index($ns_histvv, 'veranstaltung', 'node-element-presence');
-$db->add_index($ns_histvv, 'nachname', 'node-element-equality-string');
-$db->add_index($ns_histvv, 'nachname', 'node-element-substring-string');
-$db->add_index($ns_histvv, 'nachname', 'node-element-presence');
-$db->add_index($ns_histvv, 'vorname', 'node-element-equality-string');
-$db->add_index($ns_histvv, 'vorname', 'node-element-equality-string');
-$db->add_index('', 'ref', 'node-attribute-equality-string');
+$cli->chatter("Adding indexes...");
+$db->add_index( $ns_xml,    'id',            'node-attribute-presence' );
+$db->add_index( $ns_xml,    'id',            'node-attribute-equality-string' );
+$db->add_index( $ns_histvv, 'vv',            'node-element-presence' );
+$db->add_index( $ns_histvv, 'dozentenliste', 'node-element-presence' );
+$db->add_index( $ns_histvv, 'veranstaltung', 'node-element-presence' );
+$db->add_index( $ns_histvv, 'nachname',      'node-element-equality-string' );
+$db->add_index( $ns_histvv, 'nachname',      'node-element-substring-string' );
+$db->add_index( $ns_histvv, 'nachname',      'node-element-presence' );
+$db->add_index( $ns_histvv, 'vorname',       'node-element-equality-string' );
+$db->add_index( $ns_histvv, 'vorname',       'node-element-equality-string' );
+$db->add_index( '',         'ref',           'node-attribute-equality-string' );
 
-print "Loading files...\n" if $opts{verbose};
+$cli->chatter( "Loading files..." );
 foreach my $file (@ARGV) {
-    print "  $file .." if $opts{verbose};
+    $cli->chatter( "  $file ..", 1 );
     my $name = basename($file);
     my $xml = '';
     open F, $file or die $!;
     $xml .= $_ while (<F>);
     close F;
     $db->put_doc($xml, $name);
-    print " ok\n" if $opts{verbose};
+    $cli->chatter( " ok" );
 }
+
+__END__
+
+=head1 NAME
+
+histvv-db-create - create a new Berkeley DB XML database
+
+=head1 SYNOPSIS
+
+  histvv-db-create [-v] [-f] -d dbfile file1.xml ...
+  histvv-db-create --help | --man
+
+=head1 DESCRIPTION
+
+I<histvv-db-create> creates a new Berkeley DB XML database and loads
+the passed files into it. If the file specified with the B<--db>
+option already exists it will ask whether the existing file should be
+replaced by the new database.
+
+=head1 OPTIONS
+
+=over
+
+=item B<--db>, B<-d>
+
+The file path where to create the new database.
+
+=item B<--force>, B<-f>
+
+Replace an existing file without prompting the user.
+
+=item B<--verbose>, B<-v>
+
+Display progress messages.
+
+=item B<--help>, B<-h>
+
+Display short help message and exit. If used together with B<-v> the
+entire manpage will be displayed.
+
+=item B<--man>
+
+Display manpage and exit. This is equivalent to B<-h> B<-v>.
+
+=back
+
+=head1 SEE ALSO
+
+L<Histvv::Db>
+
+=head1 AUTHOR
+
+Carsten Milling, C<< <cmil at hashtable.de> >>
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright 2008 Carsten Milling, all rights reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+=cut
