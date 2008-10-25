@@ -7,6 +7,9 @@ use Histvv;
 use Histvv::CLI;
 use Histvv::Db;
 use File::Basename;
+use File::Temp;
+use File::Copy;
+use File::Spec;
 
 my $cli  = Histvv::CLI->new();
 my %opts = $cli->get_opts('db|d=s' => undef, 'force|f' => 0, 'cleanup' => 0);
@@ -22,8 +25,17 @@ if (-f $dbfile) {
         chomp $y if defined $y;
         exit if $y =~ /^n(o)?$/i;
     }
-    print "Deleting $dbfile...\n" if $opts{verbose};
-    unlink $dbfile or die "Cannot delete $dbfile.\n";
+
+    # Only want a file name but let File::Temp figure out where to
+    # create the temp file. That's why we are not using mktemp here
+    # but instead use the OO interface in its own block so that
+    # File::Temp cleans up behind itself when we leave scope and we
+    # only keep the file name.
+    {
+        my $tmp = File::Temp->new( SUFFIX => '.dbxml' );
+        $dbfile = $tmp->filename;
+    }
+    $cli->chatter("Creating temporary file $dbfile...");
 }
 
 my $db = Histvv::Db->new( $dbfile, { create => 1, private => 1 } );
@@ -56,6 +68,33 @@ foreach my $file (@ARGV) {
     $cli->chatter( " ok" );
 }
 
+# sync database status to disc
+$cli->chatter( 'Syncing database...' );
+$db->{container}->sync();
+
+# FIXME: there should be a better way to cleanly disconnect from the
+# database, which we need to do before we copy/move the db file
+undef $db;
+
+if ( $dbfile ne $opts{db} ) {
+    $cli->chatter("Copying temporary $dbfile -> $opts{db}...");
+    File::Copy::copy( $dbfile, $opts{db} ) or die $!;
+    unlink $dbfile;
+
+    if ( $opts{cleanup} ) {
+        require File::Find;
+        my @files;
+        my $dir = dirname $opts{db};
+        File::Find::find( sub { push( @files, $_ ) if m/^__db\.[0-9]{3}$/ },
+            $dir );
+        for (@files) {
+            my $f = File::Spec->catfile( $dir, $_ );
+            $cli->chatter("removing $f");
+            unlink $f;
+        }
+    }
+}
+
 __END__
 
 =head1 NAME
@@ -85,6 +124,12 @@ The file path where to create the new database.
 =item B<--force>, B<-f>
 
 Replace an existing file without prompting the user.
+
+=item B<--cleanup>
+
+Remove stale region files when replacing a database. Region files are
+named C<__db.001>, C<__db.002>, and so on and are created by the DB
+environment to back shared memory regions.
 
 =item B<--verbose>, B<-v>
 
