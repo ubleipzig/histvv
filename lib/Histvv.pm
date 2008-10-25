@@ -26,9 +26,7 @@ to provide a version number to the build system.
 
 =cut
 
-#
-# some code should go here
-#
+our $XMLNS = 'http://histvv.uni-leipzig.de/ns/2007';
 
 =head1 AUTHOR
 
