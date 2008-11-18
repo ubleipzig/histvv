@@ -129,12 +129,14 @@
     </xsl:if>
     <xsl:apply-templates select="v:absatz"/>
     <xsl:apply-templates select="v:pnd"/>
-    <h3>Links</h3>
-    <ul>
-      <xsl:for-each select="v:url | v:adb | v:ndb">
-        <li><xsl:apply-templates select="." mode="linkliste"/></li>
-      </xsl:for-each>
-    </ul>
+    <xsl:if test="v:url or v:adb or v:ndb">
+      <h3>Links</h3>
+      <ul>
+        <xsl:for-each select="v:url | v:adb | v:ndb">
+          <li><xsl:apply-templates select="." mode="linkliste"/></li>
+        </xsl:for-each>
+      </ul>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="v:dozent/v:geboren | v:dozent/v:gestorben">
