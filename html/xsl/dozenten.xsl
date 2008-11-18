@@ -128,10 +128,13 @@
       </p>
     </xsl:if>
     <xsl:apply-templates select="v:absatz"/>
-    <xsl:for-each select="v:url">
-      <p><xsl:apply-templates select="."/></p>
-    </xsl:for-each>
     <xsl:apply-templates select="v:pnd"/>
+    <h3>Links</h3>
+    <ul>
+      <xsl:for-each select="v:url | v:adb | v:ndb">
+        <li><xsl:apply-templates select="." mode="linkliste"/></li>
+      </xsl:for-each>
+    </ul>
   </xsl:template>
 
   <xsl:template match="v:dozent/v:geboren | v:dozent/v:gestorben">
@@ -143,7 +146,7 @@
     </xsl:if>
     <xsl:value-of select="v:jahr"/>
     <xsl:if test="v:ort">
-      <xsl:text>, in </xsl:text>
+      <xsl:text> in </xsl:text>
       <xsl:value-of select="v:ort"/>
     </xsl:if>
   </xsl:template>
@@ -219,6 +222,58 @@
         <xsl:value-of select="."/>
       </td>
     </tr>
+  </xsl:template>
+
+  <xsl:template match="v:url" mode="linkliste">
+    <xsl:variable name="text">
+      <xsl:choose>
+        <xsl:when test="starts-with(., 'http://de.wikipedia.org')">
+          <xsl:text>Wikipedia</xsl:text>
+        </xsl:when>
+        <xsl:when test="starts-with(., 'http://en.wikipedia.org')">
+          <xsl:text>Wikipedia (engl.)</xsl:text>
+        </xsl:when>
+        <xsl:when test="starts-with(., 'http://www.uni-leipzig.de/unigeschichte/professorenkatalog')">
+          <xsl:text>Professorenkatalog der Universität Leipzig</xsl:text>
+        </xsl:when>
+        <xsl:when test="starts-with(., 'http://www.bautz.de/bbkl/')">
+          <xsl:text>Biographisch-Bibliographisches Kirchenlexikon</xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="."/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <a>
+      <xsl:attribute name="href">
+        <xsl:value-of select="."/>
+      </xsl:attribute>
+      <xsl:value-of select="$text"/>
+    </a>
+  </xsl:template>
+
+  <xsl:template match="v:dozent/v:adb | v:dozent/v:ndb" mode="linkliste">
+    <a>
+      <xsl:attribute name="href">
+        <xsl:value-of select="v:url"/>
+      </xsl:attribute>
+      <xsl:choose>
+        <xsl:when test="local-name(.) = 'adb'">
+          <abbr title="Allgemeine Deutsche Biographie">
+            <xsl:text>ADB</xsl:text>
+          </abbr>
+        </xsl:when>
+        <xsl:otherwise>
+          <abbr title="Neue Deutsche Biographie">
+            <xsl:text>NDB</xsl:text>
+          </abbr>
+        </xsl:otherwise>
+      </xsl:choose>
+      <xsl:text>, Bd. </xsl:text>
+      <xsl:value-of select="v:band"/>
+      <xsl:text>, S. </xsl:text>
+      <xsl:value-of select="v:seite"/>
+    </a>
   </xsl:template>
 
 </xsl:stylesheet>
