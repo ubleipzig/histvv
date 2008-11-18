@@ -26,6 +26,7 @@ html/suche.xhtml
 html/suchergebnis.xhtml
 html/titelblatt.jpg
 html/xsl/common.xsl
+html/xsl/elements.xsl
 html/xsl/dozenten.xsl
 html/xsl/histvv2html.xsl
 html/xsl/static.xsl

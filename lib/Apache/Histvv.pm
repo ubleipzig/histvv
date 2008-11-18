@@ -169,7 +169,66 @@ return
 </report>
 EOT
 
+    elements => <<'EOT',
+declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
+
+let $werte := distinct-values(
+  collection()/v:vv[v:kopf/v:status/@komplett]//v:%s
+  /normalize-space())
+
+return
+<report>
+  <element>%s</element>
+  <werte>
+  {
+    for $w in $werte
+    order by $w
+    return
+    <w>{$w}</w>
+  }
+  </werte>
+</report>
+EOT
+
+    elementlookup => <<'EOT',
+declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
+
+let $value := "%s"
+
+let $stellen := collection()/v:vv[v:kopf/v:status/@komplett]
+  //v:%s[normalize-space(.)=$value]
+
+let $n := count($stellen)
+
+return
+<report>
+  <element>%s</element>
+  <value>{$value}</value>
+  <stellen>
+  {
+    for $d in $stellen
+    let $node := $d/..
+    let $s := if ($n < 100)
+      then $node/preceding::v:seite[1]
+      else ()
+    let $snr := if ($s)
+                then (if ($s/@nr) then $s/@nr else $s/string())
+                else '0'
+    let $kopf := $d/ancestor::v:vv/v:kopf
+    let $sem := $kopf/v:semester/string()
+    let $jahr := $kopf/v:beginn/v:jahr/string()
+    return
+    <stelle semester="{$sem}" jahr="{$jahr}" seite="{$snr}">
+    {$node}
+    </stelle>
+  }
+  </stellen>
+</report>
+EOT
+
 );
+
+my @Elems = qw/funktion gebühr grad modus ort zeit/;
 
 
 sub handler {
@@ -207,6 +266,24 @@ sub handler {
         }
         elsif ( $url =~ /^\/(index\.html)?$/ ) { # list of VVs
             $xquery = $Queries{index};
+        }
+        else {
+            return Apache2::Const::DECLINED;
+        }
+    } elsif ($loc eq '/elements') {
+        my $elems = join '|', @Elems;
+        my $rx = qr/^\/($elems)$/;
+        if ($url =~ $rx) {
+            my $elem = $1;
+            my $rq = Apache2::Request->new($r);
+            my $wert = $rq->param('w');
+            if ( $wert ) {
+                $wert =~ s/"/""/g;
+                $xquery = sprintf $Queries{elementlookup}, $wert, $elem, $elem;
+            }
+            else {
+                $xquery = sprintf $Queries{elements}, $elem, $elem;
+            }
         }
         else {
             return Apache2::Const::DECLINED;
