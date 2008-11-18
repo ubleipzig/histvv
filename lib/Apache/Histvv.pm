@@ -253,18 +253,19 @@ sub handler {
         print $stylesheet->output_as_bytes($html);
     }
 
-    print "\n\n";
-    print "<!--\n";
-    print "URI: " . $r->uri . "\n";
-    print "Location: " . $r->location . "\n";
-    print "Document Root: " . $r->document_root . "\n";
-    print "URL: " . $url . "\n";
-    print "ARGS: " . $r->args . "\n";
-    print "DB: $dbfile\n";
-    print "XSL: $xslfile\n";
-    print "$xquery\n" if $xquery;
-    #print Dumper \%ENV;
-    print "-->\n";
+    if ( $ENV{HISTVV_DEBUG} ) {
+        print "\n\n";
+        print "<!--\n";
+        print "URI: " . $r->uri . "\n";
+        print "Location: " . $r->location . "\n";
+        print "Document Root: " . $r->document_root . "\n";
+        print "URL: " . $url . "\n";
+        print "ARGS: " . $r->args . "\n";
+        print "DB: $dbfile\n";
+        print "XSL: $xslfile\n";
+        print "$xquery\n" if $xquery;
+        print "-->\n";
+    }
 
     return Apache2::Const::OK;
 }
