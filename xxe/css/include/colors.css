@@ -25,6 +25,10 @@ thema > ort {
   border-bottom-color: green;
 }
 
+thema > ort seite {
+  display: inline;
+}
+
 ders,
 nachnamenpr\0000E4fix,
 nachname {
