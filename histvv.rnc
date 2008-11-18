@@ -640,7 +640,9 @@ dozentenliste =
         xsd:token { pattern = "[0-9]{8}[0-9X]" }
       }?,
       (element absatz { text }*
-       & element url { http-url }*)
+       & element url { http-url }*
+       & element adb { adb-ndb-model }?
+       & element ndb { adb-ndb-model }?)
     }+
   }
 eckdaten =
@@ -649,6 +651,10 @@ eckdaten =
 geboren = element geboren { eckdaten }
 gestorben = element gestorben { eckdaten }
 http-url = xsd:anyURI { pattern = "https?://.+" }
+adb-ndb-model =
+  element band { text },
+  element seite { text },
+  element url { http-url }
 
 ## Container für OCR-Text
 ocr =

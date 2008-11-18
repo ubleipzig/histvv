@@ -958,6 +958,16 @@
                 <ref name="http-url"/>
               </element>
             </zeroOrMore>
+            <optional>
+              <element name="adb">
+                <ref name="adb-ndb-model"/>
+              </element>
+            </optional>
+            <optional>
+              <element name="ndb">
+                <ref name="adb-ndb-model"/>
+              </element>
+            </optional>
           </interleave>
         </element>
       </oneOrMore>
@@ -989,6 +999,18 @@
     <data type="anyURI">
       <param name="pattern">https?://.+</param>
     </data>
+  </define>
+
+  <define name="adb-ndb-model">
+    <element name="band">
+      <text/>
+    </element>
+    <element name="seite">
+      <text/>
+    </element>
+    <element name="url">
+      <ref name="http-url"/>
+    </element>
   </define>
 
   <define name="ocr">

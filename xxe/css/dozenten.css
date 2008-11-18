@@ -1,6 +1,6 @@
 dozentenliste, universit\0000E4t,
 dozent, name, geboren, gestorben,
-pnd, absatz, url {
+pnd, adb, ndb, absatz, url {
   display: block;
 }
 
@@ -90,7 +90,7 @@ gestorben > tag:before {
 
 geboren > ort:before,
 gestorben > ort:before {
-  content: ", in ";
+  content: " in ";
 }
 
 dozent > pnd:before {
@@ -98,7 +98,34 @@ dozent > pnd:before {
   content: "PND:";
 }
 
-dozent > url {
+dozent > adb:before {
+  content: "ADB ";
+}
+
+dozent > ndb:before {
+  content: "NDB ";
+}
+
+adb > band:before,
+ndb > band:before {
+  content: "Bd. ";
+}
+
+adb > seite:before,
+ndb > seite:before {
+  content: ", S. ";
+}
+
+adb > url:before,
+ndb > url:before {
+  content: ", URL: ";
+}
+
+adb > url, ndb > url {
+  display: inline;
+} 
+
+dozent url {
   font-size: small;
   color: blue;
 }
