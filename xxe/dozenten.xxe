@@ -57,4 +57,46 @@
     </gestorben>
   </elementTemplate>
 
+  <elementTemplate name="default" selectable="override">
+    <dozent xmlns="http://histvv.uni-leipzig.de/ns/2007">
+      <name>
+        <nachname/>
+        <vorname/>
+      </name>
+      <geboren>
+        <jahr/><monat/><tag/><ort/>
+      </geboren>
+      <gestorben>
+        <jahr/><monat/><tag/><ort/>
+      </gestorben> 
+      <pnd/>
+      <!--[Berufsbezeichnung, Fachgebiet]-->
+      <absatz/>
+      <adb>
+        <band/><seite/><url/>
+      </adb>
+      <ndb>
+        <band/><seite/><url/>
+      </ndb>
+      <!--[Links zu Wikipedia, Professorenkatalog, BBKL usw.]-->
+      <url/>
+      <url/>
+    </dozent>
+  </elementTemplate>
+
+  <elementTemplate name="minimal">
+    <dozent xmlns="http://histvv.uni-leipzig.de/ns/2007">
+      <name>
+        <nachname/>
+        <vorname/>
+      </name>
+      <geboren>
+        <jahr/>
+      </geboren>
+      <gestorben>
+        <jahr/>
+      </gestorben> 
+    </dozent>
+  </elementTemplate>
+
 </configuration>
