@@ -1029,6 +1029,9 @@
             <ref name="absatz"/>
             <ref name="trennlinie"/>
             <ref name="seite"/>          
+            <ref name="dozent"/>          
+            <ref name="modus"/>          
+            <ref name="gebühr"/>          
           </choice>
         </zeroOrMore>
         <text/>

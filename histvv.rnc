@@ -666,7 +666,10 @@ ocr =
        | veranstaltungsverweis
        | absatz
        | trennlinie
-       | seite)*
+       | seite
+       | dozent
+       | modus
+       | gebühr)*
     & text
   }
   >> s:pattern [
