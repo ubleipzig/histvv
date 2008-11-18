@@ -6,7 +6,9 @@ seite, trennlinie {
   display: none;
 }
 
-sachgruppe > titel { font-size: medium; }
+sachgruppe > titel {
+  font-size: medium;
+}
 
 sachgruppe {
   border: 1px dotted gray;
@@ -15,7 +17,9 @@ sachgruppe {
   margin-bottom: 3px;
 }
 
-titel + sachgruppe { margin-top: 0; }
+titel + sachgruppe {
+  margin-top: 0;
+}
 
 sachgruppe {
   collapsible: yes;

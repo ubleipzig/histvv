@@ -10,7 +10,9 @@ sachgruppe {
   margin-bottom: 4px;
 }
 
-titel + sachgruppe { margin-top: 0; }
+titel + sachgruppe {
+  margin-top: 0;
+}
 
 absatz:after {
   content: "\0000b6";
@@ -32,7 +34,9 @@ veranstaltungsgruppe veranstaltungsverweis:before {
   font-weight: bold;
 }
 
-veranstaltungsgruppe veranstaltungsverweis:before { content: "{\002197"; }
+veranstaltungsgruppe veranstaltungsverweis:before {
+  content: "{\002197";
+}
 
 absatz veranstaltung:after,
 veranstaltungsgruppe veranstaltung:after,

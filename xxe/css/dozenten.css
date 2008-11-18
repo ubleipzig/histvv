@@ -5,12 +5,14 @@ pnd, absatz, url {
 }
 
 dozentenliste {
-  font-family: serif; 
+  font-family: serif;
   color: black;
   background-color: white;
 }
 
-*:before, *:after { color: gray; }
+*:before, *:after {
+  color: gray;
+}
 
 universit\0000E4t {
   margin-bottom: 1em;
@@ -24,7 +26,6 @@ universit\0000E4t:before {
   content: "Dozentenliste der Universit\0000E4t ";
   margin-top: 1em;
 }
-
 
 dozentenliste > dozent {
   margin-bottom: 1em;
@@ -47,14 +48,27 @@ dozentenliste > dozent[xml|id]:before {
   content: attr(xml|id);
 }
 
-dozentenliste > dozent > * { margin: .3em 0; }
+dozentenliste > dozent > * {
+  margin: .3em 0;
+}
 
-dozentenliste > dozent > name { font-weight: bold; font-size: large; margin-top: 0; }
+dozentenliste > dozent > name {
+  font-weight: bold;
+  font-size: large;
+  margin-top: 0;
+}
 
-dozent > name > vorname:before { content: ", "; }
-nachnamenpr\0000E4fix:before { content: " ("; }
-nachnamenpr\0000E4fix:after { content: ")"; }
+dozent > name > vorname:before {
+  content: ", ";
+}
 
+nachnamenpr\0000E4fix:before {
+  content: " (";
+}
+
+nachnamenpr\0000E4fix:after {
+  content: ")";
+}
 
 dozentenliste > dozent > geboren,
 dozentenliste > dozent > gestorben,

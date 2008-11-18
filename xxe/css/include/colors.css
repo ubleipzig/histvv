@@ -1,8 +1,22 @@
-thema        { background-color: #f5ffc0; }
-zeit         { background-color: #e3ddbe; }
-modus        { background-color: #e9d8ab; }
-geb\0000FChr { background-color: #f0d9bb; }
-ort          { background-color: #dbffdb; }
+thema {
+  background-color: #f5ffc0;
+}
+
+zeit {
+  background-color: #e3ddbe;
+}
+
+modus {
+  background-color: #e9d8ab;
+}
+
+geb\0000FChr {
+  background-color: #f0d9bb;
+}
+
+ort {
+  background-color: #dbffdb;
+}
 
 thema > ort {
   background-color: inherit;
@@ -13,10 +27,26 @@ thema > ort {
 
 ders,
 nachnamenpr\0000E4fix,
-nachname { background-color: #abb9c7; }
-vorname  { background-color: #ccdee6; }
-grad     { background-color: #b7d7d7; }
-funktion { background-color: #9bc1c1; }
+nachname {
+  background-color: #abb9c7;
+}
 
-notiz { color: red; }
-siehe { color: blue; }
+vorname {
+  background-color: #ccdee6;
+}
+
+grad {
+  background-color: #b7d7d7;
+}
+
+funktion {
+  background-color: #9bc1c1;
+}
+
+notiz {
+  color: red;
+}
+
+siehe {
+  color: blue;
+}

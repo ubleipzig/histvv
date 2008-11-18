@@ -1,4 +1,10 @@
 @import "include/base.css";
 
-vv { padding: 1em; }
-trennlinie { width: 30%; margin: 1em auto; }
+vv {
+  padding: 1em;
+}
+
+trennlinie {
+  width: 30%;
+  margin: 1em auto;
+}

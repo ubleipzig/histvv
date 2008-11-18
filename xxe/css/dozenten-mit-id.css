@@ -1,4 +1,9 @@
 @import "dozenten.css";
 
-dozent { display: none; }
-dozent[xml|id] { display: block; }
+dozent {
+  display: none;
+}
+
+dozent[xml|id] {
+  display: block;
+}

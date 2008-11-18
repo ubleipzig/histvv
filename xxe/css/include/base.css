@@ -17,7 +17,10 @@ kopf {
   border: 2px solid gray;
 }
 
-kopf *:before, kopf *:after { color: gray; }
+kopf *:before,
+kopf *:after {
+  color: gray;
+}
 
 kopf > *,
 kopf > status > * {
@@ -36,20 +39,17 @@ kopf > status > *:before {
   content: element-label();
 }
 
-/*
-universit\0000E4t:before { content: "Universit\E4 t: "; }
-semester:before { content: "Semester: "; }
-beginn:before { content: "Beginn: "; }
-ende:before { content: "Ende: "; }
-status > transkribent:before { content: "Transkribent: "; }
-status > korrigiert:before { content: "korrigiert: "; }
-status > komplettiert:before { content: "komplettiert am: "; }
-*/
+kopf > * > monat:before {
+  content: "-";
+}
 
-kopf > * > monat:before { content: "-"; }
-kopf > * > tag:before { content: "-"; }
+kopf > * > tag:before {
+  content: "-";
+}
 
-kopf > semester { content: combo-box(values, "Sommer\A Winter"); }
+kopf > semester {
+  content: combo-box(values, "Sommer\A Winter");
+}
 
 kopf > status:after {
   display: block;
@@ -60,8 +60,13 @@ kopf > status:after {
                      remove-value, yes);
 }
 
-korrigiert > durch:before { content: "durch "; }
-korrigiert > am:before { content: "am "; }
+korrigiert > durch:before {
+  content: "durch ";
+}
+
+korrigiert > am:before {
+  content: "am ";
+}
 
 korrigiert > am,
 korrigiert > durch {
@@ -69,20 +74,17 @@ korrigiert > durch {
   margin-right: .5em;
 }
 
-korrigiert > anmerkungen:before { content: "("; }
-korrigiert > anmerkungen:after { content: ")"; }
-
-/*
-korrigiert > am {
-  padding: 1px;
-  content: date-field(pattern, "dd.MM.yyyy",
-                      data-type, date,
-                      language, de,
-                      country, "DE");
+korrigiert > anmerkungen:before {
+  content: "(";
 }
-*/
 
-absatz { margin: .5em 0; }
+korrigiert > anmerkungen:after {
+  content: ")";
+}
+
+absatz {
+  margin: .5em 0;
+}
 
 absatz > veranstaltung,
 absatz > veranstaltungsverweis,
@@ -98,9 +100,17 @@ veranstaltungsgruppe {
   margin: .5em 0;
 }
 
-antiqua { font-style: italic; }
-gesperrt { font-family: sans-serif; }
-kursiv { font-style: italic; }
+antiqua {
+  font-style: italic;
+}
+
+gesperrt {
+  font-family: sans-serif;
+}
+
+kursiv {
+  font-style: italic;
+}
 
 
 vv > titel, vv > untertitel {
@@ -132,11 +142,25 @@ sachgruppe > titel {
   font-size: large;
 }
 
-seite { font-weight: bold; text-align: right; }
-seite:before { content: "[Seite "; color: gray; }
-seite:after  { content: "]"; color: gray; }
+seite {
+  font-weight: bold;
+  text-align: right;
+}
 
-seite[nr] { content: attr(nr); color: gray; }
+seite:before {
+  content: "[Seite ";
+  color: gray;
+}
+
+seite:after  {
+  content: "]";
+  color: gray;
+}
+
+seite[nr] {
+  content: attr(nr);
+  color: gray;
+}
 
 sic {
   display: inline-block; 
@@ -145,12 +169,27 @@ sic {
   background-color: inherit;
 }
 
-sic:after { color: gray; content: " [sic]"; }
+sic:after {
+  color: gray;
+  content: " [sic]";
+}
 
-scil:after { color: gray; content: " [scil. \"" attr(text) "\"]"; }
+scil:after {
+  color: gray;
+  content: " [scil. \"" attr(text) "\"]";
+}
 
-korrektur:before { color: gray; content: "["; font-style: normal; }
-korrektur:after { color: gray; content: "]"; font-style: normal; }
+korrektur:before {
+  color: gray;
+  content: "[";
+  font-style: normal;
+}
+
+korrektur:after {
+  color: gray;
+  content: "]";
+  font-style: normal;
+}
 
 trennlinie {
   display: block;
@@ -172,9 +211,17 @@ trennlinie {
 }
 
 dozent > grad,
-dozent > funktion { font-style: italic; }
-modus   { font-style: italic; }
-geb\0000FChr { font-style: italic; }
+dozent > funktion {
+  font-style: italic;
+}
+
+modus   {
+  font-style: italic;
+}
+
+geb\0000FChr {
+  font-style: italic;
+}
 
 thema autor {
   font-family: sans-serif;

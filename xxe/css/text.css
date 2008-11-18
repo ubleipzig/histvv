@@ -1,4 +1,9 @@
 @import "include/base.css";
 
-notiz { color: red; }
-seite { color: blue; }
+notiz {
+  color: red;
+}
+
+seite {
+  color: blue;
+}
