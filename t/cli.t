@@ -42,16 +42,19 @@ isa_ok($cli, 'Histvv::CLI', 'cli');
 }
 
 # test say() and chatter()
-{
-    use Test::Output;
-    my $cli = Histvv::CLI->new;
+SKIP: {
+    skip "need Test::Output for testing script output", 4
+      unless eval "use Test::Output; 1";
 
+    my $cli  = Histvv::CLI->new;
     my $opts = $cli->get_opts;
 
-    stdout_is { $cli->say("foo") } "foo\n", "test say()";
-    stdout_is { $cli->say("foo", 1) } "foo", "test say() with no newline";
-    stdout_is { $cli->chatter("blah") } "", "test chatter() non-verbose";
-    stdout_is { $cli->say("foo") } "foo\n", "test say()";
+    stdout_is( sub { $cli->say("foo") }, "foo\n", "test say()" );
+    stdout_is( sub { $cli->say( "foo", 1 ) },
+        "foo", "test say() with no newline" );
+    stdout_is( sub { $cli->chatter("blah") }, "",
+        "test chatter() non-verbose" );
+    stdout_is( sub { $cli->say("foo") }, "foo\n", "test say()" );
 }
 
 __END__
