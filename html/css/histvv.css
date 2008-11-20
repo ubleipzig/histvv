@@ -30,7 +30,8 @@ th.nr, td.nr {
 }
 
 abbr, acronym {
-  border: none;
+  cursor: help;
+  border-color: gray;
 }
 
 .clear { clear: both; }

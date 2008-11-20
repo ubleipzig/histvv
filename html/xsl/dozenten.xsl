@@ -155,7 +155,7 @@
 
   <xsl:template match="v:dozent/v:pnd">
     <p class="pnd">
-      PND:
+      <abbr title="Personennamendatei">PND</abbr>:
       <a>
         <xsl:attribute name="href">
           <xsl:text>http://d-nb.info/gnd/</xsl:text>
