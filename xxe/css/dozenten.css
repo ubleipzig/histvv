@@ -62,6 +62,10 @@ dozent > name > vorname:before {
   content: ", ";
 }
 
+vorname rufname {
+  text-decoration: underline;
+}
+
 nachnamenpr\0000E4fix:before {
   content: " (";
 }

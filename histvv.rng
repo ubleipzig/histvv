@@ -478,9 +478,32 @@
       Vorname
     </a:documentation>
     <element name="vorname">
-      <ref name="common.attributes"/>
+      <interleave>
+        <ref name="common.attributes"/>
+        <ref name="model.text"/>
+        <optional>
+          <ref name="rufname"/>
+        </optional>
+      </interleave>
+    </element>
+  </define>
+
+  <define name="rufname">
+    <a:documentation>
+      zur Kennzeichnung des Rufnamens bei mehreren Vornamen
+    </a:documentation>
+    <element name="rufname">
       <ref name="model.text"/>
     </element>
+
+    <s:pattern id="rufname">
+      <s:rule context="v:rufname">
+        <s:assert test="not(normalize-space(.) = normalize-space(parent::v:vorname))">
+          Wenn Vorname und Rufname identisch sind, kann das Element
+          'rufname' entfallen.
+        </s:assert>
+      </s:rule>
+    </s:pattern>
   </define>
 
   <define name="nachnamenpräfix">

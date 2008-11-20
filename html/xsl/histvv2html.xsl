@@ -69,6 +69,10 @@
     </xsl:if>
   </xsl:template>
 
+  <xsl:template match="v:rufname">
+    <em class="rufname"><xsl:apply-templates/></em>
+  </xsl:template>
+
   <xsl:template match="v:sachgruppe">
     <div class="sachgruppe">
       <xsl:if test="@xml:id">

@@ -34,7 +34,7 @@
       </xsl:when>
       <xsl:when test="/report/v:dozent">
         <xsl:text>Dozent: </xsl:text>
-        <xsl:apply-templates select="/report/v:dozent/v:name"/>
+        <xsl:apply-templates select="/report/v:dozent/v:name" mode="kurz"/>
       </xsl:when>
       <xsl:when test="/report/name">
         <xsl:text>Name: </xsl:text>
@@ -72,7 +72,7 @@
           <xsl:choose>
             <xsl:when test="@xml:id">
               <a href="{@xml:id}.html">
-                <xsl:apply-templates select="v:name"/>
+                <xsl:apply-templates select="v:name" mode="kurz"/>
               </a>
             </xsl:when>
             <xsl:otherwise>
@@ -107,7 +107,7 @@
 
   <xsl:template match="report/v:dozent">
     <h1>
-      <xsl:apply-templates select="v:name"/>
+      <xsl:apply-templates select="v:name" mode="lang"/>
     </h1>
     <xsl:if test="v:geboren or v:gestorben">
       <ul class="lebensdaten">
@@ -164,11 +164,42 @@
     </p>
   </xsl:template>
 
-  <xsl:template match="v:dozentenliste/v:dozent/v:name | /report/v:dozent/v:name">
+  <xsl:template match="v:dozent/v:name">
     <xsl:value-of select="v:nachname"/>
     <xsl:if test="v:vorname">
       <xsl:text>, </xsl:text>
       <xsl:value-of select="v:vorname"/>
+      <xsl:if test="v:nachnamenpräfix">
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="v:nachnamenpräfix"/>
+      </xsl:if>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="v:dozent/v:name" mode="kurz">
+    <xsl:value-of select="v:nachname"/>
+    <xsl:if test="v:vorname">
+      <xsl:text>, </xsl:text>
+      <xsl:choose>
+        <xsl:when test="v:vorname/v:rufname">
+          <xsl:value-of select="v:vorname/v:rufname"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="v:vorname"/>
+        </xsl:otherwise>
+      </xsl:choose>
+      <xsl:if test="v:nachnamenpräfix">
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="v:nachnamenpräfix"/>
+      </xsl:if>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="v:dozent/v:name" mode="lang">
+    <xsl:apply-templates select="v:nachname"/>
+    <xsl:if test="v:vorname">
+      <xsl:text>, </xsl:text>
+      <xsl:apply-templates select="v:vorname"/>
       <xsl:if test="v:nachnamenpräfix">
         <xsl:text> </xsl:text>
         <xsl:value-of select="v:nachnamenpräfix"/>

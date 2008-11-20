@@ -337,7 +337,35 @@ nachname = element nachname { common.attributes, model.text }
 ## 
 ##       Vorname
 ##     
-vorname = element vorname { common.attributes, model.text }
+vorname = element vorname { common.attributes & model.text & rufname? }
+
+## 
+##       Rufname
+##     
+rufname =
+  element rufname { model.text }
+  >> s:pattern [
+       id = "rufname"
+       "\x{a}" ~
+       "      "
+       s:rule [
+         context = "v:rufname"
+         "\x{a}" ~
+         "        "
+         s:assert [
+           test =
+             "not(normalize-space(.) = normalize-space(parent::v:vorname))"
+           "\x{a}" ~
+           "          Wenn Vorname und Rufname identisch sind, kann das Element\x{a}" ~
+           "          'rufname' entfallen.\x{a}" ~
+           "        "
+         ]
+         "\x{a}" ~
+         "      "
+       ]
+       "\x{a}" ~
+       "    "
+     ]
 
 ## 
 ##       "von", "van", "de" ...
