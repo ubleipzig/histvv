@@ -110,22 +110,20 @@
       <xsl:apply-templates select="v:name"/>
     </h1>
     <xsl:if test="v:geboren or v:gestorben">
-      <p>
+      <ul class="lebensdaten">
         <xsl:if test="v:geboren">
-          <span>
+          <li title="geboren">
             <xsl:text>* </xsl:text>
             <xsl:apply-templates select="v:geboren"/>
-          </span>
+          </li>
         </xsl:if>
-        <br/>
-        <xsl:text> </xsl:text>
         <xsl:if test="v:gestorben">
-          <span>
+          <li title="gestorben">
             <xsl:text>† </xsl:text>
             <xsl:apply-templates select="v:gestorben"/>
-          </span>
+          </li>
         </xsl:if>
-      </p>
+      </ul>
     </xsl:if>
     <xsl:apply-templates select="v:absatz"/>
     <xsl:apply-templates select="v:pnd"/>

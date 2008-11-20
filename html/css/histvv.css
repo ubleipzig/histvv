@@ -67,6 +67,12 @@ abbr, acronym {
   max-width: 180px;
 }
 
+#content.dozent ul.lebensdaten {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
 /* ======================== */
 
 #content.suchergebnis table {
