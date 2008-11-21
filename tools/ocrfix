@@ -1,0 +1,199 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Histvv;
+use Histvv::CLI;
+use XML::LibXML;
+use XML::LibXML::XPathContext;
+use utf8;
+
+# simple string replacements
+my @strings = (
+    [ 'nng',     'ung' ],
+    [ 'Ubung',   'Übung' ],
+    [ 'Uber',    'Über' ],
+    [ 'Agypt',   'Ägypt' ],
+    [ 'Asthet',  'Ästhet' ],
+    [ 'Ptlanz',  'Pflanz' ],
+    [ 'iif',     'iff' ],
+    [ 'miihl',   'mühl' ],
+    [ 'iibung',  'übung' ],
+    [ 'fiir',    'für' ],
+    [ 'Biihne',  'Bühne' ],
+    [ 'griin',   'grün' ],
+    [ 'ziige',   'züge' ],
+    [ 'pilanze', 'pflanze' ],
+    [ 'Reoht',   'Recht' ],
+    [ 'scb',     'sch' ],
+    [ 'Phi1o',   'Philo' ],
+    [ 'phi1o',   'philo' ],
+    [ '\\\V',      'W' ],
+);
+
+my $cli = Histvv::CLI->new();
+my %opts = $cli->get_opts( 'text|t' => 0, 'markup|m' => 0, 'write|w' => 0 );
+
+my $file = shift or $cli->error( 'Please specify a file!' );
+
+my $xp  = XML::LibXML->new();
+my $doc = $xp->parse_file($file);
+my $xc  = XML::LibXML::XPathContext->new($doc);
+$xc->registerNs( 'v', $Histvv::XMLNS );
+
+my ($ocr) = $xc->findnodes('/v:vv/v:ocr');
+
+unless ($ocr) {
+    $cli->chatter("No ocr tag found!");
+    exit;
+}
+
+my $txt = $ocr->toString(0);
+
+# do fixes
+$txt = fix_text($txt) if $opts{text};
+$txt = markup($txt)   if $opts{markup};
+
+# replace original ocr element with new one
+my $new = $xp->parse_balanced_chunk($txt);
+my $root = $doc->documentElement();
+$root->removeChild( $ocr ) || die "Couldn't remove ocr element!\n";
+$root->appendChild( $new );
+
+# write document back
+if ($opts{write}) {
+    $cli->chatter("Writing document back to $file.");
+    open F, ">$file" or die "Cannot write to $file: $!\n";
+    print F $doc->toString(0);
+    close F;
+}
+else {
+    print $doc->toString(0);
+}
+
+#####################
+
+sub fix_text {
+    my $txt = shift;
+
+    for (@strings) {
+        $txt =~ s/$_->[0]/$_->[1]/g;
+    }
+
+    # quotation marks
+    $txt =~ s/(\s)(?:„|,,)(\w)/$1"$2/g;
+    $txt =~ s/(\w)[“](\s|:)/$1"$2/g;
+
+    # P. 0. -> P. O.
+    $txt =~ s/P[.,] 0[.,]/P. O./g;
+    $txt =~ s/D[.,] pb[.,]/D. ph./g;
+    $txt =~ s/D[.,] mcd[.,]/D. med./g;
+
+    # Wochentage
+    $txt =~ s/([MDS])0\./$1o./g;
+
+    # Endungen
+    $txt =~ s/seheu(\W)/schen$1/g;
+    $txt =~ s/isehe([nsr]?\W)/ische$1/g;
+    $txt =~ s/liehe([nsr]?\W)/liche$1/g;
+    $txt =~ s/lioh((e[nsr]?)?\W)/lich$1/g;
+
+    return $txt;
+}
+
+sub markup {
+    my $txt = shift;
+
+    # Seitenzahlen
+    $txt =~ s/\n[-—~·_.:;„” ]+([0-9]+)[-—~·_.:;„” ]+\n/\n<seite>$1<\/seite>\n/g;
+
+    # modus
+    $txt =~ s/([^>])(privatim|privatissime|publice)([^<])/$1<modus>$2<\/modus>$3/g;
+
+    # gebühr
+    $txt =~ s/([^>])(gratis)([^<])/$1<gebühr>$2<\/gebühr>$3/g;
+
+    # Dozenten
+
+    my $rx_fac = qr{(?:ph|th|jur|med|med\.\svet|LL|LL\.\sD|mus|sc|)};
+
+    my $rx_d = qr{ D\. \s* $rx_fac \. (?:(?:, \s+ $rx_fac\.)* \s et \s $rx_fac \. )? }x;
+
+    my $rx_p = qr{ P\. \s [EO]\.(?: \s+ (?:Hon\.|des\.))? }x;
+
+    # Lic. th. D. xx. NAME, P. X.
+    $txt =~ s/ (Lic\. \s th\.) \s ($rx_d) (\s+) ([-\w]+) ,? (\s+) ($rx_p)
+             /<dozent><grad>$1<\/grad> <grad>$2<\/grad>$3<nachname>$4<\/nachname>,$5<funktion>$6<\/funktion><\/dozent>/gx;
+
+    # D. xx. NAME, P. X.
+    $txt =~ s/ ($rx_d) (\s+) ([-\w]+) ,? (\s+) ($rx_p)
+             /<dozent><grad>$1<\/grad>$2<nachname>$3<\/nachname>,$4<funktion>$5<\/funktion><\/dozent>/gx;
+
+    return $txt;
+}
+
+__END__
+
+=head1 NAME
+
+ocrfix - postprocess OCR text in histvv documents
+
+=head1 SYNOPSIS
+
+  histvv-generate-ids --text [ --markup ] [--write] file.xml
+  histvv-generate-ids --help | --man
+
+=head1 DESCRIPTION
+
+I<ocrfix> processes the C<ocr> element in histvv documents and fixes
+a number mistakes typically made by the OCR software. Optionally it
+can also add some markup.
+
+=head1 OPTIONS
+
+=over
+
+=item B<--text>, B<-t>
+
+Perform text replacements for typical OCR mistakes.
+
+=item B<--markup>, B<-m>
+
+Add markup to the C<ocr> element.
+
+=item B<--write>, B<-w>
+
+Write the modified document to disk.
+
+=item B<--verbose>, B<-v>
+
+Verbose feedback.
+
+=item B<--help>, B<-h>
+
+Display short help message and exit. If used together with B<-v> the
+entire manpage will be displayed.
+
+=item B<--man>
+
+Display manpage and exit. This is equivalent to B<-h> B<-v>.
+
+=back
+
+=head1 SEE ALSO
+
+L<Histvv::Db>
+
+=head1 AUTHOR
+
+Carsten Milling, C<< <cmil at hashtable.de> >>
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright 2008 Carsten Milling, all rights reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+=cut
