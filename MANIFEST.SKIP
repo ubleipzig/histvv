@@ -16,6 +16,7 @@ CVS/
 \.rej$
 \.patch$
 \.diff$
+^html/drafts/
 ^patches/
 ^tools/
 ^tmp/
