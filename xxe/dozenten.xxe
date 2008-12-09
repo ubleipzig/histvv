@@ -57,6 +57,11 @@
     </gestorben>
   </elementTemplate>
 
+  <!--
+      N.B.: Changes to this template, especially the comments, may
+      also require modifications of xsl/dozenten-tidy.xsl to make sure
+      the tidyDozentenliste command continues to do its job.
+  -->
   <elementTemplate name="default" selectable="override">
     <dozent xmlns="http://histvv.uni-leipzig.de/ns/2007">
       <name>
@@ -80,7 +85,6 @@
       </ndb>
       <!--[Links zu Wikipedia, Professorenkatalog, BBKL usw.]-->
       <url/>
-      <url/>
     </dozent>
   </elementTemplate>
 
@@ -98,5 +102,35 @@
       </gestorben> 
     </dozent>
   </elementTemplate>
+
+  <!--
+      A command to remove automatically inserted comments and
+      unused/empty elements from the default template for the 'dozent'
+      element.
+  -->
+
+  <command name="applyTidyDozentenliste">
+    <macro>
+      <sequence>
+        <command name="XXE.save" parameter="[ifNeeded]" />
+        <command name="tidyDozentenliste" />
+        <command name="XXE.open" parameter="[reopen]" />
+        <command name="alert" parameter="Please save the document one more time!" />
+      </sequence>
+    </macro>
+  </command>
+
+  <command name="tidyDozentenliste">
+    <process showProgress="false">
+      <transform stylesheet="xsl/dozenten-tidy.xsl" file="%D" to="tmp.xml" />
+      <copy files="tmp.xml" to="%D" />
+    </process>
+  </command>
+
+  <menu label="Histvv">
+    <item label="_Tidy Document" command="applyTidyDozentenliste">
+      <accelerator code="F5" modifiers="shift"/>
+    </item>
+  </menu>
 
 </configuration>
