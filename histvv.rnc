@@ -11,6 +11,7 @@ xml.lang.attribute =
 xml.id.attribute = attribute xml:id { xsd:ID }
 basic.attributes = xml.id.attribute?
 common.attributes = basic.attributes, xml.lang.attribute?
+semester.pattern = xsd:token { pattern = "[0-9]{4}[ws]" }
 
 ## 
 ##       macht kenntlich, daß der Text des aktuellen Elements (thema,
@@ -340,7 +341,7 @@ nachname = element nachname { common.attributes, model.text }
 vorname = element vorname { common.attributes & model.text & rufname? }
 
 ## 
-##       Rufname
+##       zur Kennzeichnung des Rufnamens bei mehreren Vornamen
 ##     
 rufname =
   element rufname { model.text }
@@ -659,6 +660,41 @@ dozentenliste =
     universität,
     element dozent {
       common.attributes,
+      
+      ## 
+      ##               Dieses Attribut ist ein Hilfsmittel zur Unterstützung
+      ##               des skriptgesteuerten Eintrags von ref-Attributen für
+      ##               Dozentenelemente innherhalb von Veranstaltungsangaben.
+      ## 
+      ##               Es signalisiert, daß es innerhalb des betrachteten
+      ##               Zeitraums nur einen Dozenten mit diesem Nachnamen gibt
+      ##               und somit die Zuordnung sämtlicher Dozentenangaben mit
+      ##               diesem Nachnamen zur ID dieses Dozenteneintrags sicher
+      ##               ist.
+      ## 
+      ##               Der Zeitraum kann durch die Attribute "von" und "bis"
+      ##               eingegrenzt werden. Standardmäßig umfasst er alle
+      ##               erfassten Semester.
+      ##             
+      (attribute eindeutig { "ja" }?),
+      
+      ## 
+      ##               Die Attribute "von" und "bis" dienen der Eingrenzung des
+      ##               Gültigkeitsbereichs des Attributs "eindeutig". Sie sind
+      ##               nicht als generelle Angaben über die Wirkungszeit des
+      ##               Dozenten an der jeweiligen Universität gedacht!
+      ## 
+      ##               Das Attribut "von" bezeichnet das erste Semester, für
+      ##               das der gegebene Nachname eindeutig ist. Siehe auch von
+      ##               "bis".
+      ##             
+      (attribute von { semester.pattern }?),
+      
+      ## 
+      ##               Bezeichnet das letzte Semester, für das der gegebene
+      ##               Nachname eindeutig ist. Siehe auch "von".
+      ##             
+      (attribute bis { semester.pattern }?),
       element name { nachname, vorname?, nachnamenpräfix? },
       geboren?,
       gestorben?,

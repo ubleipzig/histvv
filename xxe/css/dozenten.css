@@ -48,6 +48,20 @@ dozentenliste > dozent[xml|id]:before {
   content: attr(xml|id);
 }
 
+dozentenliste > dozent[xml|id] {
+  margin-bottom: 0em;
+}
+
+dozentenliste > dozent[xml|id]:after {
+  display: block;
+  margin-bottom: 1.2em;
+  font-size: small;
+  content: check-box(attribute, eindeutig,
+                     label, "Nachname eindeutig",
+                     checked-value, "ja",
+                     remove-value, yes);
+}
+
 dozentenliste > dozent > * {
   margin: .3em 0;
 }

@@ -41,6 +41,12 @@
     </optional>
   </define>
 
+  <define name="semester.pattern">
+    <data type="token">
+      <param name="pattern">[0-9]{4}[ws]</param>
+    </data>
+  </define>
+
   <define name="kontext.attribute">
     <a:documentation>
       macht kenntlich, daß der Text des aktuellen Elements (thema,
@@ -947,6 +953,50 @@
       <oneOrMore>
         <element name="dozent">
           <ref name="common.attributes"/>
+          <optional>
+            <a:documentation>
+              Dieses Attribut ist ein Hilfsmittel zur Unterstützung
+              des skriptgesteuerten Eintrags von ref-Attributen für
+              Dozentenelemente innherhalb von Veranstaltungsangaben.
+
+              Es signalisiert, daß es innerhalb des betrachteten
+              Zeitraums nur einen Dozenten mit diesem Nachnamen gibt
+              und somit die Zuordnung sämtlicher Dozentenangaben mit
+              diesem Nachnamen zur ID dieses Dozenteneintrags sicher
+              ist.
+
+              Der Zeitraum kann durch die Attribute "von" und "bis"
+              eingegrenzt werden. Standardmäßig umfasst er alle
+              erfassten Semester.
+            </a:documentation>
+            <attribute name="eindeutig">
+              <value>ja</value>
+            </attribute>
+          </optional>
+          <optional>
+            <a:documentation>
+              Die Attribute "von" und "bis" dienen der Eingrenzung des
+              Gültigkeitsbereichs des Attributs "eindeutig". Sie sind
+              nicht als generelle Angaben über die Wirkungszeit des
+              Dozenten an der jeweiligen Universität gedacht!
+
+              Das Attribut "von" bezeichnet das erste Semester, für
+              das der gegebene Nachname eindeutig ist. Siehe auch von
+              "bis".
+            </a:documentation>
+            <attribute name="von">
+              <ref name="semester.pattern"/>
+            </attribute>
+          </optional>
+          <optional>
+            <a:documentation>
+              Bezeichnet das letzte Semester, für das der gegebene
+              Nachname eindeutig ist. Siehe auch "von".
+            </a:documentation>
+            <attribute name="bis">
+              <ref name="semester.pattern"/>
+            </attribute>
+          </optional>
           <element name="name">
             <ref name="nachname"/>
             <optional>
