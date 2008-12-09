@@ -56,3 +56,4 @@ xxe/histvv.xxe
 xxe/histvv.xxe_addon
 xxe/templates/dozenten.xml
 xxe/templates/vv.xml
+xxe/xsl/dozenten-tidy.xsl
