@@ -23,7 +23,7 @@ $cli->error("You need to specify a name and/or xpath expression!")
   unless ( $opts{name} || $opts{xpath} );
 
 $cli->error("The value given for ref is not a valid ID!")
-   if ( $opts{ref} && $opts{ref} !~ /^[a-z][_a-z]+$/ );
+   if ( $opts{ref} && $opts{ref} !~ /^[a-z][-_a-z]+$/ );
 
 ## contructing the XPath expression
 #
