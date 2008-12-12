@@ -29,6 +29,8 @@ my @strings = (
     [ 'scb',     'sch' ],
     [ 'Phi1o',   'Philo' ],
     [ 'phi1o',   'philo' ],
+    [ 'Gebnrt',  'Geburt' ],
+    [ 'gebnrt',  'geburt' ],
     [ '\\\V',      'W' ],
 );
 
@@ -118,17 +120,25 @@ sub markup {
 
     my $rx_fac = qr{(?:ph|th|jur|med|med\.\svet|LL|LL\.\sD|mus|sc|)};
 
-    my $rx_d = qr{ D\. \s* $rx_fac \. (?:(?:, \s+ $rx_fac\.)* \s et \s $rx_fac \. )? }x;
+    my $rx_d = qr{ D\. \s* $rx_fac \. (?:(?:, \s+ $rx_fac\.)* \s (?:et|\&amp;) \s $rx_fac \. )? }x;
 
     my $rx_p = qr{ P\. \s [EO]\.(?: \s+ (?:Hon\.|des\.))? }x;
 
     # Lic. th. D. xx. NAME, P. X.
-    $txt =~ s/ (Lic\. \s th\.) \s ($rx_d) (\s+) ([-\w]+) ,? (\s+) ($rx_p)
-             /<dozent><grad>$1<\/grad> <grad>$2<\/grad>$3<nachname>$4<\/nachname>,$5<funktion>$6<\/funktion><\/dozent>/gx;
+    $txt =~ s/ (Lic\. (?:\s th\.)?) \s ($rx_d) (\s+) ([-\w]+) (,? \s+) ($rx_p)
+             /<dozent><grad>$1<\/grad> <grad>$2<\/grad>$3<nachname>$4<\/nachname>$5<funktion>$6<\/funktion><\/dozent>/gx;
 
     # D. xx. NAME, P. X.
-    $txt =~ s/ ($rx_d) (\s+) ([-\w]+) ,? (\s+) ($rx_p)
-             /<dozent><grad>$1<\/grad>$2<nachname>$3<\/nachname>,$4<funktion>$5<\/funktion><\/dozent>/gx;
+    $txt =~ s/ ($rx_d) (\s+) ([-\w]+) (,? \s+) ($rx_p)
+             /<dozent><grad>$1<\/grad>$2<nachname>$3<\/nachname>$4<funktion>$5<\/funktion><\/dozent>/gx;
+
+    # Lic. th. D. xx. NAME,
+    $txt =~ s/(Lic\. (?:\s th\.)?) \s  ($rx_d) (\s+) ([-\w]+) ,
+             /<dozent><grad>$1<\/grad> <grad>$2<\/grad>$3<nachname>$4<\/nachname><\/dozent>,/gx;
+
+    # D. xx. NAME,
+    $txt =~ s/ ($rx_d) (\s+) ([-\w]+) ,
+             /<dozent><grad>$1<\/grad>$2<nachname>$3<\/nachname><\/dozent>,/gx;
 
     return $txt;
 }
