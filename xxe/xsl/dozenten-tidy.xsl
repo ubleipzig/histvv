@@ -21,7 +21,8 @@
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template match="v:url[.=''] | v:ort[.=''] | v:monat[.=''] | v:tag[.=''] |
+  <xsl:template match="v:url[.=''] | v:ort[.=''] | v:pnd[.=''] |
+                       v:monat[.=''] | v:tag[.=''] |
                        v:adb[v:band='' and v:seite='' and v:url=''] |
                        v:ndb[v:band='' and v:seite='' and v:url='']">
   </xsl:template>
