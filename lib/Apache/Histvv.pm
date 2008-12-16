@@ -116,6 +116,7 @@ let $stellen := collection()/v:vv[v:kopf/v:status/@komplett]
   //(v:dozent[@ref=$id] | v:ders[@ref=$id])
 
 return
+if ($daten) then
 <report>
   {$daten}
   <stellen >
@@ -136,6 +137,8 @@ return
   }
   </stellen>
 </report>
+else
+()
 EOT
 
     dozentenlookup => <<'EOT',
