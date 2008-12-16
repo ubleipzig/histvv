@@ -30,6 +30,9 @@ $cli->error("The value given for ref is not a valid ID!")
 my $xp = XML::LibXML->new();
 binmode STDOUT, ":utf8";
 
+# dont buffer output
+$| = 1;
+
 if ( $opts{data} ) {
     my $doc = $xp->parse_file( $opts{data} );
     my $xc  = XML::LibXML::XPathContext->new($doc);
@@ -43,6 +46,10 @@ if ( $opts{data} ) {
         my $id   = $xc->findvalue( '@xml:id',           $d );
         my $von  = $xc->findvalue( '@von',              $d ) || '';
         my $bis  = $xc->findvalue( '@bis',              $d ) || '';
+
+        my $born = $xc->findvalue( 'v:geboren/v:jahr',   $d ) || '';
+        my $died = $xc->findvalue( 'v:gestorben/v:jahr', $d ) || '';
+        my $info = $xc->findvalue( 'normalize-space(v:absatz[1])', $d ) || '';
 
         # constructing XPath expressions for semester limits
         my @xpath;
@@ -89,16 +96,13 @@ if ( $opts{data} ) {
 
         my $xpath = join ' and ', @xpath;
 
-        if ( 0 && $opts{list} ) {
-            $cli->say( sprintf "%-20s %-20s %5s %5s", $name, $id, $von, $bis );
-            next;
-        }
-
         my $label = "$name ($id)";
-        my $n = length($label);
+        $label   .= "  $born-$died" if $born || $died;
+        $label   .= "  [$von-$bis]" if $von || $bis;
 
         $cli->chatter( $label );
-        $cli->chatter( "-" x $n );
+        $cli->chatter( $info ) if $opts{verbose} > 1 && $info;
+        $cli->chatter( "-" x length($label) );
         set_refs(
             name  => $name,
             xpath => $xpath,
