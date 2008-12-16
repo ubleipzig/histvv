@@ -161,13 +161,12 @@
 
   <xsl:template name="semester-id">
     <xsl:value-of select="/v:vv/v:kopf/v:beginn/v:jahr"/>
-    <xsl:text>-</xsl:text>
     <xsl:choose>
       <xsl:when test="/v:vv/v:kopf/v:semester = 'Sommer'">
-        <xsl:text>ss</xsl:text>
+        <xsl:text>s</xsl:text>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:text>ws</xsl:text>
+        <xsl:text>w</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
