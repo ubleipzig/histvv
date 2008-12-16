@@ -118,11 +118,11 @@ sub markup {
 
     # Dozenten
 
-    my $rx_fac = qr{(?:ph|th|jur|med|med\.\svet|LL|LL\.\sD|mus|sc|)};
+    my $rx_fac = qr{(?:ph|ph\.\snat|th|jur|med|med\.\svet|LL|LL\.\sD|mus|sc|rer\.\snat)};
 
     my $rx_d = qr{ D\. \s* $rx_fac \. (?:(?:, \s+ $rx_fac\.)* \s (?:et|\&amp;) \s $rx_fac \. )? }x;
 
-    my $rx_p = qr{ P\. \s [EO]\.(?: \s+ (?:Hon\.|des\.))? }x;
+    my $rx_p = qr{ (?:Phil\. \s?)? P[.,] \s? [EO][.,](?: \s+ (?:Hon\.|des\.))? }x;
 
     # Lic. th. D. xx. NAME, P. X.
     $txt =~ s/ (Lic\. (?:\s th\.)?) \s ($rx_d) (\s+) ([-\w]+) (,? \s+) ($rx_p)
