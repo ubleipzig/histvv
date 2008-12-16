@@ -11,27 +11,30 @@ use utf8;
 
 # simple string replacements
 my @strings = (
-    [ 'nng',     'ung' ],
-    [ 'Ubung',   'Übung' ],
-    [ 'Uber',    'Über' ],
-    [ 'Agypt',   'Ägypt' ],
-    [ 'Asthet',  'Ästhet' ],
-    [ 'Ptlanz',  'Pflanz' ],
-    [ 'iif',     'iff' ],
-    [ 'miihl',   'mühl' ],
-    [ 'iibung',  'übung' ],
-    [ 'fiir',    'für' ],
-    [ 'Biihne',  'Bühne' ],
-    [ 'griin',   'grün' ],
-    [ 'ziige',   'züge' ],
-    [ 'pilanze', 'pflanze' ],
-    [ 'Reoht',   'Recht' ],
-    [ 'scb',     'sch' ],
-    [ 'Phi1o',   'Philo' ],
-    [ 'phi1o',   'philo' ],
-    [ 'Gebnrt',  'Geburt' ],
-    [ 'gebnrt',  'geburt' ],
-    [ '\\\V',      'W' ],
+    [ 'nng',       'ung' ],
+    [ 'Ubung',     'Übung' ],
+    [ 'Uber',      'Über' ],
+    [ 'Agypt',     'Ägypt' ],
+    [ 'Asthet',    'Ästhet' ],
+    [ 'Ptlanz',    'Pflanz' ],
+    [ 'iif',       'iff' ],
+    [ 'miihl',     'mühl' ],
+    [ 'iibung',    'übung' ],
+    [ 'fiir',      'für' ],
+    [ 'Biihne',    'Bühne' ],
+    [ 'griin',     'grün' ],
+    [ 'ziige',     'züge' ],
+    [ 'pilanze',   'pflanze' ],
+    [ 'Reoht',     'Recht' ],
+    [ 'scb',       'sch' ],
+    [ 'Phi1o',     'Philo' ],
+    [ 'phi1o',     'philo' ],
+    [ 'Gebnrt',    'Geburt' ],
+    [ 'gebnrt',    'geburt' ],
+    [ 'Facnltät',  'Facultät' ],
+    [ 'Faoultät',  'Facultät' ],
+    [ '\blnst',    'Inst' ],
+    [ '\\\V',      'W' ]
 );
 
 my $cli = Histvv::CLI->new();
@@ -85,7 +88,8 @@ sub fix_text {
 
     # quotation marks
     $txt =~ s/(\s)(?:„|,,)(\w)/$1"$2/g;
-    $txt =~ s/(\w)[“](\s|:)/$1"$2/g;
+    $txt =~ s/[“”„]/"/g;
+    $txt =~ s/[‘’]/'/g;
 
     # P. 0. -> P. O.
     $txt =~ s/P[.,] 0[.,]/P. O./g;
@@ -100,6 +104,19 @@ sub fix_text {
     $txt =~ s/isehe([nsr]?\W)/ische$1/g;
     $txt =~ s/liehe([nsr]?\W)/liche$1/g;
     $txt =~ s/lioh((e[nsr]?)?\W)/lich$1/g;
+
+    # digits <-> letters
+    $txt =~ s/\bl([0-9]+)\b/1$1/g;
+    $txt =~ s/\b([0-9]+)l\b/${1}1/g;
+
+    # x0x -> xox
+    $txt =~ s/(\p{IsAlpha})0(\p{IsAlpha})/$1o$2/g;
+
+    # 11ng -> ung
+    $txt =~ s/(\p{IsAlpha})11ng/$1ung/g;
+
+    # Uhrzeiten
+    $txt =~ s/([0-9])[-—·~\« ]+([0-9]+)(\s+)U\./$1-$2$3U./g;
 
     return $txt;
 }
