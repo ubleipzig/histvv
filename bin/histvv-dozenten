@@ -131,7 +131,10 @@ sub set_refs {
         $name =~ s/"/&quot;/g;
         $name =~ s/\s+/ /g;
         $name =~ s/(^ +| +$)//g;
-        push @predicate, qq{v:nachname="$name"};
+        push @predicate,
+          $name =~ / /
+          ? qq{normalize-space(v:nachname)="$name"}
+          : qq{v:nachname="$name"};
     }
     push( @predicate, "($args{xpath})" ) if $args{xpath};
     my $predicate = join( ' and ', @predicate );
