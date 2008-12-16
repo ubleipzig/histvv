@@ -952,7 +952,13 @@
       <ref name="universität"/>
       <oneOrMore>
         <element name="dozent">
-          <ref name="common.attributes"/>
+          <optional>
+            <attribute name="xml:id">
+              <data type="ID">
+                <param name="pattern">[\-_a-z0-9]+</param>
+              </data>
+            </attribute>
+          </optional>
           <optional>
             <a:documentation>
               Dieses Attribut ist ein Hilfsmittel zur Unterstützung

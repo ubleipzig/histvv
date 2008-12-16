@@ -659,7 +659,9 @@ dozentenliste =
     common.attributes,
     universität,
     element dozent {
-      common.attributes,
+      attribute xml:id {
+        xsd:ID { pattern = "[\-_a-z0-9]+" }
+      }?,
       
       ## 
       ##               Dieses Attribut ist ein Hilfsmittel zur Unterstützung
