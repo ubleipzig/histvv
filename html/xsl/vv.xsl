@@ -35,19 +35,7 @@
   <xsl:template match="/index">
     <h1>Vorlesungsverzeichnisse</h1>
     <ol class="toc">
-      <xsl:for-each select="vv[komplett]">
-        <li>
-          <a href="{@name}.html">
-            <xsl:value-of select="titel"/>
-          </a>
-          <xsl:text> </xsl:text>
-          <small>
-            <xsl:text>(</xsl:text>
-            <xsl:value-of select="vnum"/>
-            <xsl:text>)</xsl:text>
-          </small>
-        </li>
-      </xsl:for-each>
+      <xsl:apply-templates select="vv" mode="list"/>
     </ol>
 
     <xsl:variable name="chart-data">
@@ -66,6 +54,18 @@
       </xsl:for-each>
     </xsl:variable>
 
+    <xsl:variable name="x" select="count(vv[komplett])"/>
+    <xsl:variable name="n" select="count(vv)"/>
+    <xsl:variable name="cnt">
+      <xsl:if test="$n > $x">
+        <xsl:text> (</xsl:text>
+        <xsl:value-of select="$x"/>
+        <xsl:text> von </xsl:text>
+        <xsl:value-of select="$n"/>
+        <xsl:text> Semestern)</xsl:text>
+      </xsl:if>
+    </xsl:variable>
+
     <xsl:variable name="chart-url">
       <xsl:text>http://chart.apis.google.com/chart?cht=bvs</xsl:text>
       <xsl:text>&amp;chbh=2,1,2</xsl:text>
@@ -82,8 +82,26 @@
       <xsl:value-of select="$chart-data"/>
     </xsl:variable>
 
-    <img alt="Diagramm" title="Anzahl der Veranstaltungen pro Semester"
+    <img alt="Diagramm" title="Anzahl der Veranstaltungen pro Semester {$cnt}"
          src="{$chart-url}"/>
+  </xsl:template>
+
+  <xsl:template match="/index/vv" mode="list">
+    <li><xsl:value-of select="titel"/></li>
+  </xsl:template>
+
+  <xsl:template match="/index/vv[komplett]" mode="list">
+    <li>
+      <a href="{@name}.html">
+        <xsl:value-of select="titel"/>
+      </a>
+      <xsl:text> </xsl:text>
+      <small>
+        <xsl:text>(</xsl:text>
+        <xsl:value-of select="vnum"/>
+        <xsl:text>)</xsl:text>
+      </small>
+    </li>
   </xsl:template>
 
   <xsl:template match="/v:vv">
