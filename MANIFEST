@@ -45,7 +45,7 @@ t/util.t
 xqy/dozentenliste.xq
 xxe/css/browser.css
 xxe/css/dozenten.css
-xxe/css/dozenten-mit-id.css
+xxe/css/dozentenuebersicht.css
 xxe/css/edit.css
 xxe/css/include/base.css
 xxe/css/include/colors.css

@@ -15,7 +15,12 @@
   <schematron location="histvv.rng"/>
 
   <css name="Dozentenliste" location="css/dozenten.css" />
-  <css name="Dozenten mit ID" location="css/dozenten-mit-id.css" alternate="true"/>
+  <css name="Übersicht" location="css/dozentenuebersicht.css" alternate="true"/>
+
+  <windowLayout>
+    <left css="Übersicht" size="0.25"/>
+    <center css="Dozentenliste"/>
+  </windowLayout>
 
   <template name="Dozentenliste" location="templates/dozenten.xml" />
 

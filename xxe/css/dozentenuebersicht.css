@@ -1,0 +1,62 @@
+dozentenliste, dozent  {
+  display: block;
+}
+
+dozentenliste > universit\0000E4t,
+dozentenliste > dozent > *,
+*::comment {
+  display: none;
+}
+
+*:before, *:after {
+  color: gray;
+}
+
+dozentenliste {
+  font-family: serif;
+  color: black;
+  background-color: white;
+}
+
+dozentenliste > dozent {
+  margin: .2em 0 .2em 3em;
+}
+
+dozentenliste > dozent:before {
+  display: marker;
+  content: simple-counter(n) ".";
+}
+
+dozentenliste > dozent[xml|id]:after {
+  display: inline;
+  text-align: right;
+  content: "  " attr(xml|id);
+}
+
+dozentenliste > dozent > name {
+  display: inline;
+}
+
+dozentenliste > dozent > name {
+  font-weight: normal;
+}
+
+dozentenliste > dozent > name > nachname{
+  font-weight: bold;
+}
+
+dozent > name > vorname:before {
+  content: ", ";
+}
+
+vorname rufname {
+  text-decoration: underline;
+}
+
+nachnamenpr\0000E4fix:before {
+  content: " (";
+}
+
+nachnamenpr\0000E4fix:after {
+  content: ")";
+}
