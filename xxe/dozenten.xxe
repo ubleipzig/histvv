@@ -129,8 +129,23 @@
 
   <menu label="Histvv">
     <item label="_Tidy Document" command="applyTidyDozentenliste">
-      <accelerator code="F5" modifiers="shift"/>
+      <accelerator code="F5"/>
     </item>
   </menu>
+
+  <command name="histvv.resave">
+    <macro>
+      <sequence>
+        <command name="insertString" parameter=" "/>
+        <command name="deleteChar" parameter="backwards"/>
+        <command name="XXE.save" parameter="[ifNeeded]" />
+      </sequence>
+    </macro>
+  </command>
+
+  <binding>
+    <keyPressed code="F6"/>
+    <command name="histvv.resave"/>
+  </binding>
 
 </configuration>
