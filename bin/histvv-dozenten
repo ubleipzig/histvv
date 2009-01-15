@@ -16,6 +16,7 @@ my %opts = $cli->get_opts(
     'all|a'     => 0,
     'data|D=s'  => undef,
     'name|n=s'  => undef,
+    'match|m=s'  => undef,
     'xpath|x=s' => undef,
     'ref|r=s'   => undef
 );
@@ -42,8 +43,11 @@ if ( $opts{data} ) {
     my @dozenten  = $xc->findnodes($doz_xpath);
 
     foreach my $d (@dozenten) {
-        my $name = $xc->findvalue( 'v:name/v:nachname', $d );
         my $id   = $xc->findvalue( '@xml:id',           $d );
+
+        next if $opts{match} && $id !~/$opts{match}/;
+
+        my $name = $xc->findvalue( 'v:name/v:nachname', $d );
         my $von  = $xc->findvalue( '@von',              $d ) || '';
         my $bis  = $xc->findvalue( '@bis',              $d ) || '';
 
@@ -227,7 +231,7 @@ histvv-dozenten - manipulate C<dozent> elements Histvv documents
 
   histvv-dozenten  --list -n lastname [-x xpath] file.xml ...
   histvv-dozenten  --ref id -n lastname [-x xpath] file.xml ...
-  histvv-dozenten  --data dozenten.xml file.xml ...
+  histvv-dozenten  --data dozenten.xml [--match regex] file.xml ...
   histvv-dozenten --help | --man
 
 =head1 DESCRIPTION
@@ -284,6 +288,11 @@ attribute are considered.
 Path to a C<dozentenliste> document. If specified I<histvv-dozenten>
 will use the names marked as unique and their corresponding IDs to set
 the ref attributes in the given Histvv files respectively.
+
+=item B<--match>, B<-m>
+
+A regular expression to filter IDs of C<dozent> entries. When used
+with B<-D> only entries with a matching ID will be processed.
 
 =item B<--list>, B<-l>
 
