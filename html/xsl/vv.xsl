@@ -154,6 +154,11 @@
     <xsl:call-template name="semester-id"/>
     <xsl:text>/</xsl:text>
     <xsl:choose>
+      <xsl:when test="string(number($nr)) = 'NaN'">
+        <!-- Buchstabe -->
+        <xsl:text>000</xsl:text>
+        <xsl:value-of select="$nr"/>
+      </xsl:when>
       <xsl:when test="$nr > 300"> <!-- FIXME -->
         <!-- Spaltenzahl -->
         <xsl:choose>
