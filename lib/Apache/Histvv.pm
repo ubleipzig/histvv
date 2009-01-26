@@ -52,9 +52,9 @@ declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
 {
 for $d in collection()/v:vv
 let $k := $d/v:kopf
-let $sem := if ($k/v:semester = "Winter") then "ws" else "ss"
+let $sem := if ($k/v:semester = "Winter") then "w" else "s"
 return
-<vv name="{concat($k/v:beginn/v:jahr, "-", $sem)}" >
+<vv name="{concat($k/v:beginn/v:jahr, $sem)}" >
   <titel>{concat($k/v:semester, "semester ", $k/v:beginn/v:jahr)}</titel>
   <vnum>{count($d//v:veranstaltung)}</vnum>
   {if ($k/v:status/@komplett = "ja") then <komplett/> else ''}
@@ -262,9 +262,9 @@ sub handler {
             return Apache2::Const::DECLINED;
         }
     } elsif ($loc eq '/vv') {
-        if ( $url =~ /^\/([0-9]{4})-(ws|ss)\.html$/ ) { # single VV
+        if ( $url =~ /^\/([0-9]{4})(w|s)\.html$/ ) { # single VV
             my $year = $1;
-            my $semester = $2 eq 'ws' ? 'Winter' : 'Sommer';
+            my $semester = $2 eq 'w' ? 'Winter' : 'Sommer';
             $xquery = sprintf $Queries{semester}, $semester, $year;
         }
         elsif ( $url =~ /^\/(index\.html)?$/ ) { # list of VVs

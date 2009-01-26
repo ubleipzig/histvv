@@ -82,7 +82,7 @@
         <attribute name="id">
           <a:documentation></a:documentation>
           <data type="NMTOKEN">
-            <param name="pattern">[a-z]+-[0-9]{4}-(ws|ss)</param>
+            <param name="pattern">[a-z]+-[0-9]{4}[sw]</param>
           </data>
         </attribute>
       </optional>

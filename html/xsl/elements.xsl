@@ -79,13 +79,12 @@
           <xsl:attribute name="href">
             <xsl:text>/vv/</xsl:text>
             <xsl:value-of select="@jahr"/>
-            <xsl:text>-</xsl:text>
             <xsl:choose>
               <xsl:when test="@semester = 'Sommer'">
-                <xsl:text>ss</xsl:text>
+                <xsl:text>s</xsl:text>
               </xsl:when>
               <xsl:otherwise>
-                <xsl:text>ws</xsl:text>
+                <xsl:text>w</xsl:text>
               </xsl:otherwise>
             </xsl:choose>
             <xsl:text>.html</xsl:text>

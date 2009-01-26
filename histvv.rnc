@@ -34,7 +34,7 @@ vv =
     
     ##
     attribute id {
-      xsd:NMTOKEN { pattern = "[a-z]+-[0-9]{4}-(ws|ss)" }
+      xsd:NMTOKEN { pattern = "[a-z]+-[0-9]{4}[sw]" }
     }?,
     kopf,
     seite?,
