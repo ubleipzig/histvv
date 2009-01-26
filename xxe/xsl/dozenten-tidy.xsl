@@ -21,10 +21,12 @@
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template match="v:url[.=''] | v:ort[.=''] | v:pnd[.=''] |
-                       v:monat[.=''] | v:tag[.=''] |
+  <xsl:template match="v:absatz[.=''] | v:url[.=''] | v:pnd[.=''] |
+                       v:monat[.=''] | v:tag[.=''] | v:ort[.=''] |
                        v:adb[v:band='' and v:seite='' and v:url=''] |
-                       v:ndb[v:band='' and v:seite='' and v:url='']">
+                       v:ndb[v:band='' and v:seite='' and v:url=''] |
+                       v:geboren[concat(v:jahr, v:monat, v:tag, v:ort)=''] |
+                       v:gestorben[concat(v:jahr, v:monat, v:tag, v:ort)='']">
   </xsl:template>
 
   <xsl:template match="comment()[
@@ -32,6 +34,5 @@
                          .='[Links zu Wikipedia, Professorenkatalog, BBKL usw.]'
                          ]">
   </xsl:template>
-
 
 </xsl:stylesheet>
