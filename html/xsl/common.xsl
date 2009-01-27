@@ -30,7 +30,7 @@
       </head>
       <body>
         <div>
-          <div id="header">
+          <div id="header" title="Historische Vorlesungsverzeichnisse">
             <strong>Histvv</strong>
           </div>
 
