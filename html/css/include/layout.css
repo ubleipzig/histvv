@@ -1,56 +1,79 @@
 html {
   margin: 0px;
+  padding: 0px;
 }
 
 body {
   width: 900px;
+  margin: 20px;
+  padding: 0px;
 }
 
 body  hr {
   display: none;
 }
 
+body > div {
+  width: 880px;
+  background-color: #fff;
+  background-image: url("../gfx/sidebar.png");
+  background-repeat: repeat-y;
+}
+
 #header {
-  background-color: #8fb635;
-  background-image: url("../gfx/histvvfraktur.png");
+  width: 166px;
+  height: 169px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: block;
+  color: #8c8a6d;
+}
+
+#header strong {
+  display: block;
+  height: 169px;
+  width: 166px;
+  background-image: url("../gfx/logo.gif");
   background-repeat: no-repeat;
-  background-position: 8px;  
-  color: white;
-  font-style: italic;
-  font-size: 27px;
-  padding: 7px;
-  margin-bottom: 6px;
+}
+
+#content, #footer {
+  width: 684px;
+  margin-left: 196px;
 }
 
 #content {
-  float: left;
-  width: 700px;
-  padding: 0 15px;
-  border-left: 1px solid #8fb635;
-  margin-left: 170px;
-  margin-bottom: 6px;
-}
-
-* html #content { display: inline; }
-
-#sidebar {
-  float: left;
-  width: 169px;
-  margin-left: -900px;
-  padding-bottom: 200px;
-  border-right: 1px solid #8fb635;
+  background-image: url("../gfx/header.gif");
+  background-repeat: no-repeat;
+  background-position: top right;
+  padding-top: 48px;
 }
 
 #footer {
+  margin-top: 20px;
+  padding-top: 5px;
+  border-top: 1px solid #41524a;
+  font-size: 11px;
   clear: both;
-  margin-top: 16px;
-  border-top: 1px dotted #8fb635;
-  padding: 3px;
+}
+
+#footer p {
+  margin: 0;
+}
+
+#sidebar {
+  position: absolute;
+  left: 20px;
+  top: 189px;
+  width: 166px;
+  margin-top: 20px;
+  background-color: #ddddbb;
 }
 
 #sidebar ul {
   list-style: none;
-  background-color: white;
+  background-color: #ddddbb;
   padding: 0px;
   margin: 0px;
 }
@@ -61,24 +84,22 @@ body  hr {
 }
 
 #sidebar ul li.current {
-  background-color: #8fb635;
+  background-color: #8c8a6d;
 }
 
 #sidebar ul a {
   display: block;
-  width: 185px;
-  padding: 3px 8px 3px 6px;
   padding: 3px 3%; 
   width: 94%;
-  color: black;
+  color: #41524a;
   text-decoration: none;
 }
 
 #sidebar ul a:hover {
-  color: #8fb635;
+  color: #a18836;
 }
 
 #sidebar ul li.current a,
 #sidebar ul li.current a:hover {
-  color: white;
+  color: #ddddbb;
 }

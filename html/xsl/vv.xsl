@@ -70,7 +70,7 @@
       <xsl:text>http://chart.apis.google.com/chart?cht=bvs</xsl:text>
       <xsl:text>&amp;chbh=2,1,2</xsl:text>
       <xsl:text>&amp;chs=650x200</xsl:text>
-      <xsl:text>&amp;chco=8fb635</xsl:text>
+      <xsl:text>&amp;chco=7a6e3a</xsl:text>
       <xsl:text>&amp;chds=0,700</xsl:text>
       <xsl:text>&amp;chxt=x,y</xsl:text>
       <xsl:text>&amp;chxr=0,0,201</xsl:text>

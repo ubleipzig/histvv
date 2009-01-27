@@ -13,6 +13,7 @@ body.vv > h1 {
 ol.toc {
   -moz-column-count: 3;
   column-count: 3;
+  font-size: 11px;
 }
 
 ol.toc ~ img {

@@ -5,8 +5,38 @@
 body {
   color: black;
   background-color: white;
-  font-family: Arial, Verdana, sans-serif;
+  font-family: Verdana, Arial, sans-serif;
   font-size: 12px;
+}
+
+a {
+  color: #ab4739;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #69221e;
+  text-decoration: underline;
+}
+
+h1 {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  color: #41524a;
+  text-align: left;
+}
+
+h2 {
+  font-family: Georgia, serif;
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+h3 {
+  font-size: 14px;
 }
 
 table {
