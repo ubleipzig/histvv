@@ -29,31 +29,32 @@
         <title><xsl:call-template name="htmltitle"/> [Histvv]</title>
       </head>
       <body>
-        <div id="header">
-          <strong>Histvv</strong>
+        <div>
+          <div id="header">
+            <strong>Histvv</strong>
+          </div>
+
+          <div id="content">
+            <xsl:call-template name="content"/>
+          </div>
+
+          <hr/>
+
+          <div id="sidebar">
+            <xsl:call-template name="navigation"/>
+          </div>
+
+          <hr/>
+
+          <div id="footer">
+            <p>
+              © 2008
+              <a href="http://www.ub.uni-leipzig.de/">
+                Universitätsbibliothek Leipzig
+              </a>
+            </p>
+          </div>
         </div>
-
-        <div id="content">
-          <xsl:call-template name="content"/>
-        </div>
-
-        <hr/>
-
-        <div id="sidebar">
-          <xsl:call-template name="navigation"/>
-        </div>
-
-        <hr/>
-
-        <div id="footer">
-          <p>
-            © 2008
-            <a href="http://www.ub.uni-leipzig.de/">
-              Universitätsbibliothek Leipzig
-            </a>
-          </p>
-        </div>
-
       </body>
     </html>
   </xsl:template>
