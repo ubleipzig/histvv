@@ -27,15 +27,18 @@ body > div {
   top: 20px;
   left: 20px;
   display: block;
-  color: #8c8a6d;
 }
 
-#header strong {
+#header a {
   display: block;
   height: 169px;
   width: 166px;
   background-image: url("../gfx/logo.gif");
   background-repeat: no-repeat;
+}
+
+#header a strong {
+  display: none;
 }
 
 #content, #footer {
