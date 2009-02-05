@@ -50,7 +50,7 @@
 
           <div id="footer">
             <p>
-              © 2008
+              © 2008-2009
               <a href="http://www.ub.uni-leipzig.de/">
                 Universitätsbibliothek Leipzig
               </a>
