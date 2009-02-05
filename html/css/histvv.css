@@ -24,18 +24,21 @@ h1 {
   font-size: 20px;
   color: #41524a;
   text-align: left;
+  font-weight: normal;
 }
 
 h2 {
   font-family: Georgia, serif;
   font-size: 18px;
+  font-weight: normal;
 }
 
 h3 {
   font-size: 16px;
+  font-weight: normal;
 }
 
-h3 {
+h4 {
   font-size: 14px;
 }
 
