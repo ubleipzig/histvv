@@ -104,7 +104,11 @@ ul#seitennavigation li {
   display: inline;
 }
 
-hr { width: 40%; margin: 1.5em auto; }
+div#content.vv hr {
+  display: block;
+  width: 40%;
+  margin: 1.5em auto;
+}
 
 .veranstaltungsverweis {
   color: #555;
