@@ -130,3 +130,7 @@ div#verweis-tooltip {
 table.veranstaltungsliste td.semester {
   white-space: nowrap;
 }
+
+.quelle {
+  font-size: 80%;
+}

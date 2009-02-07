@@ -107,6 +107,10 @@
   <xsl:template match="/v:vv">
     <xsl:attribute name="class">vv</xsl:attribute>
     <xsl:call-template name="seitennavigation"/>
+    <p class="quelle">
+      <xsl:text>Quelle: </xsl:text>
+      <xsl:value-of select="v:kopf/v:quelle"/>
+    </p>
     <h1><xsl:value-of select="v:titel"/></h1>
     <xsl:apply-templates select="v:absatz|v:übersicht|v:sachgruppe|v:seite|v:trennlinie"/>
   </xsl:template>
