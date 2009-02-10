@@ -53,7 +53,7 @@
 
     <p><xsl:value-of select="/report/suche/text"/></p>
 
-    <form method="get" action="./?{$query}">
+    <form method="get" action="./?" class="treffer-pro-seite">
       <input type="hidden" name="volltext" value="{/report/suche/text}"/>
       <input type="hidden" name="dozent" value="{/report/suche/dozent}"/>
       <input type="hidden" name="von" value="{/report/suche/von}"/>
@@ -181,10 +181,10 @@
                   </xsl:otherwise>
                 </xsl:choose>
               </xsl:attribute>
-              <xsl:text>&lt; vorherige Seite</xsl:text>
+              <xsl:text>vorherige Seite</xsl:text>
             </a>
           </xsl:when>
-          <xsl:otherwise>&lt; vorherige Seite</xsl:otherwise>
+          <xsl:otherwise><i>vorherige Seite</i></xsl:otherwise>
         </xsl:choose>
       </li>
       <li class="next">
@@ -197,10 +197,10 @@
                 <xsl:text>&amp;start=</xsl:text>
                 <xsl:value-of select="$start + $interval"/>
               </xsl:attribute>
-              <xsl:text>nächste Seite &gt;</xsl:text>
+              <xsl:text>nächste Seite</xsl:text>
             </a>
           </xsl:when>
-          <xsl:otherwise>nächste Seite &gt;</xsl:otherwise>
+          <xsl:otherwise><i>nächste Seite</i></xsl:otherwise>
         </xsl:choose>
       </li>
     </ul>

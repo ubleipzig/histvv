@@ -132,6 +132,55 @@ table.suchergebnis td.semester {
   text-align: right;
 }
 
+ul.pager {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  color: #999;
+  font-size: 11px;
+}
+
+ul.pager:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+ul.pager li {
+  display: block;
+  width: 40%;
+  margin: 2px 0;
+}
+
+ul.pager li * {
+  font-style: normal;
+}
+
+ul.pager li a {
+  color: #000;
+}
+
+ul.pager li.previous {
+  float: left;
+  text-align: left;
+}
+
+ul.pager li.previous *:before {
+  content: "< ";
+}
+
+ul.pager li.next {
+  float: right;
+  text-align: right;
+}
+
+ul.pager li.next *:after {
+  content: " >";
+}
+
+form.treffer-pro-seite {
+  margin: 1em 0;
+}
 
 /* jQuery Tooltip Plugin */
 
