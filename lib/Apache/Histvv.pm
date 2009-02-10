@@ -32,6 +32,7 @@ FIXME
 use Apache2::RequestRec ();
 use Apache2::RequestIO  ();
 use Apache2::Request ();
+use Apache2::Util ();
 use XML::LibXML ();
 use XML::LibXSLT ();
 use File::Spec ();
@@ -323,6 +324,12 @@ sub handler {
     if ($@) {
         warn "$@\n";
         return Apache2::Const::SERVER_ERROR;
+    }
+
+    # set Expires header to support caching of URLs with query strings
+    if ( $ENV{HISTVV_EXPIRES} =~ /^[0-9]+$/ ) {
+        $r->headers_out->add( 'Expires' =>
+              Apache2::Util::ht_time( $r->pool, time + $ENV{HISTVV_EXPIRES} ) );
     }
 
     if (0) {
