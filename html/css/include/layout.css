@@ -51,6 +51,7 @@ body > div {
   background-repeat: no-repeat;
   background-position: top right;
   padding-top: 48px;
+  min-height: 300px;
 }
 
 #footer {
