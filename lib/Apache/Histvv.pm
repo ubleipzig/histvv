@@ -133,7 +133,7 @@ if ($daten) then
     let $jahr := $kopf/v:beginn/v:jahr/string()
     return
     <stelle semester="{$sem}" jahr="{$jahr}" seite="{$snr}">
-    {$node}
+    {normalize-space($node)}
     </stelle>
   }
   </stellen>
@@ -166,7 +166,7 @@ return
     let $jahr := $kopf/v:beginn/v:jahr/string()
     return
     <stelle semester="{$sem}" jahr="{$jahr}" seite="{$snr}">
-    {$node}
+    {normalize-space($node)}
     </stelle>
   }
   </stellen>
