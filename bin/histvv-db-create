@@ -6,6 +6,7 @@ use warnings;
 use Histvv;
 use Histvv::CLI;
 use Histvv::Db;
+use Histvv::Search;
 use File::Basename;
 use File::Temp;
 use File::Copy;
@@ -55,15 +56,17 @@ $db->add_index( $ns_histvv, 'nachname',      'node-element-presence' );
 $db->add_index( $ns_histvv, 'vorname',       'node-element-equality-string' );
 $db->add_index( $ns_histvv, 'vorname',       'node-element-equality-string' );
 $db->add_index( '',         'ref',           'node-attribute-equality-string' );
+$db->add_index( '',         'x-text',        'node-attribute-substring-string' );
+$db->add_index( '',         'x-dozent',      'node-attribute-equality-string' );
+$db->add_index( '',         'x-dozent',      'node-attribute-substring-string' );
+$db->add_index( '',         'x-semester',    'node-attribute-equality-string' );
 
 $cli->chatter( "Loading files..." );
 foreach my $file (@ARGV) {
     $cli->chatter( "  $file ..", 1 );
     my $name = basename($file);
-    my $xml = '';
-    open F, $file or die $!;
-    $xml .= $_ while (<F>);
-    close F;
+    my $doc = Histvv::Search::annotate_file($file);
+    my $xml = $doc->toString(0);
     $db->put_doc($xml, $name);
     $cli->chatter( " ok" );
 }
