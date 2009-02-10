@@ -132,7 +132,7 @@ EOT
 sub _num  {
     my $nodelist =  shift;
     my ($node) =  $nodelist->get_nodelist();
-    if ($node->textContent =~ $numrx) {
+    if ($node && $node->textContent =~ $numrx) {
         return $1;
     } else {
         return undef;
