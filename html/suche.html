@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+  <head>
+    <title>
+      Veranstaltungssuche
+    </title>
+  </head>
+
+  <body>
+    <h1>
+      Veranstaltungssuche
+    </h1>
+
+    <form id="suchformular" class="suche" action="#">
+      <p class="widget">
+        <label for="f-volltext">Volltext <a href="#hilfe-volltext">[i]</a></label>
+        <br/>
+        <input type="text" id="f-volltext" name="volltext" value=""/>
+      </p>
+
+      <fieldset>
+        <legend>Semester <a href="#hilfe-semester">[i]</a></legend>
+        <span class="widget">
+          <label for="f-von">von</label>
+          <select name="semester-von" id="f-von">
+            <option>Wintersemester 1814/15</option>
+            <option>Sommersemester 1815</option>
+            <option>Wintersemester 1815/16</option>
+          </select>
+        </span>
+        <span class="widget">
+          <label for="f-bis">bis</label>
+          <select name="semester-bis" id="f-bis">
+            <option>Wintersemester 1913/14</option>
+            <option>Sommersemester 1914</option>
+            <option selected="selected">Wintersemester 1914/15</option>
+          </select>
+        </span>
+      </fieldset>
+
+      <p class="widget">
+        <label for="f-sachgruppe">Sachgruppe <a href="#hilfe-sachgruppe">[i]</a></label>
+        <br/>
+        <select id="f-sachgruppe" name="sachgruppe" size="3" multiple="multiple">
+          <option>Literatur</option>
+          <option>Medizin</option>
+          <option>Philosophie</option>
+          <option>Recht</option>
+          <option>Theologie</option>
+        </select>
+      </p>
+
+      <fieldset>
+        <legend>Dozenten <a href="#hilfe-dozenten">[i]</a></legend>
+        <div class="widget">
+          <label for="f-grad">Akad. Grad</label><br/>
+          <select id="f-grad" name="grad" size="3" multiple="multiple">
+            <option>M.</option>
+            <option>Dr.</option>
+            <option>Prof.</option>
+            <option>Bac.</option>
+            <option>Lic.</option>
+          </select>
+        </div>
+        <div class="widget">
+          <label for="f-dozent">Name</label>
+          <br/>
+          <select id="f-dozent" name="dozent" size="3" multiple="multiple">
+            <option>Aalhaus, Albert</option>
+            <option>Abels, Albrecht</option>
+            <option>Achtermann, Bruno</option>
+            <option>Bode, Immanuel</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Fakultäten <a href="#hilfe-fakultaeten">[i]</a></legend>
+        <label class="widget">
+          <input type="checkbox" value="theologie" /> Theologische Fakultät
+        </label>
+        <label class="widget">
+          <input type="checkbox" value="philosophie" /> Philosophische Fakultät
+        </label>
+        <br />
+        <label class="widget">
+          <input type="checkbox" value="jura" /> Juristische Fakultät
+        </label>
+        <label class="widget">
+          <input type="checkbox" value="medizin" /> Medizinische Fakultät
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Lehrform <a href="#hilfe-lehrform">[i]</a></legend>
+        <label class="widget">
+          <input type="checkbox" value="publice" /> Vorlesung
+        </label>
+        <label class="widget">
+          <input type="checkbox" value="gratis" /> Übung
+        </label>
+        <label class="widget">
+          <input type="checkbox" value="privatim" /> Examinatorium
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Veranstaltungsmodus <a href="#hilfe-modus">[i]</a></legend>
+        <label class="widget">
+          <input type="checkbox" value="publice" /> publice/öffentlich
+        </label>
+        <label class="widget">
+          <input type="checkbox" value="gratis" /> gratis/unentgeltlich
+        </label>
+        <label class="widget">
+          <input type="checkbox" value="privatim" />&#160;privatim
+        </label>
+        <br />
+        <label class="widget">
+          <input type="checkbox" value="privatissime" />&#160;privatissime
+        </label>
+      </fieldset>
+
+      <p class="buttonbar">
+        <input type="submit" value="Veranstaltungen suchen"/>
+        <br class="clear"/>
+      </p>
+    </form>
+
+    <div id="hilfe">
+      <h2>Hilfe</h2>
+
+      <div id="hilfe-volltext">
+        <h3>Volltext</h3>
+
+        <p>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+          sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+          magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
+          quis nostrud exerci tation ullamcorper suscipit lobortis
+          nisl ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+
+      <div id="hilfe-sachgruppe">
+        <h3>Sachgruppen</h3>
+        <p>
+          Duis autem vel eum iriure <em>dolor</em> in hendrerit in
+          vulputate velit esse molestie consequat, vel illum dolore eu
+          feugiat nulla facilisis at vero eros et accumsan et iusto
+          odio dignissim qui blandit praesent luptatum zzril delenit
+          augue duis dolore te feugait nulla facilisi.
+        </p>
+      </div>
+
+      <div id="hilfe-semester">
+        <h3>Semester</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+          sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+          magna aliquam erat volutpat.
+        </p>
+      </div>
+
+      <div id="hilfe-dozenten">
+        <h3>Dozenten</h3>
+        <p>
+          Ut wisi enim ad minim veniam, quis nostrud exerci tation
+          ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
+          consequat. Duis autem vel eum iriure dolor in hendrerit in
+          vulputate velit esse molestie consequat, vel illum dolore eu
+          <a href="http://hashtable.de/">feugiat</a> nulla facilisis
+          at vero eros et accumsan et iusto odio dignissim qui blandit
+          praesent luptatum zzril delenit augue duis dolore te feugait
+          nulla facilisi.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+          sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+          magna aliquam erat volutpat.
+        </p>
+      </div>
+
+      <div id="hilfe-fakultaeten">
+        <h3>Fakultäten</h3>
+        <p>
+          Duis autem vel eum iriure dolor in hendrerit in vulputate
+          velit esse molestie consequat, vel illum dolore eu feugiat
+          nulla facilisis at vero eros et accumsan et iusto odio
+          dignissim qui <strong>blandit</strong> praesent luptatum
+          zzril delenit augue duis dolore te feugait nulla facilisi.
+        </p>
+      </div>
+
+      <div id="hilfe-orte">
+        <h3>Orte</h3>
+        <p>
+          Ut wisi enim ad minim <a title="Google Maps"
+          href="http://maps.google.de/">veniam</a>, quis nostrud
+          exerci tation ullamcorper suscipit lobortis nisl ut aliquip
+          ex ea commodo consequat.
+        </p>
+      </div>
+
+      <div id="hilfe-lehrform">
+        <h3>Lehrform</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+          sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+          magna aliquam erat volutpat. Duis autem vel eum iriure dolor
+          in hendrerit in vulputate velit esse molestie consequat, vel
+          illum dolore eu feugiat nulla facilisis at vero eros et
+          accumsan et iusto odio dignissim qui blandit praesent
+          luptatum zzril delenit augue duis dolore te feugait nulla
+          facilisi.
+        </p>
+      </div>
+
+      <div id="hilfe-modus">
+        <h3>Veranstaltungsmodus</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+          sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+          magna aliquam erat volutpat. Duis autem vel eum iriure dolor
+          in hendrerit in vulputate velit esse molestie consequat, vel
+          illum dolore eu feugiat nulla facilisis at vero eros et
+          accumsan et iusto odio dignissim qui blandit praesent
+          luptatum zzril delenit augue duis dolore te feugait nulla
+          facilisi.
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
