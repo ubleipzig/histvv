@@ -195,7 +195,7 @@ return
                    then $v/v:dozent
                    else (if ($v/v:ders)
                          then $v/v:ders/preceding::v:dozent[1]
-                         else ())
+                         else $v/ancestor::v:veranstaltungsgruppe/v:dozent[last()])
     let $kopf := $v/ancestor::v:vv/v:kopf
     let $sem := $kopf/v:semester/string()
     let $jahr := $kopf/v:beginn/v:jahr/string()
