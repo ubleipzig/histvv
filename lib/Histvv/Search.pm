@@ -209,7 +209,6 @@ return
   </stellen>
 </report>
 EOQ
-    warn "$query\n";
     $query;
 }
 
