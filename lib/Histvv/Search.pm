@@ -273,13 +273,8 @@ sub annotate_doc {
                 'ancestor::v:veranstaltungsgruppe/v:dozent[last()]', $va );
         }
 
-        my ( @refs, @strings );
+        my @dstrings;
         foreach my $d (@dozenten) {
-
-            # capture ref attributes
-            if ( my $ref = $xc->findvalue( '@ref', $d ) ) {
-                push @refs, $ref;
-            }
 
             # get preceding <dozent> for <ders> elements
             if ( $d->localname eq 'ders' && !$xc->exists( '@ref', $d ) ) {
@@ -287,14 +282,14 @@ sub annotate_doc {
                 $d = $pre if $pre;
             }
 
-            # finally capture literal content
-            push @strings, $xc->findvalue( 'normalize-space(v:nachname)', $d )
+            # capture literal content
+            push @dstrings, $xc->findvalue( 'normalize-space(.)', $d )
               unless $d->localname eq 'ders';
         }
 
-        $va->setAttribute( 'x-dozent', join ' ', @refs ) if @refs;
-        $va->setAttribute( 'x-dozenten', lc( join '; ', @strings ) )
-          if @strings;
+        $va->setAttribute( 'x-dozenten',
+            normalize_chars( join '; ', @dstrings ) )
+          if @dstrings;
     }
 
     return $doc;

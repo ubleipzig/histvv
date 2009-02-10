@@ -57,8 +57,7 @@ $db->add_index( $ns_histvv, 'vorname',       'node-element-equality-string' );
 $db->add_index( $ns_histvv, 'vorname',       'node-element-equality-string' );
 $db->add_index( '',         'ref',           'node-attribute-equality-string' );
 $db->add_index( '',         'x-text',        'node-attribute-substring-string' );
-$db->add_index( '',         'x-dozent',      'node-attribute-equality-string' );
-$db->add_index( '',         'x-dozent',      'node-attribute-substring-string' );
+$db->add_index( '',         'x-dozenten',    'node-attribute-substring-string' );
 $db->add_index( '',         'x-semester',    'node-attribute-equality-string' );
 
 $cli->chatter( "Loading files..." );
