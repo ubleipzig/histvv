@@ -4,8 +4,11 @@ use warnings;
 use strict;
 
 use Histvv;
+use Histvv::Util;
 use XML::LibXML;
 use XML::LibXML::XPathContext;
+
+use utf8;
 
 =head1 NAME
 
@@ -21,13 +24,198 @@ our $VERSION = '0.06';
 
 =head1 SYNOPSIS
 
-    use Histvv::Util;
+    use Histvv::Search;
+
+    $xquery = Histvv::Search::build_xquery( %params );
+
 
 =head1 DESCRIPTION
 
 This module collects some search related methods for the Histvv
 project:
 
+
+=head2 build_xquery
+
+  $query = build_xquery( %params);
+
+Build an XQuery from input parameters. This method expects a list of
+named parameters, all of which are optional.
+
+text => $text, dozent => $dozent,
+                        von => $semester1, bis => $semester2,
+                        fakultaet => $fakultaet
+
+=over
+
+=item text
+
+A search string for full text search.
+
+=item dozent
+
+A search string to search for in C<dozent> elements.
+
+=item fakultaet
+
+One or more faculty IDs separated by space. Possible values are
+C<Theologie>, C<Jura>, C<Medizin>, and C<Philosophie>.
+
+=item von
+
+Semester ID for the earliest semester to include.
+
+=item bis
+
+Semester ID for the latest semester to include.
+
+=item start
+
+The offset in the result sequence.
+
+=item interval
+
+Number of results to return.
+
+=back
+
+=cut
+
+my $sem_min = '1814w';
+my $sem_max = '1914s';
+
+my @faculties = qw/Theologie Jura Medizin Philosophie/;
+
+sub build_xquery {
+    my %args = @_;
+
+    my $start =
+      $args{start} && $args{start} =~ /^[1-9][0-9]*$/ ? $args{start} : 1;
+    my $interval =
+         $args{interval}
+      && $args{interval} =~ /^[1-9][0-9]*$/ ? $args{interval} : 10;
+    $interval = 100 if $interval > 100;
+
+    my @v_predicates;
+
+    my ($text, @text);
+    if ($text = $args{text}) {
+        utf8::decode($text);
+        @text =  _tokenize($text);
+    }
+    my $text_predicate = join ' and ', map { "contains(\@x-text, '$_')" } @text;
+    push @v_predicates, $text_predicate if $text_predicate;
+
+    my ($doz, @doz);
+    if ($doz = $args{dozent}) {
+        utf8::decode($doz);
+        @doz =  _tokenize($doz);
+    }
+    my $doz_predicate = join ' and ', map { "contains(\@x-dozenten, '$_')" } @doz;
+    push @v_predicates, $doz_predicate if $doz_predicate;
+
+    my $v_predicate = join ' and ', @v_predicates;
+
+    my ($von, $bis, @sem);
+    if (Histvv::Util::is_semesterid($args{von}) && $args{von} gt $sem_min) {
+        $von = $args{von};
+        push @sem, "\@x-semester >= '$von'";
+    } else {
+        $von = $sem_min;
+    }
+    if (Histvv::Util::is_semesterid($args{bis}) && $args{bis} lt $sem_max) {
+        $bis = $args{bis};
+        push @sem, "\@x-semester <= '$bis'";
+    } else {
+        $bis = $sem_max;
+    }
+    my $sem_predicate = join ' and ', @sem;
+
+    my @fac;
+    foreach my $fac (split /\s+/, $args{fakultaet} || '') {
+        push @fac, $fac if grep { $fac eq $_ } @faculties;
+    }
+    #my $fac_predicate = join ' or ', map { "\@fakult\x{00e4}t='$_'" } @fac;
+    my $fac_predicate = join ' or ', map { "\@fakultät='$_'" } @fac;
+
+    my $path = 'collection()/v:vv';
+    $path .= "[$sem_predicate]"             if @sem;
+    $path .= "//v:sachgruppe[$fac_predicate]" if @fac;
+    $path .= '//v:veranstaltung';
+    $path .= "[$v_predicate]"               if @v_predicates;
+
+    my $vars = <<'EOT';
+let $start := %d
+let $interval := %d
+let $text := "%s"
+let $dozent := "%s"
+let $fakultaet := "%s"
+let $von := "%s"
+let $bis := "%s"
+EOT
+
+    $vars = sprintf $vars, map ( {
+            $_ ||= '';
+              s/"/""/g;
+              $_
+        } $start,
+        $interval,
+        $text,
+        #$args{text},
+        $doz,
+        #$args{dozent},
+        $args{fakultaet},
+        $von,
+        $bis );
+
+    my $query = <<EOT;
+declare namespace v = "$Histvv::XMLNS";
+
+$vars
+
+let \$stellen := $path
+EOT
+
+    $query .= <<'EOQ';
+let $total := count($stellen)
+
+return
+<report>
+  <suche>
+    <text>{$text}</text>
+    <dozent>{$dozent}</dozent>
+    <von>{$von}</von>
+    <bis>{$bis}</bis>
+    <fakultaet>{$fakultaet}</fakultaet>
+  </suche>
+  <stellen total="{$total}" start="{$start}" interval="{$interval}">
+  {
+    for $v in subsequence($stellen, $start, $interval)
+    let $dozenten := if ($v/v:dozent)
+                   then $v/v:dozent
+                   else (if ($v/v:ders)
+                         then $v/v:ders/preceding::v:dozent[1]
+                         else ())
+    let $kopf := $v/ancestor::v:vv/v:kopf
+    let $sem := $kopf/v:semester/string()
+    let $jahr := $kopf/v:beginn/v:jahr/string()
+    return
+    <stelle id="{$v/@xml:id}" semester="{$sem}" jahr="{$jahr}">
+      <thema>{string($v/@x-thema)}</thema>
+      <dozenten>{$dozenten}</dozenten>
+      <text>{normalize-space($v)}</text>
+    </stelle>
+  }
+  </stellen>
+</report>
+EOQ
+    warn "$query\n";
+    $query;
+}
+
+sub _tokenize {
+    grep { $_ ne '' } map { normalize_chars($_) } split(/\W+/, shift);
+}
 
 =head2 annotate_doc
 

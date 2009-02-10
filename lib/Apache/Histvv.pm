@@ -33,10 +33,12 @@ use Apache2::RequestRec ();
 use Apache2::RequestIO  ();
 use Apache2::Request ();
 use Apache2::Util ();
+use Apache2::URI ();
 use XML::LibXML ();
 use XML::LibXSLT ();
 use File::Spec ();
 use Histvv::Db ();
+use Histvv::Search ();
 
 use Apache2::Const -compile => qw(:common);
 
@@ -292,6 +294,25 @@ sub handler {
         else {
             return Apache2::Const::DECLINED;
         }
+    } elsif ($loc eq '/suche') {
+        return Apache2::Const::DECLINED unless $url eq '/';
+        unless ($r->args) {
+            my $url = $r->construct_url('/suche.html');
+            $r->headers_out->set( Location => $url );
+            return Apache2::Const::REDIRECT;
+        }
+        my $rq = Apache2::Request->new($r);
+        warn "XXXXX: ", $rq->param('volltext'), "\n";
+        $xquery = Histvv::Search::build_xquery(
+            text      => $rq->param('volltext')  || '',
+            dozent    => $rq->param('dozent')    || '',
+            fakultaet => $rq->param('fakultaet') || '',
+            von       => $rq->param('von')       || '',
+            bis       => $rq->param('bis')       || '',
+            start     => $rq->param('start')     || 1,
+            interval  => $rq->param('l')         || 10,
+
+        );
     } elsif ($r->uri =~ /^\/(\w+\.html)?$/) {
         my $uri = $1 ? $r->uri : '/index.html';
         my $file = File::Spec->catfile($r->document_root, $uri);

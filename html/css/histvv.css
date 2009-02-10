@@ -108,26 +108,28 @@ abbr, acronym {
 
 /* ======================== */
 
-#content.suchergebnis table {
-  clear: both;
+table.suchergebnis {
+  border-spacing: 4px;
+  border-collapse: separate;
+  border-top: 1px solid #41524a;
+  border-bottom: 1px solid #41524a;
 }
 
-#content.suchergebnis th,
-#content.suchergebnis td.nr {
-  border: 1px solid #8fb635;
-  color: #8fb635;
+table.suchergebnis thead th {
+  color: #41524a;
+  background-color: #f1f1e4;
 }
 
-#content.suchergebnis td.dozent,
-#content.suchergebnis td.semester {
-  white-space: nowrap;
+table.suchergebnis tbody tr td {
+  background-color: #f1f1e4;
 }
 
-#content.suchergebnis .proSeite,
-#content.suchergebnis .geheZu {
-  float: left;
-  margin: 1em 1em 1em 0;
-  width: 200px;
+table.suchergebnis tbody tr.odd td {
+  background-color: #ffffff;
+}
+
+table.suchergebnis td.semester {
+  text-align: right;
 }
 
 

@@ -88,6 +88,11 @@ sub set_attribute {
     wantarray ? ($args{doc}, @nodes) : $args{doc};
 }
 
+sub is_semesterid {
+    my $txt = shift || '';
+    $txt =~ /^[12][0-9]{3}[sw]$/;
+}
+
 =head1 SEE ALSO
 
 L<Histvv>, L<XML::LibXML::XPathContext>
