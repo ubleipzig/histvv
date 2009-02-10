@@ -138,6 +138,7 @@ abbr, acronym {
   z-index: 3000;
   border: 1px solid #111;
   background-color: #eee;
+  background-image: none;
   padding: 5px;
   width: 30%;
 }
