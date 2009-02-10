@@ -55,6 +55,13 @@
                 Universitätsbibliothek Leipzig
               </a>
             </p>
+
+            <p class="dfg">
+              <a href="http://www.dfg.de/">
+                <img src="/img/dfg.png" alt="DFG"
+                     title="Gefördert durch die Deutsche Forschungsgemeinschaft"/>
+              </a>
+            </p>
           </div>
         </div>
       </body>

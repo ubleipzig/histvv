@@ -60,10 +60,21 @@ body > div {
   border-top: 1px solid #41524a;
   font-size: 11px;
   clear: both;
+  position: relative;
 }
 
 #footer p {
   margin: 0;
+}
+
+#footer p.dfg {
+  position: absolute;
+  bottom: 2px;
+  left: -190px;
+}
+
+#footer p.dfg img {
+  border: 0;
 }
 
 #sidebar {
