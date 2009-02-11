@@ -113,6 +113,7 @@ table.suchergebnis {
   border-collapse: separate;
   border-top: 1px solid #41524a;
   border-bottom: 1px solid #41524a;
+  width: 100%;
 }
 
 table.suchergebnis thead th {
@@ -187,8 +188,8 @@ form.treffer-pro-seite {
 #tooltip {
   position: absolute;
   z-index: 3000;
-  border: 1px solid #111;
-  background-color: #eee;
+  border: 1px solid #41524a;
+  background-color: #f1f1e4;
   background-image: none;
   padding: 5px;
   width: 30%;
