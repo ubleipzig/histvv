@@ -29,7 +29,7 @@
   </xsl:variable>
 
   <xsl:template name="content">
-    <xsl:attribute name="class">suche</xsl:attribute>
+    <xsl:attribute name="class">suchergebnis</xsl:attribute>
     <xsl:apply-templates select="/report"/>
   </xsl:template>
 

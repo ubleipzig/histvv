@@ -108,6 +108,10 @@ abbr, acronym {
 
 /* ======================== */
 
+div#content.suchergebnis {
+  margin-bottom: 50px;
+}
+
 table.suchergebnis {
   border-spacing: 4px;
   border-collapse: separate;
