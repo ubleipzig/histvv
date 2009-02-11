@@ -112,23 +112,13 @@ div#content.vv hr {
 
 .veranstaltungsverweis {
   color: #555;
-  cursor: help;
 }
 
-.veranstaltungsverweis:before {
+.veranstaltungsverweis[id^=_v-]:before {
   content: "\002197  ";
   color: #555;
   font-weight: bold;
-}
-
-div#verweis-tooltip {
-  display: none;
-  position: absolute;
-  width: 60%;
-  padding: 1em;
-  margin: 2em;
-  border: 1px solid gray;
-  background-color: white;
+  cursor: help;
 }
 
 table.veranstaltungsliste td.semester {
