@@ -242,23 +242,26 @@ sub annotate_doc {
 
     foreach my $va ($xc->findnodes('//v:veranstaltung')) {
 
+        # text
+        my $text = $xc->findvalue( 'normalize-space(.)', $va );
+        $text = normalize_chars($text);
+
         # thema
         my @themen =
           $xc->findnodes( 'ancestor::v:veranstaltungsgruppe/v:thema | v:thema',
             $va );
         if ( $xc->findnodes( 'v:thema[@kontext]', $va ) || @themen == 0 ) {
             my ($sg) = $xc->findnodes( 'parent::v:sachgruppe/v:titel', $va );
-            unshift @themen, $sg if $sg;
+            if ($sg) {
+                unshift @themen, $sg;
+                $text .= " ";
+                $text .= normalize_chars( $sg->textContent );
+            }
         }
         my @thema = map $xc->findvalue( 'normalize-space(.)', $_ ), @themen;
 
         my $thema = join ' | ', @thema;
         $va->setAttribute( 'x-thema', $thema );
-
-        # text
-        my $text = $xc->findvalue( 'normalize-space(.)', $va );
-        $text = normalize_chars($text);
-        $va->setAttribute( 'x-text', $text );
 
         # dozent
 
@@ -289,6 +292,8 @@ sub annotate_doc {
         $va->setAttribute( 'x-dozenten',
             normalize_chars( join '; ', @dstrings ) )
           if @dstrings;
+
+        $va->setAttribute( 'x-text', $text );
     }
 
     return $doc;
