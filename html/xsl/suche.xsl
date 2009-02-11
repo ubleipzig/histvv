@@ -71,7 +71,9 @@
           </option>
         </xsl:for-each>
       </select>
-      <input type="submit" value="Anzeigen"/>
+      <noscript>
+        <input type="submit" value="Anzeigen"/>
+      </noscript>
     </form>
 
     <xsl:call-template name="pager"/>

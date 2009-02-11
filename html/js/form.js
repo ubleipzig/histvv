@@ -9,4 +9,8 @@ $(document).ready(function(){
         },
         showURL: false
     });
+
+    $('form.treffer-pro-seite select').change(
+        function () { this.form.submit(); }
+    );
 });
