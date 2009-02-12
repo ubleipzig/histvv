@@ -302,7 +302,6 @@ sub handler {
             return Apache2::Const::REDIRECT;
         }
         my $rq = Apache2::Request->new($r);
-        warn "XXXXX: ", $rq->param('volltext'), "\n";
         $xquery = Histvv::Search::build_xquery(
             text      => $rq->param('volltext')  || '',
             dozent    => $rq->param('dozent')    || '',
