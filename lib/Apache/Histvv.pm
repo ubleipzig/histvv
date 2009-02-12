@@ -356,7 +356,8 @@ sub handler {
         $r->content_type('text/plain');
         print "$xml";
     } else {
-        $r->content_type('application/xhtml+xml');
+        #$r->content_type('application/xhtml+xml');
+        $r->content_type('text/html');
         print $stylesheet->output_as_bytes($html);
     }
 
