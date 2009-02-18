@@ -111,8 +111,12 @@
       <xsl:text>Quelle: </xsl:text>
       <xsl:value-of select="v:kopf/v:quelle"/>
     </p>
-    <h1><xsl:value-of select="v:titel"/></h1>
-    <xsl:apply-templates select="v:absatz|v:übersicht|v:sachgruppe|v:seite|v:trennlinie"/>
+    <xsl:apply-templates select="v:titel | v:absatz | v:übersicht |
+                                 v:sachgruppe | v:seite | v:trennlinie"/>
+  </xsl:template>
+
+  <xsl:template match="/v:vv/v:titel">
+    <h1><xsl:value-of select="."/></h1>
   </xsl:template>
 
   <xsl:template match="v:siehe[@ref]">
