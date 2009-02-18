@@ -77,7 +77,7 @@
       <xsl:text>&amp;chxp=0,0,12,32,52,72,92,112,132,152,172,192</xsl:text>
       <xsl:text>&amp;chxl=</xsl:text>
       <xsl:text>0:|1814|1820|1830|1840|1850|1860|1870|1880|1890|1900|1910|</xsl:text>
-      <xsl:text>1:||100|200|300|400|500|600|700</xsl:text>
+      <xsl:text>1:||100|200|300|400|500|600|700|800</xsl:text>
       <xsl:text>&amp;chd=t:</xsl:text>
       <xsl:value-of select="$chart-data"/>
     </xsl:variable>
