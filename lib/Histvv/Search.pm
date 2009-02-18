@@ -310,6 +310,7 @@ sub normalize_chars {
     $txt =~ s/\x{00e4}/ae/g; # ä
     $txt =~ s/\x{00f6}/oe/g; # ö
     $txt =~ s/\x{00FC}/ue/g; # ü
+    $txt =~ s/\x{00DF}/ss/g; # ß
     $txt;
 }
 
