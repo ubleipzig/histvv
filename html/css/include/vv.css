@@ -128,3 +128,9 @@ table.veranstaltungsliste td.semester {
 .quelle {
   font-size: 80%;
 }
+
+.veranstaltung:target {
+  background-color: #ddb;
+  padding: 10px 8px;
+  border-top: 10px solid white;
+}
