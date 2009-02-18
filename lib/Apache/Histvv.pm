@@ -305,7 +305,7 @@ sub handler {
         $xquery = Histvv::Search::build_xquery(
             text      => $rq->param('volltext')  || '',
             dozent    => $rq->param('dozent')    || '',
-            fakultaet => $rq->param('fakultaet') || '',
+            fakultaet => join(" ", $rq->param('fakultaet')),
             von       => $rq->param('von')       || '',
             bis       => $rq->param('bis')       || '',
             start     => $rq->param('start')     || 1,
