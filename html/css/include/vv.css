@@ -131,6 +131,15 @@ table.veranstaltungsliste td.semester {
 
 .veranstaltung:target {
   background-color: #ddb;
+}
+
+.sachgruppe > .veranstaltung:target {
   padding: 10px 8px;
+  border-top: 10px solid white;
+}
+
+.veranstaltungsgruppe > .veranstaltung:target {
+  display: inline-block;
+  padding: 3px;
   border-top: 10px solid white;
 }
