@@ -110,6 +110,9 @@
     <p class="quelle">
       <xsl:text>Quelle: </xsl:text>
       <xsl:value-of select="v:kopf/v:quelle"/>
+      <xsl:text> (</xsl:text>
+      <a href="/vorlagen.html">Übersicht über alle Vorlagen</a>
+      <xsl:text>)</xsl:text>
     </p>
     <xsl:apply-templates select="v:titel | v:absatz | v:übersicht |
                                  v:sachgruppe | v:seite | v:trennlinie"/>
