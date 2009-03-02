@@ -260,7 +260,7 @@ sub annotate_doc {
         }
         my @thema = map $xc->findvalue( 'normalize-space(.)', $_ ), @themen;
 
-        my $thema = join ' | ', @thema;
+        my $thema = join ' … ', @thema;
         $va->setAttribute( 'x-thema', $thema );
 
         # dozent
