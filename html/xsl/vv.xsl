@@ -14,6 +14,7 @@
   <xsl:template name="htmltitle">
     <xsl:choose>
       <xsl:when test="/v:vv">
+        <xsl:text>Vorlesungsverzeichnis </xsl:text>
         <xsl:value-of select="/v:vv/v:kopf/v:semester"/>
         <xsl:text>semester </xsl:text>
         <xsl:value-of select="/v:vv/v:kopf/v:beginn/v:jahr"/>
@@ -21,6 +22,7 @@
           <xsl:text>/</xsl:text>
           <xsl:value-of select="/v:vv/v:kopf/v:ende/v:jahr"/>
         </xsl:if>
+        <xsl:text> -- Universität Leipzig</xsl:text>
       </xsl:when>
       <xsl:otherwise>
         <xsl:text>Vorlesungsverzeichnisse</xsl:text>
