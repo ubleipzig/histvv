@@ -33,8 +33,14 @@
         <xsl:apply-templates select="/v:dozent/v:name"/>
       </xsl:when>
       <xsl:when test="/report/v:dozent">
-        <xsl:text>Dozent: </xsl:text>
         <xsl:apply-templates select="/report/v:dozent/v:name" mode="kurz"/>
+        <xsl:if test="/report/v:dozent/v:geboren/v:jahr or /report/v:dozent/v:gestorben/v:jahr">
+          <xsl:text> (</xsl:text>
+          <xsl:value-of select="/report/v:dozent/v:geboren/v:jahr"/>
+          <xsl:text>-</xsl:text>
+          <xsl:value-of select="/report/v:dozent/v:gestorben/v:jahr"/>
+          <xsl:text>)</xsl:text>
+        </xsl:if>
       </xsl:when>
       <xsl:when test="/report/name">
         <xsl:text>Name: </xsl:text>
