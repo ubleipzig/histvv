@@ -314,6 +314,29 @@ sub normalize_chars {
     $txt;
 }
 
+
+=head2 strip_text
+
+  $txt = strip_text( $node );
+
+Takes an XML::LibXML::Node, removes all elements named C<seite>, and
+returns the text content with normalized space.
+
+=cut
+
+sub strip_text {
+    my $node = shift;
+
+    my $new = $node->cloneNode(1);
+
+    for my $s ( $new->getElementsByTagNameNS($Histvv::XMLNS, 'seite') ) {
+        my $p = $s->parentNode;
+        $p->removeChild( $s );
+    }
+
+    $new->findvalue('normalize-space(.)');
+}
+
 =head1 SEE ALSO
 
 L<Histvv>
