@@ -10,6 +10,7 @@
     doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"/>
 
   <xsl:param name="histvv-url"/>
+  <xsl:param name="histvv-debug" select="false()"/>
 
   <xsl:template match="/">
     <xsl:call-template name="skeleton"/>
@@ -104,6 +105,23 @@
         <a href="/suche.html">Suche</a>
       </li>
     </ul>
+  </xsl:template>
+
+  <!-- mode to filter element 'seite' -->
+  <xsl:template match="*" mode="filter-seite">
+    <xsl:apply-templates select="*|text()" mode="filter-seite"/>
+  </xsl:template>
+
+  <xsl:template match="text()" mode="filter-seite">
+    <xsl:value-of select="."/>
+  </xsl:template>
+
+  <xsl:template match="v:seite" mode="filter-seite">
+    <xsl:if test="$histvv-debug">
+      <xsl:comment>
+        <xsl:value-of select="."/>
+      </xsl:comment>
+    </xsl:if>
   </xsl:template>
 
 </xsl:stylesheet>

@@ -150,7 +150,7 @@
   </xsl:template>
 
   <xsl:template match="dozenten/v:dozent">
-    <xsl:value-of select="."/>
+    <xsl:apply-templates select="*|text()" mode="filter-seite"/>
   </xsl:template>
 
   <xsl:template match="dozenten/v:dozent[@ref]">
@@ -160,7 +160,7 @@
         <xsl:value-of select="@ref"/>
         <xsl:text>.html</xsl:text>
       </xsl:attribute>
-      <xsl:value-of select="."/>
+      <xsl:apply-templates select="*|text()" mode="filter-seite"/>
     </a>
   </xsl:template>
 
