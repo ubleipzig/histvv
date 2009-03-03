@@ -243,8 +243,7 @@ sub annotate_doc {
     foreach my $va ($xc->findnodes('//v:veranstaltung')) {
 
         # text
-        my $text = $xc->findvalue( 'normalize-space(.)', $va );
-        $text = normalize_chars($text);
+        my $text = normalize_chars( strip_text( $va ) );
 
         # thema
         my @themen =
@@ -255,10 +254,10 @@ sub annotate_doc {
             if ($sg) {
                 unshift @themen, $sg;
                 $text .= " ";
-                $text .= normalize_chars( $sg->textContent );
+                $text .= normalize_chars( strip_text( $sg ) );
             }
         }
-        my @thema = map $xc->findvalue( 'normalize-space(.)', $_ ), @themen;
+        my @thema = map strip_text( $_ ), @themen;
 
         my $thema = join ' … ', @thema;
         $va->setAttribute( 'x-thema', $thema );
@@ -285,8 +284,7 @@ sub annotate_doc {
             }
 
             # capture literal content
-            push @dstrings, $xc->findvalue( 'normalize-space(.)', $d )
-              unless $d->localname eq 'ders';
+            push @dstrings, strip_text( $d ) unless $d->localname eq 'ders';
         }
 
         $va->setAttribute( 'x-dozenten',
