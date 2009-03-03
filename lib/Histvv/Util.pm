@@ -88,6 +88,15 @@ sub set_attribute {
     wantarray ? ($args{doc}, @nodes) : $args{doc};
 }
 
+=head2 is_semesterid
+
+  $rv = is_semesterid( $string )
+
+Returns true if the passed string is a valid Histvv semester ID or
+false otherwise.
+
+=cut
+
 sub is_semesterid {
     my $txt = shift || '';
     $txt =~ /^[12][0-9]{3}[sw]$/;

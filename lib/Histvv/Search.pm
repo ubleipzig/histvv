@@ -297,10 +297,27 @@ sub annotate_doc {
     return $doc;
 }
 
+=head2 annotate_file
+
+  $doc = annotate_file( $file );
+
+Parses $file and passes the DOM to L<annotate_doc>.
+
+=cut
+
 sub annotate_file {
     my $doc = XML::LibXML->new->parse_file(shift);
     annotate_doc($doc);
 }
+
+=head2 normalize_chars
+
+  $text = normalize_chars( $text );
+
+Replaces accented characters in $text with non-accented ones. B<Note:>
+This method currently handles German umlauts and sz only.
+
+=cut
 
 sub normalize_chars {
     my $txt = shift;
@@ -311,7 +328,6 @@ sub normalize_chars {
     $txt =~ s/\x{00DF}/ss/g; # ß
     $txt;
 }
-
 
 =head2 strip_text
 
