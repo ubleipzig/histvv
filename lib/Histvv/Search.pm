@@ -246,19 +246,29 @@ sub annotate_doc {
         my $text = normalize_chars( strip_text( $va ) );
 
         # thema
-        my @themen =
-          $xc->findnodes( 'ancestor::v:veranstaltungsgruppe/v:thema | v:thema',
-            $va );
+        my @themen;
+
+        # find relevant thema elements
+        my $thema_xpath = 'ancestor::v:veranstaltungsgruppe/v:thema | v:thema';
+        foreach my $t ( $xc->findnodes( $thema_xpath, $va ) ) {
+            # add thema elements from group context to the search text
+            unless ($t->parentNode->isSameNode($va) ) {
+                $text .= " | " . normalize_chars( strip_text($t) );
+            }
+            push @themen, $t;
+        }
+
+        # include section titles when a thema element requires context
+        # or there are no thema elements at all
         if ( $xc->findnodes( 'v:thema[@kontext]', $va ) || @themen == 0 ) {
             my ($sg) = $xc->findnodes( 'parent::v:sachgruppe/v:titel', $va );
             if ($sg) {
                 unshift @themen, $sg;
-                $text .= " ";
-                $text .= normalize_chars( strip_text( $sg ) );
+                $text .= " | " . normalize_chars( strip_text( $sg ) );
             }
         }
-        my @thema = map strip_text( $_ ), @themen;
 
+        my @thema = map strip_text( $_ ), @themen;
         my $thema = join ' … ', @thema;
         $va->setAttribute( 'x-thema', $thema );
 
@@ -314,8 +324,9 @@ sub annotate_file {
 
   $text = normalize_chars( $text );
 
-Replaces accented characters in $text with non-accented ones. B<Note:>
-This method currently handles German umlauts and sz only.
+Turns $text into lowercase and replaces accented characters with
+non-accented ones. B<Note:> This method currently handles German
+umlauts and sz only.
 
 =cut
 
