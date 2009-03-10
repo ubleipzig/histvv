@@ -80,8 +80,7 @@
         <jahr/><monat/><tag/><ort/>
       </gestorben> 
       <pnd/>
-      <!--[Berufsbezeichnung, Fachgebiet]-->
-      <absatz/>
+      <beruf/>
       <adb>
         <band/><seite/><url/>
       </adb>
@@ -99,12 +98,6 @@
         <nachname/>
         <vorname/>
       </name>
-      <geboren>
-        <jahr/>
-      </geboren>
-      <gestorben>
-        <jahr/>
-      </gestorben> 
     </dozent>
   </elementTemplate>
 

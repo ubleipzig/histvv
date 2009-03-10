@@ -705,10 +705,15 @@ dozentenliste =
       element pnd {
         xsd:token { pattern = "[0-9]{8}[0-9X]" }
       }?,
+      element beruf { text }?,
       (element absatz { text }*
+       & element quelle { text }*
        & element url { http-url }*
        & element adb { adb-ndb-model }?
-       & element ndb { adb-ndb-model }?)
+       & element ndb { adb-ndb-model }?),
+      element anmerkungen {
+        element absatz { text }+
+      }?
     }+
   }
 eckdaten =
@@ -720,7 +725,7 @@ http-url = xsd:anyURI { pattern = "https?://.+" }
 adb-ndb-model =
   element band { text },
   element seite { text },
-  element url { http-url }
+  element url { http-url }?
 
 ## Container für OCR-Text
 ocr =

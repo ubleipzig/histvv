@@ -5,7 +5,6 @@
     <name>
       <nachname></nachname>
       <vorname></vorname>
-      <nachnamenpräfix></nachnamenpräfix>
     </name>
     <geboren>
       <jahr>YYYY</jahr>
@@ -15,9 +14,7 @@
     </geboren>
     <gestorben>
       <jahr>YYYY</jahr>
-      <monat>MM</monat>
-      <tag>TT</tag>
     </gestorben>
-    <absatz></absatz>
+    <beruf></beruf>
   </dozent>
 </dozentenliste>

@@ -131,15 +131,28 @@
         </xsl:if>
       </ul>
     </xsl:if>
+    <xsl:apply-templates select="v:beruf"/>
     <xsl:apply-templates select="v:absatz"/>
     <xsl:apply-templates select="v:pnd"/>
-    <xsl:if test="v:url or v:adb or v:ndb">
+    <xsl:if test="v:url or v:adb[v:url] or v:ndb[v:url]">
       <h3>Links</h3>
       <ul>
-        <xsl:for-each select="v:url | v:adb | v:ndb">
+        <xsl:for-each select="v:url | v:adb[v:url] | v:ndb[v:url]">
           <li><xsl:apply-templates select="." mode="linkliste"/></li>
         </xsl:for-each>
       </ul>
+    </xsl:if>
+    <xsl:if test="v:quelle or v:adb[not(v:url)] or v:ndb[not(v:url)]">
+      <h3>Quellen</h3>
+      <ul>
+        <xsl:for-each select="v:quelle | v:adb[not(v:url)] | v:ndb[not(v:url)]">
+          <li><xsl:apply-templates select="."/></li>
+        </xsl:for-each>
+      </ul>
+    </xsl:if>
+    <xsl:if test="v:anmerkungen">
+      <h3>Anmerkungen</h3>
+      <xsl:apply-templates select="v:anmerkungen/v:absatz"/>
     </xsl:if>
   </xsl:template>
 
@@ -167,6 +180,12 @@
         </xsl:attribute>
         <xsl:value-of select="."/>
       </a>
+    </p>
+  </xsl:template>
+
+  <xsl:template match="v:dozent/v:beruf">
+    <p class="beruf">
+      <xsl:value-of select="."/>
     </p>
   </xsl:template>
 
@@ -288,28 +307,32 @@
     </a>
   </xsl:template>
 
-  <xsl:template match="v:dozent/v:adb | v:dozent/v:ndb" mode="linkliste">
+  <xsl:template match="v:dozent/v:adb[v:url] | v:dozent/v:ndb[v:url]" mode="linkliste">
     <a>
       <xsl:attribute name="href">
         <xsl:value-of select="v:url"/>
       </xsl:attribute>
-      <xsl:choose>
-        <xsl:when test="local-name(.) = 'adb'">
-          <abbr title="Allgemeine Deutsche Biographie">
-            <xsl:text>ADB</xsl:text>
-          </abbr>
-        </xsl:when>
-        <xsl:otherwise>
-          <abbr title="Neue Deutsche Biographie">
-            <xsl:text>NDB</xsl:text>
-          </abbr>
-        </xsl:otherwise>
-      </xsl:choose>
-      <xsl:text>, Bd. </xsl:text>
-      <xsl:value-of select="v:band"/>
-      <xsl:text>, S. </xsl:text>
-      <xsl:value-of select="v:seite"/>
+      <xsl:apply-templates select="."/>
     </a>
+  </xsl:template>
+
+  <xsl:template match="v:dozent/v:adb | v:dozent/v:ndb">
+    <xsl:choose>
+      <xsl:when test="local-name(.) = 'adb'">
+        <abbr title="Allgemeine Deutsche Biographie">
+          <xsl:text>ADB</xsl:text>
+        </abbr>
+      </xsl:when>
+      <xsl:otherwise>
+        <abbr title="Neue Deutsche Biographie">
+          <xsl:text>NDB</xsl:text>
+        </abbr>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:text>, Bd. </xsl:text>
+    <xsl:value-of select="v:band"/>
+    <xsl:text>, S. </xsl:text>
+    <xsl:value-of select="v:seite"/>
   </xsl:template>
 
 </xsl:stylesheet>

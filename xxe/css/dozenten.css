@@ -1,6 +1,7 @@
 dozentenliste, universit\0000E4t,
 dozent, name, geboren, gestorben,
-pnd, adb, ndb, absatz, url {
+pnd, adb, ndb, beruf,
+absatz, url, quelle, anmerkungen {
   display: block;
 }
 
@@ -90,11 +91,12 @@ nachnamenpr\0000E4fix:after {
 
 dozentenliste > dozent > geboren,
 dozentenliste > dozent > gestorben,
-dozentenliste > dozent > pnd {
+dozentenliste > dozent > pnd,
+dozentenliste > dozent > beruf {
   margin-left: 5em;
 }
 
-geboren:before, gestorben:before {
+geboren:before, gestorben:before, beruf:before {
   display: marker;
   content: element-label() ":";
 }
@@ -144,6 +146,37 @@ adb > url, ndb > url {
 } 
 
 dozent url {
-  font-size: small;
+  font-size: 90%;
   color: blue;
+}
+
+dozent quelle {
+  font-size: 90%;
+}
+
+dozent > anmerkungen {
+  margin-top: 1em;
+}
+
+dozent > anmerkungen:before {
+  content: "Anmerkungen";
+}
+
+dozent > anmerkungen > absatz {
+  margin: .3em 0;
+}
+
+
+dozent > quelle, dozent > url {
+  margin-left: 1.5em;
+}
+
+dozent > quelle:before {
+  display: marker;
+  content: icon(square);
+}
+
+dozent > url:before {
+  display: marker;
+  content: icon(external-link-small);
 }

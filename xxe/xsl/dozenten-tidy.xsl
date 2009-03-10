@@ -22,11 +22,13 @@
   </xsl:template>
 
   <xsl:template match="v:absatz[.=''] | v:url[.=''] | v:pnd[.=''] |
+                       v:quelle[.=''] | v:beruf[.=''] |
                        v:monat[.=''] | v:tag[.=''] | v:ort[.=''] |
                        v:adb[v:band='' and v:seite='' and v:url=''] |
                        v:ndb[v:band='' and v:seite='' and v:url=''] |
                        v:geboren[concat(v:jahr, v:monat, v:tag, v:ort)=''] |
-                       v:gestorben[concat(v:jahr, v:monat, v:tag, v:ort)='']">
+                       v:gestorben[concat(v:jahr, v:monat, v:tag, v:ort)=''] |
+                       v:anmerkungen[normalize-space(.)='']">
   </xsl:template>
 
   <xsl:template match="comment()[

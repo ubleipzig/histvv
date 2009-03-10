@@ -1026,9 +1026,19 @@
               </data>
             </element>
           </optional>
+          <optional>
+            <element name="beruf">
+              <text/>
+            </element>
+          </optional>
           <interleave>
             <zeroOrMore>
               <element name="absatz">
+                <text/>
+              </element>
+            </zeroOrMore>
+            <zeroOrMore>
+              <element name="quelle">
                 <text/>
               </element>
             </zeroOrMore>
@@ -1048,6 +1058,15 @@
               </element>
             </optional>
           </interleave>
+          <optional>
+            <element name="anmerkungen">
+              <oneOrMore>
+                <element name="absatz">
+                  <text/>
+                </element>
+              </oneOrMore>
+            </element>
+          </optional>
         </element>
       </oneOrMore>
     </element>
@@ -1087,9 +1106,11 @@
     <element name="seite">
       <text/>
     </element>
-    <element name="url">
-      <ref name="http-url"/>
-    </element>
+    <optional>
+      <element name="url">
+        <ref name="http-url"/>
+      </element>
+    </optional>
   </define>
 
   <define name="ocr">
