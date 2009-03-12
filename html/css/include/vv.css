@@ -67,10 +67,24 @@ span.schrift span.titel {
 span.schrift { text-decoration: underline; }
 
 /* korrektur */
-ins { text-decoration: none; color: red; cursor: help;}
-ins:before { content: "["; }
-ins:after { content: "]"; }
-del { display: none; }
+ins {
+  text-decoration: none;
+  cursor: help;
+}
+
+ins:before {
+  content: "[";
+  color: gray;
+}
+
+ins:after {
+  content: "]";
+  color: gray;
+}
+
+del {
+  display: none;
+}
 
 /* scil */
 #content.vv abbr {
