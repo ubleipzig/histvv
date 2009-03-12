@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:v="http://histvv.uni-leipzig.de/ns/2007"
+                xmlns:str="http://exslt.org/strings"
                 xmlns="http://www.w3.org/1999/xhtml"
-                exclude-result-prefixes="v">
+                exclude-result-prefixes="v str"
+                extension-element-prefixes="str">
 
   <xsl:import href="common.xsl"/>
   <xsl:import href="histvv2html.xsl"/>
@@ -87,8 +89,7 @@
               <a>
                 <xsl:attribute name="href">                  
                   <xsl:text>lookup?name=</xsl:text>
-                  <!-- FIXME: this needs to be URL encoded -->
-                  <xsl:value-of select="v:name/v:nachname"/>
+                  <xsl:value-of select="str:encode-uri(v:name/v:nachname, true())"/>
                 </xsl:attribute>
                 <xsl:text>?</xsl:text>
               </a>

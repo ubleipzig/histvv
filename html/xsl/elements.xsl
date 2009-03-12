@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:v="http://histvv.uni-leipzig.de/ns/2007"
+                xmlns:str="http://exslt.org/strings"
                 xmlns="http://www.w3.org/1999/xhtml"
-                exclude-result-prefixes="v">
+                exclude-result-prefixes="v str"
+                extension-element-prefixes="str">
 
   <xsl:import href="common.xsl"/>
   <xsl:import href="histvv2html.xsl"/>
@@ -47,20 +49,12 @@
         <xsl:attribute name="href">
           <xsl:value-of select="/report/element"/>
           <xsl:text>?w=</xsl:text>
-          <xsl:value-of select="."/>
+          <xsl:value-of select="str:encode-uri(., true())"/>
         </xsl:attribute>
         <xsl:value-of select="."/>
       </a>
     </li>
   </xsl:template>
-
-<!--
-  <xsl:template match="/report/stellen">
-    <ol>
-      <xsl:apply-templates select="stelle"/>
-    </ol>
-  </xsl:template>
--->
 
   <xsl:template match="/report/stellen">
     <h3>Stellen</h3>
