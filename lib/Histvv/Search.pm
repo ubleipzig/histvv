@@ -154,19 +154,9 @@ let $von := "%s"
 let $bis := "%s"
 EOT
 
-    $vars = sprintf $vars, map ( {
-            $_ ||= '';
-              s/"/""/g;
-              $_
-        } $start,
-        $interval,
-        $text,
-        #$args{text},
-        $doz,
-        #$args{dozent},
-        $args{fakultaet},
-        $von,
-        $bis );
+    $vars = sprintf $vars,
+      map ( { Histvv::Util::xquery_escape( $_ || '' ) } $start,
+        $interval, $text, $doz, $args{fakultaet}, $von, $bis );
 
     my $query = <<EOT;
 declare namespace v = "$Histvv::XMLNS";

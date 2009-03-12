@@ -39,6 +39,7 @@ use XML::LibXSLT ();
 use File::Spec ();
 use Histvv::Db ();
 use Histvv::Search ();
+use Histvv::Util ();
 
 use Apache2::Const -compile => qw(:common);
 
@@ -256,7 +257,7 @@ sub handler {
         } elsif ($url =~ /^\/lookup$/) {
             my $rq = Apache2::Request->new($r);
             my $name = $rq->param('name') || return Apache2::Const::DECLINED;
-            $name =~ s/"/""/g;
+            $name = Histvv::Util::xquery_escape( $name );
             my $query = $name =~ /\s/ ? 'normalize-space(v:nachname)' : 'v:nachname';
             $xquery = sprintf $Queries{dozentenlookup}, $name, $query;
         } elsif ($url =~ /^\/([-_a-z0-9]+)\.html$/) {
@@ -284,7 +285,7 @@ sub handler {
             my $rq = Apache2::Request->new($r);
             my $wert = $rq->param('w');
             if ( $wert ) {
-                $wert =~ s/"/""/g;
+                $wert = Histvv::Util::xquery_escape( $wert );
                 $xquery = sprintf $Queries{elementlookup}, $wert, $elem, $elem;
             }
             else {
