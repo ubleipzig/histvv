@@ -102,6 +102,23 @@ sub is_semesterid {
     $txt =~ /^[12][0-9]{3}[sw]$/;
 }
 
+=head2 xquery_escape
+
+  $string = xquery_escape( $string )
+
+Escapes quote charcters and ampersands in strings to be used as XQuery
+string literals.
+
+=cut
+
+sub xquery_escape {
+    my $txt = shift;
+    $txt =~ s/"/""/g;
+    $txt =~ s/'/''/g;
+    $txt =~ s/\&/\&amp;/g;
+    $txt;
+}
+
 =head1 SEE ALSO
 
 L<Histvv>, L<XML::LibXML::XPathContext>

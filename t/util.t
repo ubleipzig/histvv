@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 6;
+use Test::More tests => 7;
 
 BEGIN {
     # we want Histvv::Util to provide XML::LibXML to its user; so
@@ -61,3 +61,7 @@ foreach my $t (@set_attribute_tests) {
     is_deeply( $dom->toString(1), $expect->toString(1),
         "set_attribute(): $t->{title}" );
 }
+
+my $string = q{foo "bar" & baz'};
+my $expect = q{foo ""bar"" &amp; baz''};
+is( Histvv::Util::xquery_escape($string), $expect, 'xquery_escape()' );
