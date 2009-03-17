@@ -12,13 +12,14 @@ use Text::Wrap ();
 
 my $cli  = Histvv::CLI->new();
 my %opts = $cli->get_opts(
-    'list|l'    => 0,
-    'all|a'     => 0,
-    'data|D=s'  => undef,
-    'name|n=s'  => undef,
-    'match|m=s'  => undef,
-    'xpath|x=s' => undef,
-    'ref|r=s'   => undef
+    'list|l'            => 0,
+    'all|a'             => 0,
+    'data|D=s'          => undef,
+    'name|n=s'          => undef,
+    'match|m=s'         => undef,
+    'xpath|x=s'         => undef,
+    'ref|r=s'           => undef,
+    'min_age|min-age=i' => 0
 );
 
 $cli->error("You need to specify a name and/or xpath expression!")
@@ -73,9 +74,7 @@ if ( $opts{data} ) {
             push @xpath, $path;
         }
         elsif (my $jahr = $xc->findvalue( 'v:geboren/v:jahr', $d )) {
-            # add 20 to the year of birth to determine the earliest
-            # probable occurence
-            $jahr += 20;
+            $jahr += $opts{min_age};
             push @xpath, "/v:vv/v:kopf/v:beginn/v:jahr > $jahr";
         }
 
@@ -107,6 +106,7 @@ if ( $opts{data} ) {
         $cli->chatter( $label );
         $cli->chatter( $info ) if $opts{verbose} > 1 && $info;
         $cli->chatter( "-" x length($label) );
+
         set_refs(
             name  => $name,
             xpath => $xpath,
@@ -293,6 +293,12 @@ the ref attributes in the given Histvv files respectively.
 
 A regular expression to filter IDs of C<dozent> entries. When used
 with B<-D> only entries with a matching ID will be processed.
+
+=item B<--min-age>
+
+The number of years to add to the year of birth of a C<dozent> to
+limit the range of semesters to process. The default is 0; a sensible
+value would be 18.
 
 =item B<--list>, B<-l>
 
