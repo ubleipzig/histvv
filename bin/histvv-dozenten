@@ -56,6 +56,11 @@ if ( $opts{data} ) {
         my $died = $xc->findvalue( 'v:gestorben/v:jahr', $d ) || '';
         my $info = $xc->findvalue( 'normalize-space(v:absatz[1])', $d ) || '';
 
+        if ($von && $bis && $von gt $bis) {
+            warn "SKIPPED '$id': attribute value 'von' greater than 'bis'! \n";
+            next;
+        }
+
         # constructing XPath expressions for semester limits
         my @xpath;
         if ( $von =~ /^([0-9]{4})([ws])$/ ) {
