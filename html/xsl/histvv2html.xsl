@@ -27,12 +27,45 @@
   </xsl:template>
 
   <xsl:template match="v:dozent[@ref]">
-    <xsl:variable name="name" select="local-name()"/>
-    <a class="dozent" href="../dozenten/{@ref}.html">
+    <span class="dozent">
+      <a href="../dozenten/{@ref}.html">
+        <xsl:attribute name="title">
+          <xsl:text>zur Dozentenseite</xsl:text>
+        </xsl:attribute>
+        <xsl:apply-templates/>
+      </a>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="v:dozent[@ref and .//v:seite]">
+    <span class="dozent">
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="v:dozent[@ref and .//v:seite]/v:nachname">
+    <span class="nachname">
+      <a href="../dozenten/{ancestor::v:dozent/@ref}.html">
+        <xsl:attribute name="title">
+          <xsl:text>zur Dozentenseite</xsl:text>
+        </xsl:attribute>
+        <xsl:apply-templates/>
+      </a>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="v:dozent[@ref]/v:nachname[v:seite]">
+    <span class="nachname">
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="v:dozent[@ref]/v:nachname[v:seite]/text()">
+    <a href="../dozenten/{ancestor::v:dozent/@ref}.html">
       <xsl:attribute name="title">
         <xsl:text>zur Dozentenseite</xsl:text>
       </xsl:attribute>
-      <xsl:apply-templates/>
+      <xsl:value-of select="."/>
     </a>
   </xsl:template>
 

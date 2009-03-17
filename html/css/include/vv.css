@@ -96,6 +96,8 @@ span.seite {
   display: block;
   margin: 2em 0;
   text-align: right;
+  font-style: normal;
+  font-weight: normal;
 }
 
 span.seite a {
