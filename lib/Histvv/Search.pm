@@ -267,8 +267,7 @@ sub annotate_doc {
         # first we look for elements inside <veranstaltung>
         my @dozenten = $xc->findnodes( 'v:dozent | v:ders', $va );
 
-        # if there aren't any we search the containing
-        # <veranstaltunsgruppe>
+        # if there aren't any we search the containing group
         unless (@dozenten) {
             @dozenten = $xc->findnodes(
                 'ancestor::v:veranstaltungsgruppe/v:dozent[last()]', $va );
@@ -277,7 +276,12 @@ sub annotate_doc {
         }
 
         my @dstrings;
+        my @drefs;
         foreach my $d (@dozenten) {
+            # capture ref attributes
+            if (my $ref = $xc->findvalue('@ref', $d)) {
+                push @drefs, $ref;
+            }
 
             # get preceding <dozent> for <ders> elements
             if ( $d->localname eq 'ders' && !$xc->exists( '@ref', $d ) ) {
@@ -292,6 +296,7 @@ sub annotate_doc {
         $va->setAttribute( 'x-dozenten',
             normalize_chars( join '; ', @dstrings ) )
           if @dstrings;
+        $va->setAttribute( 'x-dozentenrefs', join (' ', @drefs) ) if @drefs;
 
         $va->setAttribute( 'x-text', $text );
     }
