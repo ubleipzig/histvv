@@ -272,6 +272,8 @@ sub annotate_doc {
         unless (@dozenten) {
             @dozenten = $xc->findnodes(
                 'ancestor::v:veranstaltungsgruppe/v:dozent[last()]', $va );
+
+            $text .= " | " . normalize_chars( strip_text($_) ) for @dozenten;
         }
 
         my @dstrings;
