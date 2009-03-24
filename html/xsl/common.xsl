@@ -27,7 +27,7 @@
         <script type="text/javascript" src="/js/jquery.tooltip.js"></script>
         <script type="text/javascript" src="/js/form.js"></script>
         <xsl:call-template name="scripts"/>
-        <title><xsl:call-template name="htmltitle"/> [Histvv]</title>
+        <title><xsl:call-template name="htmltitle"/> [HistVV]</title>
       </head>
       <body>
         <div>
