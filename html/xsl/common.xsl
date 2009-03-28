@@ -22,6 +22,7 @@
         <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8"/>
         <link rel="icon" href="/css/gfx/favicon.png" type="image/png"/>
         <link rel="stylesheet" href="/css/histvv.css" type="text/css" title="Histvv"/>    
+        <link rel="alternative stylesheet" href="/css/experimental.css" type="text/css" title="Experimental"/>    
         <script type="text/javascript" src="/js/jquery.js"></script>
         <script type="text/javascript" src="/js/jquery.dimensions.js"></script>
         <script type="text/javascript" src="/js/jquery.tooltip.js"></script>
@@ -33,8 +34,9 @@
         <div>
           <div id="header">
             <a href="/" title="Historische Vorlesungsverzeichnisse">
-              <strong>Histvv</strong>
+              <strong>HistVV</strong>
             </a>
+            <h6>Historische Vorlesungsverzeichnisse der Universität Leipzig</h6>
           </div>
 
           <div id="content">

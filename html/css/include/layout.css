@@ -41,6 +41,10 @@ body > div {
   display: none;
 }
 
+#header h6 {
+  display: none;
+}
+
 #content, #footer {
   width: 684px;
   margin-left: 196px;
