@@ -338,7 +338,7 @@ nachname = element nachname { common.attributes, model.text }
 ## 
 ##       Vorname
 ##     
-vorname = element vorname { common.attributes & model.text & rufname? }
+vorname = element vorname { common.attributes & model.text & rufname* }
 
 ## 
 ##       zur Kennzeichnung des Rufnamens bei mehreren Vornamen

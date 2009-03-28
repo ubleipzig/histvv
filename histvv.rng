@@ -487,9 +487,9 @@
       <interleave>
         <ref name="common.attributes"/>
         <ref name="model.text"/>
-        <optional>
+        <zeroOrMore>
           <ref name="rufname"/>
-        </optional>
+        </zeroOrMore>
       </interleave>
     </element>
   </define>

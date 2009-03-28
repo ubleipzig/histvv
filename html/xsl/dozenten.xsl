@@ -208,7 +208,12 @@
       <xsl:text>, </xsl:text>
       <xsl:choose>
         <xsl:when test="v:vorname/v:rufname">
-          <xsl:value-of select="v:vorname/v:rufname"/>
+          <xsl:for-each select="v:vorname/v:rufname">
+            <xsl:value-of select="."/>
+            <xsl:if test="not(position() = last())">
+              <xsl:text> </xsl:text>
+            </xsl:if>
+          </xsl:for-each>
         </xsl:when>
         <xsl:otherwise>
           <xsl:value-of select="v:vorname"/>
