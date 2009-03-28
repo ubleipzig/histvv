@@ -7,6 +7,7 @@ Build.PL
 Changes
 histvv.rnc
 histvv.rng
+html/css/gfx/bg-fieldset.png
 html/css/gfx/favicon.png
 html/css/gfx/header.gif
 html/css/gfx/logo-beta.png
@@ -18,6 +19,7 @@ html/css/histvv.css
 html/css/include/form.css
 html/css/include/layout.css
 html/css/include/vv.css
+html/img/dfg.png
 html/index.html
 html/js/form.js
 html/js/jquery.js
@@ -27,17 +29,20 @@ html/js/vv.js
 html/ns.xhtml
 html/suche.html
 html/titelblatt.jpg
+html/vorlagen.html
 html/xsl/common.xsl
 html/xsl/elements.xsl
 html/xsl/dozenten.xsl
 html/xsl/histvv2html.xsl
 html/xsl/static.xsl
+html/xsl/suche.xsl
 html/xsl/vv.xsl
 lib/Apache/Histvv.pm
 lib/Histvv.pm
 lib/Histvv/Build.pm
 lib/Histvv/CLI.pm
 lib/Histvv/Db.pm
+lib/Histvv/Search.pm
 lib/Histvv/Util.pm
 MANIFEST
 t/00-load.t
@@ -46,6 +51,7 @@ t/02-apache.t
 t/cli.t
 t/pod-coverage.t
 t/pod.t
+t/search.t
 t/test.xml
 t/util.t
 xqy/dozentenliste.xq
