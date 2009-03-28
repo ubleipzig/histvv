@@ -118,3 +118,24 @@ body > div {
 #sidebar ul li.current a:hover {
   color: #ddddbb;
 }
+
+@media print {
+
+  div#header, div#sidebar, div#footer, ul#seitennavigation {
+    display: none;
+  }
+
+  body {
+    width: auto;
+    margin: 1cm;
+  }
+
+  #content {
+    width: auto;
+    float: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+}

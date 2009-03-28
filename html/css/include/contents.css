@@ -1,0 +1,448 @@
+body {
+  color: black;
+  background-color: white;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 12px;
+}
+
+@media print {
+  body {
+    font-family: Georgia, serif;
+    font-size: 12pt;
+  }
+}
+
+a {
+  color: #ab4739;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #69221e;
+  text-decoration: underline;
+}
+
+h1 {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  color: #41524a;
+  text-align: left;
+  font-weight: normal;
+}
+
+h2 {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+h4 {
+  font-size: 14px;
+}
+
+table {
+  border-spacing: 0px;
+  border-collapse: collapse;
+}
+
+table caption {
+  caption-side: top;
+  text-align: left;
+}
+
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 3px;
+}
+
+th.nr, td.nr {
+  text-align: right;
+}
+
+abbr, acronym {
+  cursor: help;
+  border-color: gray;
+}
+
+.clear { clear: both; }
+
+
+/* ======================== */
+
+#content.home form.suche {
+  float: right;
+  width: 25em;
+}
+
+#content.home img.ws1814 {
+  filter:alpha(opacity=20); /* IE */
+  -moz-opacity:0.2; /* Gecko-Browser */
+  opacity:0.2; /* Opera 9+ */
+  float: right;
+  margin-right: -50px;
+  clear: right;
+}
+
+/* ======================== */
+
+#content.vv h1 {
+  text-align: center;
+}
+
+body.vv {
+  margin: 2em 15%;
+  position: relative;
+  font-family: Georgia, serif;
+  width: auto;
+}
+
+body.vv > h1 {
+  text-align: center;
+}
+
+
+ol.toc {
+  -moz-column-count: 3;
+  column-count: 3;
+  font-size: 11px;
+}
+
+ol.toc ~ img {
+  display: block;
+  margin: 2em auto;
+}
+
+div.uebersicht > h2 {
+  text-align: center;
+  font-variant: small-caps;
+}
+
+div.sachgruppe > h2 {
+  text-align: center;
+  margin: 2em auto 1em;
+}
+
+div.sachgruppe div.sachgruppe div.sachgruppe div.sachgruppe h4 {
+  margin-left: 1.5em;
+}
+
+div.sachgruppe div.sachgruppe div.sachgruppe div.sachgruppe
+div.sachgruppe h4 {
+  margin-left: 3em;
+}
+
+div.sachgruppe div.sachgruppe div.sachgruppe div.sachgruppe
+div.sachgruppe div.sachgruppe h4 {
+  margin-left: 4.5em;
+}
+
+div.sachgruppe div.sachgruppe div.sachgruppe div.sachgruppe
+div.sachgruppe div.sachgruppe div.sachgruppe h4 {
+  margin-left: 6em;
+}
+
+div.sachgruppe div.sachgruppe div.sachgruppe div.sachgruppe
+div.sachgruppe div.sachgruppe div.sachgruppe div.sachgruppe h4 {
+  margin-left: 7.5em;
+}
+
+em.gesperrt, span.autor {
+  font-style: normal;
+  letter-spacing: .3em;
+}
+
+span.schrift span.titel {
+  font-style: italic;
+}
+
+span.schrift { text-decoration: underline; }
+
+/* korrektur */
+ins {
+  text-decoration: none;
+  cursor: help;
+}
+
+ins:before {
+  content: "[";
+  color: gray;
+}
+
+ins:after {
+  content: "]";
+  color: gray;
+}
+
+del {
+  display: none;
+}
+
+/* scil */
+#content.vv abbr {
+  cursor: help;
+  border-bottom: 1px dotted;
+}
+
+span.seite {
+  display: block;
+  margin: 2em 0;
+  text-align: right;
+  font-style: normal;
+  font-weight: normal;
+}
+
+span.seite a {
+  text-decoration: none;
+}
+
+ul#seitennavigation {
+
+  list-style-type: none;
+  display: inline;
+  padding: 0;
+  margin: 1em 0;
+}
+
+ul#seitennavigation:before {
+  content: "Seiten: ";
+}
+
+ul#seitennavigation li {
+  display: inline;
+}
+
+div#content.vv hr {
+  display: block;
+  width: 40%;
+  margin: 1.5em auto;
+}
+
+.veranstaltungsverweis {
+  color: #555;
+}
+
+.veranstaltungsverweis[id^=_v-]:before {
+  content: "\002197  ";
+  color: #555;
+  font-weight: bold;
+  cursor: help;
+}
+
+table.veranstaltungsliste td.semester {
+  white-space: nowrap;
+}
+
+.quelle {
+  font-size: 80%;
+}
+
+.veranstaltung:target {
+  background-color: #ddb;
+}
+
+.sachgruppe > .veranstaltung:target {
+  padding: 10px 8px;
+  border-top: 10px solid white;
+}
+
+/* ======================== */
+
+#content.dozent img.portrait {
+  float: right;
+  border: 1px solid #8fb635;
+  max-width: 180px;
+}
+
+#content.dozent ul.lebensdaten {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ======================== */
+
+div#content.suchergebnis {
+  margin-bottom: 50px;
+}
+
+table.suchergebnis {
+  border-spacing: 4px;
+  border-collapse: separate;
+  border-top: 1px solid #41524a;
+  border-bottom: 1px solid #41524a;
+  width: 100%;
+}
+
+table.suchergebnis thead th {
+  color: #41524a;
+  background-color: #f1f1e4;
+}
+
+table.suchergebnis tbody tr td {
+  background-color: #f1f1e4;
+}
+
+table.suchergebnis tbody tr.odd td {
+  background-color: #ffffff;
+}
+
+table.suchergebnis td.semester {
+  text-align: right;
+}
+
+ul.pager {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  color: #999;
+  font-size: 11px;
+}
+
+ul.pager:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+ul.pager li {
+  display: block;
+  width: 40%;
+  margin: 2px 0;
+}
+
+ul.pager li * {
+  font-style: normal;
+}
+
+ul.pager li a {
+  color: #000;
+}
+
+ul.pager li.previous {
+  float: left;
+  text-align: left;
+}
+
+ul.pager li.previous *:before {
+  content: "< ";
+}
+
+ul.pager li.next {
+  float: right;
+  text-align: right;
+}
+
+ul.pager li.next *:after {
+  content: " >";
+}
+
+form.treffer-pro-seite {
+  margin: 1em 0;
+}
+
+/* ======================== */
+
+form.suche {
+  width: 500px;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+form.suche fieldset,
+form.suche p.widget {
+  margin: 15px 0;
+  padding: 0px;
+  border: 0;
+  background-color: #f1f1e4;
+}
+
+form.suche fieldset {
+  padding: 10px;
+  background-image: url("../gfx/bg-fieldset.png");
+  background-repeat: repeat-x;
+}
+
+form.suche fieldset legend,
+form.suche p.widget label {
+  display: block;
+  background-color: #fff;
+  font-weight: bold;
+}
+
+form.suche fieldset legend {
+  margin-left: -10px; /* compensate fieldset padding */
+}
+
+form.suche p.widget input {
+  margin: 10px;
+  width: 475px;
+}
+
+form.suche select,
+form.suche input {
+  border: 1px solid grey;
+  font-size: 12px;
+}
+
+form.suche input[type=reset],
+form.suche input[type=submit] {
+  background-color: #f1f1e4;
+}
+
+form.suche label a,
+form.suche legend a {
+  text-decoration: none;
+  cursor: help; 
+}
+
+form.suche p.buttonbar {
+  text-align: right;
+}
+
+form.suche fieldset span.widget,
+form.suche fieldset div.widget {
+  display: block;
+  float: left;
+  margin-right: 10px;
+}
+
+form.suche p.widget br,
+form.suche fieldset div.widget br {
+  display: none;
+}
+
+form.suche select#f-von,
+form.suche select#f-bis {
+  min-width: 180px;
+}
+
+form.suche fieldset#fs-fakultaeten label {
+  display: inline-block;
+  width: 200px;
+}
+
+div#hilfe {
+  margin-bottom: 50em; width: 45em;
+}
+
+/* jQuery Tooltip Plugin */
+
+#tooltip {
+  position: absolute;
+  z-index: 3000;
+  border: 1px solid #41524a;
+  background-color: #f1f1e4;
+  background-image: none;
+  padding: 5px;
+  width: 30%;
+}
+
+#tooltip h3, #tooltip div {
+  margin: 0;
+}
