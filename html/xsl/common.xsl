@@ -23,6 +23,7 @@
         <link rel="icon" href="/css/gfx/favicon.png" type="image/png"/>
         <link rel="stylesheet" href="/css/histvv.css" type="text/css" title="Histvv"/>    
         <link rel="alternative stylesheet" href="/css/experimental.css" type="text/css" title="Experimental"/>    
+        <link rel="alternative stylesheet" href="/css/structure.css" type="text/css" title="Structure"/>    
         <script type="text/javascript" src="/js/jquery.js"></script>
         <script type="text/javascript" src="/js/jquery.dimensions.js"></script>
         <script type="text/javascript" src="/js/jquery.tooltip.js"></script>
