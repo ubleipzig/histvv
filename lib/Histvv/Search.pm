@@ -233,7 +233,7 @@ sub annotate_doc {
     foreach my $va ($xc->findnodes('//v:veranstaltung')) {
 
         # text
-        my $text = normalize_chars( strip_text( $va ) );
+        my $text = normalize_chars( strip_text( $va, 1 ) );
 
         # thema
         my @themen;
@@ -243,7 +243,7 @@ sub annotate_doc {
         foreach my $t ( $xc->findnodes( $thema_xpath, $va ) ) {
             # add thema elements from group context to the search text
             unless ($t->parentNode->isSameNode($va) ) {
-                $text .= " | " . normalize_chars( strip_text($t) );
+                $text .= " | " . normalize_chars( strip_text($t, 1) );
             }
             push @themen, $t;
         }
@@ -254,11 +254,11 @@ sub annotate_doc {
             my ($sg) = $xc->findnodes( 'parent::v:sachgruppe/v:titel', $va );
             if ($sg) {
                 unshift @themen, $sg;
-                $text .= " | " . normalize_chars( strip_text( $sg ) );
+                $text .= " | " . normalize_chars( strip_text( $sg, 1 ) );
             }
         }
 
-        my @thema = map strip_text( $_ ), @themen;
+        my @thema = map strip_text( $_, 2 ), @themen;
         my $thema = join ' … ', @thema;
         $va->setAttribute( 'x-thema', $thema );
 
@@ -340,20 +340,43 @@ sub normalize_chars {
 =head2 strip_text
 
   $txt = strip_text( $node );
+  $txt = strip_text( $node, $expand );
 
 Takes an XML::LibXML::Node, removes all elements named C<seite>, and
 returns the text content with normalized space.
+
+When $expand is set to C<1> the content of the C<text> attribute of
+C<scil> elements is inserted after the respective element. When
+$expand is set to a value greater than C<1> C<scil> elements will be
+replaced by the content of their respective C<text> attribute.
 
 =cut
 
 sub strip_text {
     my $node = shift;
+    my $expand = shift || 0;
 
     my $new = $node->cloneNode(1);
 
     for my $s ( $new->getElementsByTagNameNS($Histvv::XMLNS, 'seite') ) {
         my $p = $s->parentNode;
         $p->removeChild( $s );
+    }
+
+    if ($expand) {
+        for my $scil ( $new->getElementsByTagNameNS( $Histvv::XMLNS, 'scil' ) )
+        {
+            my $text = $scil->findvalue('@text');
+            $text = " [$text]";
+            my $textnode = XML::LibXML::Text->new($text);
+            if ($expand > 1) {
+                $scil->replaceNode($textnode);
+            }
+            else {
+                my $p = $scil->parentNode;
+                $p->insertAfter( $textnode, $scil );
+            }
+        }
     }
 
     $new->findvalue('normalize-space(.)');
