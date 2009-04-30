@@ -9,6 +9,9 @@
   <xsl:import href="common.xsl"/>
   <xsl:import href="histvv2html.xsl"/>
 
+  <xsl:variable name="anfangsbuchstaben"
+    select="str:tokenize('A B C D E F G H I J K L M N O P Q R S T U V W X Y Z')"/>
+
   <xsl:template name="content">
     <xsl:attribute name="class">
       <xsl:choose>
@@ -64,9 +67,15 @@
     <xsl:choose>
       <xsl:when test="$histvv-url = '/dozenten/namen.html'">
         <h1>Dozentennamen</h1>
+        <xsl:call-template name="namensliste">
+          <xsl:with-param name="dozenten" select="v:dozent"/>
+        </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
         <h1>Dozenten</h1>
+        <xsl:call-template name="dozentenliste">
+          <xsl:with-param name="dozenten" select="v:dozent[@xml:id]"/>
+        </xsl:call-template>
         <p>
           <i>Diese Liste enthält die bereits eindeutig identifizierten
           Dozenten. Vgl. auch die <a href="/dozenten/namen.html">Liste aller
@@ -74,8 +83,58 @@
         </p>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="dozentenliste">
+    <xsl:param name="dozenten"/>
+    <ul class="nav">
+      <xsl:for-each select="$anfangsbuchstaben">
+        <xsl:variable name="a" select="."/>
+        <xsl:if test="$dozenten[starts-with(v:name/v:nachname, $a)]">
+          <li>
+            <a>
+              <xsl:attribute name="href">
+                <xsl:text>#</xsl:text>
+                <xsl:value-of select="."/>
+              </xsl:attribute>
+              <xsl:value-of select="."/>
+            </a>
+          </li>
+        </xsl:if>
+      </xsl:for-each>
+    </ul>
+    <div class="toc">
+    <xsl:for-each select="$anfangsbuchstaben">
+      <xsl:variable name="a" select="."/>
+      <xsl:variable name="d" select="$dozenten[starts-with(v:name/v:nachname, $a)]"/>
+      <xsl:if test="$d">
+        <h3 id="{$a}"><xsl:value-of select="$a"/></h3>
+        <ul>
+          <xsl:for-each select="$d">
+            <li>
+              <a href="{@xml:id}.html">
+                <xsl:apply-templates select="v:name" mode="kurz"/>
+              </a>
+              <xsl:if test="v:geboren/v:jahr or v:gestorben/v:jahr">
+                <xsl:text> (</xsl:text>
+                <xsl:value-of select="v:geboren/v:jahr"/>
+                <xsl:text>-</xsl:text>
+                <xsl:value-of select="v:gestorben/v:jahr"/>
+                <xsl:text>) </xsl:text>
+              </xsl:if>
+              <xsl:variable name="id" select="@xml:id"/>
+            </li>
+          </xsl:for-each>
+        </ul>
+      </xsl:if>
+    </xsl:for-each>
+    </div>
+  </xsl:template>
+
+  <xsl:template name="namensliste">
+    <xsl:param name="dozenten"/>
     <ol class="toc">
-      <xsl:for-each select="v:dozent">
+      <xsl:for-each select="$dozenten">
         <li>
           <xsl:choose>
             <xsl:when test="@xml:id">

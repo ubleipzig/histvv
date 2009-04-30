@@ -109,6 +109,7 @@ body.vv > h1 {
 
 ol.toc {
   -moz-column-count: 3;
+  -moz-column-gap: 20px;
   column-count: 3;
   font-size: 11px;
 }
@@ -116,6 +117,51 @@ ol.toc {
 ol.toc ~ img {
   display: block;
   margin: 2em auto;
+}
+
+div.toc {
+  -moz-column-count: 2;
+  -moz-column-gap: 20px;
+  column-count: 2;
+  column-gap: 3;
+}
+
+ul.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: table;
+  width: 96%;
+  border-collapse: collapse;
+}
+
+ul.nav li {
+  margin: 0;
+  padding: 0;
+  display: table-cell;
+  border: 1px solid #000;
+  width: 1.5em;
+  text-align: center;
+  background-color: #ddb;
+}
+
+ul.nav li a {
+  display: block;
+  width: 1.5em;
+  padding: 2px;
+}
+
+.dozentenliste h3 {
+  font-family: Georgia;
+  font-size: 24px;
+  color: #41524a;
+  margin: 1em 0 .3em;
+}
+
+.dozentenliste ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 div.uebersicht > h2 {
