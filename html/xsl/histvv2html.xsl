@@ -7,7 +7,8 @@
   <xsl:template match="v:thema | v:modus | v:zeit | v:siehe | v:seite |
                        v:dozent | v:vorname | v:nachname | v:grad | v:funktion |
                        v:schrift | v:autor | v:schrift/v:titel |
-                       v:veranstaltungsgruppe/v:veranstaltung">
+                       v:veranstaltungsgruppe/v:veranstaltung |
+                       v:veranstaltungsgruppe/v:veranstaltungsgruppe">
     <xsl:variable name="name" select="local-name()"/>
     <span class="{$name}">
       <xsl:call-template name="xml-id-to-html-id"/>
