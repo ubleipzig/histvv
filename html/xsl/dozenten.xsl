@@ -345,7 +345,10 @@
   </xsl:template>
 
   <xsl:template match="v:url" mode="linkliste">
-    <xsl:variable name="text">
+    <a>
+      <xsl:attribute name="href">
+        <xsl:value-of select="."/>
+      </xsl:attribute>
       <xsl:choose>
         <xsl:when test="starts-with(., 'http://de.wikipedia.org')">
           <xsl:text>Wikipedia</xsl:text>
@@ -356,19 +359,30 @@
         <xsl:when test="starts-with(., 'http://www.uni-leipzig.de/unigeschichte/professorenkatalog')">
           <xsl:text>Professorenkatalog der Universität Leipzig</xsl:text>
         </xsl:when>
+        <xsl:when test="starts-with(., 'http://www.catalogus-professorum-halensis.de/')">
+          <xsl:text>Hallenser Professorenkatalog</xsl:text>
+        </xsl:when>
+        <xsl:when test="starts-with(., 'http://cpr.uni-rostock.de/')">
+          <xsl:text>Rostocker Professorenkatalog</xsl:text>
+        </xsl:when>
         <xsl:when test="starts-with(., 'http://www.bautz.de/bbkl/')">
           <xsl:text>Biographisch-Bibliographisches Kirchenlexikon</xsl:text>
+        </xsl:when>
+        <xsl:when test="starts-with(., 'http://www.zeno.org/Pagel-1901/')">
+          <xsl:text>Biographisches Lexikon hervorragender Ärzte des neunzehnten Jahrhunderts (1901)</xsl:text>
+        </xsl:when>
+        <xsl:when test="starts-with(., 'http://personen-wiki.slub-dresden.de/')">
+          <xsl:text>Personen-Wiki der </xsl:text>
+          <abbr title="Sächsische Landesbibliothek - Staats- und Universitätsbibliothek">SLUB</abbr>
+          <xsl:text> Dresden</xsl:text>
+        </xsl:when>
+        <xsl:when test="starts-with(., 'http://isgv.serveftp.org/saebi/')">
+          <xsl:text>Sächsische Biographie</xsl:text>
         </xsl:when>
         <xsl:otherwise>
           <xsl:value-of select="."/>
         </xsl:otherwise>
       </xsl:choose>
-    </xsl:variable>
-    <a>
-      <xsl:attribute name="href">
-        <xsl:value-of select="."/>
-      </xsl:attribute>
-      <xsl:value-of select="$text"/>
     </a>
   </xsl:template>
 
