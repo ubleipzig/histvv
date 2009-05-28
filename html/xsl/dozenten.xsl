@@ -377,7 +377,7 @@
           <xsl:text> Dresden</xsl:text>
         </xsl:when>
         <xsl:when test="starts-with(., 'http://isgv.serveftp.org/saebi/')">
-          <xsl:text>Sächsische Biographie</xsl:text>
+          <xsl:text>Sächsische Biografie</xsl:text>
         </xsl:when>
         <xsl:otherwise>
           <xsl:value-of select="."/>
