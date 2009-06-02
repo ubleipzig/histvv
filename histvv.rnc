@@ -643,14 +643,22 @@ jahr =
 monat =
   element monat {
     basic.attributes,
-    xsd:positiveInteger { minInclusive = "1" maxInclusive = "12" }
+    xsd:positiveInteger {
+      minInclusive = "1"
+      maxInclusive = "12"
+      pattern = "[0-9]{2}"
+    }
   }
 
 ## Tag des Monats
 tag =
   element tag {
     basic.attributes,
-    xsd:positiveInteger { minInclusive = "1" maxInclusive = "31" }
+    xsd:positiveInteger {
+      minInclusive = "1"
+      maxInclusive = "31"
+      pattern = "[0-9]{2}"
+    }
   }
 
 ## Wurzelelement für Dozentenliste
