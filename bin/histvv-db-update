@@ -1,0 +1,96 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Histvv;
+use Histvv::CLI;
+use Histvv::Db;
+use Histvv::Search;
+use File::Basename;
+
+my $cli  = Histvv::CLI->new();
+my %opts = $cli->get_opts('db|d=s' => undef, 'force|f' => 0);
+
+my $dbfile = $opts{db} || $cli->error("Please specify a database!");
+
+$cli->error( "No input files!" ) unless @ARGV;
+
+my $db = Histvv::Db->new( $dbfile, { create => 0, private => 1 } )
+  || $cli->error("Cannot open database! $!");
+
+foreach my $file (@ARGV) {
+    $cli->chatter( "Updating  $file ..", 1 );
+    my $name = basename($file);
+    my $doc = Histvv::Search::annotate_file($file);
+    my $xml = $doc->toString(0);
+    $db->delete_doc($name);
+    $db->put_doc($xml, $name);
+    $cli->chatter( " ok" );
+}
+
+# sync database status to disc
+$cli->chatter( 'Syncing database...' );
+$db->{container}->sync();
+
+__END__
+
+=head1 NAME
+
+histvv-db-update - update document(s) in Histvv database
+
+=head1 SYNOPSIS
+
+  histvv-db-update [-v] [-f] -d dbfile file1.xml ...
+  histvv-db-update --help | --man
+
+=head1 DESCRIPTION
+
+I<histvv-db-update> adds the passed documents to an existing HistVV
+(Berkeley DB XML) database. It uses file names as document identifiers
+and tries to delete possibly existing documents before adding the new
+ones.
+
+B<Note:> It's the responsibility of the user to take care of database
+consistency (e.g. by not adding the same document multiple times under
+different names).
+
+=head1 OPTIONS
+
+=over
+
+=item B<--db>, B<-d>
+
+The file path to the Histvv database.
+
+=item B<--verbose>, B<-v>
+
+Display progress messages.
+
+=item B<--help>, B<-h>
+
+Display short help message and exit. If used together with B<-v> the
+entire manpage will be displayed.
+
+=item B<--man>
+
+Display manpage and exit. This is equivalent to B<-h> B<-v>.
+
+=back
+
+=head1 SEE ALSO
+
+L<Histvv::Db>
+
+=head1 AUTHOR
+
+Carsten Milling, C<< <cmil at hashtable.de> >>
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright 2009 Carsten Milling, all rights reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+=cut

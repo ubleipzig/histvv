@@ -1,6 +1,7 @@
 bin/dbxml-query
 bin/histvv-add-attribute
 bin/histvv-db-create
+bin/histvv-db-update
 bin/histvv-dozenten
 bin/histvv-generate-ids
 Build.PL
