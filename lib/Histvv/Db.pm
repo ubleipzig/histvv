@@ -219,6 +219,29 @@ sub put_files {
     $n;
 }
 
+=head2 delete_doc
+
+  $ok = $db->delete_doc($name);
+
+=cut
+
+sub delete_doc {
+    my ($self, $name) = @_;
+
+    my $uc = $self->{mgr}->createUpdateContext();
+    my $doc = $self->{container}->getDocument($name);
+    return 0 unless $doc;
+
+    eval {
+        $self->{container}->deleteDocument($name, $uc);
+    };
+    if ( my $e = catch std::exception ) {
+        die $e->what();
+    } elsif ($@) {
+        die $@;
+    }
+    1;
+}
 
 =head1 AUTHOR
 

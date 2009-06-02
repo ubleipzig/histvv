@@ -1,6 +1,6 @@
 #!perl -T
 
-use Test::More tests => 5;
+use Test::More tests => 6;
 
 use File::Spec;
 use File::Temp;
@@ -29,3 +29,5 @@ ok(
 ok( $db->put_doc( '<foo>bar</foo>', 'foo.xml' ), 'put_doc()' );
 
 ok( $db->put_files('t/test.xml'), 'put_files()' );
+
+ok( $db->delete_doc('foo.xml'), 'delete_doc()' );
