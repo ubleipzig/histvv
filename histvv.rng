@@ -617,6 +617,12 @@
     </a:documentation>
     <element name="zeit">
       <ref name="common.attributes"/>
+      <optional>
+        <attribute name="ws">
+          <a:documentation>Wochenstunden</a:documentation>
+          <data type="decimal"/>
+        </attribute>
+      </optional>
       <ref name="text-content"/>
     </element>
   </define>

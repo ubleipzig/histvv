@@ -423,7 +423,14 @@ schrift =
 ## 
 ##       zur Auszeichnung von Zeitangaben
 ##     
-zeit = element zeit { common.attributes, text-content }
+zeit =
+  element zeit {
+    common.attributes,
+    
+    ## Wochenstunden
+    attribute ws { xsd:decimal }?,
+    text-content
+  }
 
 ## 
 ##       zur Auszeichnung von Ortsangaben
