@@ -76,11 +76,6 @@
         <xsl:call-template name="dozentenliste">
           <xsl:with-param name="dozenten" select="v:dozent[@xml:id]"/>
         </xsl:call-template>
-        <p>
-          <i>Diese Liste enthält die bereits eindeutig identifizierten
-          Dozenten. Vgl. auch die <a href="/dozenten/namen.html">Liste aller
-          Dozentennamen</a>.</i>
-        </p>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
