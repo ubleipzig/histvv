@@ -280,10 +280,6 @@ div#content.vv hr {
   cursor: help;
 }
 
-table.veranstaltungsliste td.semester {
-  white-space: nowrap;
-}
-
 .quelle {
   font-size: 80%;
 }
@@ -317,7 +313,7 @@ div#content.suchergebnis {
   margin-bottom: 50px;
 }
 
-table.suchergebnis {
+table.veranstaltungsliste {
   border-spacing: 4px;
   border-collapse: separate;
   border-top: 1px solid #41524a;
@@ -325,20 +321,24 @@ table.suchergebnis {
   width: 100%;
 }
 
-table.suchergebnis thead th {
+table.veranstaltungsliste thead th {
   color: #41524a;
   background-color: #f1f1e4;
 }
 
-table.suchergebnis tbody tr td {
+table.veranstaltungsliste tbody tr td {
   background-color: #f1f1e4;
 }
 
-table.suchergebnis tbody tr.odd td {
+table.veranstaltungsliste tbody tr.odd td {
   background-color: #ffffff;
 }
 
-table.suchergebnis td.semester {
+table.veranstaltungsliste td.semester {
+  white-space: nowrap;
+}
+
+table.veranstaltungsliste td.semester:last-child {
   text-align: right;
 }
 

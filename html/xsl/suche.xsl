@@ -84,7 +84,7 @@
   </xsl:template>
 
   <xsl:template match="stellen">
-    <table class="suchergebnis">
+    <table class="veranstaltungsliste">
       <thead>
         <tr>
           <th class="nr">#</th>
