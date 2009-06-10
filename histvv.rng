@@ -1068,16 +1068,16 @@
                 <ref name="http-url"/>
               </element>
             </zeroOrMore>
-            <optional>
+            <zeroOrMore>
               <element name="adb">
                 <ref name="adb-ndb-model"/>
               </element>
-            </optional>
-            <optional>
+            </zeroOrMore>
+            <zeroOrMore>
               <element name="ndb">
                 <ref name="adb-ndb-model"/>
               </element>
-            </optional>
+            </zeroOrMore>
           </interleave>
           <optional>
             <element name="anmerkungen">

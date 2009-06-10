@@ -731,8 +731,8 @@ dozentenliste =
       (element absatz { text }*
        & element quelle { text }*
        & element url { http-url }*
-       & element adb { adb-ndb-model }?
-       & element ndb { adb-ndb-model }?),
+       & element adb { adb-ndb-model }*
+       & element ndb { adb-ndb-model }*),
       element anmerkungen {
         element absatz { text }+
       }?
