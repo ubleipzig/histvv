@@ -116,30 +116,22 @@ declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
 let $id := "%s"
 
 let $daten := collection()/v:dozentenliste/v:dozent[@xml:id=$id]
-let $stellen := collection()/v:vv[v:kopf/v:status/@komplett]
-  //(v:dozent[@ref=$id] | v:ders[@ref=$id])
+let $veranstaltungen := collection()/v:vv[v:kopf/v:status/@komplett]
+  //v:veranstaltung[tokenize(@x-dozentenrefs, "\s+") = $id]
 
 return
 if ($daten) then
 <report>
   {$daten}
-  <stellen >
+  <stellen>
   {
-    for $d in $stellen
-    let $node := $d/..
-    let $s := $node/preceding::v:seite[1]
-    let $snr := if ($s)
-                then (if ($s/@nr) then $s/@nr else $s/string())
-                else '1'
-    let $kopf := $d/ancestor::v:vv/v:kopf
-    let $sem := $kopf/v:semester/string()
-    let $jahr := $kopf/v:beginn/v:jahr/string()
-    return
-    <stelle semester="{$sem}" jahr="{$jahr}" seite="{$snr}">
-    {normalize-space($node)}
+    for $v in $veranstaltungen return 
+    <stelle semester="{$v/ancestor::v:vv/@x-semester}">
+    {$v}
     </stelle>
   }
   </stellen>
+  <n>{count($veranstaltungen)}</n>
 </report>
 else
 ()

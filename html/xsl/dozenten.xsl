@@ -294,12 +294,24 @@
 
   <xsl:template match="/report/stellen">
     <table class="veranstaltungsliste">
-      <xsl:apply-templates select="stelle"/>
+      <thead>
+        <tr>
+          <th class="nr">#</th>
+          <th>Semester</th>
+          <th>Veranstaltung</th>
+        </tr>
+      </thead>
+      <tbody>
+        <xsl:apply-templates select="stelle"/>
+      </tbody>
     </table>
   </xsl:template>
 
   <xsl:template match="/report/stellen/stelle">
     <tr>
+      <xsl:if test="position() mod 2">
+        <xsl:attribute name="class">odd</xsl:attribute>
+      </xsl:if>
       <td class="nr">
         <xsl:value-of select="position()"/>.
       </td>
@@ -307,34 +319,29 @@
         <a>
           <xsl:attribute name="href">
             <xsl:text>/vv/</xsl:text>
-            <xsl:value-of select="@jahr"/>
-            <xsl:choose>
-              <xsl:when test="@semester = 'Sommer'">
-                <xsl:text>s</xsl:text>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:text>w</xsl:text>
-              </xsl:otherwise>
-            </xsl:choose>
-            <xsl:text>.html#seite</xsl:text>
-            <xsl:value-of select="@seite"/>
+            <xsl:value-of select="@semester"/>
+            <xsl:text>.html#</xsl:text>
+            <xsl:value-of select="v:veranstaltung/@xml:id"/>
           </xsl:attribute>
+          <xsl:variable name="jahr" select="substring(@semester, 1, 4)"/>
           <xsl:choose>
-            <xsl:when test="@semester = 'Sommer'">
-              <xsl:text>SS</xsl:text>
+            <xsl:when test="contains(@semester,'s')">
+              <xsl:text>SS </xsl:text>
+              <xsl:value-of select="$jahr"/>
             </xsl:when>
             <xsl:otherwise>
-              <xsl:text>WS</xsl:text>
+              <xsl:text>WS </xsl:text>
+              <xsl:value-of select="$jahr"/>
             </xsl:otherwise>
           </xsl:choose>
-          <xsl:text> </xsl:text>
-          <xsl:value-of select="@jahr"/>
-          <xsl:text>, S. </xsl:text>
-          <xsl:value-of select="@seite"/>
+          <xsl:if test="@seite">
+            <xsl:text>, S. </xsl:text>
+            <xsl:value-of select="@seite"/>
+          </xsl:if>
         </a>
       </td>
       <td>
-        <xsl:value-of select="."/>
+        <xsl:value-of select="v:veranstaltung/@x-thema"/>
       </td>
     </tr>
   </xsl:template>
