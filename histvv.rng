@@ -643,6 +643,19 @@
     </a:documentation>
     <element name="modus">
       <ref name="common.attributes"/>
+      <optional>
+        <attribute name="wert">
+          <list>
+            <oneOrMore>
+              <choice>
+                <value>privatim</value>
+                <value>privatissime</value>
+                <value>publice</value>
+              </choice>
+            </oneOrMore>
+          </list>
+        </attribute>
+      </optional>
       <ref name="model.text"/>
     </element>
   </define>

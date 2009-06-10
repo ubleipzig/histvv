@@ -440,7 +440,14 @@ ort = element ort { common.attributes, model.text }
 ## 
 ##       z.B. "privatissime" / "öffentlich"
 ##     
-modus = element modus { common.attributes, model.text }
+modus =
+  element modus {
+    common.attributes,
+    attribute wert {
+      list { ("privatim" | "privatissime" | "publice")+ }
+    }?,
+    model.text
+  }
 
 ## 
 ##       Angaben zur Bezahlung einer Lehrveranstaltung,
