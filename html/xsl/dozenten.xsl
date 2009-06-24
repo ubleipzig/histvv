@@ -221,10 +221,16 @@
       <xsl:text>.</xsl:text>
     </xsl:if>
     <xsl:value-of select="v:jahr"/>
-    <xsl:if test="v:ort">
-      <xsl:text> in </xsl:text>
-      <xsl:value-of select="v:ort"/>
-    </xsl:if>
+    <xsl:apply-templates select="v:ort"/>
+  </xsl:template>
+
+  <xsl:template match="v:geboren/v:ort | v:gestorben/v:ort">
+    <xsl:text> in </xsl:text>
+    <xsl:value-of select="."/>
+  </xsl:template>
+
+  <xsl:template match="v:gestorben/v:ort[../../v:geboren/v:ort = .]">
+    <xsl:text> ebenda</xsl:text>
   </xsl:template>
 
   <xsl:template match="v:dozent/v:pnd">
