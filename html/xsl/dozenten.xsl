@@ -156,8 +156,10 @@
 
   <xsl:template match="/report[v:dozent]">
     <xsl:apply-templates select="v:dozent"/>
-    <h3>Veranstaltungen</h3>
-    <xsl:apply-templates select="stellen"/>
+    <xsl:if test="stellen/stelle">
+      <h3>Veranstaltungen</h3>
+      <xsl:apply-templates select="stellen"/>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="/report[name]">
