@@ -9,6 +9,8 @@
   <xsl:import href="common.xsl"/>
   <xsl:import href="histvv2html.xsl"/>
 
+  <xsl:param name="dozenten-img"/>
+
   <xsl:variable name="anfangsbuchstaben"
     select="str:tokenize('A B C D E F G H I J K L M N O P Q R S T U V W X Y Z')"/>
 
@@ -172,6 +174,13 @@
     <h1>
       <xsl:apply-templates select="v:name" mode="lang"/>
     </h1>
+    <xsl:if test="$dozenten-img">
+      <img alt="">
+        <xsl:attribute name="src">
+          <xsl:value-of select="$dozenten-img"/>
+        </xsl:attribute>
+      </img>
+    </xsl:if>
     <xsl:if test="v:geboren or v:gestorben">
       <ul class="lebensdaten">
         <xsl:if test="v:geboren">

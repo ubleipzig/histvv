@@ -49,6 +49,8 @@ $Xp->load_ext_dtd(0);
 $Xp->clean_namespaces(1);
 my $Xt = XML::LibXSLT->new();
 
+
+
 my %Queries = (
     index => q{
 declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
@@ -236,6 +238,8 @@ sub handler {
     my $dbfile = $r->dir_config('HISTVV_DB');
     my $xslfile = $r->dir_config('HISTVV_XSL');
 
+    my %xsl_params = ( 'histvv-url' => "'" . $r->uri . "'" );
+
     (my $loc = $r->location) =~ s/\/$//;
     (my $url = $r->uri) =~ s/^$loc//;
 
@@ -253,7 +257,11 @@ sub handler {
             my $query = $name =~ /\s/ ? 'normalize-space(v:nachname)' : 'v:nachname';
             $xquery = sprintf $Queries{dozentenlookup}, $name, $query;
         } elsif ($url =~ /^\/([-_a-z0-9]+)\.html$/) {
-            $xquery = sprintf $Queries{dozent}, $1;
+            my $id = $1;
+            $xquery = sprintf $Queries{dozent}, $id;
+            if ( -f File::Spec->catfile($r->document_root, "dozenten", "$id.jpg") ) {
+                $xsl_params{'dozenten-img'} = "'/dozenten/$id.jpg'";
+            }
         } else {
             return Apache2::Const::DECLINED;
         }
@@ -330,10 +338,8 @@ sub handler {
     my $xsldom = $Xp->parse_file($xslfile);
     my $stylesheet = $Xt->parse_stylesheet($xsldom);
 
-    my %params = ( 'histvv-url' => "'" . $r->uri . "'" );
-
     my $html;
-    eval { $html = $stylesheet->transform($xmldom, %params) };
+    eval { $html = $stylesheet->transform($xmldom, %xsl_params) };
     if ($@) {
         warn "$@\n";
         return Apache2::Const::SERVER_ERROR;

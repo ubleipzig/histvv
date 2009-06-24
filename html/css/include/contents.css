@@ -295,10 +295,10 @@ div#content.vv hr {
 
 /* ======================== */
 
-#content.dozent img.portrait {
+#content.dozent img {
   float: right;
-  border: 1px solid #8fb635;
-  max-width: 180px;
+  border: 20px solid #d1d1c5;
+  height: 200px;
 }
 
 #content.dozent ul.lebensdaten {
