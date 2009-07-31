@@ -735,6 +735,15 @@ dozentenliste =
        & element ndb { adb-ndb-model }*),
       element anmerkungen {
         element absatz { text }+
+      }?,
+      element bild {
+        
+        ## Dateiname
+        attribute name { text },
+        element quelle {
+          attribute url { http-url }?,
+          text
+        }?
       }?
     }+
   }

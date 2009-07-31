@@ -1088,6 +1088,24 @@
               </oneOrMore>
             </element>
           </optional>
+          <optional>
+            <element name="bild">
+              <attribute name="name">
+                <a:documentation>Dateiname</a:documentation>
+                <text/>
+              </attribute>
+              <optional>
+                <element name="quelle">
+                  <optional>
+                    <attribute name="url">
+                      <ref name="http-url"/>
+                    </attribute>
+                  </optional>
+                  <text/>
+                </element>
+              </optional>
+            </element>
+          </optional>
         </element>
       </oneOrMore>
     </element>

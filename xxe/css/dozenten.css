@@ -1,7 +1,8 @@
 dozentenliste, universit\0000E4t,
 dozent, name, geboren, gestorben,
 pnd, adb, ndb, beruf,
-absatz, url, quelle, anmerkungen {
+absatz, url, quelle, anmerkungen,
+bild, bild > quelle {
   display: block;
 }
 
@@ -179,4 +180,23 @@ dozent > quelle:before {
 dozent > url:before {
   display: marker;
   content: icon(external-link-small);
+}
+
+dozent > bild {
+  margin-top: 1em;
+}
+
+dozent > bild:before {
+  display: inline;
+  content: icon(image) " " attr(name);
+}
+
+dozent > bild > quelle:before {
+  display: inline;
+  content: element-label() ": ";
+}
+
+dozent > bild > quelle:after {
+  display: inline;
+  content: " (" attr(url) ")";
 }
