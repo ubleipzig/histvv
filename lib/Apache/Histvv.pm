@@ -49,8 +49,6 @@ $Xp->load_ext_dtd(0);
 $Xp->clean_namespaces(1);
 my $Xt = XML::LibXSLT->new();
 
-
-
 my %Queries = (
     index => q{
 declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
@@ -259,9 +257,6 @@ sub handler {
         } elsif ($url =~ /^\/([-_a-z0-9]+)\.html$/) {
             my $id = $1;
             $xquery = sprintf $Queries{dozent}, $id;
-            if ( -f File::Spec->catfile($r->document_root, "dozenten", "$id.jpg") ) {
-                $xsl_params{'dozenten-img'} = "'/dozenten/$id.jpg'";
-            }
         } else {
             return Apache2::Const::DECLINED;
         }

@@ -9,8 +9,6 @@
   <xsl:import href="common.xsl"/>
   <xsl:import href="histvv2html.xsl"/>
 
-  <xsl:param name="dozenten-img"/>
-
   <xsl:variable name="anfangsbuchstaben"
     select="str:tokenize('A B C D E F G H I J K L M N O P Q R S T U V W X Y Z')"/>
 
@@ -174,12 +172,21 @@
     <h1>
       <xsl:apply-templates select="v:name" mode="lang"/>
     </h1>
-    <xsl:if test="$dozenten-img">
-      <img alt="">
-        <xsl:attribute name="src">
-          <xsl:value-of select="$dozenten-img"/>
-        </xsl:attribute>
-      </img>
+    <xsl:if test="v:bild">
+      <div class="portrait">
+        <img alt="">
+          <xsl:attribute name="src">
+            <xsl:text>/dozenten/</xsl:text>
+            <xsl:value-of select="v:bild/@name"/>
+          </xsl:attribute>
+        </img>
+        <xsl:if test="v:bild/v:quelle">
+          <p>
+            <xsl:text>Bildquelle: </xsl:text>
+            <xsl:apply-templates select="v:bild/v:quelle"/>
+          </p>
+        </xsl:if>
+      </div>
     </xsl:if>
     <xsl:if test="v:geboren or v:gestorben">
       <ul class="lebensdaten">
@@ -307,6 +314,16 @@
         <xsl:value-of select="v:nachnamenpräfix"/>
       </xsl:if>
     </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="v:dozent/v:bild/v:quelle">
+    <xsl:value-of select="."/>
+  </xsl:template>
+
+  <xsl:template match="v:dozent/v:bild/v:quelle[@url]">
+    <a href="{@url}">
+      <xsl:value-of select="."/>
+    </a>
   </xsl:template>
 
   <xsl:template match="/report/stellen">
