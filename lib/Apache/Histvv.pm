@@ -308,8 +308,8 @@ sub handler {
             interval  => $rq->param('l')         || 10,
 
         );
-    } elsif ($r->uri =~ /^\/(\w+\.html)?$/) {
-        my $uri = $1 ? $r->uri : '/index.html';
+    } elsif ($r->uri =~ /^(\/\w+)?\/(\w+\.html)?$/) {
+        my $uri = $2 ? $r->uri : "$1/index.html";
         my $file = File::Spec->catfile($r->document_root, $uri);
         if (-f $file && -r $file) {
             open F, $file;
