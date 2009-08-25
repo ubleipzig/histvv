@@ -107,6 +107,12 @@
         </xsl:if>
         <a href="/suche.html">Suche</a>
       </li>
+      <li>
+        <xsl:if test="starts-with($histvv-url, '/doku/')">
+          <xsl:attribute name="class">current</xsl:attribute>
+        </xsl:if>
+        <a href="/doku/">Dokumentation</a>
+      </li>
     </ul>
   </xsl:template>
 
