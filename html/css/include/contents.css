@@ -22,6 +22,10 @@ a:hover {
   text-decoration: underline;
 }
 
+img {
+  border: none;
+}
+
 h1 {
   font-family: Georgia, serif;
   font-size: 20px;
