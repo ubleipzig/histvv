@@ -157,7 +157,7 @@
   <xsl:template match="/report[v:dozent]">
     <xsl:apply-templates select="v:dozent"/>
     <xsl:if test="stellen/stelle">
-      <h3>Veranstaltungen</h3>
+      <h3 id="veranstaltungen">Veranstaltungen</h3>
       <xsl:apply-templates select="stellen"/>
     </xsl:if>
   </xsl:template>
@@ -169,9 +169,6 @@
   </xsl:template>
 
   <xsl:template match="report/v:dozent">
-    <h1>
-      <xsl:apply-templates select="v:name" mode="lang"/>
-    </h1>
     <xsl:if test="v:bild">
       <div class="portrait">
         <img alt="">
@@ -188,6 +185,9 @@
         </xsl:if>
       </div>
     </xsl:if>
+    <h1>
+      <xsl:apply-templates select="v:name" mode="lang"/>
+    </h1>
     <xsl:if test="v:geboren or v:gestorben">
       <ul class="lebensdaten">
         <xsl:if test="v:geboren">
