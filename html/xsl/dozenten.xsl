@@ -412,7 +412,7 @@
           <abbr title="Sächsische Landesbibliothek - Staats- und Universitätsbibliothek">SLUB</abbr>
           <xsl:text> Dresden</xsl:text>
         </xsl:when>
-        <xsl:when test="starts-with(., 'http://isgv.serveftp.org/saebi/')">
+        <xsl:when test="starts-with(., 'http://saebi.isgv.de/biografie/')">
           <xsl:text>Sächsische Biografie</xsl:text>
         </xsl:when>
         <xsl:otherwise>
