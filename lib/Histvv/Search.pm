@@ -270,7 +270,10 @@ sub annotate_doc {
         # if there aren't any we search the containing group
         unless (@dozenten) {
             @dozenten = $xc->findnodes(
-                'ancestor::v:veranstaltungsgruppe/v:dozent[last()]', $va );
+                'ancestor::v:veranstaltungsgruppe/v:dozent[last()]'
+                  . '| ancestor::v:veranstaltungsgruppe[v:ders][1]/v:ders',
+                $va
+            );
 
             $text .= " | " . normalize_chars( strip_text($_) ) for @dozenten;
         }
