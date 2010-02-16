@@ -346,8 +346,8 @@ sub handler {
               Apache2::Util::ht_time( $r->pool, time + $ENV{HISTVV_EXPIRES} ) );
     }
 
-    if (0) {
-        $r->content_type('text/plain');
+    if ($r->args eq 'report=xml') {
+        $r->content_type('text/plain; charset=UTF-8');
         print "$xml";
     } else {
         #$r->content_type('application/xhtml+xml');
