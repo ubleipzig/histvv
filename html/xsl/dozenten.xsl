@@ -333,6 +333,12 @@
           <th class="nr">#</th>
           <th>Semester</th>
           <th>Veranstaltung</th>
+          <th class="grad" title="in Veranstaltungsankündigung angegebener akademischer Grad">
+            Grad
+          </th>
+          <th class="fn" title="in Veranstaltungsankündigung angegebene akademische Funktion">
+            Funktion
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -342,6 +348,7 @@
   </xsl:template>
 
   <xsl:template match="/report/stellen/stelle">
+    <xsl:variable name="id" select="/report/v:dozent/@xml:id"/>
     <tr>
       <xsl:if test="position() mod 2">
         <xsl:attribute name="class">odd</xsl:attribute>
@@ -376,6 +383,22 @@
       </td>
       <td>
         <xsl:value-of select="v:veranstaltung/@x-thema"/>
+      </td>
+      <td class="grad">
+        <xsl:for-each select=".//v:dozent[@ref=$id]/v:grad">
+          <xsl:apply-templates select="." mode="text-without-page-number"/>
+          <xsl:if test="not(position() = last())">
+            <xsl:text>, </xsl:text>
+          </xsl:if>
+        </xsl:for-each>
+      </td>
+      <td class="fn">
+        <xsl:for-each select=".//v:dozent[@ref=$id]/v:funktion">
+          <xsl:apply-templates select="." mode="text-without-page-number"/>
+          <xsl:if test="not(position() = last())">
+            <xsl:text>, </xsl:text>
+          </xsl:if>
+        </xsl:for-each>
       </td>
     </tr>
   </xsl:template>
@@ -448,6 +471,21 @@
     <xsl:value-of select="v:band"/>
     <xsl:text>, S. </xsl:text>
     <xsl:value-of select="v:seite"/>
+  </xsl:template>
+
+  <xsl:template match="*" mode="text-without-page-number">
+    <xsl:choose>
+      <xsl:when test="self::text()">
+        <xsl:value-of select="."/>
+      </xsl:when>
+      <xsl:when test="local-name() = 'seite'">
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:for-each select="./node()">
+          <xsl:apply-templates select="." mode="text-without-page-number"/>
+        </xsl:for-each>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
 </xsl:stylesheet>

@@ -128,6 +128,13 @@ if ($daten) then
     for $v in $veranstaltungen return 
     <stelle semester="{$v/ancestor::v:vv/@x-semester}">
     {$v}
+    {
+     if ($v/v:dozent[@ref = $id])
+     then ""
+     else (if ($v/v:ders)
+           then $v/v:ders/preceding::v:dozent[1]
+           else $v/ancestor::v:veranstaltungsgruppe/v:dozent[@ref = $id][last()])
+    }
     </stelle>
   }
   </stellen>
