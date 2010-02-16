@@ -251,7 +251,7 @@ sub annotate_doc {
         # include section titles when a thema element requires context
         # or there are no thema elements at all
         if ( $xc->findnodes( 'v:thema[@kontext]', $va ) || @themen == 0 ) {
-            my ($sg) = $xc->findnodes( 'parent::v:sachgruppe/v:titel', $va );
+            my ($sg) = $xc->findnodes( 'ancestor::v:sachgruppe[1]/v:titel', $va );
             if ($sg) {
                 unshift @themen, $sg;
                 $text .= " | " . normalize_chars( strip_text( $sg, 1 ) );
