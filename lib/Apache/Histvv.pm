@@ -316,7 +316,7 @@ sub handler {
 
         );
     } elsif ($r->uri =~ /^(\/\w+)?\/(\w+\.html)?$/) {
-        my $uri = $2 ? $r->uri : "$1/index.html";
+        my $uri = $2 ? $r->uri : ($1 || '') . "/index.html";
         my $file = File::Spec->catfile($r->document_root, $uri);
         if (-f $file && -r $file) {
             open F, $file;
