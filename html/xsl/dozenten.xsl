@@ -22,6 +22,9 @@
           <xsl:text>dozent</xsl:text>
           <xsl:value-of select="/report/name"/>
         </xsl:when>
+        <xsl:when test="/v:dozentenliste and $histvv-url = '/dozenten/galerie.html'">
+          <xsl:text>dozentengalerie</xsl:text>
+        </xsl:when>
         <xsl:when test="/v:dozentenliste">
           <xsl:text>dozentenliste</xsl:text>
         </xsl:when>
@@ -54,6 +57,9 @@
       <xsl:when test="/v:dozentenliste and $histvv-url='/dozenten/namen.html'">
         <xsl:text>Dozentennamen</xsl:text>
       </xsl:when>
+      <xsl:when test="/v:dozentenliste and $histvv-url='/dozenten/galerie.html'">
+        <xsl:text>Dozentengalerie</xsl:text>
+      </xsl:when>
       <xsl:when test="/v:dozentenliste">
         <xsl:text>Dozentenliste</xsl:text>
       </xsl:when>
@@ -69,6 +75,12 @@
         <h1>Dozentennamen</h1>
         <xsl:call-template name="namensliste">
           <xsl:with-param name="dozenten" select="v:dozent"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:when test="$histvv-url = '/dozenten/galerie.html'">
+        <h1>Dozentengalerie</h1>
+        <xsl:call-template name="dozentengalerie">
+          <xsl:with-param name="dozenten" select="v:dozent[v:bild]"/>
         </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
@@ -108,6 +120,58 @@
           <xsl:for-each select="$d">
             <li>
               <a href="{@xml:id}.html">
+                <xsl:apply-templates select="v:name" mode="kurz"/>
+              </a>
+              <xsl:if test="v:geboren/v:jahr or v:gestorben/v:jahr">
+                <xsl:text> (</xsl:text>
+                <xsl:value-of select="v:geboren/v:jahr"/>
+                <xsl:text>-</xsl:text>
+                <xsl:value-of select="v:gestorben/v:jahr"/>
+                <xsl:text>) </xsl:text>
+              </xsl:if>
+              <xsl:variable name="id" select="@xml:id"/>
+            </li>
+          </xsl:for-each>
+        </ul>
+      </xsl:if>
+    </xsl:for-each>
+    </div>
+  </xsl:template>
+
+  <xsl:template name="dozentengalerie">
+    <xsl:param name="dozenten"/>
+    <ul class="nav">
+      <xsl:for-each select="$anfangsbuchstaben">
+        <xsl:variable name="a" select="."/>
+        <xsl:if test="$dozenten[starts-with(v:name/v:nachname, $a)]">
+          <li>
+            <a>
+              <xsl:attribute name="href">
+                <xsl:text>#</xsl:text>
+                <xsl:value-of select="."/>
+              </xsl:attribute>
+              <xsl:value-of select="."/>
+            </a>
+          </li>
+        </xsl:if>
+      </xsl:for-each>
+    </ul>
+    <div class="galerie">
+    <xsl:for-each select="$anfangsbuchstaben">
+      <xsl:variable name="a" select="."/>
+      <xsl:variable name="d" select="$dozenten[starts-with(v:name/v:nachname, $a)]"/>
+      <xsl:if test="$d">
+        <h3 id="{$a}"><xsl:value-of select="$a"/></h3>
+        <ul>
+          <xsl:for-each select="$d">
+            <li>
+              <a href="{@xml:id}.html">
+                <img alt="">
+                  <xsl:attribute name="src">
+                    <xsl:text>/dozenten/</xsl:text>
+                    <xsl:value-of select="v:bild/@name"/>
+                  </xsl:attribute>
+                </img>
                 <xsl:apply-templates select="v:name" mode="kurz"/>
               </a>
               <xsl:if test="v:geboren/v:jahr or v:gestorben/v:jahr">

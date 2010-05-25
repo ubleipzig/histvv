@@ -253,6 +253,8 @@ sub handler {
     if ($loc eq '/dozenten') {
         if ($url =~ /^\/(index\.html)?$/) {
             $xquery = $Queries{dozenten};
+        } elsif ($url =~ /^\/galerie\.html$/) {
+            $xquery = $Queries{dozenten};
         } elsif ($url =~ /^\/namen\.html$/) {
             $xquery = $Queries{dozentennamen};
         } elsif ($url =~ /^\/lookup$/) {

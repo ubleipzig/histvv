@@ -156,7 +156,8 @@ ul.nav li a {
   padding: 2px;
 }
 
-.dozentenliste h3 {
+.dozentenliste h3,
+.dozentengalerie h3 {
   font-family: Georgia;
   font-size: 24px;
   color: #41524a;
@@ -167,6 +168,39 @@ ul.nav li a {
   list-style-type: none;
   padding: 0;
   margin: 0;
+}
+
+.dozentengalerie div ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dozentengalerie div li {
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 160px;
+  height: 160px;
+  padding-right: 5px;
+  border: 0px solid orange;
+  font-size: 90%;
+}
+
+.dozentengalerie div li img {
+  height: 100px;
+  display: block;
+  margin-bottom: 3px;
+  margin-left: 3px;
+}
+
+.dozentengalerie div li a {
+  display: block;
+}
+
+.dozentengalerie div h3 {
+  clear: both;
 }
 
 div.uebersicht > h2 {
