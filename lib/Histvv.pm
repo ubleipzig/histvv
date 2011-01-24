@@ -28,6 +28,20 @@ to provide a version number to the build system.
 
 our $XMLNS = 'http://histvv.uni-leipzig.de/ns/2007';
 
+use File::ShareDir;
+
+=head2 sharedir
+
+Determine directory for shared resources.
+
+=cut
+
+sub sharedir {
+    my $dir;
+    eval { $dir = $ENV{HISTVV_SHARE} || File::ShareDir::dist_dir('histvv') };
+    return $dir;
+}
+
 =head1 AUTHOR
 
 Carsten Milling, C<< <cmil at hashtable.de> >>

@@ -10,7 +10,7 @@ my $builder = Histvv::Build->new(
     license             => 'restrictive',
     dist_author         => 'Carsten Milling <cmil@hashtable.de>',
     build_requires => {
-        'Module::Build' => 0.28,
+        'Module::Build' => 0.36,
         'Test::More' => 0
     },
     requires =>
@@ -18,8 +18,12 @@ my $builder = Histvv::Build->new(
      'XML::LibXML'       => 1.69,
      'XML::LibXSLT'      => 0,
      'Sleepycat::DbXml'  => 2.0040013,
-     'Apache2::Request'  => 0
-    }
+     'Apache2::Request'  => 0,
+     'File::ShareDir'    => 1.00
+    },
+
+    share_dir => 'share'
+
 );
 
 $builder->create_build_script();

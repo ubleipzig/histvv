@@ -37,6 +37,7 @@ use Apache2::URI ();
 use XML::LibXML ();
 use XML::LibXSLT ();
 use File::Spec ();
+use Histvv ();
 use Histvv::Db ();
 use Histvv::Search ();
 use Histvv::Util ();
@@ -236,12 +237,28 @@ EOT
 
 my @Elems = qw/funktion gebühr grad modus ort zeit/;
 
+# supported content types
+my %Mime = (
+    css => 'text/css',
+    js  => 'application/x-javascript',
+    gif => 'image/gif',
+    jpg => 'image/jpeg',
+    png => 'image/png'
+);
+
+# supported file extensions
+my $Extensions = join '|', keys %Mime;
 
 sub handler {
     my $r = shift;
 
     my $dbfile = $r->dir_config('HISTVV_DB');
+
+    my $sharedir = Histvv::sharedir();
+
     my $xslfile = $r->dir_config('HISTVV_XSL');
+    $xslfile = File::Spec->catfile( $sharedir, 'xsl', $xslfile )
+      unless $xslfile =~ /^\//;
 
     my %xsl_params = ( 'histvv-url' => "'" . $r->uri . "'" );
 
@@ -317,13 +334,35 @@ sub handler {
             interval  => $rq->param('l')         || 10,
 
         );
-    } elsif ($r->uri =~ /^(\/\w+)?\/(\w+\.html)?$/) {
+    } elsif ($r->uri =~ /^(\/\w+)*\/(\w+\.html)?$/) {
         my $uri = $2 ? $r->uri : ($1 || '') . "/index.html";
-        my $file = File::Spec->catfile($r->document_root, $uri);
-        if (-f $file && -r $file) {
+        my $docfile = File::Spec->catfile($r->document_root, $uri);
+        my $distfile = File::Spec->catfile($sharedir, 'htdocs', $uri);
+        my $file = -f $docfile ? $docfile : (-f $distfile ? $distfile : undef);
+        if ($file && -r $file) {
             open F, $file;
             $xml .= $_ while (<F>);
             close F;
+        } else {
+            return Apache2::Const::DECLINED;
+        }
+    } elsif ($r->uri =~ /^(\/[-.\w]+)*\/([-.\w]+)\.($Extensions)$/) {
+        my $ext = $3;
+
+        # leave file in document root to apache
+        my $docfile = File::Spec->catfile($r->document_root, $r->uri);
+        return Apache2::Const::DECLINED if -f $docfile;
+
+        my $file = File::Spec->catfile($sharedir, 'htdocs', $r->uri);
+        if (-f $file && -r $file) {
+            my $content;
+            open F, $file;
+            $content .= $_ while (<F>);
+            close F;
+            $r->content_type($Mime{$ext});
+            _set_expires($r);
+            print $content;
+            return Apache2::Const::OK;
         } else {
             return Apache2::Const::DECLINED;
         }
@@ -349,11 +388,7 @@ sub handler {
         return Apache2::Const::SERVER_ERROR;
     }
 
-    # set Expires header to support caching of URLs with query strings
-    if ( $ENV{HISTVV_EXPIRES} =~ /^[0-9]+$/ ) {
-        $r->headers_out->add( 'Expires' =>
-              Apache2::Util::ht_time( $r->pool, time + $ENV{HISTVV_EXPIRES} ) );
-    }
+    _set_expires($r);
 
     if ($r->args eq 'report=xml') {
         $r->content_type('text/plain; charset=UTF-8');
@@ -364,7 +399,7 @@ sub handler {
         print $stylesheet->output_as_bytes($html);
     }
 
-    if ( $ENV{HISTVV_DEBUG} ) {
+    if ( $ENV{HISTVV_DEBUG} && $r->content_type eq 'text/html' ) {
         print "\n\n";
         print "<!--\n";
         print "URI: " . $r->uri . "\n";
@@ -379,6 +414,14 @@ sub handler {
     }
 
     return Apache2::Const::OK;
+}
+
+sub _set_expires {
+    my $r = shift;
+    if ( $ENV{HISTVV_EXPIRES} =~ /^[0-9]+$/ ) {
+        $r->headers_out->add( 'Expires' =>
+              Apache2::Util::ht_time( $r->pool, time + $ENV{HISTVV_EXPIRES} ) );
+    }
 }
 
 =head1 AUTHOR

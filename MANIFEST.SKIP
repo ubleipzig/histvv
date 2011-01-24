@@ -23,4 +23,7 @@ CVS/
 ^_tmp/
 \.tar\.gz$
 ^doc/slides/
+^doc/drafts/
 ^histvv-....../
+^MYMETA.yml$
+^xqy/
