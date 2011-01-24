@@ -24,7 +24,7 @@
         <link rel="stylesheet" href="/css/histvv.css" type="text/css" title="Histvv"/>    
         <link rel="alternative stylesheet" href="/css/experimental.css" type="text/css" title="Experimental"/>    
         <link rel="alternative stylesheet" href="/css/structure.css" type="text/css" title="Structure"/>    
-        <script type="text/javascript" src="/js/jquery.js"></script>
+        <script type="text/javascript" src="/js/jquery-1.4.4.min.js"></script>
         <script type="text/javascript" src="/js/jquery.dimensions.js"></script>
         <script type="text/javascript" src="/js/jquery.tooltip.js"></script>
         <script type="text/javascript" src="/js/form.js"></script>
