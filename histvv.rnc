@@ -678,74 +678,72 @@ tag =
 ## Wurzelelement für Dozentenliste
 dozentenliste =
   element dozentenliste {
-    common.attributes,
-    universität,
-    element dozent {
-      attribute xml:id {
-        xsd:ID { pattern = "[\-_a-z0-9]+" }
-      }?,
+    common.attributes, universität, dozentendaten+
+  }
+dozentendaten =
+  element dozent {
+    attribute xml:id {
+      xsd:ID { pattern = "[\-_a-z0-9]+" }
+    }?,
+    
+    ## 
+    ##           Dieses Attribut ist ein Hilfsmittel zur Unterstützung des
+    ##           skriptgesteuerten Eintrags von ref-Attributen für
+    ##           Dozentenelemente innherhalb von Veranstaltungsangaben.
+    ## 
+    ##           Es signalisiert, daß es innerhalb des betrachteten Zeitraums
+    ##           nur einen Dozenten mit diesem Nachnamen gibt und somit die
+    ##           Zuordnung sämtlicher Dozentenangaben mit diesem Nachnamen
+    ##           zur ID dieses Dozenteneintrags sicher ist.
+    ## 
+    ##           Der Zeitraum kann durch die Attribute "von" und "bis"
+    ##           eingegrenzt werden. Standardmäßig umfasst er alle erfassten
+    ##           Semester.
+    ##         
+    (attribute eindeutig { "ja" }?),
+    
+    ## 
+    ##           Die Attribute "von" und "bis" dienen der Eingrenzung des
+    ##           Gültigkeitsbereichs des Attributs "eindeutig". Sie sind
+    ##           nicht als generelle Angaben über die Wirkungszeit des
+    ##           Dozenten an der jeweiligen Universität gedacht!
+    ## 
+    ##           Das Attribut "von" bezeichnet das erste Semester, für das
+    ##           der gegebene Nachname eindeutig ist. Siehe auch von "bis".
+    ##         
+    (attribute von { semester.pattern }?),
+    
+    ## 
+    ##           Bezeichnet das letzte Semester, für das der gegebene
+    ##           Nachname eindeutig ist. Siehe auch "von".
+    ##         
+    (attribute bis { semester.pattern }?),
+    element name { nachname, vorname?, nachnamenpräfix? },
+    geboren?,
+    gestorben?,
+    
+    ## PND-Nummer
+    element pnd {
+      xsd:token { pattern = "[0-9]{8}[0-9X]" }
+    }?,
+    element beruf { text }?,
+    (element absatz { text }*
+     & element quelle { text }*
+     & element url { http-url }*
+     & element adb { adb-ndb-model }*
+     & element ndb { adb-ndb-model }*),
+    element anmerkungen {
+      element absatz { text }+
+    }?,
+    element bild {
       
-      ## 
-      ##               Dieses Attribut ist ein Hilfsmittel zur Unterstützung
-      ##               des skriptgesteuerten Eintrags von ref-Attributen für
-      ##               Dozentenelemente innherhalb von Veranstaltungsangaben.
-      ## 
-      ##               Es signalisiert, daß es innerhalb des betrachteten
-      ##               Zeitraums nur einen Dozenten mit diesem Nachnamen gibt
-      ##               und somit die Zuordnung sämtlicher Dozentenangaben mit
-      ##               diesem Nachnamen zur ID dieses Dozenteneintrags sicher
-      ##               ist.
-      ## 
-      ##               Der Zeitraum kann durch die Attribute "von" und "bis"
-      ##               eingegrenzt werden. Standardmäßig umfasst er alle
-      ##               erfassten Semester.
-      ##             
-      (attribute eindeutig { "ja" }?),
-      
-      ## 
-      ##               Die Attribute "von" und "bis" dienen der Eingrenzung des
-      ##               Gültigkeitsbereichs des Attributs "eindeutig". Sie sind
-      ##               nicht als generelle Angaben über die Wirkungszeit des
-      ##               Dozenten an der jeweiligen Universität gedacht!
-      ## 
-      ##               Das Attribut "von" bezeichnet das erste Semester, für
-      ##               das der gegebene Nachname eindeutig ist. Siehe auch von
-      ##               "bis".
-      ##             
-      (attribute von { semester.pattern }?),
-      
-      ## 
-      ##               Bezeichnet das letzte Semester, für das der gegebene
-      ##               Nachname eindeutig ist. Siehe auch "von".
-      ##             
-      (attribute bis { semester.pattern }?),
-      element name { nachname, vorname?, nachnamenpräfix? },
-      geboren?,
-      gestorben?,
-      
-      ## PND-Nummer
-      element pnd {
-        xsd:token { pattern = "[0-9]{8}[0-9X]" }
-      }?,
-      element beruf { text }?,
-      (element absatz { text }*
-       & element quelle { text }*
-       & element url { http-url }*
-       & element adb { adb-ndb-model }*
-       & element ndb { adb-ndb-model }*),
-      element anmerkungen {
-        element absatz { text }+
-      }?,
-      element bild {
-        
-        ## Dateiname
-        attribute name { text },
-        element quelle {
-          attribute url { http-url }?,
-          text
-        }?
+      ## Dateiname
+      attribute name { text },
+      element quelle {
+        attribute url { http-url }?,
+        text
       }?
-    }+
+    }?
   }
 eckdaten =
   partial-date,

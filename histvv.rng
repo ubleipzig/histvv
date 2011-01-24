@@ -972,142 +972,144 @@
       <ref name="common.attributes"/>
       <ref name="universität"/>
       <oneOrMore>
-        <element name="dozent">
-          <optional>
-            <attribute name="xml:id">
-              <data type="ID">
-                <param name="pattern">[\-_a-z0-9]+</param>
-              </data>
-            </attribute>
-          </optional>
-          <optional>
-            <a:documentation>
-              Dieses Attribut ist ein Hilfsmittel zur Unterstützung
-              des skriptgesteuerten Eintrags von ref-Attributen für
-              Dozentenelemente innherhalb von Veranstaltungsangaben.
+        <ref name="dozentendaten"/>
+      </oneOrMore>
+    </element>
+  </define>
 
-              Es signalisiert, daß es innerhalb des betrachteten
-              Zeitraums nur einen Dozenten mit diesem Nachnamen gibt
-              und somit die Zuordnung sämtlicher Dozentenangaben mit
-              diesem Nachnamen zur ID dieses Dozenteneintrags sicher
-              ist.
+  <define name="dozentendaten">
+    <element name="dozent">
+      <optional>
+        <attribute name="xml:id">
+          <data type="ID">
+            <param name="pattern">[\-_a-z0-9]+</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <a:documentation>
+          Dieses Attribut ist ein Hilfsmittel zur Unterstützung des
+          skriptgesteuerten Eintrags von ref-Attributen für
+          Dozentenelemente innherhalb von Veranstaltungsangaben.
 
-              Der Zeitraum kann durch die Attribute "von" und "bis"
-              eingegrenzt werden. Standardmäßig umfasst er alle
-              erfassten Semester.
-            </a:documentation>
-            <attribute name="eindeutig">
-              <value>ja</value>
-            </attribute>
-          </optional>
-          <optional>
-            <a:documentation>
-              Die Attribute "von" und "bis" dienen der Eingrenzung des
-              Gültigkeitsbereichs des Attributs "eindeutig". Sie sind
-              nicht als generelle Angaben über die Wirkungszeit des
-              Dozenten an der jeweiligen Universität gedacht!
+          Es signalisiert, daß es innerhalb des betrachteten Zeitraums
+          nur einen Dozenten mit diesem Nachnamen gibt und somit die
+          Zuordnung sämtlicher Dozentenangaben mit diesem Nachnamen
+          zur ID dieses Dozenteneintrags sicher ist.
 
-              Das Attribut "von" bezeichnet das erste Semester, für
-              das der gegebene Nachname eindeutig ist. Siehe auch von
-              "bis".
-            </a:documentation>
-            <attribute name="von">
-              <ref name="semester.pattern"/>
-            </attribute>
-          </optional>
-          <optional>
-            <a:documentation>
-              Bezeichnet das letzte Semester, für das der gegebene
-              Nachname eindeutig ist. Siehe auch "von".
-            </a:documentation>
-            <attribute name="bis">
-              <ref name="semester.pattern"/>
-            </attribute>
-          </optional>
-          <element name="name">
-            <ref name="nachname"/>
-            <optional>
-              <ref name="vorname"/>
-            </optional>
-            <optional>
-              <ref name="nachnamenpräfix"/>
-            </optional>
+          Der Zeitraum kann durch die Attribute "von" und "bis"
+          eingegrenzt werden. Standardmäßig umfasst er alle erfassten
+          Semester.
+        </a:documentation>
+        <attribute name="eindeutig">
+          <value>ja</value>
+        </attribute>
+      </optional>
+      <optional>
+        <a:documentation>
+          Die Attribute "von" und "bis" dienen der Eingrenzung des
+          Gültigkeitsbereichs des Attributs "eindeutig". Sie sind
+          nicht als generelle Angaben über die Wirkungszeit des
+          Dozenten an der jeweiligen Universität gedacht!
+
+          Das Attribut "von" bezeichnet das erste Semester, für das
+          der gegebene Nachname eindeutig ist. Siehe auch von "bis".
+        </a:documentation>
+        <attribute name="von">
+          <ref name="semester.pattern"/>
+        </attribute>
+      </optional>
+      <optional>
+        <a:documentation>
+          Bezeichnet das letzte Semester, für das der gegebene
+          Nachname eindeutig ist. Siehe auch "von".
+        </a:documentation>
+        <attribute name="bis">
+          <ref name="semester.pattern"/>
+        </attribute>
+      </optional>
+      <element name="name">
+        <ref name="nachname"/>
+        <optional>
+          <ref name="vorname"/>
+        </optional>
+        <optional>
+          <ref name="nachnamenpräfix"/>
+        </optional>
+      </element>
+      <optional>
+        <ref name="geboren"/>
+      </optional>
+      <optional>
+        <ref name="gestorben"/>
+      </optional>
+      <optional>
+        <element name="pnd">
+          <a:documentation>PND-Nummer</a:documentation>
+          <data type="token">
+            <param name="pattern">[0-9]{8}[0-9X]</param>
+          </data>
+        </element>
+      </optional>
+      <optional>
+        <element name="beruf">
+          <text/>
+        </element>
+      </optional>
+      <interleave>
+        <zeroOrMore>
+          <element name="absatz">
+            <text/>
           </element>
-          <optional>
-            <ref name="geboren"/>
-          </optional>
-          <optional>
-            <ref name="gestorben"/>
-          </optional>
-          <optional>
-            <element name="pnd">
-              <a:documentation>PND-Nummer</a:documentation>
-              <data type="token">
-                <param name="pattern">[0-9]{8}[0-9X]</param>
-              </data>
+        </zeroOrMore>
+        <zeroOrMore>
+          <element name="quelle">
+            <text/>
+          </element>
+        </zeroOrMore>
+        <zeroOrMore>
+          <element name="url">
+            <ref name="http-url"/>
+          </element>
+        </zeroOrMore>
+        <zeroOrMore>
+          <element name="adb">
+            <ref name="adb-ndb-model"/>
+          </element>
+        </zeroOrMore>
+        <zeroOrMore>
+          <element name="ndb">
+            <ref name="adb-ndb-model"/>
+          </element>
+        </zeroOrMore>
+      </interleave>
+      <optional>
+        <element name="anmerkungen">
+          <oneOrMore>
+            <element name="absatz">
+              <text/>
             </element>
-          </optional>
+          </oneOrMore>
+        </element>
+      </optional>
+      <optional>
+        <element name="bild">
+          <attribute name="name">
+            <a:documentation>Dateiname</a:documentation>
+            <text/>
+          </attribute>
           <optional>
-            <element name="beruf">
+            <element name="quelle">
+              <optional>
+                <attribute name="url">
+                  <ref name="http-url"/>
+                </attribute>
+              </optional>
               <text/>
             </element>
           </optional>
-          <interleave>
-            <zeroOrMore>
-              <element name="absatz">
-                <text/>
-              </element>
-            </zeroOrMore>
-            <zeroOrMore>
-              <element name="quelle">
-                <text/>
-              </element>
-            </zeroOrMore>
-            <zeroOrMore>
-              <element name="url">
-                <ref name="http-url"/>
-              </element>
-            </zeroOrMore>
-            <zeroOrMore>
-              <element name="adb">
-                <ref name="adb-ndb-model"/>
-              </element>
-            </zeroOrMore>
-            <zeroOrMore>
-              <element name="ndb">
-                <ref name="adb-ndb-model"/>
-              </element>
-            </zeroOrMore>
-          </interleave>
-          <optional>
-            <element name="anmerkungen">
-              <oneOrMore>
-                <element name="absatz">
-                  <text/>
-                </element>
-              </oneOrMore>
-            </element>
-          </optional>
-          <optional>
-            <element name="bild">
-              <attribute name="name">
-                <a:documentation>Dateiname</a:documentation>
-                <text/>
-              </attribute>
-              <optional>
-                <element name="quelle">
-                  <optional>
-                    <attribute name="url">
-                      <ref name="http-url"/>
-                    </attribute>
-                  </optional>
-                  <text/>
-                </element>
-              </optional>
-            </element>
-          </optional>
         </element>
-      </oneOrMore>
+      </optional>
     </element>
   </define>
 
