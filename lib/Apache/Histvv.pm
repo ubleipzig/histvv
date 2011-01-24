@@ -176,6 +176,21 @@ return
 </report>
 EOT
 
+    pnd => <<'EOT',
+declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
+
+let $pnd := "%s"
+let $dozent := collection()/v:dozentenliste/v:dozent[v:pnd=$pnd]
+
+return
+if ($dozent) then
+<http>
+  <location>/dozenten/{string($dozent/@xml:id)}.html</location>
+</http>
+else
+()
+EOT
+
     elements => <<'EOT',
 declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
 
@@ -260,6 +275,9 @@ sub handler {
     $xslfile = File::Spec->catfile( $sharedir, 'xsl', $xslfile )
       unless $xslfile =~ /^\//;
 
+    # setting default content type
+    $r->content_type('text/html');
+
     my %xsl_params = ( 'histvv-url' => "'" . $r->uri . "'" );
 
     (my $loc = $r->location) =~ s/\/$//;
@@ -334,6 +352,14 @@ sub handler {
             interval  => $rq->param('l')         || 10,
 
         );
+    } elsif ($loc eq '/pnd.txt') {
+        $xquery = $Queries{dozenten};
+        $xsl_params{'histvv-pnd-beacon-feed'} = "'" . $r->construct_url() . "'";
+        $xsl_params{'histvv-pnd-beacon-target'} =
+          "'" . $r->construct_url("/pnd/{ID}") . "'";
+        $r->content_type("text/plain; charset=utf-8");
+    } elsif ($r->uri =~ /^\/pnd\/([0-9]{8}[0-9X])$/) {
+        $xquery = sprintf $Queries{pnd}, $1;
     } elsif ($r->uri =~ /^(\/\w+)*\/(\w+\.html)?$/) {
         my $uri = $2 ? $r->uri : ($1 || '') . "/index.html";
         my $docfile = File::Spec->catfile($r->document_root, $uri);
@@ -378,6 +404,12 @@ sub handler {
     }
 
     my $xmldom = $Xp->parse_string($xml);
+
+    if (my $url = $xmldom->findvalue('/http/location')) {
+        $r->headers_out->set( Location => $r->construct_url($url) );
+        return Apache2::Const::REDIRECT;
+    }
+
     my $xsldom = $Xp->parse_file($xslfile);
     my $stylesheet = $Xt->parse_stylesheet($xsldom);
 
@@ -394,8 +426,6 @@ sub handler {
         $r->content_type('text/plain; charset=UTF-8');
         print "$xml";
     } else {
-        #$r->content_type('application/xhtml+xml');
-        $r->content_type('text/html');
         print $stylesheet->output_as_bytes($html);
     }
 
