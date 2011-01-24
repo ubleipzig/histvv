@@ -15,7 +15,7 @@ my $builder = Histvv::Build->new(
     },
     requires =>
     {
-     'XML::LibXML'       => 0,
+     'XML::LibXML'       => 1.69,
      'XML::LibXSLT'      => 0,
      'Sleepycat::DbXml'  => 2.0040013,
      'Apache2::Request'  => 0
