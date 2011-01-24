@@ -678,7 +678,7 @@ tag =
 ## Wurzelelement für Dozentenliste
 dozentenliste =
   element dozentenliste {
-    common.attributes, universität, dozentendaten+
+    common.attributes, universität, (pnd-beacon? & dozentendaten+)
   }
 dozentendaten =
   element dozent {
@@ -755,6 +755,16 @@ adb-ndb-model =
   element band { text },
   element seite { text },
   element url { http-url }?
+
+## PND-BEACON Metadaten
+pnd-beacon =
+  # siehe http://de.wikipedia.org/wiki/Benutzer:APPER/BEACON/Format
+  element pnd-beacon {
+    element contact { text }?
+    & element institution { text }?
+    & element message { text }?
+    & element description { text }?
+  }
 
 ## Container für OCR-Text
 ocr =

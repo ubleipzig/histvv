@@ -2,7 +2,8 @@ dozentenliste, universit\0000E4t,
 dozent, name, geboren, gestorben,
 pnd, adb, ndb, beruf,
 absatz, url, quelle, anmerkungen,
-bild, bild > quelle {
+bild, bild > quelle,
+pnd-beacon, pnd-beacon > * {
   display: block;
 }
 
@@ -199,4 +200,21 @@ dozent > bild > quelle:before {
 dozent > bild > quelle:after {
   display: inline;
   content: " (" attr(url) ")";
+}
+
+pnd-beacon {
+  margin: 0 0 1em 0;
+  collapsible: yes;
+}
+
+pnd-beacon:before {
+  display: block;
+  content: collapser() " PND-Beacon Metadaten";
+  font-weight: bold;
+  margin: 2em 0 .2em;
+}
+
+pnd-beacon > *:before {
+  display: inline;
+  content: element-label() ": ";
 }

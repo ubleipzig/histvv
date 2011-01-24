@@ -971,9 +971,14 @@
     <element name="dozentenliste">
       <ref name="common.attributes"/>
       <ref name="universität"/>
-      <oneOrMore>
-        <ref name="dozentendaten"/>
-      </oneOrMore>
+      <interleave>
+        <optional>
+          <ref name="pnd-beacon"/>
+        </optional>
+        <oneOrMore>
+          <ref name="dozentendaten"/>
+        </oneOrMore>
+      </interleave>
     </element>
   </define>
 
@@ -1152,6 +1157,27 @@
         <ref name="http-url"/>
       </element>
     </optional>
+  </define>
+
+  <define name="pnd-beacon">
+    <a:documentation>PND-BEACON Metadaten</a:documentation>
+    <!-- siehe http://de.wikipedia.org/wiki/Benutzer:APPER/BEACON/Format  -->
+    <element name="pnd-beacon">
+      <interleave>
+        <optional>
+          <element name="contact"><text/></element>
+        </optional>
+        <optional>
+          <element name="institution"><text/></element>
+        </optional>
+        <optional>
+          <element name="message"><text/></element>
+        </optional>
+        <optional>
+          <element name="description"><text/></element>
+        </optional>
+      </interleave>
+    </element>
   </define>
 
   <define name="ocr">
