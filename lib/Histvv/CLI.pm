@@ -199,6 +199,8 @@ sub get_opts {
     pod2usage(-verbose => 2) if $opts{man};
     pod2usage(-verbose => 1) if $opts{help};
 
+    $opts{verbose}++ if $opts{debug};
+
     $self->{opts} = \%opts;
 
     return wantarray ? %opts : $self->{opts};
@@ -268,6 +270,26 @@ sub chatter {
     my $message = shift;
     my $nonewline = shift || 0;
     $self->say($message, $nonewline) if $self->{opts}{verbose};
+}
+
+=head2 debug
+
+  $cli->debug( $message )
+  $cli->debug( $message, $no_newline )
+
+Print $message to STDERR when debug mode has been requested
+with the B<--debug> switch. Otherwise remain silent.
+
+=cut
+
+sub debug {
+    my $self = shift;
+    my $message = shift;
+    my $nonewline = shift || 0;
+    if ($self->{opts}{debug}) {
+        print STDERR $message;
+        print STDERR "\n" unless $nonewline;
+    }
 }
 
 =head2 error
