@@ -15,6 +15,7 @@ use LWP::UserAgent;
 my $cli = Histvv::CLI->new(with_debug => 1);
 my %opts = $cli->get_opts(
     'list|l'    => 0,
+    'prepend|p' => 0,
     'out|o=s'   => undef,
     'cache|c=s' => undef,
     'ttl|t=f'   => 24 * 60,
@@ -102,7 +103,11 @@ foreach my $dozent ($xc->findnodes('/v:dozentenliste/v:dozent[v:pnd]')) {
         $cli->debug("creating new url element");
         my $elem = $doc->createElementNS($Histvv::XMLNS, "url");
         $elem->appendTextNode($unescaped);
-        if (@url_elems) {
+        if (@url_elems && $opts{prepend}) {
+            $cli->debug("  inserting before urls");
+            $dozent->insertBefore($elem, $url_elems[0]);
+        }
+        elsif (@url_elems) {
             $cli->debug("  inserting after urls");
             $dozent->insertAfter($elem, $url_elems[$#url_elems]);
         } elsif (my ($bild) = $dozent->getChildrenByTagName('bild')) {
@@ -279,6 +284,10 @@ file.
 =item B<--list>, B<-l>
 
 List the new links to be added to  C<dozentenliste>.
+
+=item B<--prepend>, B<-p>
+
+Prepend new links to the list of already existing ones.
 
 =item B<--out>, B<-o>
 
