@@ -151,18 +151,31 @@ sub get_url {
     }
 
     unless ($url) {
+        # Here we perform a HEAD request for the target URL, expecting
+        # to be redirected to a specific URL related to the currently
+        # processed PND number. This URL we obtain from the (final)
+        # request of the response object.
+        #
+        # We only accept a URL as a valid result when
+        #  1. we get an OK response
+        #  2. it differs from the original target URL
+        #  3. it passes check_url()
+
+        # delay subsequent requests to play nicely
         my $sleep = $opts{delay} - (time - $last_req_time);
         if ($sleep > 0) {
             $cli->debug("waiting $sleep seconds...");
             sleep $sleep;
         }
+
         $cli->debug("fetching $target...");
         my $request = HTTP::Request->new(HEAD => $target);
         my $response = $ua->request($request);
         $last_req_time = time;
         $cli->debug("response: " . $response->code);
-        if ($response->code == 200 && $response->request->uri ne $target) {
-            $url = $response->request->uri . "";
+        my $uri = $response->request->uri;
+        if ($response->code == 200 && $uri ne $target && check_url($uri)) {
+            $url = $uri . "";
             $cli->debug("URL: $url");
         }
         if ($url && $dbh) {
@@ -171,6 +184,20 @@ sub get_url {
         }
     }
     $url;
+}
+
+#
+# Special case URL checks. This is necessary to catch invalid
+# responses which cannot be detected otherwise.
+#
+sub check_url {
+    my $uri = shift;
+    # professorenkatalog redirects to the below URL when they don't
+    # recognize a PND number.
+    return 0
+      if $uri eq
+          "http://www.uni-leipzig.de/unigeschichte/professorenkatalog/leipzig/";
+    1;
 }
 
 #
