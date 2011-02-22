@@ -16,6 +16,7 @@ my $cli = Histvv::CLI->new(with_debug => 1);
 my %opts = $cli->get_opts(
     'list|l'    => 0,
     'prepend|p' => 0,
+    'offline'   => 0,
     'out|o=s'   => undef,
     'cache|c=s' => undef,
     'ttl|t=f'   => 24 * 60,
@@ -24,6 +25,9 @@ my %opts = $cli->get_opts(
 
 my $dozenten = shift or $cli->error( 'Please specify path to dozenten.xml!' );
 my $beacon = shift or $cli->error( 'Please specify path to beacon file!' );
+
+$cli->error("To work offline you need to specify a link cache database!")
+  if $opts{offline} && ! $opts{cache};
 
 my (%pnd, %dozenten, $url_template, $dbh, $sth_select, $sth_insert);
 
@@ -155,7 +159,7 @@ sub get_url {
         }
     }
 
-    unless ($url) {
+    unless ($url || $opts{offline}) {
         # Here we perform a HEAD request for the target URL, expecting
         # to be redirected to a specific URL related to the currently
         # processed PND number. This URL we obtain from the (final)
@@ -289,7 +293,7 @@ List the new links to be added to  C<dozentenliste>.
 
 Prepend new links to the list of already existing ones.
 
-=item B<--out>, B<-o>
+=item B<--out>, B<-o> file
 
 File to write the modified C<dozentenliste> to.
 
@@ -306,6 +310,10 @@ Time in minutes after which cached URLs should be refetched. Default:
 
 Minimum time in seconds between requests to resolve a target URL.
 Default: 20 seconds.
+
+=item B<--offline>
+
+Do not make any HTTP requests. This option requires B<--cache>.
 
 =item B<--verbose>, B<-v>
 
