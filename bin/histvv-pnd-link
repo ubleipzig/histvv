@@ -66,7 +66,9 @@ my $doc = XML::LibXML->new->parse_file($dozenten);
 my $xc = XML::LibXML::XPathContext->new($doc);
 $xc->registerNs('v', $Histvv::XMLNS);
 
-my $ua = LWP::UserAgent->new('Mozilla/5.0 (HistVV)', 'histvv@gmail.com');
+my $ua = LWP::UserAgent->new(
+    'Mozilla/5.0 (compatible; HistVV; http://histvv.uni-leipzig.de)',
+    'histvv@gmail.com' );
 my $last_req_time = 0;
 
 $cli->say("Looking up matching PND numbers...");
