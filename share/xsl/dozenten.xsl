@@ -285,7 +285,20 @@
     <xsl:if test="v:url or v:adb[v:url] or v:ndb[v:url]">
       <h3>Links</h3>
       <ul>
-        <xsl:for-each select="v:url | v:adb[v:url] | v:ndb[v:url]">
+        <xsl:for-each select="v:adb[v:url] | v:ndb[v:url]">
+          <li><xsl:apply-templates select="." mode="linkliste"/></li>
+        </xsl:for-each>
+        <xsl:for-each select="v:url">
+          <xsl:sort data-type="number" order="descending"
+             select="(9 * number(starts-with(., 'http://de.wikipedia.org')))
+                   + (8 * number(starts-with(., 'http://en.wikipedia.org')))
+                   + (7 * number(starts-with(., 'http://www.uni-leipzig.de/unigeschichte/professorenkatalog/')))
+                   + (6 * number(starts-with(., 'http://catalogus-professorum-halensis.de/')))
+                   + (5 * number(starts-with(., 'http://cpr.uni-rostock.de/')))
+                   + (4 * number(starts-with(., 'http://www.zeno.org/Pagel-1901/')))
+                   + (3 * number(starts-with(., 'http://www.bautz.de/bbkl/')))
+                   + (2 * number(starts-with(., 'http://saebi.isgv.de/')))
+                   + (1 * number(starts-with(., 'http://personen-wiki.slub-dresden.de/')))" />
           <li><xsl:apply-templates select="." mode="linkliste"/></li>
         </xsl:for-each>
       </ul>
