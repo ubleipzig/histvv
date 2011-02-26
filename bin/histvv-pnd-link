@@ -154,7 +154,7 @@ if ($opts{out}) {
 #
 sub get_url {
     my $pnd = shift;
-    (my $target = $url_template) =~ s/\{ID\}/$pnd/;
+    (my $target = $url_template) =~ s/(?:\{ID\}|\$PND)/$pnd/;
 
     my $url;
 
