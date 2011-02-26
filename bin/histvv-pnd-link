@@ -20,7 +20,9 @@ my %opts = $cli->get_opts(
     'out|o=s'   => undef,
     'cache|c=s' => undef,
     'ttl|t=f'   => 24 * 60,
-    'delay|D=i'   => 20
+    'delay|D=i' => 20,
+    'urlescape|E' => 0,
+    'noreplace|R' => 0
 );
 
 my $dozenten = shift or $cli->error( 'Please specify path to dozenten.xml!' );
@@ -97,16 +99,21 @@ foreach my $dozent ($xc->findnodes('/v:dozentenliste/v:dozent[v:pnd]')) {
     } elsif ($urls{$unescaped}) {
         $cli->debug("unescaped url already exists");
     } elsif (my ($u) = grep URI->new($_)->authority eq $domain, keys %urls) {
-        $cli->debug("updating url $u");
-        my $elem = $urls{$u};
-        $elem->removeChildNodes;
-        $elem->appendTextNode($unescaped);
-        $dozenten{$id}{old} = $u;
-        $dozenten{$id}{new} = $unescaped;
+        unless ($opts{noreplace}) {
+            $cli->debug("updating url $u");
+            my $elem = $urls{$u};
+            $elem->removeChildNodes;
+            $elem->appendTextNode($opts{urlescape} ? $url : $unescaped);
+            $dozenten{$id}{old} = $u;
+            $dozenten{$id}{new} = $opts{urlescape} ? $url : $unescaped;
+        }
+        else {
+            $cli->debug("url for $domain already exists (--noreplace)");
+        }
     } else {
         $cli->debug("creating new url element");
         my $elem = $doc->createElementNS($Histvv::XMLNS, "url");
-        $elem->appendTextNode($unescaped);
+        $elem->appendTextNode($opts{urlescape} ? $url : $unescaped);
         if (@url_elems && $opts{prepend}) {
             $cli->debug("  inserting before urls");
             $dozent->insertBefore($elem, $url_elems[0]);
@@ -314,6 +321,17 @@ Default: 20 seconds.
 =item B<--offline>
 
 Do not make any HTTP requests. This option requires B<--cache>.
+
+=item B<--urlescape>, B<-E>
+
+By default URLs are unescaped for better readability when adding links
+to C<dozentenliste>. With this option, however, URLs will be escaped.
+
+=item B<--noreplace>, B<-R>
+
+Don't replace existing links. By default existing links from the
+target domain are replaced when the path of the current PND link
+differs.
 
 =item B<--verbose>, B<-v>
 
