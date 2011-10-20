@@ -4,5 +4,6 @@
 /_tmp
 /tmp
 /histvv-??????/
+/*.db
 /*.patch
 /MYMETA.yml
