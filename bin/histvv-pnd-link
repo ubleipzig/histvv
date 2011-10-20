@@ -237,9 +237,9 @@ sub check_url {
     my $uri = shift;
     # professorenkatalog redirects to the below URL when they don't
     # recognize a PND number.
+    my $cpl = "http://www.uni-leipzig.de/unigeschichte/professorenkatalog/leipzig/";
     return 0
-      if $uri eq
-          "http://www.uni-leipzig.de/unigeschichte/professorenkatalog/leipzig/";
+      if $uri eq $cpl || ( $uri =~ /^$cpl/ && $uri =~ /\/[0-9]{8}X\/$/);
     1;
 }
 
