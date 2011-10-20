@@ -83,7 +83,7 @@ if ( $opts{'follow-refresh'} ) {
             }
             0;
         },
-        m_code => 200
+        'm_code' => 200
     );
 }
 
