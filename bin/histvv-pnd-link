@@ -11,6 +11,7 @@ use DBI;
 use URI;
 use URI::Escape;
 use LWP::UserAgent;
+use File::Temp;
 
 my $cli = Histvv::CLI->new(with_debug => 1);
 my %opts = $cli->get_opts(
@@ -62,15 +63,15 @@ if ($opts{cache}) {
     $sth_insert = $dbh->prepare($sql_insert);
 }
 
-load_beacon($beacon);
+my $ua = LWP::UserAgent->new(
+    'Mozilla/5.0 (compatible; HistVV; http://histvv.uni-leipzig.de)',
+    'histvv@gmail.com' );
+
+load_beacon($beacon, $ua);
 
 my $doc = XML::LibXML->new->parse_file($dozenten);
 my $xc = XML::LibXML::XPathContext->new($doc);
 $xc->registerNs('v', $Histvv::XMLNS);
-
-my $ua = LWP::UserAgent->new(
-    'Mozilla/5.0 (compatible; HistVV; http://histvv.uni-leipzig.de)',
-    'histvv@gmail.com' );
 
 if ( $opts{'follow-refresh'} ) {
     $ua->add_handler(
@@ -248,6 +249,26 @@ sub check_url {
 #
 sub load_beacon {
     my $file = shift;
+    my $ua = shift;
+
+    my $tmp;
+
+    if ( $file =~ /^https?:\/\// ) {
+        my $url = $file;
+        $cli->debug("Fetching beacon $url");
+        my $r = $ua->get($url);
+        die "Cannot get beacon file from $url\n" unless $r->is_success;
+        $tmp = File::Temp->new(
+            UNLINK   => 1,
+            TMPDIR   => 1,
+            TEMPLATE => 'pnd-beacon-XXXXXX',
+            SUFFIX   => '.txt'
+        );
+        $file = $tmp->filename;
+        $cli->debug("Saving data to $file");
+        print $tmp $r->content;
+    }
+
     open BEACON, $file;
     while (<BEACON>) {
         chomp;
