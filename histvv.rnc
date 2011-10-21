@@ -724,7 +724,7 @@ dozentendaten =
     
     ## PND-Nummer
     element pnd {
-      xsd:token { pattern = "[0-9]{8}[0-9X]" }
+      xsd:token { pattern = "[0-9]{8,9}[0-9X]" }
     }?,
     element beruf { text }?,
     (element absatz { text }*

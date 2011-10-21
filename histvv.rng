@@ -1052,7 +1052,7 @@
         <element name="pnd">
           <a:documentation>PND-Nummer</a:documentation>
           <data type="token">
-            <param name="pattern">[0-9]{8}[0-9X]</param>
+            <param name="pattern">[0-9]{8,9}[0-9X]</param>
           </data>
         </element>
       </optional>
