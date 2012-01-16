@@ -7,6 +7,17 @@
   <xsl:import href="common.xsl"/>
   <xsl:import href="histvv2html.xsl"/>
 
+  <xsl:variable name="seitenlinklabel">
+    <xsl:choose>
+      <xsl:when test="/v:vv/@paginierung = 'spalten'">
+        <xsl:text>Spalte</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:text>Seite</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
   <xsl:template name="content">
     <xsl:apply-templates select="/index|/v:vv"/>
   </xsl:template>
@@ -151,7 +162,7 @@
 
   <xsl:template name="seitenlink">
     <xsl:param name="nr"/>
-    <a title="Seite {$nr}: zum Scan">
+    <a title="{$seitenlinklabel} {$nr}: zum Scan">
       <xsl:attribute name="href">
         <xsl:call-template name="seitenzahl2scan-url">
           <xsl:with-param name="nr" select="$nr"/>
@@ -172,7 +183,7 @@
         <xsl:text>000</xsl:text>
         <xsl:value-of select="$nr"/>
       </xsl:when>
-      <xsl:when test="$nr > 300"> <!-- FIXME -->
+      <xsl:when test="/v:vv/@paginierung = 'spalten'">
         <!-- Spaltenzahl -->
         <xsl:choose>
           <xsl:when test="$nr mod 2 > 0">
@@ -209,6 +220,9 @@
 
   <xsl:template name="seitennavigation">
     <ul id="seitennavigation">
+      <xsl:if test="/v:vv/@paginierung = 'spalten'">
+        <xsl:attribute name="class">spalten</xsl:attribute>
+      </xsl:if>
       <xsl:for-each select="/v:vv//v:seite">
         <xsl:variable name="nr">
           <xsl:choose>

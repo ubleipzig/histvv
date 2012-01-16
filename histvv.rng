@@ -86,6 +86,17 @@
           </data>
         </attribute>
       </optional>
+      <optional>
+        <attribute name="paginierung">
+          <a:documentation>
+            Dieses Attribut signalisiert, dass sich Seitenelemente im
+            Dokument auf Spaltennummern im Original beziehen. (Aus
+            Effizienzgründen wird auf die Einführung eines gesonderten
+            Spaltenelements verzichtet.)
+          </a:documentation>
+          <value>spalten</value>
+        </attribute>
+      </optional>
       <ref name="kopf"/>
       <optional>
         <ref name="seite"/>

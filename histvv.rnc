@@ -36,6 +36,14 @@ vv =
     attribute id {
       xsd:NMTOKEN { pattern = "[a-z]+-[0-9]{4}[sw]" }
     }?,
+    
+    ## 
+    ##             Dieses Attribut signalisiert, dass sich Seitenelemente im
+    ##             Dokument auf Spaltennummern im Original beziehen. (Aus
+    ##             Effizienzgründen wird auf die Einführung eines gesonderten
+    ##             Spaltenelements verzichtet.)
+    ##           
+    attribute paginierung { "spalten" }?,
     kopf,
     seite?,
     titel,

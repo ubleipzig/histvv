@@ -298,6 +298,10 @@ ul#seitennavigation:before {
   content: "Seiten: ";
 }
 
+ul#seitennavigation.spalten:before {
+  content: "Spalten: ";
+}
+
 ul#seitennavigation li {
   display: inline;
 }

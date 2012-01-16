@@ -152,6 +152,10 @@ seite:before {
   color: gray;
 }
 
+vv[paginierung*=spalten] seite:before {
+  content: "[Spalte ";
+}
+
 seite:after  {
   content: "]";
   color: gray;
