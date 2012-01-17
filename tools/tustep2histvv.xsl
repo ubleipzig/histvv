@@ -60,9 +60,7 @@
           <jahr><xsl:value-of select="$ende"/></jahr>
         </ende>
         <quelle><xsl:value-of select="vorlage"/></quelle>
-        <status komplett="ja">
-          <transkribent>auto</transkribent>
-        </status>
+        <status komplett="ja"></status>
       </kopf>
       <titel>
         <xsl:choose>
