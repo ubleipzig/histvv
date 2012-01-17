@@ -14,8 +14,16 @@ geb\0000FChr {
   background-color: #f0d9bb;
 }
 
+wochenstunden {
+  background-color: #ffe1fd;
+}
+
 ort {
   background-color: #dbffdb;
+}
+
+zusatz, nr {
+  background-color: #dddddd;
 }
 
 thema > ort {

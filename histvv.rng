@@ -341,6 +341,15 @@
       <zeroOrMore>
         <ref name="gebühr"/>
       </zeroOrMore>
+      <optional>
+        <ref name="wochenstunden"/>
+      </optional>
+      <optional>
+        <ref name="zusatz"/>
+      </optional>
+      <optional>
+        <ref name="nr"/>
+      </optional>
     </interleave>
   </define>
 
@@ -665,6 +674,60 @@
     </element>
   </define>
 
+  <define name="nr">
+    <a:documentation>
+      Zur Auszeichnung einer in der Vorlage angegebenen
+      Veranstaltungsnummer (z. B. Züricher Vorlesungsverzeichnisse)
+    </a:documentation>
+    <element name="nr">
+      <interleave>
+        <ref name="common.attributes"/>
+        <ref name="model.text"/>
+        <zeroOrMore>
+          <ref name="notiz"/>
+        </zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+
+  <define name="wochenstunden">
+    <a:documentation>
+      Anzahl der für die Verantaltung veranschlagten Wochenstunden
+    </a:documentation>
+    <element name="wochenstunden">
+      <interleave>
+        <ref name="common.attributes"/>
+        <ref name="model.text"/>
+        <zeroOrMore>
+          <ref name="notiz"/>
+        </zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+
+  <define name="zusatz">
+    <a:documentation>
+      Zusätzliche Angaben zu einer Veranstaltung. (Dieses Element
+      wurde für die in den Züricher Vorlesungsverzeichnissen gemeinsam
+      erfassten Informationen zu Entgelt, Modus usw. eingeführt.)
+    </a:documentation>
+    <element name="zusatz">
+      <interleave>
+        <ref name="common.attributes"/>
+        <ref name="model.text"/>
+        <zeroOrMore>
+          <ref name="gebühr"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="modus"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="notiz"/>
+        </zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+
   <define name="absatz">
     <a:documentation>
       Textabsatz
@@ -698,6 +761,9 @@
       </zeroOrMore>
       <zeroOrMore>
         <ref name="korrektur"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="anmerkung"/>
       </zeroOrMore>
     </interleave>
   </define>
@@ -870,6 +936,19 @@
     <element name="trennlinie">
       <ref name="basic.attributes"/>
       <empty/>
+    </element>
+  </define>
+
+  <define name="anmerkung">
+    <a:documentation>
+      Editorische Anmerkung, die als Fuss- oder Endnote bzw. als
+      Tooltip angezeigt wird.
+    </a:documentation>
+    <element name="anmerkung">
+      <interleave>
+        <ref name="common.attributes"/>
+        <text/>
+      </interleave>
     </element>
   </define>
 

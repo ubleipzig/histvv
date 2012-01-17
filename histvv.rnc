@@ -200,6 +200,9 @@ model.veranstaltung =
   & zeit*
   & modus*
   & gebühr*
+  & wochenstunden?
+  & zusatz?
+  & nr?
 
 ## 
 ##       einzelne Lehrveranstaltung
@@ -411,6 +414,28 @@ modus =
 gebühr = element gebühr { common.attributes, model.text }
 
 ## 
+##       Zur Auszeichnung einer in der Vorlage angegebenen
+##       Veranstaltungsnummer (z. B. Züricher Vorlesungsverzeichnisse)
+##     
+nr = element nr { common.attributes & model.text & notiz* }
+
+## 
+##       Anzahl der für die Verantaltung veranschlagten Wochenstunden
+##     
+wochenstunden =
+  element wochenstunden { common.attributes & model.text & notiz* }
+
+## 
+##       Zusätzliche Angaben zu einer Veranstaltung. (Dieses Element
+##       wurde für die in den Züricher Vorlesungsverzeichnissen gemeinsam
+##       erfassten Informationen zu Entgelt, Modus usw. eingeführt.)
+##     
+zusatz =
+  element zusatz {
+    common.attributes & model.text & gebühr* & modus* & notiz*
+  }
+
+## 
 ##       Textabsatz
 ##     
 absatz =
@@ -420,7 +445,7 @@ absatz =
   }
 
 ##
-model.text = text & seite* & sic* & korrektur*
+model.text = text & seite* & sic* & korrektur* & anmerkung*
 
 ##
 text-content =
@@ -545,6 +570,12 @@ kursiv = element kursiv { common.attributes, model.text }
 
 ## horizontale Linie
 trennlinie = element trennlinie { basic.attributes, empty }
+
+## 
+##       Editorische Anmerkung, die als Fuss- oder Endnote bzw. als
+##       Tooltip angezeigt wird.
+##     
+anmerkung = element anmerkung { common.attributes & text }
 
 ## 
 ##       Markierung ungewöhnlicher Schreibweisen im Original
