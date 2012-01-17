@@ -258,31 +258,12 @@
             <value>Jura</value>
             <value>Medizin</value>
           </choice>
-          <s:pattern id="fakultät-jura">
-            <s:rule context="v:sachgruppe[@fakultät='Jura']">
-              <s:assert test="not(count(//v:sachgruppe[@fakultät='Jura']) > 1)">
-                Fakultät "Jura" mehr als einmal ausgezeichnet.
-              </s:assert>
-            </s:rule>
-          </s:pattern>
-          <s:pattern id="fakultät-medizin">
-            <s:rule context="v:sachgruppe[@fakultät='Medizin']">
-              <s:assert test="not(count(//v:sachgruppe[@fakultät='Medizin']) > 1)">
-                Fakultät "Medizin" mehr als einmal ausgezeichnet.
-              </s:assert>
-            </s:rule>
-          </s:pattern>
-          <s:pattern id="fakultät-philosophie">
-            <s:rule context="v:sachgruppe[@fakultät='Philosophie']">
-              <s:assert test="not(count(//v:sachgruppe[@fakultät='Philosophie']) > 1)">
-                Fakultät "Philosophie" mehr als einmal ausgezeichnet.
-              </s:assert>
-            </s:rule>
-          </s:pattern>
-          <s:pattern id="fakultät-theologie">
-            <s:rule context="v:sachgruppe[@fakultät='Theologie']">
-              <s:assert test="not(count(//v:sachgruppe[@fakultät='Theologie']) > 1)">
-                Fakultät "Theologie" mehr als einmal ausgezeichnet.
+          <s:pattern id="fakultät-eindeutig">
+            <s:rule context="v:sachgruppe[@fakultät]">
+              <s:let name="fakultät" value="@fakultät"/>
+              <s:assert test="not(count(//v:sachgruppe[@fakultät = $fakultät]) > 1)">
+                Das Attribut 'fakultät' darf pro Fakultät nur einmal
+                verwendet werden.
               </s:assert>
             </s:rule>
           </s:pattern>
