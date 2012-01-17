@@ -257,6 +257,8 @@
             <value>Theologie</value>
             <value>Jura</value>
             <value>Medizin</value>
+            <value>Staatswissenschaften</value>
+            <value>Zahnmedizin</value>
           </choice>
           <s:pattern id="fakultät-eindeutig">
             <s:rule context="v:sachgruppe[@fakultät]">

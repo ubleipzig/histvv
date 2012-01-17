@@ -143,7 +143,12 @@ sachgruppe =
   element sachgruppe {
     common.attributes,
     attribute fakultät {
-      ("Philosophie" | "Theologie" | "Jura" | "Medizin")
+      ("Philosophie"
+       | "Theologie"
+       | "Jura"
+       | "Medizin"
+       | "Staatswissenschaften"
+       | "Zahnmedizin")
       >> s:pattern [
            id = "fakultät-eindeutig"
            "\x{a}" ~
