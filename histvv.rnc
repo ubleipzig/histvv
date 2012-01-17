@@ -815,7 +815,8 @@ s:pattern [
   "\x{a}" ~
   "    "
   s:rule [
-    context = "v:vv[v:kopf/v:status/@komplett='ja']"
+    context =
+      "v:vv[v:kopf[not(v:universität='Zürich')]/v:status/@komplett='ja']"
     "\x{a}" ~
     "      "
     s:assert [

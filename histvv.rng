@@ -1299,7 +1299,7 @@
   </s:pattern>
 
   <s:pattern id="fakultäten">
-    <s:rule context="v:vv[v:kopf/v:status/@komplett='ja']">
+    <s:rule context="v:vv[v:kopf[not(v:universität='Zürich')]/v:status/@komplett='ja']">
       <s:assert test="count(//v:sachgruppe/@fakultät) = 4">
         Es muss vier Fakultätssachgruppen geben.
       </s:assert>
