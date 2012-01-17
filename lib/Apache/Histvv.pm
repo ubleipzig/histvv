@@ -275,6 +275,10 @@ sub handler {
     $xslfile = File::Spec->catfile( $sharedir, 'xsl', $xslfile )
       unless $xslfile =~ /^\//;
 
+    my $custom_xslfile = $r->dir_config('HISTVV_CUSTOM_XSL') || undef;
+    $custom_xslfile = File::Spec->catfile( $sharedir, 'xsl', $custom_xslfile )
+      if $custom_xslfile && $custom_xslfile !~ /^\//;
+
     # setting default content type
     $r->content_type('text/html');
 
@@ -420,6 +424,16 @@ sub handler {
         return Apache2::Const::SERVER_ERROR;
     }
 
+    if ($custom_xslfile && -f $custom_xslfile) {
+        my $xsldom = $Xp->parse_file($custom_xslfile);
+        my $stylesheet = $Xt->parse_stylesheet($xsldom);
+        eval { $html = $stylesheet->transform($html, %xsl_params) };
+        if ($@) {
+            warn "$@\n";
+            return Apache2::Const::SERVER_ERROR;
+        }
+    }
+
     _set_expires($r);
 
     if ($r->args eq 'report=xml') {
@@ -439,6 +453,7 @@ sub handler {
         print "ARGS: " . $r->args . "\n";
         print "DB: $dbfile\n";
         print "XSL: $xslfile\n";
+        print "Custom XSL: $custom_xslfile\n" if $custom_xslfile;
         print "$xquery\n" if $xquery;
         print "-->\n";
     }
