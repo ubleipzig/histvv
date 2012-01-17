@@ -173,7 +173,9 @@
           <value>ja</value>
         </attribute>
       </optional>
-      <ref name="transkribent"/>
+      <zeroOrMore>
+        <ref name="transkribent"/>
+      </zeroOrMore>
       <zeroOrMore>
         <ref name="korrigiert"/>
       </zeroOrMore>
@@ -182,13 +184,6 @@
 
   <define name="transkribent">
     <element name="transkribent">
-      <s:pattern id="transkribent">
-        <s:rule context="v:transkribent">
-          <s:assert test="not(normalize-space(.) = '')">
-            Bitte Transkribenten eintragen.
-          </s:assert>
-        </s:rule>
-      </s:pattern>
       <text/>
     </element>
   </define>
@@ -1291,7 +1286,8 @@
     <s:rule context="v:nachname | v:vorname | v:nachnamenpräfix |
                      v:funktion | v:grad | v:ders |
                      v:thema | v:gebühr | v:modus | v:zeit | v:ort |
-                     v:siehe | v:scil | v:sic | v:notiz">
+                     v:siehe | v:scil | v:sic | v:notiz |
+                     v:transkribent">
       <s:assert test="not(text()='' or normalize-space(.)='')">
         Dieses Element darf nicht leer sein.
       </s:assert>

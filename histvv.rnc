@@ -66,33 +66,10 @@ universität = element universität { text }
 status =
   element status {
     attribute komplett { "ja" }?,
-    transkribent,
+    transkribent*,
     korrigiert*
   }
-transkribent =
-  [
-    s:pattern [
-      id = "transkribent"
-      "\x{a}" ~
-      "        "
-      s:rule [
-        context = "v:transkribent"
-        "\x{a}" ~
-        "          "
-        s:assert [
-          test = "not(normalize-space(.) = '')"
-          "\x{a}" ~
-          "            Bitte Transkribenten eintragen.\x{a}" ~
-          "          "
-        ]
-        "\x{a}" ~
-        "        "
-      ]
-      "\x{a}" ~
-      "      "
-    ]
-  ]
-  element transkribent { text }
+transkribent = element transkribent { text }
 korrigiert =
   element korrigiert {
     element durch { text },
@@ -795,7 +772,7 @@ s:pattern [
   "    "
   s:rule [
     context =
-      "v:nachname | v:vorname | v:nachnamenpräfix |                      v:funktion | v:grad | v:ders |                      v:thema | v:gebühr | v:modus | v:zeit | v:ort |                      v:siehe | v:scil | v:sic | v:notiz"
+      "v:nachname | v:vorname | v:nachnamenpräfix |                      v:funktion | v:grad | v:ders |                      v:thema | v:gebühr | v:modus | v:zeit | v:ort |                      v:siehe | v:scil | v:sic | v:notiz |                      v:transkribent"
     "\x{a}" ~
     "      "
     s:assert [
