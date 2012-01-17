@@ -41,6 +41,7 @@ share/htdocs/ns.xhtml
 share/htdocs/suche.html
 share/xsl/common.xsl
 share/xsl/custom/leipzig.xsl
+share/xsl/custom/zurich.xsl
 share/xsl/dozenten.xsl
 share/xsl/elements.xsl
 share/xsl/histvv2html.xsl
