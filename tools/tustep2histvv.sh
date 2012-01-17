@@ -18,6 +18,8 @@ fi
 path=`dirname $0`
 xsl="$path/tustep2histvv.xsl"
 
+files=""
+
 for s in $semesters; do
     y=`echo $s | sed -e 's/\/[0-9][0-9]$//'`
     if [ $s == $y ]; then
@@ -27,7 +29,13 @@ for s in $semesters; do
     fi
 
     file="$name.xml"
+    files="$files $file"
 
     echo "$s > $file"
     xsltproc --stringparam semester $s $xsl $data > $file
+done
+
+xmltool indent -v -s $path/../histvv.rng $files
+for f in $files; do
+    rm -v $f.BAK
 done
