@@ -4,6 +4,8 @@
 ~$
 \.bak$
 ^MANIFEST\.SKIP$
+^MYMETA\.yml$
+^MYMETA\.json$
 CVS/
 \.git/
 \.svn/
@@ -25,5 +27,5 @@ CVS/
 ^doc/slides/
 ^doc/drafts/
 ^histvv-....../
-^MYMETA.yml$
 ^xqy/
+^pnd.db$

@@ -4,6 +4,7 @@ bin/histvv-db-create
 bin/histvv-db-update
 bin/histvv-dozenten
 bin/histvv-generate-ids
+bin/histvv-pnd-link
 Build.PL
 Changes
 histvv.rnc
