@@ -119,14 +119,18 @@
 
   <xsl:template match="/v:vv">
     <xsl:attribute name="class">vv</xsl:attribute>
-    <xsl:call-template name="seitennavigation"/>
-    <p class="quelle">
-      <xsl:text>Quelle: </xsl:text>
-      <xsl:value-of select="v:kopf/v:quelle"/>
-      <xsl:text> (</xsl:text>
-      <a href="/vorlagen.html">Übersicht über alle Vorlagen</a>
-      <xsl:text>)</xsl:text>
-    </p>
+    <xsl:if test="//v:seite">
+      <xsl:call-template name="seitennavigation"/>
+    </xsl:if>
+    <xsl:if test="v:kopf/v:quelle">
+      <p class="quelle">
+        <xsl:text>Quelle: </xsl:text>
+        <xsl:value-of select="v:kopf/v:quelle"/>
+        <xsl:text> (</xsl:text>
+        <a href="/vorlagen.html">Übersicht über alle Vorlagen</a>
+        <xsl:text>)</xsl:text>
+      </p>
+    </xsl:if>
     <xsl:apply-templates select="v:titel | v:absatz | v:übersicht |
                                  v:sachgruppe | v:seite | v:trennlinie"/>
   </xsl:template>
