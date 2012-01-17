@@ -101,7 +101,6 @@ let $alt := collection()/v:dozentenliste/v:dozent[@xml:id]
 
 return
 <dozentenliste xmlns="http://histvv.uni-leipzig.de/ns/2007" xml:lang="de">
-  <universität>Leipzig</universität>
   {
     for $d in ( $alt | $neu )
     let $name := $d/v:name

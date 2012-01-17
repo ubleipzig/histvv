@@ -33,7 +33,8 @@
           <xsl:text>/</xsl:text>
           <xsl:value-of select="/v:vv/v:kopf/v:ende/v:jahr"/>
         </xsl:if>
-        <xsl:text> -- Universität Leipzig</xsl:text>
+        <xsl:text> -- Universität </xsl:text>
+        <xsl:value-of select="/v:vv/v:kopf/v:universität"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:text>Vorlesungsverzeichnisse</xsl:text>
@@ -126,9 +127,6 @@
       <p class="quelle">
         <xsl:text>Quelle: </xsl:text>
         <xsl:value-of select="v:kopf/v:quelle"/>
-        <xsl:text> (</xsl:text>
-        <a href="/vorlagen.html">Übersicht über alle Vorlagen</a>
-        <xsl:text>)</xsl:text>
       </p>
     </xsl:if>
     <xsl:apply-templates select="v:titel | v:absatz | v:übersicht |

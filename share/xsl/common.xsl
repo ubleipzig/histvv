@@ -37,7 +37,7 @@
             <a href="/" title="Historische Vorlesungsverzeichnisse">
               <strong>HistVV</strong>
             </a>
-            <h6>Historische Vorlesungsverzeichnisse der Universität Leipzig</h6>
+            <h6>Historische Vorlesungsverzeichnisse</h6>
           </div>
 
           <div id="content">
@@ -53,19 +53,7 @@
           <hr/>
 
           <div id="footer">
-            <p>
-              © 2008-2011
-              <a href="http://www.ub.uni-leipzig.de/">
-                Universitätsbibliothek Leipzig
-              </a>
-            </p>
-
-            <p class="dfg">
-              <a href="http://www.dfg.de/">
-                <img src="/img/dfg.png" alt="DFG"
-                     title="Gefördert durch die Deutsche Forschungsgemeinschaft"/>
-              </a>
-            </p>
+            <p>Powered by HistVV</p>
           </div>
         </div>
       </body>
@@ -106,12 +94,6 @@
           <xsl:attribute name="class">current</xsl:attribute>
         </xsl:if>
         <a href="/suche.html">Suche</a>
-      </li>
-      <li>
-        <xsl:if test="starts-with($histvv-url, '/doku/')">
-          <xsl:attribute name="class">current</xsl:attribute>
-        </xsl:if>
-        <a href="/doku/">Dokumentation</a>
       </li>
     </ul>
   </xsl:template>

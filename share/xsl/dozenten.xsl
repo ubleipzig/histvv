@@ -137,9 +137,13 @@
     </xsl:for-each>
     </div>
 
-    <p>Ein Übersicht über alle Leipziger Dozenten der Jahre 1814/15
-    bis 1914, die in der Datenbank mit Porträtbild erfasst sind,
-    findet sich in der <a href="/dozenten/galerie.html">Dozentengalerie</a>.</p>
+    <xsl:if test="$dozenten[v:bild]">
+      <p class="galerielink">
+        Ein Übersicht über alle Dozenten, die in der Datenbank mit
+        Porträtbild erfasst sind, findet sich in der
+        <a href="/dozenten/galerie.html">Dozentengalerie</a>.
+      </p>
+    </xsl:if>
 
   </xsl:template>
 
@@ -162,10 +166,9 @@
       </xsl:for-each>
     </ul>
 
-    <p>Diese Galerie zeigt alle Leipziger Dozenten der Jahre 1814/15
-    bis 1914, die in der Datenbank mit Porträtbild erfasst sind. Eine
-    Liste aller Dozenten gibt es <a href="/dozenten/">auf dieser
-    Seite</a>.</p>
+    <p>Diese Galerie zeigt alle Dozenten, die in der Datenbank mit
+    Porträtbild erfasst sind. Eine Liste aller Dozenten gibt es
+    <a href="/dozenten/">auf dieser Seite</a>.</p>
 
     <div class="galerie">
     <xsl:for-each select="$anfangsbuchstaben">
