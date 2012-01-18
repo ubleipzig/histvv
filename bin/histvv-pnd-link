@@ -275,8 +275,8 @@ sub load_beacon {
         if (/^#TARGET:\s+([^\s]+)/) {
             $url_template = $1;
         }
-        elsif (/^([0-9]{8}[0-9X])\s*$/) {
-            $pnd{$1}++;
+        elsif (/^([0-9]{8}[0-9X])\s*$/i) {
+            $pnd{uc($1)}++;
         }
     }
     close BEACON;
