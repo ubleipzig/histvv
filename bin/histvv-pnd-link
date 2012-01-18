@@ -272,7 +272,7 @@ sub load_beacon {
     open BEACON, $file;
     while (<BEACON>) {
         chomp;
-        if (/^#TARGET:\s+(.+)$/) {
+        if (/^#TARGET:\s+([^\s]+)/) {
             $url_template = $1;
         }
         elsif (/^([0-9]{8}[0-9X])\s*$/) {
