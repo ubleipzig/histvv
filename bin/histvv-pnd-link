@@ -18,7 +18,7 @@ my %opts = $cli->get_opts(
     'list|l'    => 0,
     'prepend|p' => 0,
     'offline'   => 0,
-    'out|o=s'   => undef,
+    'write|w'   => 0,
     'cache|c=s' => undef,
     'ttl|t=f'   => 24 * 60,
     'delay|D=i' => 20,
@@ -154,7 +154,7 @@ foreach my $dozent ($xc->findnodes('/v:dozentenliste/v:dozent[v:pnd]')) {
     }
 }
 
-if ($opts{list} || !$opts{out}) {
+if ($opts{list} || !$opts{write}) {
     binmode STDOUT, ":utf8";
     $cli->chatter("\nNew links:");
     foreach my $id (sort keys %dozenten) {
@@ -163,8 +163,8 @@ if ($opts{list} || !$opts{out}) {
     }
 }
 
-if ($opts{out}) {
-    open(my $fh, '>', $opts{out}) or die "Cannot open out file: $!\n";
+if ($opts{write}) {
+    open(my $fh, '>', $dozenten) or die "Cannot write to $dozenten: $!\n";
     print $fh $doc->toString(0);
     close $fh;
 }
@@ -344,13 +344,13 @@ file.
 
 List the new links to be added to  C<dozentenliste>.
 
+=item B<--write>, B<-w> file
+
+Write the modified C<dozentenliste> to disk.
+
 =item B<--prepend>, B<-p>
 
 Prepend new links to the list of already existing ones.
-
-=item B<--out>, B<-o> file
-
-File to write the modified C<dozentenliste> to.
 
 =item B<--cache>, B<-c> file
 
