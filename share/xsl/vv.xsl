@@ -43,8 +43,10 @@
   </xsl:template>
 
   <xsl:template name="scripts">
-    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-    <script type="text/javascript" src="/js/jquery.gvChart-1.0.1.min.js"></script>
+    <xsl:if test="/index">
+      <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+      <script type="text/javascript" src="/js/jquery.gvChart-1.0.1.min.js"></script>
+    </xsl:if>
     <script type="text/javascript" src="/js/vv.js"></script>
   </xsl:template>
 
