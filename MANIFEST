@@ -17,6 +17,8 @@ lib/Histvv/Db.pm
 lib/Histvv/Search.pm
 lib/Histvv/Util.pm
 MANIFEST
+META.yml
+META.json
 share/htdocs/css/experimental.css
 share/htdocs/css/gfx/bg-fieldset.png
 share/htdocs/css/gfx/favicon.png
