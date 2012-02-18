@@ -509,6 +509,9 @@
         <xsl:when test="starts-with(., 'http://www.uni-leipzig.de/unigeschichte/professorenkatalog')">
           <xsl:text>Professorenkatalog der Universität Leipzig</xsl:text>
         </xsl:when>
+        <xsl:when test="starts-with(., 'http://histvv.uni-leipzig.de/')">
+          <xsl:text>Lehrveranstaltungen an der Universität Leipzig</xsl:text>
+        </xsl:when>
         <xsl:when test="starts-with(., 'http://www.catalogus-professorum-halensis.de/')">
           <xsl:text>Hallenser Professorenkatalog</xsl:text>
         </xsl:when>
