@@ -15,6 +15,10 @@
     <xsl:value-of select="/h:html/h:head/h:title"/>
   </xsl:template>
 
+  <xsl:template name="scripts">
+    <xsl:apply-templates select="/h:html/h:head/h:script|/h:html/h:head/h:style"/>
+  </xsl:template>
+
   <xsl:template match="@*|node()">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
