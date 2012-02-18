@@ -2,9 +2,7 @@
 
 use Test::More tests => 1;
 
-use File::Spec;
-use File::Temp;
-
-BEGIN {
-	use_ok( 'Apache::Histvv' );
+TODO: {
+    local $TODO = 'setup Apache::Test';
+    use_ok( 'Apache::Histvv' );
 }
