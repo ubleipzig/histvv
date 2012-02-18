@@ -27,6 +27,13 @@
     <p><xsl:apply-templates/></p>
   </xsl:template>
 
+  <xsl:template match="v:anmerkung">
+    <span class="anmerkung">
+      <xsl:text> </xsl:text>
+      <span><xsl:apply-templates/></span>
+    </span>
+  </xsl:template>
+
   <xsl:template match="v:dozent[@ref]">
     <span class="dozent">
       <a href="../dozenten/{@ref}.html">

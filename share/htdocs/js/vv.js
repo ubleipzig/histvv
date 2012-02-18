@@ -20,4 +20,24 @@ $(document).ready(function(){
         left: 10
     });
 
+    // suppress native title tooltips when hovering over span.anmerkung
+    $('span.anmerkung').hover(
+        function() {
+            var v = $(this).parents('.veranstaltung');
+            v.attr('_title', v.attr('title'));
+            v.removeAttr('title');
+        },
+        function() {
+            var v = $(this).parents('.veranstaltung');
+            v.attr('title', v.attr('_title'));
+            v.removeAttr('_title');
+        }
+    );
+
+    $('span.anmerkung').tooltip({
+        bodyHandler: function() {
+            return $(this.getElementsByTagName('span')[0]).html();
+        }
+    });
+
 });

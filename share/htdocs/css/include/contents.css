@@ -274,6 +274,20 @@ del {
   border-bottom: 1px dotted;
 }
 
+span.anmerkung {
+  position: relative;
+  cursor: help;
+}
+
+span.anmerkung:before {
+  font-weight: bold;
+  content: '*';
+}
+
+span.anmerkung > span {
+  display: none;
+}
+
 span.ws:before {
   font-style: italic;
   content: ' - St ';
