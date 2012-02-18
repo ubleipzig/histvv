@@ -305,9 +305,6 @@ sub handler {
     $custom_xslfile = File::Spec->catfile( $sharedir, 'xsl', $custom_xslfile )
       if $custom_xslfile && $custom_xslfile !~ /^\//;
 
-    # setting default content type
-    $r->content_type('text/html');
-
     my %xsl_params = ( 'histvv-url' => "'" . $r->uri . "'" );
 
     (my $loc = $r->location) =~ s/\/$//;
@@ -469,9 +466,12 @@ sub handler {
     _set_expires($r);
 
     if ($r->args eq 'report=xml') {
-        $r->content_type('text/plain; charset=UTF-8');
+        $r->content_type('text/plain; charset=utf-8');
         print "$xml";
     } else {
+        $r->content_type('text/html; charset=utf-8')
+          if $r->content_type eq ''
+              || $r->content_type eq 'httpd/unix-directory';
         print $stylesheet->output_as_bytes($html);
     }
 
