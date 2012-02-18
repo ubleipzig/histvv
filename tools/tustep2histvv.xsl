@@ -64,13 +64,15 @@
       </kopf>
       <titel>
         <xsl:choose>
-          <xsl:when test="contains(vorlage, ', Zürich: ')">
-            <xsl:value-of select="substring-before(vorlage, ', Zürich: ')"/>
+          <xsl:when test="contains($semester, '/')">
+            <xsl:text>Winter</xsl:text>
           </xsl:when>
           <xsl:otherwise>
-            <xsl:value-of select="vorlage"/>
+            <xsl:text>Sommer</xsl:text>
           </xsl:otherwise>
         </xsl:choose>
+        <xsl:text>semester </xsl:text>
+        <xsl:value-of select="$semester"/>
       </titel>
       <xsl:apply-templates select="fakultät"/>
     </vv>
