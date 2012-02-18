@@ -46,4 +46,32 @@
     </div>
   </xsl:template>
 
+  <xsl:template match="h:div[@id='sidebar']/h:ul">
+    <ul>
+      <xsl:apply-templates/>
+    </ul>
+    <ul>
+      <xsl:for-each select="document('')//h:ul/h:li">
+        <li>
+          <xsl:if test="./h:a/@href = $histvv-url">
+            <xsl:attribute name="class">current</xsl:attribute>
+          </xsl:if>
+          <xsl:apply-templates/>
+        </li>
+      </xsl:for-each>
+    </ul>
+  </xsl:template>
+
+  <ul>
+    <li>
+      <a href="/benutzungshinweise.html">Benutzungshinweise</a>
+    </li>
+    <li>
+      <a href="/buchausgabe.html">Buchausgabe</a>
+    </li>
+    <li>
+      <a href="/impressum.html">Impressum</a>
+    </li>
+  </ul>
+
 </xsl:stylesheet>
