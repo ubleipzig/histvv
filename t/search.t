@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 9;
+use Test::More tests => 10;
 
 use XML::LibXML;
 
@@ -18,6 +18,7 @@ my $xml = <<EOF;
 <vv xmlns="$Histvv::XMLNS">
   <foo> foo <seite>2</seite>bar <xyz>baz</xyz></foo>
   <baz><scil text="quux">qux</scil></baz>
+  <absatz>foo<anmerkung>bar</anmerkung></absatz>
 </vv>
 EOF
 
@@ -39,7 +40,11 @@ is( Histvv::Search::strip_text($baz, 1),
 is( Histvv::Search::strip_text($baz, 2),
     '[quux]', "strip_text(\$node, 2) replaces 'scil'" );
 
+my ($absatz) = $doc->getElementsByLocalName('absatz');
+is( Histvv::Search::strip_text($absatz),
+    'foo [bar]', "strip_text() handles 'anmerkung'" );
+
+
 is($doc->toString(1), $xml, 'strip_text() keeps source intact');
 
 #diag($doc->toString());
-#diag($txt);

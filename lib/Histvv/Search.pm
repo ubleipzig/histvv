@@ -377,6 +377,11 @@ sub strip_text {
         }
     }
 
+    for my $a ( $new->getElementsByTagNameNS($Histvv::XMLNS, 'anmerkung') ) {
+        my $text = XML::LibXML::Text->new(" [" . $a->textContent . "]");
+        $a->replaceNode($text);
+    }
+
     if ($expand) {
         for my $scil ( $new->getElementsByTagNameNS( $Histvv::XMLNS, 'scil' ) )
         {
