@@ -5,7 +5,7 @@ usage="Usage: tustep2histvv.sh vorlesungen.xml [semester]"
 data=$1
 
 if [ -z "$data" ]; then
-    echo $usage
+    echo "$usage"
     exit 1
 fi
 
