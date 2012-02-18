@@ -40,4 +40,10 @@
     </div>
   </xsl:template>
 
+  <xsl:template match="h:div[@id='content' and @class='vv']">
+    <div id="content" class="vv zurich">
+      <xsl:apply-templates/>
+    </div>
+  </xsl:template>
+
 </xsl:stylesheet>

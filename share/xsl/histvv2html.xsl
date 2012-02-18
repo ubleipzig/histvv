@@ -230,6 +230,10 @@
     <span class="ws"><xsl:apply-templates/></span>
   </xsl:template>
 
+  <xsl:template match="v:nr | v:ort | v:zusatz">
+    <span class="{local-name()}"><xsl:apply-templates/></span>
+  </xsl:template>
+
   <xsl:template name="xml-id-to-html-id">
     <xsl:if test="@xml:id">
       <xsl:attribute name="id">

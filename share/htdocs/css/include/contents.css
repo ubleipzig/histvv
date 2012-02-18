@@ -308,6 +308,10 @@ span.anmerkung > span {
 
 span.ws:before {
   font-style: italic;
+  content: 'St ';
+}
+
+span.zeit + span.ws:before {
   content: ' - St ';
 }
 
@@ -371,6 +375,23 @@ div#content.vv hr {
 .sachgruppe > .veranstaltung:target {
   padding: 10px 8px;
   border-top: 10px solid white;
+}
+
+.vv.zurich p.veranstaltung .thema {
+  display: block;
+}
+
+.vv.zurich p.veranstaltung .zusatz {
+  display: block;
+  font-style: italic;
+}
+
+.vv.zurich p.veranstaltung .ort:before {
+  content: "(im ";
+}
+
+.vv.zurich p.veranstaltung .ort:after {
+  content: ")";
 }
 
 /* ======================== */
