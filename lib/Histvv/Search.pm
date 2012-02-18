@@ -258,7 +258,7 @@ sub annotate_doc {
             }
         }
 
-        my @thema = map strip_text( $_, 2 ), @themen;
+        my @thema = map strip_text( $_, 2, [qw/seite anmerkung/] ), @themen;
         my $thema = join ' … ', @thema;
         $va->setAttribute( 'x-thema', $thema );
 
@@ -344,26 +344,37 @@ sub normalize_chars {
 
   $txt = strip_text( $node );
   $txt = strip_text( $node, $expand );
+  $txt = strip_text( $node, $expand, $elems );
 
-Takes an XML::LibXML::Node, removes all elements named C<seite>, and
-returns the text content with normalized space.
+Takes an XML::LibXML::Node, by default, removes all elements named
+C<seite>, and returns the text content with normalized space.
 
-When $expand is set to C<1> the content of the C<text> attribute of
-C<scil> elements is inserted after the respective element. When
-$expand is set to a value greater than C<1> C<scil> elements will be
-replaced by the content of their respective C<text> attribute.
+When the second parameter $expand is set to C<1> the content of the
+C<text> attribute of C<scil> elements is inserted after the respective
+element. When $expand is set to a value greater than C<1> C<scil>
+elements will be replaced by the content of their respective C<text>
+attribute.
+
+Optionally, the names of elements to be removed from $node can be
+passed in an arrayref as the third parameter. If this is used C<seite>
+must explicitly be included for the element to be removed.
 
 =cut
 
 sub strip_text {
     my $node = shift;
     my $expand = shift || 0;
+    my $elems = shift;
 
     my $new = $node->cloneNode(1);
 
-    for my $s ( $new->getElementsByTagNameNS($Histvv::XMLNS, 'seite') ) {
-        my $p = $s->parentNode;
-        $p->removeChild( $s );
+    # remove elements
+    my @elems = $elems ? @$elems : qw/seite/;
+    for my $name (@elems) {
+        for my $e ( $new->getElementsByTagNameNS($Histvv::XMLNS, $name) ) {
+            my $p = $e->parentNode;
+            $p->removeChild($e);
+        }
     }
 
     if ($expand) {
@@ -395,7 +406,7 @@ Carsten Milling, C<< <cmil at hashtable.de> >>
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2009 Carsten Milling, all rights reserved.
+Copyright 2009-2012 Carsten Milling, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
