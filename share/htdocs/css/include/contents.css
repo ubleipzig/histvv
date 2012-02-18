@@ -288,6 +288,24 @@ span.anmerkung > span {
   display: none;
 }
 
+@media print {
+  span.anmerkung:before {
+    content: '';
+  }
+
+  span.anmerkung > span {
+    display: inline;
+  }
+
+  span.anmerkung > span:before {
+    content: "[";
+  }
+
+  span.anmerkung > span:after {
+    content: "]";
+  }
+}
+
 span.ws:before {
   font-style: italic;
   content: ' - St ';
