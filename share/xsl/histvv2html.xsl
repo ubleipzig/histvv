@@ -219,6 +219,10 @@
     </span>
   </xsl:template>
 
+  <xsl:template match="v:wochenstunden">
+    <span class="ws"><xsl:apply-templates/></span>
+  </xsl:template>
+
   <xsl:template name="xml-id-to-html-id">
     <xsl:if test="@xml:id">
       <xsl:attribute name="id">
