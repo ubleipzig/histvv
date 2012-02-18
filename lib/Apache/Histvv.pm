@@ -42,7 +42,7 @@ use Histvv::Db ();
 use Histvv::Search ();
 use Histvv::Util ();
 
-use Apache2::Const -compile => qw(:common);
+use Apache2::Const -compile => qw(:common :http);
 
 my $Xp = XML::LibXML->new();
 $Xp->no_network(1);
@@ -173,6 +173,33 @@ return
   }
   </stellen>
 </report>
+EOT
+
+    suchformular => <<'EOT',
+declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
+
+let $fakultaeten := distinct-values(collection()/v:vv//v:sachgruppe/@fakultät)
+
+return
+<formular>
+  {
+    for $vv in collection()/v:vv
+    let $name := concat($vv/@x-semester, "")
+    let $titel := concat($vv/v:kopf/v:beginn/v:jahr, " ", $vv/v:kopf/v:semester)
+    return
+    <semester>
+      <name>{$name}</name>
+      <titel>{$titel}</titel>
+    </semester>
+  }
+  <fakultäten>
+  {
+    for $f in $fakultaeten
+    return
+    <fakultät>{$f}</fakultät>
+  }
+  </fakultäten>
+</formular>
 EOT
 
     pnd => <<'EOT',
@@ -338,23 +365,29 @@ sub handler {
             return Apache2::Const::DECLINED;
         }
     } elsif ($loc eq '/suche') {
-        return Apache2::Const::DECLINED unless $url eq '/';
-        unless ($r->args) {
-            my $url = $r->construct_url('/suche.html');
-            $r->headers_out->set( Location => $url );
-            return Apache2::Const::REDIRECT;
-        }
-        my $rq = Apache2::Request->new($r);
-        $xquery = Histvv::Search::build_xquery(
-            text      => $rq->param('volltext')  || '',
-            dozent    => $rq->param('dozent')    || '',
-            fakultaet => join(" ", $rq->param('fakultaet')),
-            von       => $rq->param('von')       || '',
-            bis       => $rq->param('bis')       || '',
-            start     => $rq->param('start')     || 1,
-            interval  => $rq->param('l')         || 10,
+        return Apache2::Const::DECLINED
+          unless $url eq '/' || $url eq '/index.html';
+        if ( $r->args ) {
+            my $rq = Apache2::Request->new($r);
+            $xquery = Histvv::Search::build_xquery(
+                text   => $rq->param('volltext') || '',
+                dozent => $rq->param('dozent')   || '',
+                fakultaet => join( " ", $rq->param('fakultaet') ),
+                von      => $rq->param('von')   || '',
+                bis      => $rq->param('bis')   || '',
+                start    => $rq->param('start') || 1,
+                interval => $rq->param('l')     || 10,
 
-        );
+            );
+        }
+        else {
+            $xquery = $Queries{suchformular};
+        }
+    } elsif ($r->uri eq '/suche.html') {
+        # redirect old style search page
+        my $url = $r->construct_url('/suche/');
+        $r->headers_out->set( Location => $url );
+        return Apache2::Const::HTTP_MOVED_PERMANENTLY;
     } elsif ($loc eq '/pnd.txt') {
         $xquery = $Queries{dozenten};
         $xsl_params{'histvv-pnd-beacon-feed'} = "'" . $r->construct_url() . "'";

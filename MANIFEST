@@ -39,7 +39,6 @@ share/htdocs/js/jquery.dimensions.js
 share/htdocs/js/jquery.tooltip.js
 share/htdocs/js/vv.js
 share/htdocs/ns.xhtml
-share/htdocs/suche.html
 share/xsl/common.xsl
 share/xsl/custom/leipzig.xsl
 share/xsl/custom/zurich.xsl

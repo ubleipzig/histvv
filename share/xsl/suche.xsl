@@ -29,8 +29,15 @@
   </xsl:variable>
 
   <xsl:template name="content">
-    <xsl:attribute name="class">suchergebnis</xsl:attribute>
-    <xsl:apply-templates select="/report"/>
+    <xsl:choose>
+      <xsl:when test="/report/stellen">
+        <xsl:attribute name="class">suchergebnis</xsl:attribute>
+        <xsl:apply-templates select="/report"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates select="/formular"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="htmltitle">
@@ -42,6 +49,138 @@
         <xsl:text>Veranstaltungssuche</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="/formular">
+    <h1>Veranstaltungssuche</h1>
+
+    <form id="suchformular" class="suche" action="/suche/">
+      <p class="widget">
+        <label for="f-volltext">Volltext <a href="#hilfe-volltext">[i]</a></label>
+        <br/>
+        <input type="text" id="f-volltext" name="volltext" value=""/>
+      </p>
+
+      <p class="widget">
+        <label for="f-dozent">Dozent <a href="#hilfe-dozenten">[i]</a></label>
+        <br/>
+        <input type="text" id="f-dozent" name="dozent" value=""/>
+      </p>
+
+      <fieldset>
+        <legend>Semester <a href="#hilfe-semester">[i]</a></legend>
+        <span class="widget">
+          <label for="f-von">von</label>
+          <select name="von" id="f-von">
+            <xsl:for-each select=".//semester">
+              <option value="{name}">
+                <xsl:value-of select="titel"/>
+              </option>
+            </xsl:for-each>
+          </select>
+        </span>
+        <span class="widget">
+          <label for="f-bis">bis</label>
+          <select name="bis" id="f-bis">
+            <xsl:for-each select=".//semester">
+              <option value="{name}">
+                <xsl:if test="position() = last()">
+                  <xsl:attribute name="selected">selected</xsl:attribute>
+                </xsl:if>
+                <xsl:value-of select="titel"/>
+              </option>
+            </xsl:for-each>
+          </select>
+        </span>
+      </fieldset>
+
+      <fieldset id="fs-fakultaeten">
+        <legend>Fakultäten <a href="#hilfe-fakultaeten">[i]</a></legend>
+        <xsl:if test="fakultäten/fakultät[.='Theologie']">
+          <label class="widget">
+            <input name="fakultaet" type="checkbox" value="Theologie" />
+            Theologische Fakultät
+          </label>
+        </xsl:if>
+        <xsl:if test="fakultäten/fakultät[.='Philosophie']">
+          <label class="widget">
+            <input name="fakultaet" type="checkbox" value="Philosophie" />
+            Philosophische Fakultät
+          </label>
+        </xsl:if>
+        <xsl:if test="fakultäten/fakultät[.='Jura']">
+          <label class="widget">
+            <input name="fakultaet" type="checkbox" value="Jura" />
+            Juristische Fakultät
+          </label>
+        </xsl:if>
+        <xsl:if test="fakultäten/fakultät[.='Staatswissenschaften']">
+          <label class="widget">
+            <input name="fakultaet" type="checkbox" value="Staatswissenschaften" />
+            Staatwissenschaftliche Fakultät
+          </label>
+        </xsl:if>
+        <xsl:if test="fakultäten/fakultät[.='Medizin']">
+          <label class="widget">
+            <input name="fakultaet" type="checkbox" value="Medizin" />
+            Medizinische Fakultät
+          </label>
+        </xsl:if>
+        <xsl:if test="fakultäten/fakultät[.='Zahnmedizin']">
+          <label class="widget">
+            <input name="fakultaet" type="checkbox" value="Zahnmedizin" />
+            Zahnärztliche Schule
+          </label>
+        </xsl:if>
+      </fieldset>
+
+      <p class="buttonbar">
+        <input type="submit" value="Veranstaltungen suchen"/>
+        <br class="clear"/>
+      </p>
+    </form>
+
+    <div id="hilfe">
+      <h2>Hilfe</h2>
+
+      <div id="hilfe-volltext">
+        <h3>Volltext</h3>
+
+        <p>
+          Die Volltextsuche bezieht sich auf den gesamten Text
+          innerhalb von Veranstaltungen. Sie eignet sich sowohl für
+          die Suche nach Dozenten als auch Veranstaltungsthemen. Damit
+          werden auch noch nicht identifizierte Dozenten gefunden.
+        </p>
+      </div>
+
+      <div id="hilfe-semester">
+        <h3>Semester</h3>
+        <p>
+          Mit den Semesterangaben kann der Suchzeitraum eingeschränkt
+          werden. Es werden nur Veranstaltungen gefunden, die
+          innerhalb der angegebenen Zeitspanne angeboten wurden.
+        </p>
+      </div>
+
+      <div id="hilfe-dozenten">
+        <h3>Dozenten</h3>
+        <p>
+          Die Dozentensuche berücksichtigt den kompletten Text der
+          Dozentenelemente (inklusive Graden und Funktionen) und
+          findet Dozenten auch, wenn sie durch Angaben wie "Derselbe"
+          verzeichnet sind.
+        </p>
+      </div>
+
+      <div id="hilfe-fakultaeten">
+        <h3>Fakultäten</h3>
+        <p>
+          Hiermit kann die Suche auf einzelne oder mehrere Fakultäten
+          beschränkt werden.
+        </p>
+      </div>
+    </div>
   </xsl:template>
 
   <xsl:template match="/report[suche]">
