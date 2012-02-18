@@ -43,6 +43,8 @@
   </xsl:template>
 
   <xsl:template name="scripts">
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="/js/jquery.gvChart-1.0.1.min.js"></script>
     <script type="text/javascript" src="/js/vv.js"></script>
   </xsl:template>
 
@@ -51,22 +53,6 @@
     <ol class="toc">
       <xsl:apply-templates select="vv" mode="list"/>
     </ol>
-
-    <xsl:variable name="chart-data">
-      <xsl:for-each select="/index/vv">
-        <xsl:choose>
-          <xsl:when test="komplett">
-            <xsl:value-of select="number(vnum)"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:text>-1</xsl:text>
-          </xsl:otherwise>
-        </xsl:choose>
-        <xsl:if test="not(position() = last())">
-          <xsl:text>,</xsl:text>
-        </xsl:if>
-      </xsl:for-each>
-    </xsl:variable>
 
     <xsl:variable name="x" select="count(vv[komplett])"/>
     <xsl:variable name="n" select="count(vv)"/>
@@ -80,24 +66,43 @@
       </xsl:if>
     </xsl:variable>
 
-    <xsl:variable name="chart-url">
-      <xsl:text>http://chart.apis.google.com/chart?cht=bvs</xsl:text>
-      <xsl:text>&amp;chbh=2,1,2</xsl:text>
-      <xsl:text>&amp;chs=650x200</xsl:text>
-      <xsl:text>&amp;chco=7a6e3a</xsl:text>
-      <xsl:text>&amp;chds=0,700</xsl:text>
-      <xsl:text>&amp;chxt=x,y</xsl:text>
-      <xsl:text>&amp;chxr=0,0,201</xsl:text>
-      <xsl:text>&amp;chxp=0,0,12,32,52,72,92,112,132,152,172,192</xsl:text>
-      <xsl:text>&amp;chxl=</xsl:text>
-      <xsl:text>0:|1814|1820|1830|1840|1850|1860|1870|1880|1890|1900|1910|</xsl:text>
-      <xsl:text>1:||100|200|300|400|500|600|700|800</xsl:text>
-      <xsl:text>&amp;chd=t:</xsl:text>
-      <xsl:value-of select="$chart-data"/>
-    </xsl:variable>
+    <table id="numvv" style="display: none">
+      <caption>Veranstaltungen pro Semester <xsl:value-of select="$cnt"/></caption>
+      <thead>
+        <tr>
+          <th></th>
+          <xsl:for-each select="vv">
+            <th><xsl:value-of select="@name"/></th>
+          </xsl:for-each>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Gesamt</th>
+          <xsl:for-each select="vv">
+            <td><xsl:value-of select="vnum"/></td>
+          </xsl:for-each>
+        </tr>
+      </tbody>
+    </table>
 
-    <img alt="Diagramm" title="Anzahl der Veranstaltungen pro Semester {$cnt}"
-         src="{$chart-url}"/>
+    <script type="text/javascript">
+      gvChartInit();
+      jQuery(document).ready(function(){
+        jQuery('#numvv').gvChart({
+          chartType: 'ColumnChart',
+          gvSettings: {
+            chartArea: {left: 50, top: 50},
+            colors: ['7a6e3a', 'green', 'orange'],
+            titleTextStyle: {color: '41524a', fontName: 'Verdana'},
+            fontSize: 12,
+            legend: {position: 'none'},
+            width: 750,
+            height: 300
+          }
+        });
+      });
+    </script>
   </xsl:template>
 
   <xsl:template match="/index/vv" mode="list">
