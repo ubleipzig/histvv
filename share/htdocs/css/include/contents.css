@@ -584,3 +584,20 @@ div#hilfe {
 #tooltip h3, #tooltip div {
   margin: 0;
 }
+
+/* Chart style */
+
+#vvchart {
+  overflow: hidden;
+  margin-top: 3em;
+  font-size: 90%;
+}
+
+#vvchart .title {
+  color: #41524a;
+  font-size: small;
+}
+
+#vvchart .bar {
+  color: #7a6e3a;
+}

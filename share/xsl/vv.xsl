@@ -45,7 +45,6 @@
   <xsl:template name="scripts">
     <xsl:if test="/index">
       <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-      <script type="text/javascript" src="/js/jquery.gvChart-1.0.1.min.js"></script>
     </xsl:if>
     <script type="text/javascript" src="/js/vv.js"></script>
   </xsl:template>
@@ -55,56 +54,6 @@
     <ol class="toc">
       <xsl:apply-templates select="vv" mode="list"/>
     </ol>
-
-    <xsl:variable name="x" select="count(vv[komplett])"/>
-    <xsl:variable name="n" select="count(vv)"/>
-    <xsl:variable name="cnt">
-      <xsl:if test="$n > $x">
-        <xsl:text> (</xsl:text>
-        <xsl:value-of select="$x"/>
-        <xsl:text> von </xsl:text>
-        <xsl:value-of select="$n"/>
-        <xsl:text> Semestern)</xsl:text>
-      </xsl:if>
-    </xsl:variable>
-
-    <table id="numvv" style="display: none">
-      <caption>Veranstaltungen pro Semester <xsl:value-of select="$cnt"/></caption>
-      <thead>
-        <tr>
-          <th></th>
-          <xsl:for-each select="vv">
-            <th><xsl:value-of select="@name"/></th>
-          </xsl:for-each>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>Gesamt</th>
-          <xsl:for-each select="vv">
-            <td><xsl:value-of select="vnum"/></td>
-          </xsl:for-each>
-        </tr>
-      </tbody>
-    </table>
-
-    <script type="text/javascript">
-      gvChartInit();
-      jQuery(document).ready(function(){
-        jQuery('#numvv').gvChart({
-          chartType: 'ColumnChart',
-          gvSettings: {
-            chartArea: {left: 50, top: 50},
-            colors: ['7a6e3a', 'green', 'orange'],
-            titleTextStyle: {color: '41524a', fontName: 'Verdana'},
-            fontSize: 12,
-            legend: {position: 'none'},
-            width: 750,
-            height: 300
-          }
-        });
-      });
-    </script>
   </xsl:template>
 
   <xsl:template match="/index/vv" mode="list">
@@ -117,11 +66,11 @@
         <xsl:value-of select="titel"/>
       </a>
       <xsl:text> </xsl:text>
-      <small>
+      <span>
         <xsl:text>(</xsl:text>
         <xsl:value-of select="vnum"/>
         <xsl:text>)</xsl:text>
-      </small>
+      </span>
     </li>
   </xsl:template>
 

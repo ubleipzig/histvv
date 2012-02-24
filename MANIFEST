@@ -36,7 +36,6 @@ share/htdocs/img/dfg.png
 share/htdocs/index.html
 share/htdocs/js/form.js
 share/htdocs/js/jquery-1.4.4.min.js
-share/htdocs/js/jquery.gvChart-1.0.1.min.js
 share/htdocs/js/jquery.dimensions.js
 share/htdocs/js/jquery.tooltip.js
 share/htdocs/js/vv.js
