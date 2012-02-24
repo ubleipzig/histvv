@@ -84,8 +84,6 @@ Number of results to return.
 my $sem_min = '1814w';
 my $sem_max = '1914s';
 
-my @faculties = qw/Theologie Jura Medizin Philosophie/;
-
 sub build_xquery {
     my %args = @_;
 
@@ -133,7 +131,7 @@ sub build_xquery {
 
     my @fac;
     foreach my $fac (split /\s+/, $args{fakultaet} || '') {
-        push @fac, $fac if grep { $fac eq $_ } @faculties;
+        push @fac, $fac if $fac =~ /^\w+$/;
     }
     #my $fac_predicate = join ' or ', map { "\@fakult\x{00e4}t='$_'" } @fac;
     my $fac_predicate = join ' or ', map { "\@fakultät='$_'" } @fac;
