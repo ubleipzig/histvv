@@ -110,13 +110,13 @@ sub ACTION_versionbump {
     my $rx = qr{
         ^=head1 \s+ VERSION
         \n\n+
-        Version \s+ ([.0-9]+)
+        Version \s+ ([._0-9]+)
         \n\n+
         =cut
         \n\n+
         our
         \s+
-        \$VERSION \s+ = \s+ '([.0-9]+)';
+        \$VERSION \s+ = \s+ '([._0-9]+)';
         \n\n+
     }mx;
 
