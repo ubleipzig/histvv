@@ -35,6 +35,8 @@ for s in $semesters; do
     xsltproc --stringparam semester $s $xsl $data > $file
 done
 
+perl -pi -e 's/(vide p. [0-9]+) \[s\. Nr\. ([0-9]+)f+\.\]/<siehe ref="v-$2">$1<\/siehe>/' $files
+
 xmltool indent -v -s $path/../histvv.rng $files
 for f in $files; do
     rm -v $f.BAK
