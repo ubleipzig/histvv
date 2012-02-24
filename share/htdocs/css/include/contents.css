@@ -80,22 +80,6 @@ abbr, acronym {
 
 /* ======================== */
 
-#content.home form.suche {
-  float: right;
-  width: 25em;
-}
-
-#content.home img.ws1814 {
-  filter:alpha(opacity=20); /* IE */
-  -moz-opacity:0.2; /* Gecko-Browser */
-  opacity:0.2; /* Opera 9+ */
-  float: right;
-  margin-right: -50px;
-  clear: right;
-}
-
-/* ======================== */
-
 #content.vv h1 {
   text-align: center;
 }
@@ -184,7 +168,6 @@ ul.nav li a {
   width: 160px;
   height: 160px;
   padding-right: 5px;
-  border: 0px solid orange;
   font-size: 90%;
 }
 
