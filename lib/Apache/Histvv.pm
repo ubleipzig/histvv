@@ -475,7 +475,10 @@ sub handler {
         print $stylesheet->output_as_bytes($html);
     }
 
-    if ( $ENV{HISTVV_DEBUG} && $r->content_type eq 'text/html' ) {
+    if (   $ENV{HISTVV_DEBUG}
+        && $r->content_type =~
+        /^(text\/html|text\/xml|application\/xhtml\+xml)/ )
+    {
         print "\n\n";
         print "<!--\n";
         print "URI: " . $r->uri . "\n";
