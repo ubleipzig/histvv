@@ -115,24 +115,26 @@
       <xsl:variable name="a" select="."/>
       <xsl:variable name="d" select="$dozenten[starts-with(v:name/v:nachname, $a)]"/>
       <xsl:if test="$d">
-        <h3 id="{$a}"><xsl:value-of select="$a"/></h3>
-        <ul>
-          <xsl:for-each select="$d">
-            <li>
-              <a href="{@xml:id}.html">
-                <xsl:apply-templates select="v:name" mode="kurz"/>
-              </a>
-              <xsl:if test="v:geboren/v:jahr or v:gestorben/v:jahr">
-                <xsl:text> (</xsl:text>
-                <xsl:value-of select="v:geboren/v:jahr"/>
-                <xsl:text>-</xsl:text>
-                <xsl:value-of select="v:gestorben/v:jahr"/>
-                <xsl:text>) </xsl:text>
-              </xsl:if>
-              <xsl:variable name="id" select="@xml:id"/>
-            </li>
-          </xsl:for-each>
-        </ul>
+        <div>
+          <h3 id="{$a}"><xsl:value-of select="$a"/></h3>
+          <ul>
+            <xsl:for-each select="$d">
+              <li>
+                <a href="{@xml:id}.html">
+                  <xsl:apply-templates select="v:name" mode="kurz"/>
+                </a>
+                <xsl:if test="v:geboren/v:jahr or v:gestorben/v:jahr">
+                  <xsl:text> (</xsl:text>
+                  <xsl:value-of select="v:geboren/v:jahr"/>
+                  <xsl:text>-</xsl:text>
+                  <xsl:value-of select="v:gestorben/v:jahr"/>
+                  <xsl:text>) </xsl:text>
+                </xsl:if>
+                <xsl:variable name="id" select="@xml:id"/>
+              </li>
+            </xsl:for-each>
+          </ul>
+        </div>
       </xsl:if>
     </xsl:for-each>
     </div>

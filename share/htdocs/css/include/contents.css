@@ -130,6 +130,13 @@ div.toc {
   column-gap: 3;
 }
 
+div.toc > div {
+  /* no -moz-break-inside yet */
+  /* see https://bugzilla.mozilla.org/show_bug.cgi?id=549114 */
+  -webkit-column-break-inside: avoid;
+  break-inside: avoid;
+}
+
 ul.nav {
   list-style-type: none;
   margin: 0;
