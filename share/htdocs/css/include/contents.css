@@ -168,6 +168,7 @@ ul.nav li a {
   font-size: 24px;
   color: #41524a;
   margin: 0 0 .3em;
+  line-height: 1em;
 }
 
 .dozentenliste ul {
