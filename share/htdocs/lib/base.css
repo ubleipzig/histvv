@@ -385,23 +385,6 @@ div#content.vv hr {
   border-top: 10px solid white;
 }
 
-.vv.zurich p.veranstaltung .thema {
-  display: block;
-}
-
-.vv.zurich p.veranstaltung .zusatz {
-  display: block;
-  font-style: italic;
-}
-
-.vv.zurich p.veranstaltung .ort:before {
-  content: "(im ";
-}
-
-.vv.zurich p.veranstaltung .ort:after {
-  content: ")";
-}
-
 /* ======================== */
 
 #content.dozent div.portrait {
