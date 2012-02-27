@@ -9,11 +9,11 @@ Apache::Histvv - the Histvv Apache handler
 
 =head1 VERSION
 
-Version 0.09
+Version 0.10
 
 =cut
 
-use version; our $VERSION = qv('0.09');
+use version; our $VERSION = qv('0.10');
 
 =head1 SYNOPSIS
 
