@@ -21,7 +21,6 @@ META.yml
 META.json
 share/htdocs/img/dfg.png
 share/htdocs/index.html
-share/htdocs/lib/experimental.css
 share/htdocs/lib/form.js
 share/htdocs/lib/gfx/bg-fieldset.png
 share/htdocs/lib/gfx/favicon.png

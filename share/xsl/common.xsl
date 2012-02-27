@@ -22,7 +22,6 @@
         <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8"/>
         <link rel="icon" href="/lib/gfx/favicon.png" type="image/png"/>
         <link rel="stylesheet" href="/lib/histvv.css" type="text/css" title="Histvv"/>
-        <link rel="alternative stylesheet" href="/lib/experimental.css" type="text/css" title="Experimental"/>
         <link rel="alternative stylesheet" href="/lib/structure.css" type="text/css" title="Structure"/>
         <script type="text/javascript" src="/lib/jquery-1.4.4.min.js"></script>
         <script type="text/javascript" src="/lib/jquery.dimensions.js"></script>
