@@ -21,6 +21,7 @@ META.yml
 META.json
 share/htdocs/img/dfg.png
 share/htdocs/index.html
+share/htdocs/lib/base.css
 share/htdocs/lib/form.js
 share/htdocs/lib/gfx/bg-fieldset.png
 share/htdocs/lib/gfx/favicon.png
@@ -31,8 +32,6 @@ share/htdocs/lib/gfx/logo.png
 share/htdocs/lib/gfx/logo_beta.gif
 share/htdocs/lib/gfx/sidebar.png
 share/htdocs/lib/histvv.css
-share/htdocs/lib/include/contents.css
-share/htdocs/lib/include/layout.css
 share/htdocs/lib/jquery-1.4.4.min.js
 share/htdocs/lib/jquery.dimensions.js
 share/htdocs/lib/jquery.tooltip.js

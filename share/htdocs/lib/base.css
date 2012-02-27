@@ -529,7 +529,7 @@ form.suche p.widget {
 
 form.suche fieldset {
   padding: 10px;
-  background-image: url("../gfx/bg-fieldset.png");
+  background-image: url("gfx/bg-fieldset.png");
   background-repeat: repeat-x;
 }
 

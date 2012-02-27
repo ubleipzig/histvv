@@ -1,2 +1,156 @@
-@import "include/layout.css";
-@import "include/contents.css";
+html {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  width: 900px;
+  margin: 20px;
+  padding: 0px;
+}
+
+body  hr {
+  display: none;
+}
+
+body > div {
+  width: 880px;
+  background-color: #fff;
+  background-image: url("gfx/sidebar.png");
+  background-repeat: repeat-y;
+}
+
+#header {
+  width: 166px;
+  height: 169px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: block;
+}
+
+#header a {
+  display: block;
+  height: 169px;
+  width: 166px;
+  background-image: url("gfx/logo.png");
+  background-repeat: no-repeat;
+}
+
+#header a strong {
+  display: none;
+}
+
+#header h6 {
+  display: block;
+  position: absolute;
+  left: 196px;
+  top: 48px;
+  width: 676px;
+  padding: 4px;
+  margin: 0;
+  color: #fff;
+  background-color: #adaa95;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+#content, #footer {
+  width: 684px;
+  margin-left: 196px;
+}
+
+#content {
+  background-image: url("gfx/header.gif");
+  background-repeat: no-repeat;
+  background-position: top right;
+  padding-top: 95px;
+  min-height: 300px;
+}
+
+#footer {
+  margin-top: 20px;
+  padding-top: 5px;
+  border-top: 1px solid #41524a;
+  font-size: 11px;
+  clear: both;
+  position: relative;
+}
+
+#footer p {
+  margin: 0;
+}
+
+#footer p.dfg {
+  position: absolute;
+  bottom: 2px;
+  left: -190px;
+}
+
+#footer p.dfg img {
+  border: 0;
+}
+
+#sidebar {
+  position: absolute;
+  left: 20px;
+  top: 189px;
+  width: 166px;
+  margin-top: 20px;
+  background-color: #ddddbb;
+}
+
+#sidebar ul {
+  list-style: none;
+  background-color: #ddddbb;
+  padding: 0px;
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+#sidebar ul li {
+  font-size: 12px;
+  line-height: 12px;
+}
+
+#sidebar ul li.current {
+  background-color: #8c8a6d;
+}
+
+#sidebar ul a {
+  display: block;
+  padding: 3px 3%;
+  width: 94%;
+  color: #41524a;
+  text-decoration: none;
+}
+
+#sidebar ul a:hover {
+  color: #a18836;
+}
+
+#sidebar ul li.current a,
+#sidebar ul li.current a:hover {
+  color: #ddddbb;
+}
+
+@media print {
+
+  div#header, div#sidebar, div#footer, ul#seitennavigation {
+    display: none;
+  }
+
+  body {
+    width: auto;
+    margin: 1cm;
+  }
+
+  #content {
+    width: auto;
+    float: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+}
