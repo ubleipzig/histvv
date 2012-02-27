@@ -16,7 +16,7 @@ Version 0.09
 
 =cut
 
-our $VERSION = '0.09';
+use version; our $VERSION = qv('0.09');
 
 =head1 SYNOPSIS
 

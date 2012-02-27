@@ -13,7 +13,7 @@ Version 0.09
 
 =cut
 
-our $VERSION = '0.09';
+use version; our $VERSION = qv('0.09');
 
 =head1 SYNOPSIS
 
@@ -86,7 +86,7 @@ specified in the following way:
 
   =cut
 
-  our $VERSION = '0.01';
+  use version; our $VERSION = qv('0.01');
 
 NOTE: This action modifies the actual source files and is for
 developers only. Therefore it is aborted unless it is run in a git or
@@ -114,14 +114,16 @@ sub ACTION_versionbump {
         \n\n+
         =cut
         \n\n+
+        use \s+ version;
+        \s+
         our
         \s+
-        \$VERSION \s+ = \s+ '([._0-9]+)';
+        \$VERSION \s+ = \s+ qv\('([._0-9]+)'\);
         \n\n+
     }mx;
 
     my $new = "=head1 VERSION\n\nVersion $v\n\n"
-            . "=cut\n\nour \$VERSION = '$v';\n\n";
+            . "=cut\n\nuse version; our \$VERSION = qv('$v');\n\n";
 
     foreach my $file (sort keys %{ $self->find_pm_files }) {
         my $code = '';
