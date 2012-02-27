@@ -373,8 +373,7 @@ sub handler {
                 von      => $rq->param('von')   || '',
                 bis      => $rq->param('bis')   || '',
                 start    => $rq->param('start') || 1,
-                interval => $rq->param('l')     || 10,
-
+                interval => $rq->param('l')     || 50
             );
         }
         else {
