@@ -20,14 +20,14 @@
     <html lang="de">
       <head>
         <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8"/>
-        <link rel="icon" href="/css/gfx/favicon.png" type="image/png"/>
-        <link rel="stylesheet" href="/css/histvv.css" type="text/css" title="Histvv"/>    
-        <link rel="alternative stylesheet" href="/css/experimental.css" type="text/css" title="Experimental"/>    
-        <link rel="alternative stylesheet" href="/css/structure.css" type="text/css" title="Structure"/>    
-        <script type="text/javascript" src="/js/jquery-1.4.4.min.js"></script>
-        <script type="text/javascript" src="/js/jquery.dimensions.js"></script>
-        <script type="text/javascript" src="/js/jquery.tooltip.js"></script>
-        <script type="text/javascript" src="/js/form.js"></script>
+        <link rel="icon" href="/lib/gfx/favicon.png" type="image/png"/>
+        <link rel="stylesheet" href="/lib/histvv.css" type="text/css" title="Histvv"/>
+        <link rel="alternative stylesheet" href="/lib/experimental.css" type="text/css" title="Experimental"/>
+        <link rel="alternative stylesheet" href="/lib/structure.css" type="text/css" title="Structure"/>
+        <script type="text/javascript" src="/lib/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="/lib/jquery.dimensions.js"></script>
+        <script type="text/javascript" src="/lib/jquery.tooltip.js"></script>
+        <script type="text/javascript" src="/lib/form.js"></script>
         <xsl:call-template name="scripts"/>
         <title><xsl:call-template name="htmltitle"/> [HistVV]</title>
       </head>
