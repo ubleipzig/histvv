@@ -497,7 +497,7 @@ sub handler {
 
 sub _set_expires {
     my $r = shift;
-    if ( $ENV{HISTVV_EXPIRES} =~ /^[0-9]+$/ ) {
+    if ( $ENV{HISTVV_EXPIRES} && $ENV{HISTVV_EXPIRES} =~ /^[0-9]+$/ ) {
         $r->headers_out->add( 'Expires' =>
               Apache2::Util::ht_time( $r->pool, time + $ENV{HISTVV_EXPIRES} ) );
     }
