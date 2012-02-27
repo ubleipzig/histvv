@@ -151,14 +151,12 @@ ul.nav li {
   padding: 0;
   display: table-cell;
   border: 1px solid #000;
-  width: 1.5em;
   text-align: center;
   background-color: #ddb;
 }
 
 ul.nav li a {
   display: block;
-  width: 1.5em;
   padding: 2px;
 }
 
