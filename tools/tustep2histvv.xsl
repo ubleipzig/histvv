@@ -328,7 +328,7 @@
 
   <xsl:template match="root/dozent/gagl">
     <absatz xmlns="http://histvv.uni-leipzig.de/ns/2007">
-      <xsl:text>GAGL: </xsl:text>
+      <xsl:text>UZV: </xsl:text>
       <xsl:value-of select="."/>
     </absatz>
   </xsl:template>
