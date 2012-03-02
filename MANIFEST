@@ -9,8 +9,8 @@ Build.PL
 Changes
 histvv.rnc
 histvv.rng
-lib/Apache/Histvv.pm
 lib/Histvv.pm
+lib/Histvv/Apache.pm
 lib/Histvv/Build.pm
 lib/Histvv/CLI.pm
 lib/Histvv/Db.pm
