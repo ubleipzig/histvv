@@ -297,6 +297,8 @@
           <xsl:sort data-type="number" order="descending"
              select="(9 * number(starts-with(., 'http://de.wikipedia.org')))
                    + (8 * number(starts-with(., 'http://en.wikipedia.org')))
+                   + (7 * number(starts-with(., 'http://histvv.uni-leipzig.de/')))
+                   + (7 * number(starts-with(., 'http://histvv.uzh.ch/')))
                    + (7 * number(starts-with(., 'http://www.uni-leipzig.de/unigeschichte/professorenkatalog/')))
                    + (6 * number(starts-with(., 'http://catalogus-professorum-halensis.de/')))
                    + (5 * number(starts-with(., 'http://cpr.uni-rostock.de/')))
@@ -513,6 +515,9 @@
         </xsl:when>
         <xsl:when test="starts-with(., 'http://histvv.uni-leipzig.de/')">
           <xsl:text>Lehrveranstaltungen an der Universität Leipzig</xsl:text>
+        </xsl:when>
+        <xsl:when test="starts-with(., 'http://histvv.uzh.ch/')">
+          <xsl:text>Lehrveranstaltungen an der Universität Zürich</xsl:text>
         </xsl:when>
         <xsl:when test="starts-with(., 'http://www.catalogus-professorum-halensis.de/')">
           <xsl:text>Hallenser Professorenkatalog</xsl:text>
