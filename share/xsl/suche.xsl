@@ -149,8 +149,7 @@
         <p>
           Die Volltextsuche bezieht sich auf den gesamten Text
           innerhalb von Veranstaltungen. Sie eignet sich sowohl für
-          die Suche nach Dozenten als auch Veranstaltungsthemen. Damit
-          werden auch noch nicht identifizierte Dozenten gefunden.
+          die Suche nach Dozenten als auch Veranstaltungsthemen.
         </p>
       </div>
 
@@ -167,9 +166,7 @@
         <h3>Dozenten</h3>
         <p>
           Die Dozentensuche berücksichtigt den kompletten Text der
-          Dozentenelemente (inklusive Graden und Funktionen) und
-          findet Dozenten auch, wenn sie durch Angaben wie "Derselbe"
-          verzeichnet sind.
+          Dozentenelemente (inklusive Graden und Funktionen).
         </p>
       </div>
 
