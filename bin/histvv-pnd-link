@@ -266,10 +266,11 @@ sub load_beacon {
         );
         $file = $tmp->filename;
         $cli->debug("Saving data to $file");
-        print $tmp $r->content;
+        print $tmp  $r->content or die "Cannot write to $tmp: $!\n";
+        $tmp->close;
     }
 
-    open BEACON, $file;
+    open BEACON, $file or die "Cannot open $file: $!\n";
     while (<BEACON>) {
         chomp;
         if (/^#TARGET:\s+([^\s]+)/) {
