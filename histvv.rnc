@@ -729,6 +729,7 @@ beacon =
     & element institution { text }?
     & element message { text }?
     & element description { text }?
+    & element name { text }?
   }
 
 ## Container für OCR-Text

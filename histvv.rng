@@ -1246,6 +1246,9 @@
         <optional>
           <element name="description"><text/></element>
         </optional>
+        <optional>
+          <element name="name"><text/></element>
+        </optional>
       </interleave>
     </element>
   </define>
