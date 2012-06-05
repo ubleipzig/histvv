@@ -1041,7 +1041,7 @@
       <ref name="universität"/>
       <interleave>
         <optional>
-          <ref name="pnd-beacon"/>
+          <ref name="beacon"/>
         </optional>
         <oneOrMore>
           <ref name="dozentendaten"/>
@@ -1227,10 +1227,12 @@
     </optional>
   </define>
 
-  <define name="pnd-beacon">
-    <a:documentation>PND-BEACON Metadaten</a:documentation>
-    <!-- siehe http://de.wikipedia.org/wiki/Benutzer:APPER/BEACON/Format  -->
-    <element name="pnd-beacon">
+  <define name="beacon">
+    <a:documentation>
+      BEACON Metadaten,
+      siehe http://de.wikipedia.org/wiki/Wikipedia:BEACON/Format
+    </a:documentation>
+    <element name="beacon">
       <interleave>
         <optional>
           <element name="contact"><text/></element>

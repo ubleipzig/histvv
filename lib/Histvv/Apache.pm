@@ -386,8 +386,8 @@ sub handler {
         return Apache2::Const::HTTP_MOVED_PERMANENTLY;
     } elsif ($loc eq '/pnd.txt') {
         $xquery = $Queries{dozenten};
-        $xsl_params{'histvv-pnd-beacon-feed'} = "'" . $r->construct_url() . "'";
-        $xsl_params{'histvv-pnd-beacon-target'} =
+        $xsl_params{'histvv-beacon-feed'} = "'" . $r->construct_url() . "'";
+        $xsl_params{'histvv-beacon-target'} =
           "'" . $r->construct_url("/pnd/{ID}") . "'";
         $r->content_type("text/plain; charset=utf-8");
     } elsif ($r->uri =~ /^\/pnd\/([0-9]{8,9}[0-9X])$/) {

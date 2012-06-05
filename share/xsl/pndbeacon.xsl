@@ -8,29 +8,29 @@
 
   <xsl:output method="text" encoding="utf-8" />
 
-  <xsl:param name="histvv-pnd-beacon-target"/>
-  <xsl:param name="histvv-pnd-beacon-feed"/>
-  <xsl:param name="histvv-pnd-beacon-timestamp"/>
+  <xsl:param name="histvv-beacon-target"/>
+  <xsl:param name="histvv-beacon-feed"/>
+  <xsl:param name="histvv-beacon-timestamp"/>
 
   <xsl:template match="/">
-    <xsl:text>#FORMAT: PND-BEACON</xsl:text>
+    <xsl:text>#FORMAT: BEACON</xsl:text>
     <xsl:text>&#xA;</xsl:text>
     <xsl:text>#PREFIX: http://d-nb.info/gnd/</xsl:text>
     <xsl:text>&#xA;</xsl:text>
-    <xsl:if test="$histvv-pnd-beacon-target">
+    <xsl:if test="$histvv-beacon-target">
       <xsl:text>#TARGET: </xsl:text>
-      <xsl:value-of select="$histvv-pnd-beacon-target"/>
+      <xsl:value-of select="$histvv-beacon-target"/>
       <xsl:text>&#xA;</xsl:text>
     </xsl:if>
-    <xsl:if test="$histvv-pnd-beacon-feed">
+    <xsl:if test="$histvv-beacon-feed">
       <xsl:text>#FEED: </xsl:text>
-      <xsl:value-of select="$histvv-pnd-beacon-feed"/>
+      <xsl:value-of select="$histvv-beacon-feed"/>
       <xsl:text>&#xA;</xsl:text>
     </xsl:if>
     <xsl:text>#COUNT: </xsl:text>
     <xsl:value-of select="count(/v:dozentenliste/v:dozent[v:pnd])"/>
     <xsl:text>&#xA;</xsl:text>
-    <xsl:for-each select="/v:dozentenliste/v:pnd-beacon/v:*">
+    <xsl:for-each select="/v:dozentenliste/v:beacon/v:*">
       <xsl:text>#</xsl:text>
       <xsl:value-of select="translate(local-name(),
                                       'abcdefghijklmnopqrstuvwxyz',

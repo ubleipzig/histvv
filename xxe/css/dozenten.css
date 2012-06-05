@@ -3,7 +3,7 @@ dozent, name, geboren, gestorben,
 pnd, adb, ndb, beruf,
 absatz, url, quelle, anmerkungen,
 bild, bild > quelle,
-pnd-beacon, pnd-beacon > * {
+beacon, beacon > * {
   display: block;
 }
 
@@ -202,19 +202,19 @@ dozent > bild > quelle:after {
   content: " (" attr(url) ")";
 }
 
-pnd-beacon {
+beacon {
   margin: 0 0 1em 0;
   collapsible: yes;
 }
 
-pnd-beacon:before {
+beacon:before {
   display: block;
-  content: collapser() " PND-Beacon Metadaten";
+  content: collapser() " BEACON Metadaten";
   font-weight: bold;
   margin: 2em 0 .2em;
 }
 
-pnd-beacon > *:before {
+beacon > *:before {
   display: inline;
   content: element-label() ": ";
 }

@@ -4,7 +4,7 @@ dozentenliste, dozent  {
 
 dozentenliste > universit\0000E4t,
 dozentenliste > dozent > *,
-pnd-beacon,
+beacon,
 *::comment {
   display: none;
 }
