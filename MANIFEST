@@ -12,6 +12,7 @@ histvv.rnc
 histvv.rng
 lib/Histvv.pm
 lib/Histvv/Apache.pm
+lib/Histvv/Apache/GNDLink.pm
 lib/Histvv/Build.pm
 lib/Histvv/CLI.pm
 lib/Histvv/Db.pm
