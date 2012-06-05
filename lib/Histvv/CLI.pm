@@ -12,11 +12,11 @@ Histvv::CLI - Commandline interface for Histvv tools
 
 =head1 VERSION
 
-Version 0.10
+Version 0.11
 
 =cut
 
-use version; our $VERSION = qv('0.10');
+use version; our $VERSION = qv('0.11');
 
 =head1 SYNOPSIS
 
