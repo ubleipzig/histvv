@@ -34,6 +34,7 @@ share/htdocs/lib/gfx/logo.gif
 share/htdocs/lib/gfx/logo.png
 share/htdocs/lib/gfx/logo_beta.gif
 share/htdocs/lib/gfx/sidebar.png
+share/htdocs/lib/gndlink.js
 share/htdocs/lib/histvv.css
 share/htdocs/lib/jquery-1.4.4.min.js
 share/htdocs/lib/jquery.dimensions.js

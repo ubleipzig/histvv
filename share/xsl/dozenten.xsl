@@ -69,6 +69,12 @@
     </xsl:choose>
   </xsl:template>
 
+  <xsl:template name="scripts">
+    <xsl:if test="/report/v:dozent">
+      <script type="text/javascript" src="/lib/gndlink.js"></script>
+    </xsl:if>
+  </xsl:template>
+
   <xsl:template match="v:dozentenliste">
     <xsl:choose>
       <xsl:when test="$histvv-url = '/dozenten/namen.html'">
@@ -289,7 +295,7 @@
     <xsl:apply-templates select="v:pnd"/>
     <xsl:if test="v:url or v:adb[v:url] or v:ndb[v:url]">
       <h3>Links</h3>
-      <ul>
+      <ul class="links">
         <xsl:for-each select="v:adb[v:url] | v:ndb[v:url]">
           <li><xsl:apply-templates select="." mode="linkliste"/></li>
         </xsl:for-each>
