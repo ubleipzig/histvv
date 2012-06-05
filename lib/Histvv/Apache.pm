@@ -390,7 +390,7 @@ sub handler {
         $xsl_params{'histvv-pnd-beacon-target'} =
           "'" . $r->construct_url("/pnd/{ID}") . "'";
         $r->content_type("text/plain; charset=utf-8");
-    } elsif ($r->uri =~ /^\/pnd\/([0-9]{8}[0-9X])$/) {
+    } elsif ($r->uri =~ /^\/pnd\/([0-9]{8,9}[0-9X])$/) {
         $xquery = sprintf $Queries{pnd}, $1;
     } elsif ($r->uri =~ /^(\/\w+)*\/(\w+\.html)?$/) {
         my $uri = $2 ? $r->uri : ($1 || '') . "/index.html";
