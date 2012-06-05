@@ -43,7 +43,7 @@ share/xsl/custom/leipzig.xsl
 share/xsl/dozenten.xsl
 share/xsl/elements.xsl
 share/xsl/histvv2html.xsl
-share/xsl/pndbeacon.xsl
+share/xsl/beacon.xsl
 share/xsl/static.xsl
 share/xsl/suche.xsl
 share/xsl/vv.xsl
