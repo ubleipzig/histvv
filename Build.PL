@@ -21,6 +21,10 @@ my $builder = Histvv::Build->new(
      'Apache2::Request'  => 0,
      'File::ShareDir'    => 1.00
     },
+    recommends => {
+        'Config::GitLike' => '1.08',
+        'Data::Beacon'    => '0.2.5'
+    },
 
     share_dir => 'share'
 

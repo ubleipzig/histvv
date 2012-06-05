@@ -1,5 +1,6 @@
 bin/dbxml-query
 bin/histvv-add-attribute
+bin/histvv-beacon-tool
 bin/histvv-db-create
 bin/histvv-db-update
 bin/histvv-dozenten
