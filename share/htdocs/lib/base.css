@@ -104,7 +104,7 @@ div.toc {
   -webkit-column-count: 2;
   -webkit-column-gap: 20px;
   column-count: 2;
-  column-gap: 3;
+  column-gap: 20px;
 }
 
 div.toc > div {
