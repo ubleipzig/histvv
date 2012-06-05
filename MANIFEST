@@ -20,6 +20,7 @@ lib/Histvv/Util.pm
 MANIFEST
 META.yml
 META.json
+share/beacon.sample.conf
 share/htdocs/img/dfg.png
 share/htdocs/index.html
 share/htdocs/lib/base.css
