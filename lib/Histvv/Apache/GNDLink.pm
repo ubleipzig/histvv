@@ -43,12 +43,12 @@ my $HTML = <<EOF;
 <html>
   <head>
     <title>Links for %s</title>
-  <head>
+  </head>
   <body>
     <ul>
       %s
     </ul>
-  <body>
+  </body>
 </html>
 EOF
 
