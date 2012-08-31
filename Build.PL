@@ -9,6 +9,7 @@ my $builder = Histvv::Build->new(
     dist_name           => 'histvv',
     license             => 'restrictive',
     dist_author         => 'Carsten Milling <cmil@hashtable.de>',
+    configure_requires  => { 'Module::Build' => '0.36' },
     build_requires => {
         'Module::Build' => 0.36,
         'Test::More' => 0
@@ -24,6 +25,9 @@ my $builder = Histvv::Build->new(
     recommends => {
         'Config::GitLike' => '1.08',
         'Data::Beacon'    => '0.2.5'
+        'LWP::UserAgent'  => 0,
+        'DBD::SQLite'     => 0,
+        'JSON'            => 0
     },
 
     share_dir => 'share'
