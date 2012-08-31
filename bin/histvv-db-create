@@ -27,6 +27,8 @@ if (-f $dbfile) {
         exit if $y =~ /^n(o)?$/i;
     }
 
+    $cli->error("Cannot write to $dbfile!") unless -w $dbfile;
+
     # Only want a file name but let File::Temp figure out where to
     # create the temp file. That's why we are not using mktemp here
     # but instead use the OO interface in its own block so that
