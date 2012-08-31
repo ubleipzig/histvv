@@ -27,11 +27,11 @@ function gndlinks (pnd) {
             links.push( text );
         });
 
-        for each (var link in data) {
-            if ($.inArray(link['label'], links) >= 0) continue;
+        for (var i in data) {
+            if ($.inArray(data[i]['label'], links) >= 0) continue;
             list.append(
-                '<li><a href="' + link['url'] + '">'
-                    + link['label'] + '</a></li>' );
+                '<li><a href="' + data[i]['url'] + '">'
+                    + data[i]['label'] + '</a></li>' );
         }
     });
 }
