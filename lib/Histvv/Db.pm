@@ -12,11 +12,11 @@ Histvv::Db - Dbxml interface
 
 =head1 VERSION
 
-Version 0.11
+Version 0.12
 
 =cut
 
-use version; our $VERSION = qv('0.11');
+use version; our $VERSION = qv('0.12');
 
 =head1 SYNOPSIS
 
