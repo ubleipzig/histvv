@@ -9,11 +9,11 @@ Histvv::Apache::GNDLink - provide a list of links for GND numbers
 
 =head1 VERSION
 
-Version 0.12
+Version 0.13
 
 =cut
 
-use version; our $VERSION = qv('0.12');
+use version; our $VERSION = qv('0.13');
 
 =head1 SYNOPSIS
 
