@@ -44,7 +44,7 @@
 
   <xsl:template name="scripts">
     <xsl:if test="/index">
-      <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+      <script type="text/javascript" src="//www.google.com/jsapi"></script>
     </xsl:if>
     <script type="text/javascript" src="/lib/vv.js"></script>
   </xsl:template>
