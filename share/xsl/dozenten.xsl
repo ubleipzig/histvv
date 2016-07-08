@@ -547,6 +547,9 @@
         <xsl:when test="starts-with(., 'http://saebi.isgv.de/biografie/')">
           <xsl:text>Sächsische Biografie</xsl:text>
         </xsl:when>
+        <xsl:when test="starts-with(., 'http://www.hls-dhs-dss.ch/')">
+          <xsl:text>Historisches Lexikon der Schweiz</xsl:text>
+        </xsl:when>
         <xsl:otherwise>
           <xsl:value-of select="."/>
         </xsl:otherwise>
