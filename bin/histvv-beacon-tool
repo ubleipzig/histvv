@@ -11,7 +11,7 @@ use Data::Beacon::Collection::DBI;
 my $cli = Histvv::CLI->new(with_debug => 1);
 my %opts = $cli->get_opts(
     'config|c=s' => undef,
-    'database|db|D=s' => undef,
+    'db|database|D=s' => undef,
     'cache=s' => undef,
     'list|l' => 0,
     'empty|e' => 0
