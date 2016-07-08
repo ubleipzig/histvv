@@ -227,7 +227,7 @@
               <xsl:apply-templates select="v:name"/>
               <xsl:text> </xsl:text>
               <a>
-                <xsl:attribute name="href">                  
+                <xsl:attribute name="href">
                   <xsl:text>lookup?name=</xsl:text>
                   <xsl:value-of select="str:encode-uri(v:name/v:nachname, true())"/>
                 </xsl:attribute>
@@ -301,7 +301,9 @@
         </xsl:for-each>
         <xsl:for-each select="v:url">
           <xsl:sort data-type="number" order="descending"
-             select="(9 * number(starts-with(., 'http://de.wikipedia.org')))
+             select="(11 * number(starts-with(., 'https://de.wikipedia.org')))
+                   + (10 * number(starts-with(., 'http://de.wikipedia.org')))
+                   + (9 * number(starts-with(., 'https://en.wikipedia.org')))
                    + (8 * number(starts-with(., 'http://en.wikipedia.org')))
                    + (7 * number(starts-with(., 'http://histvv.uni-leipzig.de/')))
                    + (7 * number(starts-with(., 'http://histvv.uzh.ch/')))
@@ -510,10 +512,10 @@
         <xsl:value-of select="."/>
       </xsl:attribute>
       <xsl:choose>
-        <xsl:when test="starts-with(., 'http://de.wikipedia.org')">
+        <xsl:when test="starts-with(., 'http://de.wikipedia.org') or starts-with(., 'https://de.wikipedia.org')">
           <xsl:text>Wikipedia</xsl:text>
         </xsl:when>
-        <xsl:when test="starts-with(., 'http://en.wikipedia.org')">
+        <xsl:when test="starts-with(., 'http://en.wikipedia.org') or starts-with(., 'https://en.wikipedia.org')">
           <xsl:text>Wikipedia (engl.)</xsl:text>
         </xsl:when>
         <xsl:when test="starts-with(., 'http://www.uni-leipzig.de/unigeschichte/professorenkatalog')">
