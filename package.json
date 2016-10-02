@@ -5,6 +5,7 @@
   "private": true,
   "author": "Carsten Milling <cmil@hashtable.de>",
   "scripts": {
+    "lint": "eslint app.js routes",
     "start": "nodemon ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +19,7 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
+    "eslint": "^3.7.0",
     "nodemon": "^1.10.2"
   }
 }
