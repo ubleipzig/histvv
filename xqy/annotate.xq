@@ -80,7 +80,7 @@ as element() {
  :)
 delete node //vv/@x-semester,
 delete node //veranstaltung/@x-text,
-delete node //veranstaltung/@x-themen,
+delete node //veranstaltung/@x-thema,
 delete node //veranstaltung/@x-dozenten,
 delete node //veranstaltung/@x-dozentenrefs,
 
@@ -91,7 +91,7 @@ delete node //veranstaltung/@x-dozentenrefs,
  return insert node attribute x-semester {local:semid($vv)} into $vv,
 
 (:
- : 3. insert x-text, x-themen, x-dozenten, and x-dozentenrefs into
+ : 3. insert x-text, x-thema, x-dozenten, and x-dozentenrefs into
  :)
 for $v in //veranstaltung
 
@@ -115,7 +115,7 @@ let $dozenten := (
     ancestor::veranstaltungsgruppe[ders][1]/ders)
   ) ! local:resolve-ders(.)
 
-let $x-themen := string-join(
+let $x-thema := string-join(
   ($sg, $themen) ! local:strip-text(., 'anmerkung'),
   ' … '
 )
@@ -141,7 +141,7 @@ let $x-text := string-join(
 
 return (
   insert node attribute x-text {$x-text} into $v,
-  insert node attribute x-themen {$x-themen} into $v,
+  insert node attribute x-thema {$x-thema} into $v,
   insert node attribute x-dozenten {$x-dozenten} into $v,
   insert node attribute x-dozentenrefs {$x-dozentenrefs} into $v
 )
