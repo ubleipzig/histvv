@@ -16,7 +16,7 @@ function loadFile (filename, dir) {
 
 module.exports = function (dbSession) {
 
-  return function (xqyFile, xslFile) {
+  return function (xqyFile, xslFile, queryParams) {
 
     var xqy = loadFile(xqyFile, xqydir);
     var xsl = loadFile(xslFile, xsldir);
@@ -31,11 +31,20 @@ module.exports = function (dbSession) {
     var query = dbSession.query(xqy);
 
     function routeHandler (req, res, next) {
-
       // bind route params to the query
       Object.keys(req.params).forEach(function (name) {
-        query.bind(name, req.params[name], '', console.log);
+        query.bind(name, req.params[name], '');
       });
+
+      if (queryParams) {
+        queryParams.forEach(function (k) {
+          if (req.query[k]) {
+            var val = req.query[k] instanceof Array
+              ? req.query[k].join(' ') : req.query[k];
+            query.bind(k, val, '', console.log);
+          }
+        });
+      }
 
       // stylesheet params
       var xslparams = {

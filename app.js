@@ -29,6 +29,9 @@ app.get('/dozenten/namen.html', routeHandlerFactory('dozentennamen.xq', 'dozente
 app.get('/dozenten/lookup/:name', routeHandlerFactory('dozentenlookup.xq', 'dozenten.xsl'));
 app.get('/dozenten/:id.html', routeHandlerFactory('dozent.xq', 'dozenten.xsl'));
 app.get('/suche/', routeHandlerFactory('suchformular.xq', 'suche.xsl'));
+app.get('/suchergebnisse/', routeHandlerFactory('suche.xq', 'suche.xsl', [
+  'start', 'interval', 'text', 'dozent', 'von', 'bis', 'fakultaet'
+]));
 app.get('/vv/', routeHandlerFactory('index.xq', 'vv.xsl'));
 app.get('/vv/:id.html', routeHandlerFactory('semester.xq', 'vv.xsl'));
 
