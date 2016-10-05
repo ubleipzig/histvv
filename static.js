@@ -2,6 +2,7 @@
 
 var path = require('path');
 var fs = require('fs');
+var parseurl = require('parseurl');
 var libxslt = require('libxslt');
 
 var xsldir = 'xsl';
@@ -23,10 +24,11 @@ module.exports = function (dir) {
       return next();
     }
 
-    var filePath, file, html;
-    var m = req.originalUrl.match(/^(\/\w+)*\/(\w+\.html)?$/);
+    var file, html;
+    var filePath = parseurl(req).pathname;
+    var m = filePath.match(/^(\/\w+)*\/(\w+\.html)?$/);
     if (m) {
-      filePath = m[2] ? req.originalUrl : req.originalUrl + 'index.html';
+      filePath = m[2] ? filePath : filePath + 'index.html';
       file = path.join(dir, filePath);
       try {
         html = fs.readFileSync(file, 'utf-8');
