@@ -59,7 +59,8 @@ module.exports = function (dbSession) {
         }
         var html = stylesheet.apply(r.result, xslparams);
         res.set('Content-type', 'text/html');
-        res.send(html);
+        res.locals.body = html;
+        next();
       });
     }
 

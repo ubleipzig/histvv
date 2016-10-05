@@ -20,7 +20,7 @@ var stylesheet = libxslt.parse(xsl);
 module.exports = function (dir) {
 
   return function (req, res, next) {
-    if (res.headersSent || res.locals.content) {
+    if (res.headersSent || res.locals.body) {
       return next();
     }
 
@@ -48,7 +48,8 @@ module.exports = function (dir) {
 
     html = stylesheet.apply(html, xslparams);
     res.set('Content-type', 'text/html');
-    res.send(html);
+    res.locals.body = html;
+    next();
   };
 
 };
