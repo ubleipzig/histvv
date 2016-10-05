@@ -90,7 +90,7 @@
         <a href="/dozenten/">Dozenten</a>
       </li>
       <li>
-        <xsl:if test="$histvv-url = '/suche.html' or starts-with($histvv-url, '/suche/')">
+        <xsl:if test="starts-with($histvv-url, '/suche')">
           <xsl:attribute name="class">current</xsl:attribute>
         </xsl:if>
         <a href="/suche/">Suche</a>
