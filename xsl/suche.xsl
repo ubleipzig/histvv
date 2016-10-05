@@ -14,7 +14,7 @@
   <xsl:variable name="total" select="/report/stellen/@total"/>
 
   <xsl:variable name="query">
-    <xsl:text>volltext=</xsl:text>
+    <xsl:text>text=</xsl:text>
     <xsl:value-of select="str:encode-uri(/report/suche/text, true())"/>
     <xsl:text>&amp;dozent=</xsl:text>
     <xsl:value-of select="str:encode-uri(/report/suche/dozent, true())"/>
@@ -24,7 +24,7 @@
     <xsl:value-of select="/report/suche/bis"/>
     <xsl:text>&amp;fakultaet=</xsl:text>
     <xsl:value-of select="str:encode-uri(/report/suche/fakultaet, true())"/>
-    <xsl:text>&amp;l=</xsl:text>
+    <xsl:text>&amp;interval=</xsl:text>
     <xsl:value-of select="$interval"/>
   </xsl:variable>
 
@@ -58,7 +58,7 @@
       <p class="widget">
         <label for="f-volltext">Volltext <a href="#hilfe-volltext">[i]</a></label>
         <br/>
-        <input type="text" id="f-volltext" name="volltext" value=""/>
+        <input type="text" id="f-volltext" name="text" value=""/>
       </p>
 
       <p class="widget">
@@ -190,14 +190,14 @@
     <p><xsl:value-of select="/report/suche/text"/></p>
 
     <form method="get" action="./?" class="treffer-pro-seite">
-      <input type="hidden" name="volltext" value="{/report/suche/text}"/>
+      <input type="hidden" name="text" value="{/report/suche/text}"/>
       <input type="hidden" name="dozent" value="{/report/suche/dozent}"/>
       <input type="hidden" name="von" value="{/report/suche/von}"/>
       <input type="hidden" name="bis" value="{/report/suche/bis}"/>
       <input type="hidden" name="fakultaet" value="{/report/suche/fakultaet}"/>
       <input type="hidden" name="start" value="1"/>
       <label for="f-treffer-pro-seite">Treffer pro Seite:</label>
-      <select name="l" id="f-treffer-pro-seite">
+      <select name="interval" id="f-treffer-pro-seite">
         <xsl:for-each select="str:tokenize('10 20 50 100')">
           <option>
             <xsl:if test=". = $interval">
