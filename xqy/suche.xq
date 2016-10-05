@@ -29,9 +29,11 @@ let $stellen := /v:vv[@x-semester >= $von and @x-semester <= $bis]
     @fakultät and (@fakultät = tokenize($fakultaet) or $fakultaet = '')
   ]
   //v:veranstaltung[
-    ($text = '' or contains(@x-text, $text))
+    ($text = ''
+      or @x-text contains text {tokenize($text)} all using stemming
+         using language "German")
     and
-    ($dozent = '' or contains(@x-dozenten, $dozent))
+    ($dozent = '' or @x-dozenten contains text {tokenize($dozent)})
   ]
 
 let $total := count($stellen)
