@@ -4,6 +4,7 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var basex = require('basex');
+var staticHtml = require('./static');
 
 var config = require('./config.json');
 
@@ -34,6 +35,8 @@ app.get('/suchergebnisse/', routeHandlerFactory('suche.xq', 'suche.xsl', [
 ]));
 app.get('/vv/', routeHandlerFactory('index.xq', 'vv.xsl'));
 app.get('/vv/:id.html', routeHandlerFactory('semester.xq', 'vv.xsl'));
+
+app.use(staticHtml(path.join(__dirname, 'public')));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
