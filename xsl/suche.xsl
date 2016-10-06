@@ -54,7 +54,7 @@
   <xsl:template match="/formular">
     <h1>Veranstaltungssuche</h1>
 
-    <form id="suchformular" class="suche" action="/suchergebnisse/">
+    <form id="suchformular" class="suche" action="/suche/">
       <p class="widget">
         <label for="f-volltext">Volltext <a href="#hilfe-volltext">[i]</a></label>
         <br/>

@@ -93,7 +93,7 @@
         <xsl:if test="starts-with($histvv-url, '/suche')">
           <xsl:attribute name="class">current</xsl:attribute>
         </xsl:if>
-        <a href="/suche/">Suche</a>
+        <a href="/suche.html">Suche</a>
       </li>
     </ul>
   </xsl:template>

@@ -24,13 +24,22 @@ app.set('strict routing', true);
 
 app.use(logger('dev'));
 
+// redirect search without query to search form
+app.get('/suche/', function (req, res, next) {
+  if (Object.keys(req.query).length === 0) {
+    res.redirect(301, '/suche.html');
+  } else {
+    next();
+  }
+});
+
 app.get('/dozenten/', routeHandlerFactory('dozenten.xq', 'dozenten.xsl'));
 app.get('/dozenten/galerie.html', routeHandlerFactory('dozenten.xq', 'dozenten.xsl'));
 app.get('/dozenten/namen.html', routeHandlerFactory('dozentennamen.xq', 'dozenten.xsl'));
 app.get('/dozenten/lookup/:name', routeHandlerFactory('dozentenlookup.xq', 'dozenten.xsl'));
 app.get('/dozenten/:id.html', routeHandlerFactory('dozent.xq', 'dozenten.xsl'));
-app.get('/suche/', routeHandlerFactory('suchformular.xq', 'suche.xsl'));
-app.get('/suchergebnisse/', routeHandlerFactory('suche.xq', 'suche.xsl', [
+app.get('/suche.html', routeHandlerFactory('suchformular.xq', 'suche.xsl'));
+app.get('/suche/', routeHandlerFactory('suche.xq', 'suche.xsl', [
   'start', 'interval', 'volltext', 'dozent', 'von', 'bis', 'fakultaet'
 ]));
 app.get('/vv/', routeHandlerFactory('index.xq', 'vv.xsl'));
