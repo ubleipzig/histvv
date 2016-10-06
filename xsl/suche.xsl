@@ -14,7 +14,7 @@
   <xsl:variable name="total" select="/report/stellen/@total"/>
 
   <xsl:variable name="query">
-    <xsl:text>text=</xsl:text>
+    <xsl:text>volltext=</xsl:text>
     <xsl:value-of select="str:encode-uri(/report/suche/text, true())"/>
     <xsl:text>&amp;dozent=</xsl:text>
     <xsl:value-of select="str:encode-uri(/report/suche/dozent, true())"/>
@@ -58,7 +58,7 @@
       <p class="widget">
         <label for="f-volltext">Volltext <a href="#hilfe-volltext">[i]</a></label>
         <br/>
-        <input type="text" id="f-volltext" name="text" value=""/>
+        <input type="text" id="f-volltext" name="volltext" value=""/>
       </p>
 
       <p class="widget">
@@ -190,7 +190,7 @@
     <p><xsl:value-of select="/report/suche/text"/></p>
 
     <form method="get" action="./?" class="treffer-pro-seite">
-      <input type="hidden" name="text" value="{/report/suche/text}"/>
+      <input type="hidden" name="volltext" value="{/report/suche/text}"/>
       <input type="hidden" name="dozent" value="{/report/suche/dozent}"/>
       <input type="hidden" name="von" value="{/report/suche/von}"/>
       <input type="hidden" name="bis" value="{/report/suche/bis}"/>

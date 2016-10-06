@@ -4,7 +4,7 @@ declare variable $start external := 1;
 declare variable $interval external := 50;
 declare variable $von external := '';
 declare variable $bis external := '';
-declare variable $text external := '';
+declare variable $volltext external := '';
 declare variable $dozent external := '';
 declare variable $fakultaet external := '';
 
@@ -29,8 +29,8 @@ let $stellen := /v:vv[@x-semester >= $von and @x-semester <= $bis]
     @fakultät and (@fakultät = tokenize($fakultaet) or $fakultaet = '')
   ]
   //v:veranstaltung[
-    ($text = ''
-      or @x-text contains text {tokenize($text)} all using stemming
+    ($volltext = ''
+      or @x-text contains text {tokenize($volltext)} all using stemming
          using language "German")
     and
     ($dozent = '' or @x-dozenten contains text {tokenize($dozent)})
@@ -60,7 +60,7 @@ return
   }
   </stellen>
   <suche>
-    <text>{$text}</text>
+    <text>{$volltext}</text>
     <dozent>{$dozent}</dozent>
     <von>{$von}</von>
     <bis>{$bis}</bis>
