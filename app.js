@@ -38,10 +38,20 @@ app.get('/dozenten/galerie.html', routeHandlerFactory('dozenten.xq', 'dozenten.x
 app.get('/dozenten/namen.html', routeHandlerFactory('dozentennamen.xq', 'dozenten.xsl'));
 app.get('/dozenten/lookup/:name', routeHandlerFactory('dozentenlookup.xq', 'dozenten.xsl'));
 app.get('/dozenten/:id.html', routeHandlerFactory('dozent.xq', 'dozenten.xsl'));
+app.get('/pnd.txt', routeHandlerFactory('dozenten.xq', 'beacon.xsl', {
+  send: true, type: 'text', xslParams: function (req) {
+    var base = req.protocol + '://' + req.get('host');
+    return {
+      'histvv-beacon-feed': base + req.originalUrl,
+      'histvv-beacon-target': base + '/pnd/{ID}'
+    };
+  }
+}));
 app.get('/suche.html', routeHandlerFactory('suchformular.xq', 'suche.xsl'));
-app.get('/suche/', routeHandlerFactory('suche.xq', 'suche.xsl', [
-  'start', 'interval', 'volltext', 'dozent', 'von', 'bis', 'fakultaet'
-]));
+app.get('/suche/', routeHandlerFactory('suche.xq', 'suche.xsl', {
+  queryParams: ['start', 'interval', 'volltext', 'dozent', 'von', 'bis',
+                'fakultaet']
+}));
 app.get('/vv/', routeHandlerFactory('index.xq', 'vv.xsl'));
 app.get('/vv/:id.html', routeHandlerFactory('semester.xq', 'vv.xsl'));
 

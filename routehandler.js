@@ -16,7 +16,8 @@ function loadFile (filename, dir) {
 
 module.exports = function (dbSession) {
 
-  return function (xqyFile, xslFile, queryParams) {
+  return function (xqyFile, xslFile, opts) {
+    opts = opts || {};
 
     var xqy = loadFile(xqyFile, xqydir);
     var xsl = loadFile(xslFile, xsldir);
@@ -36,8 +37,8 @@ module.exports = function (dbSession) {
         query.bind(name, req.params[name], '');
       });
 
-      if (queryParams) {
-        queryParams.forEach(function (k) {
+      if (opts.queryParams) {
+        opts.queryParams.forEach(function (k) {
           if (req.query[k]) {
             var val = req.query[k] instanceof Array
               ? req.query[k].join(' ') : req.query[k];
@@ -47,9 +48,8 @@ module.exports = function (dbSession) {
       }
 
       // stylesheet params
-      var xslparams = {
-        'histvv-url': req.originalUrl
-      };
+      var xslparams = opts.xslParams ? opts.xslParams(req) : {};
+      xslparams['histvv-url'] = req.originalUrl;
 
       query.execute(function (err, r) {
         if (err) console.log(err);
@@ -57,10 +57,14 @@ module.exports = function (dbSession) {
           next();
           return;
         }
-        var html = stylesheet.apply(r.result, xslparams);
-        res.set('Content-type', 'text/html');
-        res.locals.body = html;
-        next();
+        var body = stylesheet.apply(r.result, xslparams);
+        res.type(opts.type || 'html');
+        if (opts.send) {
+          res.send(body);
+        } else {
+          res.locals.body = body;
+          next();
+        }
       });
     }
 
