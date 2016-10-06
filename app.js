@@ -73,10 +73,8 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.json({
-    message: err.message,
-    error: {}
-  });
+  res.type('text');
+  res.send(err.message);
 });
 
 
