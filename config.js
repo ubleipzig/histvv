@@ -14,6 +14,7 @@ nconf.defaults({
 
 var config = {
   dbname: nconf.get('dbname'),
+  dataDir: cwdResolve(nconf.get('data_dir')),
   customXslFile: cwdResolve(nconf.get('custom_xsl'))
 };
 

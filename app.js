@@ -36,9 +36,15 @@ app.get('/suchergebnisse/', routeHandlerFactory('suche.xq', 'suche.xsl', [
 app.get('/vv/', routeHandlerFactory('index.xq', 'vv.xsl'));
 app.get('/vv/:id.html', routeHandlerFactory('semester.xq', 'vv.xsl'));
 
+if (config.dataDir) {
+  app.use(staticHtml(config.dataDir));
+}
 app.use(staticHtml(path.join(__dirname, 'public')));
 app.use(finish(config.customXslFile));
 
+if (config.dataDir) {
+  app.use(express.static(config.dataDir));
+}
 app.use(express.static(path.join(__dirname, 'public')));
 
 
