@@ -6,11 +6,10 @@ var logger = require('morgan');
 var basex = require('basex');
 var staticHtml = require('./static');
 var finish = require('./finish');
-
-var config = require('./config.json');
+var config = require('./config');
 
 var session = new basex.Session();
-session.execute('OPEN ' + config.db.name, function (err, r) {
+session.execute('OPEN ' + config.dbname, function (err, r) {
   if (err) {
     console.error(err);
   }
