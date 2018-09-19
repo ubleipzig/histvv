@@ -87,14 +87,14 @@ app.get('/suche/', routeHandlerFactory('suche.xq', 'suche.xsl', {
 app.get('/vv/', routeHandlerFactory('index.xq', 'vv.xsl'));
 app.get('/vv/:id.html', routeHandlerFactory('semester.xq', 'vv.xsl'));
 
-if (config.dataDir) {
-  app.use(staticHtml(config.dataDir));
+if (config.staticDir) {
+  app.use(staticHtml(config.staticDir));
 }
 app.use(staticHtml(path.join(__dirname, 'public')));
 app.use(finish(config.customXslFile));
 
-if (config.dataDir) {
-  app.use(express.static(config.dataDir));
+if (config.staticDir) {
+  app.use(express.static(config.staticDir));
 }
 app.use(express.static(path.join(__dirname, 'public')));
 

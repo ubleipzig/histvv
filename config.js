@@ -37,8 +37,8 @@ nconf.defaults({
 
 const config = {
   dbname: nconf.get('dbname'),
-  dataDir: cwdResolve(nconf.get('data_dir')),
-  customXslFile: cwdResolve(nconf.get('custom_xsl'))
+  staticDir: cwdResolve(nconf.get('static')),
+  customXslFile: cwdResolve(nconf.get('xsl'))
 };
 
 module.exports = config;
