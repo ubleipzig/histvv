@@ -28,15 +28,12 @@ const fs = require('fs');
 const parseurl = require('parseurl');
 const libxslt = require('libxslt');
 
-const xsldir = 'xsl';
+const xsldir = path.join(__dirname, 'xsl');
 
-let xsl = fs.readFileSync(path.join(__dirname, xsldir, 'static.xsl'), 'utf-8');
+let xsl = fs.readFileSync(path.join(xsldir, 'static.xsl'), 'utf-8');
 // fix include path's to satisfy node-libxslt
 // see https://github.com/albanm/node-libxslt#includes
-xsl = xsl.replace(
-  /xsl:import href="/g,
-  'xsl:import href="' + xsldir + '/'
-);
+xsl = xsl.replace(/xsl:import href="/g, 'xsl:import href="' + xsldir + '/');
 
 const stylesheet = libxslt.parse(xsl);
 

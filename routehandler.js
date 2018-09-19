@@ -27,13 +27,11 @@ const path = require('path');
 const fs = require('fs');
 const libxslt = require('libxslt');
 
-const xqydir = 'xqy';
-const xsldir = 'xsl';
+const xqydir = path.join(__dirname, 'xqy');
+const xsldir = path.join(__dirname, 'xsl');
 
 function loadFile (filename, dir) {
-  const file = /^\//.test(filename)
-    ? filename
-    : path.join(__dirname, dir, filename);
+  const file = path.resolve(dir, filename);
   return fs.readFileSync(file, 'utf-8');
 }
 
