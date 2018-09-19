@@ -2,7 +2,7 @@
   "name": "histvv",
   "version": "0.0.0",
   "description": "Histvv Web Application",
-  "private": true,
+  "license": "GPL-3.0-or-later",
   "author": "Carsten Milling <cmil@hashtable.de>",
   "scripts": {
     "lint": "eslint app.js routes",
