@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "Histvv Web Application",
   "license": "GPL-3.0-or-later",
+  "homepage": "https://histvv.uni-leipzig.de",
+  "repository": "https://github.com/ubleipzig/histvv",
+  "bugs": "https://github.com/ubleipzig/histvv/issues",
   "author": "Carsten Milling <cmil@hashtable.de>",
   "scripts": {
     "lint": "eslint app.js routes",
