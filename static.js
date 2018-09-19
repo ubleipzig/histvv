@@ -23,14 +23,14 @@
 
 'use strict';
 
-var path = require('path');
-var fs = require('fs');
-var parseurl = require('parseurl');
-var libxslt = require('libxslt');
+const path = require('path');
+const fs = require('fs');
+const parseurl = require('parseurl');
+const libxslt = require('libxslt');
 
-var xsldir = 'xsl';
+const xsldir = 'xsl';
 
-var xsl = fs.readFileSync(path.join(__dirname, xsldir, 'static.xsl'), 'utf-8');
+let xsl = fs.readFileSync(path.join(__dirname, xsldir, 'static.xsl'), 'utf-8');
 // fix include path's to satisfy node-libxslt
 // see https://github.com/albanm/node-libxslt#includes
 xsl = xsl.replace(
@@ -38,18 +38,17 @@ xsl = xsl.replace(
   'xsl:import href="' + xsldir + '/'
 );
 
-var stylesheet = libxslt.parse(xsl);
+const stylesheet = libxslt.parse(xsl);
 
 module.exports = function (dir) {
-
   return function (req, res, next) {
     if (res.headersSent || res.locals.body) {
       return next();
     }
 
-    var file, html;
-    var filePath = parseurl(req).pathname;
-    var m = filePath.match(/^(\/\w+)*\/(\w+\.html)?$/);
+    let file; let html;
+    let filePath = parseurl(req).pathname;
+    const m = filePath.match(/^(\/\w+)*\/(\w+\.html)?$/);
     if (m) {
       filePath = m[2] ? filePath : filePath + 'index.html';
       file = path.join(dir, filePath);
@@ -57,7 +56,9 @@ module.exports = function (dir) {
         html = fs.readFileSync(file, 'utf-8');
       } catch (e) {
         // log error if the file exists but cannot be read
-        if (e.code !== 'ENOENT') console.log(e);
+        if (e.code !== 'ENOENT') {
+          console.log(e);
+        }
         return next();
       }
     } else {
@@ -65,7 +66,7 @@ module.exports = function (dir) {
     }
 
     // stylesheet params
-    var xslparams = {
+    const xslparams = {
       'histvv-url': req.originalUrl
     };
 
@@ -74,5 +75,4 @@ module.exports = function (dir) {
     res.locals.body = html;
     next();
   };
-
 };
