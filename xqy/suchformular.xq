@@ -31,6 +31,7 @@ return
     for $vv in /v:vv
     let $name := concat($vv/@x-semester, "")
     let $titel := concat($vv/v:kopf/v:beginn/v:jahr, " ", $vv/v:kopf/v:semester)
+    order by $vv/v:kopf/v:beginn/v:jahr, $vv/v:kopf/v:ende/v:jahr
     return
     <semester>
       <name>{$name}</name>

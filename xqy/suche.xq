@@ -74,6 +74,7 @@ return
     let $kopf := $v/ancestor::v:vv/v:kopf
     let $sem := $kopf/v:semester/string()
     let $jahr := $kopf/v:beginn/v:jahr/string()
+    order by $kopf/v:beginn/v:jahr, $kopf/v:ende/v:jahr
     return
     <stelle id="{$v/@xml:id}" semester="{$sem}" jahr="{$jahr}">
       <thema>{string($v/@x-thema)}</thema>

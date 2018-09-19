@@ -28,6 +28,7 @@ declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
 for $d in //v:vv
 let $k := $d/v:kopf
 let $sem := if ($k/v:semester = "Winter") then "w" else "s"
+order by $k/v:beginn/v:jahr, $k/v:ende/v:jahr
 return
 <vv name="{concat($k/v:beginn/v:jahr, $sem)}" >
   <titel>{concat($k/v:semester, "semester ", $k/v:beginn/v:jahr)}</titel>
