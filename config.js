@@ -37,6 +37,7 @@ nconf.defaults({
 });
 
 const config = {
+  port: nconf.get('port'),
   db: {
     name: nconf.get('db'),
     host: nconf.get('dbhost'),

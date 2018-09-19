@@ -28,13 +28,14 @@
 
 const http = require('http');
 const debug = require('debug')('histvv:server');
+const config = require('../config');
 const app = require('../app');
 
 /**
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(config.port || process.env.PORT || '3000');
 app.set('port', port);
 
 /**
