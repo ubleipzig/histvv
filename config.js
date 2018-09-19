@@ -32,11 +32,18 @@ function cwdResolve (filepath) {
 
 nconf.argv().env();
 nconf.defaults({
-  dbname: 'histvv'
+  db: 'histvv',
+  dbhost: 'localhost'
 });
 
 const config = {
-  dbname: nconf.get('dbname'),
+  db: {
+    name: nconf.get('db'),
+    host: nconf.get('dbhost'),
+    port: nconf.get('dbport'),
+    user: nconf.get('user'),
+    password: nconf.get('password')
+  },
   staticDir: cwdResolve(nconf.get('static')),
   customXslFile: cwdResolve(nconf.get('xsl'))
 };

@@ -32,10 +32,15 @@ const finish = require('./finish');
 const config = require('./config');
 const pndHandler = require('./pnd');
 
-const session = new basex.Session();
-session.execute('OPEN ' + config.dbname, (err, r) => {
+const session = new basex.Session(
+  config.db.host,
+  config.db.port,
+  config.db.user,
+  config.db.password
+);
+session.execute('OPEN ' + config.db.name, (err, r) => {
   if (err) {
-    console.error(err);
+    throw err;
   }
   console.log(r.info);
 });
