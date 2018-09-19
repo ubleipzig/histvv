@@ -29,8 +29,6 @@ let $dozent := /v:dozentenliste/v:dozent[v:pnd=$pnd]
 
 return
 if ($dozent) then
-<http>
-  <location>/dozenten/{string($dozent/@xml:id)}.html</location>
-</http>
+'/dozenten/' || string($dozent/@xml:id) || '.html'
 else
 ()

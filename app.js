@@ -30,6 +30,7 @@ const basex = require('basex');
 const staticHtml = require('./static');
 const finish = require('./finish');
 const config = require('./config');
+const pndHandler = require('./pnd');
 
 const session = new basex.Session();
 session.execute('OPEN ' + config.dbname, (err, r) => {
@@ -70,6 +71,7 @@ app.get('/pnd.txt', routeHandlerFactory('dozenten.xq', 'beacon.xsl', {
     };
   }
 }));
+app.get('/pnd/:pnd', pndHandler(session));
 app.get('/suche.html', routeHandlerFactory('suchformular.xq', 'suche.xsl'));
 app.get('/suche/', routeHandlerFactory('suche.xq', 'suche.xsl', {
   queryParams: [
