@@ -23,8 +23,8 @@
 
 'use strict';
 
+const {resolve} = require('path');
 const nconf = require('nconf');
-const resolve = require('path').resolve;
 
 function cwdResolve (filepath) {
   return filepath ? resolve(process.cwd(), filepath) : null;

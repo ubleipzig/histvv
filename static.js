@@ -46,7 +46,8 @@ module.exports = function (dir) {
       return next();
     }
 
-    let file; let html;
+    let file;
+    let html;
     let filePath = parseurl(req).pathname;
     const m = filePath.match(/^(\/\w+)*\/(\w+\.html)?$/);
     if (m) {
@@ -54,10 +55,10 @@ module.exports = function (dir) {
       file = path.join(dir, filePath);
       try {
         html = fs.readFileSync(file, 'utf-8');
-      } catch (e) {
+      } catch (error) {
         // log error if the file exists but cannot be read
-        if (e.code !== 'ENOENT') {
-          console.log(e);
+        if (error.code !== 'ENOENT') {
+          console.log(error);
         }
         return next();
       }

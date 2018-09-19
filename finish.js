@@ -38,7 +38,7 @@ module.exports = function (xslfile) {
       return next();
     }
 
-    let body = res.locals.body;
+    let {body} = res.locals;
     if (stylesheet && /^text\/html/.test(res.get('Content-type'))) {
       body = stylesheet.apply(body, {'histvv-url': req.originalUrl});
     }
