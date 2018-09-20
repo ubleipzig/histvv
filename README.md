@@ -27,7 +27,7 @@ repository](https://github.com/ubleipzig/histvv-data) follow these steps:
 
 ```bash
 git clone https://github.com/ubleipzig/histvv-data.git
-basex -c 'create db histvv ./histvv-data/xml'
+basex -c 'set chop false; create db histvv ./histvv-data/xml'
 # NB: the next command can take serveral minutes
 basex -i histvv https://raw.githubusercontent.com/ubleipzig/histvv/master/xqy/annotate.xq
 ```
