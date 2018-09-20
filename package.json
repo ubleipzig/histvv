@@ -9,7 +9,7 @@
   "author": "Carsten Milling <cmil@hashtable.de>",
   "scripts": {
     "lint": "eslint app.js routes",
-    "start": "nodemon ./bin/www",
+    "start": "nodemon -e js,json,xsl,xq ./bin/www",
     "test": "xo"
   },
   "bin": {
