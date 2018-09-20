@@ -41,7 +41,7 @@
     </xsl:for-each>
     <xsl:for-each select="/v:dozentenliste/v:dozent[v:pnd]">
       <xsl:sort select="v:pnd"/>
-      <xsl:value-of select="v:pnd"/>
+      <xsl:value-of select="normalize-space(v:pnd)"/>
       <xsl:text>&#xA;</xsl:text>
     </xsl:for-each>
   </xsl:template>
