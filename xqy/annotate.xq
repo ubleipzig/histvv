@@ -23,12 +23,15 @@
  :
  : annotate.xq adds the following attributes to `vv` documents in the
  : database:
- :  - `x-semester` to the `vv` elements
- :  - `x-text`, `x-thema`, `x-dozenten`, `x-dozentenrefs` to `veranstaltung`
+ :
+ :  - `@semester` to the `vv` elements
+ :  - `@fulltext`, `@thema`, `@dozenten`, `@dozentenrefs` to `veranstaltung`
  :    elements
  :)
 
 declare default element namespace 'http://histvv.uni-leipzig.de/ns/2007';
+
+declare variable $uri external;
 
 (:~
  : Construct semester ID
@@ -97,73 +100,73 @@ as element() {
   else $elem
 };
 
-(:
- : 1. delete exisiting attributes
- :)
-delete node //vv/@x-semester,
-delete node //veranstaltung/@x-text,
-delete node //veranstaltung/@x-thema,
-delete node //veranstaltung/@x-dozenten,
-delete node //veranstaltung/@x-dozentenrefs,
-
-(:
- : 2. insert x-semester
- :)
- for $vv in //vv
- return insert node attribute x-semester {local:semid($vv)} into $vv,
-
-(:
- : 3. insert x-text, x-thema, x-dozenten, and x-dozentenrefs into
- :)
-for $v in //veranstaltung
-
-(: gather relevant `thema` elements :)
-let $themen := $v/(ancestor::veranstaltungsgruppe/thema | thema)
-
-(: use title of `sachgruppe` if there is no `thema` or the `thema` is
- : connected via the `kontext` attribute
- :
- : TODO: follow sachgruppe/titel/@kontext
- :)
-let $sg := if (count($themen) = 0 or $v/thema[@kontext])
-           then $v/ancestor::sachgruppe[1]/titel
-           else ()
-
-let $dozenten := (
-  if ($v/(dozent|ders))
-  then $v/(dozent|ders)
-  else $v/(
-    ancestor::veranstaltungsgruppe/dozent[last()] |
-    ancestor::veranstaltungsgruppe[ders][1]/ders)
-  ) ! local:resolve-ders(.)
-
-let $x-thema := string-join(
-  ($sg, $themen) ! local:strip-text(., 'anmerkung'),
-  ' … '
-)
-
-let $x-dozenten := string-join(
-  ($dozenten
-    ! (if (name(.)='ders') then () else .)
-    ! local:strip-text(.)
-  ), '; '
-)
-
-let $x-dozentenrefs := string-join($dozenten/@ref, ' ')
-
-let $x-text := string-join(
-  (
-    $v,
-    $themen except $v/thema,
-    $sg,
-    $dozenten except $v/dozent
-  ) ! local:strip-text(.),
-  ' | '
-)
+let $doc := doc($uri)
 
 return (
-  insert node attribute x-text {$x-text} into $v,
-  insert node attribute x-thema {$x-thema} into $v,
-  insert node attribute x-dozenten {$x-dozenten} into $v,
-  insert node attribute x-dozentenrefs {$x-dozentenrefs} into $v
+  (: delete exisiting attributes :)
+  delete node $doc/vv/@semester,
+  delete node $doc//veranstaltung/@fulltext,
+  delete node $doc//veranstaltung/@thema,
+  delete node $doc//veranstaltung/@dozenten,
+  delete node $doc//veranstaltung/@dozentenrefs,
+
+  (: insert semester :)
+  insert node attribute semester {local:semid($doc/vv)} into $doc/vv,
+
+  (:
+   : insert @fulltext, @thema, @dozenten, and @dozentenrefs into
+   : `veranstaltung`
+   :)
+  for $v in $doc//veranstaltung
+
+  (: gather relevant `thema` elements :)
+  let $themen := $v/(ancestor::veranstaltungsgruppe/thema | thema)
+
+  (: use title of `sachgruppe` if there is no `thema` or the `thema` is
+   : connected via the `kontext` attribute
+   :
+   : TODO: follow sachgruppe/titel/@kontext
+   :)
+  let $sg := if (count($themen) = 0 or $v/thema[@kontext])
+             then $v/ancestor::sachgruppe[1]/titel
+             else ()
+
+  let $dozenten := (
+    if ($v/(dozent|ders))
+    then $v/(dozent|ders)
+    else $v/(
+      ancestor::veranstaltungsgruppe/dozent[last()] |
+      ancestor::veranstaltungsgruppe[ders][1]/ders)
+    ) ! local:resolve-ders(.)
+
+  let $thema := string-join(
+    ($sg, $themen) ! local:strip-text(., 'anmerkung'),
+    ' … '
+  )
+
+  let $dozenten-attr := string-join(
+    ($dozenten
+      ! (if (name(.)='ders') then () else .)
+      ! local:strip-text(.)
+    ), '; '
+  )
+
+  let $dozentenrefs := string-join($dozenten/@ref, ' ')
+
+  let $fulltext := string-join(
+    (
+      $v,
+      $themen except $v/thema,
+      $sg,
+      $dozenten except $v/dozent
+    ) ! local:strip-text(.),
+    ' | '
+  )
+
+  return (
+    insert node attribute fulltext {$fulltext} into $v,
+    insert node attribute thema {$thema} into $v,
+    insert node attribute dozenten {$dozenten-attr} into $v,
+    insert node attribute dozentenrefs {$dozentenrefs} into $v
+  )
 )

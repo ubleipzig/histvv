@@ -35,7 +35,7 @@ let $start := if (number($start) > 0) then number($start) else 1
 let $interval := if (number($interval) >= 10 and number($interval) <= 200)
   then number($interval) else 50
 
-let $sems := /v:vv/@x-semester/data()
+let $sems := /v:vv/@semester/data()
 let $semcount := count($sems)
 let $min-sem := $sems[1]
 let $max-sem := $sems[$semcount]
@@ -47,16 +47,16 @@ let $bis := if(
     matches($bis, '^[0-9]{4}[ws]$') and $bis >= $min-sem and $bis <= $max-sem
   ) then $bis else $max-sem
 
-let $stellen := /v:vv[@x-semester >= $von and @x-semester <= $bis]
+let $stellen := /v:vv[@semester >= $von and @semester <= $bis]
   //v:sachgruppe[
     @fakultät and (@fakultät = tokenize($fakultaet) or $fakultaet = '')
   ]
   //v:veranstaltung[
     ($volltext = ''
-      or @x-text contains text {tokenize($volltext)} all using stemming
+      or @fulltext contains text {tokenize($volltext)} all using stemming
          using language "German")
     and
-    ($dozent = '' or @x-dozenten contains text {tokenize($dozent)})
+    ($dozent = '' or @dozenten contains text {tokenize($dozent)})
   ]
 
 let $total := count($stellen)
@@ -77,7 +77,7 @@ return
     order by $kopf/v:beginn/v:jahr, $kopf/v:ende/v:jahr
     return
     <stelle id="{$v/@xml:id}" semester="{$sem}" jahr="{$jahr}">
-      <thema>{string($v/@x-thema)}</thema>
+      <thema>{string($v/@thema)}</thema>
       <dozenten>{$dozenten}</dozenten>
       <text>{normalize-space($v)}</text>
     </stelle>

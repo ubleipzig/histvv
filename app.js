@@ -27,6 +27,7 @@ const path = require('path');
 const express = require('express');
 const logger = require('morgan');
 const basex = require('basex');
+const annotate = require('./annotate');
 const staticHtml = require('./static');
 const finish = require('./finish');
 const config = require('./config');
@@ -43,6 +44,11 @@ session.execute('OPEN ' + config.db.name, (err, r) => {
     throw err;
   }
   console.log(r.info);
+  annotate(session).then(n => {
+    console.log('all documents prepared (%s new)', n);
+  }).catch(error => {
+    console.warn(error);
+  });
 });
 
 const routeHandlerFactory = require('./routehandler.js')(session);
