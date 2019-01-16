@@ -485,7 +485,7 @@
         </a>
       </td>
       <td>
-        <xsl:value-of select="v:veranstaltung/@x-thema"/>
+        <xsl:value-of select="v:veranstaltung/@thema"/>
       </td>
       <td class="grad">
         <xsl:for-each select=".//v:dozent[@ref=$id]/v:grad">

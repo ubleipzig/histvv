@@ -28,7 +28,7 @@ const async = require('async');
 
 const xqFindDocs =
   'declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";' +
-  '/v:vv[not(@x-semester)]/base-uri()';
+  '/v:vv[not(@semester)]/base-uri()';
 
 const queryfile = path.join(__dirname, 'xqy', 'annotate.xq');
 const xqAnnotate = fs.readFileSync(queryfile, 'utf-8');

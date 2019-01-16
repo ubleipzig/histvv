@@ -27,7 +27,7 @@ declare variable $id external := "anger_r";
 
 let $daten := /v:dozentenliste/v:dozent[@xml:id=$id]
 let $veranstaltungen := /v:vv[v:kopf/v:status/@komplett]
-  //v:veranstaltung[tokenize(@x-dozentenrefs, "\s+") = $id]
+  //v:veranstaltung[tokenize(@dozentenrefs, "\s+") = $id]
 
 return
 if ($daten) then
@@ -36,7 +36,7 @@ if ($daten) then
   <stellen>
   {
     for $v in $veranstaltungen return
-    <stelle semester="{$v/ancestor::v:vv/@x-semester}">
+    <stelle semester="{$v/ancestor::v:vv/@semester}">
     {$v}
     {
      if ($v/v:dozent[@ref = $id])

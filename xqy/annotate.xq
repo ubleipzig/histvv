@@ -23,8 +23,9 @@
  :
  : annotate.xq adds the following attributes to `vv` documents in the
  : database:
- :  - `x-semester` to the `vv` elements
- :  - `x-text`, `x-thema`, `x-dozenten`, `x-dozentenrefs` to `veranstaltung`
+ :
+ :  - `@semester` to the `vv` elements
+ :  - `@fulltext`, `@thema`, `@dozenten`, `@dozentenrefs` to `veranstaltung`
  :    elements
  :)
 
@@ -103,16 +104,19 @@ let $doc := doc($uri)
 
 return (
   (: delete exisiting attributes :)
-  delete node $doc/vv/@x-semester,
-  delete node $doc//veranstaltung/@x-text,
-  delete node $doc//veranstaltung/@x-thema,
-  delete node $doc//veranstaltung/@x-dozenten,
-  delete node $doc//veranstaltung/@x-dozentenrefs,
+  delete node $doc/vv/@semester,
+  delete node $doc//veranstaltung/@fulltext,
+  delete node $doc//veranstaltung/@thema,
+  delete node $doc//veranstaltung/@dozenten,
+  delete node $doc//veranstaltung/@dozentenrefs,
 
-  (: insert x-semester :)
-  insert node attribute x-semester {local:semid($doc/vv)} into $doc/vv,
+  (: insert semester :)
+  insert node attribute semester {local:semid($doc/vv)} into $doc/vv,
 
-  (: insert x-text, x-thema, x-dozenten, and x-dozentenrefs into :)
+  (:
+   : insert @fulltext, @thema, @dozenten, and @dozentenrefs into
+   : `veranstaltung`
+   :)
   for $v in $doc//veranstaltung
 
   (: gather relevant `thema` elements :)
@@ -135,21 +139,21 @@ return (
       ancestor::veranstaltungsgruppe[ders][1]/ders)
     ) ! local:resolve-ders(.)
 
-  let $x-thema := string-join(
+  let $thema := string-join(
     ($sg, $themen) ! local:strip-text(., 'anmerkung'),
     ' … '
   )
 
-  let $x-dozenten := string-join(
+  let $dozenten-attr := string-join(
     ($dozenten
       ! (if (name(.)='ders') then () else .)
       ! local:strip-text(.)
     ), '; '
   )
 
-  let $x-dozentenrefs := string-join($dozenten/@ref, ' ')
+  let $dozentenrefs := string-join($dozenten/@ref, ' ')
 
-  let $x-text := string-join(
+  let $fulltext := string-join(
     (
       $v,
       $themen except $v/thema,
@@ -160,9 +164,9 @@ return (
   )
 
   return (
-    insert node attribute x-text {$x-text} into $v,
-    insert node attribute x-thema {$x-thema} into $v,
-    insert node attribute x-dozenten {$x-dozenten} into $v,
-    insert node attribute x-dozentenrefs {$x-dozentenrefs} into $v
+    insert node attribute fulltext {$fulltext} into $v,
+    insert node attribute thema {$thema} into $v,
+    insert node attribute dozenten {$dozenten-attr} into $v,
+    insert node attribute dozentenrefs {$dozentenrefs} into $v
   )
 )
