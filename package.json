@@ -20,7 +20,7 @@
     "basex": "0.9.0",
     "debug": "4.0.1",
     "express": "^4.16.3",
-    "libxslt": "^0.7.0",
+    "libxslt": "^0.9.0",
     "morgan": "^1.9.1",
     "nconf": "^0.10.0",
     "parseurl": "^1.3.1"
@@ -31,7 +31,7 @@
     "xo": "^0.23.0"
   },
   "engines": {
-    "node": ">=6.0 <9.0"
+    "node": ">=12.0"
   },
   "xo": {
     "space": true,
