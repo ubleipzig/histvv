@@ -38,14 +38,14 @@ xsl = xsl.replace(/xsl:import href="/g, 'xsl:import href="' + xsldir + '/');
 const stylesheet = libxslt.parse(xsl);
 
 module.exports = function (dir) {
-  return function (req, res, next) {
+  return function (request, res, next) {
     if (res.headersSent || res.locals.body) {
       return next();
     }
 
     let file;
     let html;
-    let filePath = parseurl(req).pathname;
+    let filePath = parseurl(request).pathname;
     const m = filePath.match(/^(\/\w+)*\/(\w+\.html)?$/);
     if (m) {
       filePath = m[2] ? filePath : filePath + 'index.html';
@@ -57,6 +57,7 @@ module.exports = function (dir) {
         if (error.code !== 'ENOENT') {
           console.log(error);
         }
+
         return next();
       }
     } else {
@@ -65,7 +66,7 @@ module.exports = function (dir) {
 
     // stylesheet params
     const xslparams = {
-      'histvv-url': req.originalUrl
+      'histvv-url': request.originalUrl
     };
 
     html = stylesheet.apply(html, xslparams);

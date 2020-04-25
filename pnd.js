@@ -32,15 +32,17 @@ const xq = fs.readFileSync(xqfile, 'utf-8');
 module.exports = function (dbSession) {
   const query = dbSession.query(xq);
 
-  function pndHandler (req, res, next) {
-    query.bind('pnd', req.params.pnd, '');
+  function pndHandler (request, res, next) {
+    query.bind('pnd', request.params.pnd, '');
     query.execute((err, r) => {
       if (err) {
         console.log(err);
       }
+
       if (r.result === '') {
         return next();
       }
+
       res.redirect(r.result);
     });
   }

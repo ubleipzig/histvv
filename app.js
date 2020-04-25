@@ -43,6 +43,7 @@ session.execute('OPEN ' + config.db.name, (err, r) => {
   if (err) {
     throw err;
   }
+
   console.log(r.info);
   annotate(session).then(n => {
     console.log('all documents prepared (%s new)', n);
@@ -60,8 +61,8 @@ app.set('strict routing', true);
 app.use(logger('dev'));
 
 // redirect search without query to search form
-app.get('/suche/', (req, res, next) => {
-  if (Object.keys(req.query).length === 0) {
+app.get('/suche/', (request, res, next) => {
+  if (Object.keys(request.query).length === 0) {
     res.redirect(301, '/suche.html');
   } else {
     next();
@@ -74,10 +75,10 @@ app.get('/dozenten/namen.html', routeHandlerFactory('dozentennamen.xq', 'dozente
 app.get('/dozenten/lookup/:name', routeHandlerFactory('dozentenlookup.xq', 'dozenten.xsl'));
 app.get('/dozenten/:id.html', routeHandlerFactory('dozent.xq', 'dozenten.xsl'));
 app.get('/pnd.txt', routeHandlerFactory('dozenten.xq', 'beacon.xsl', {
-  send: true, type: 'text', xslParams (req) {
-    const base = req.protocol + '://' + req.get('host');
+  send: true, type: 'text', xslParams (request) {
+    const base = request.protocol + '://' + request.get('host');
     return {
-      'histvv-beacon-feed': base + req.originalUrl,
+      'histvv-beacon-feed': base + request.originalUrl,
       'histvv-beacon-target': base + '/pnd/{ID}'
     };
   }
@@ -101,16 +102,18 @@ app.get('/vv/:id.html', routeHandlerFactory('semester.xq', 'vv.xsl'));
 if (config.staticDir) {
   app.use(staticHtml(config.staticDir));
 }
+
 app.use(staticHtml(path.join(__dirname, 'public')));
 app.use(finish(config.customXslFile));
 
 if (config.staticDir) {
   app.use(express.static(config.staticDir));
 }
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 // catch 404 and forward to error handler
-app.use((req, res, next) => {
+app.use((request, res, next) => {
   const err = new Error('Not Found');
   err.status = 404;
   next(err);
@@ -121,7 +124,7 @@ app.use((req, res, next) => {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use((err, req, res, _) => {
+  app.use((err, request, res, _) => {
     res.status(err.status || 500);
     res.json({
       message: err.message,
@@ -132,7 +135,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use((err, req, res, _) => {
+app.use((err, request, res, _) => {
   res.status(err.status || 500);
   res.type('text');
   res.send(err.message);

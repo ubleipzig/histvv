@@ -33,15 +33,16 @@ module.exports = function (xslfile) {
     stylesheet = libxslt.parse(xsl);
   }
 
-  return function (req, res, next) {
+  return function (request, res, next) {
     if (!res.locals.body) {
       return next();
     }
 
     let {body} = res.locals;
     if (stylesheet && /^text\/html/.test(res.get('Content-type'))) {
-      body = stylesheet.apply(body, {'histvv-url': req.originalUrl});
+      body = stylesheet.apply(body, {'histvv-url': request.originalUrl});
     }
+
     res.send(body);
   };
 };

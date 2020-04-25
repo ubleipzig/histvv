@@ -36,8 +36,8 @@ function loadFile (filename, dir) {
 }
 
 module.exports = function (dbSession) {
-  return function (xqyFile, xslFile, opts) {
-    opts = opts || {};
+  return function (xqyFile, xslFile, options) {
+    options = options || {};
 
     const xqy = loadFile(xqyFile, xqydir);
     let xsl = loadFile(xslFile, xsldir);
@@ -51,37 +51,39 @@ module.exports = function (dbSession) {
     const stylesheet = libxslt.parse(xsl);
     const query = dbSession.query(xqy);
 
-    function routeHandler (req, res, next) {
+    function routeHandler (request, res, next) {
       // bind route params to the query
-      Object.keys(req.params).forEach(name => {
-        query.bind(name, req.params[name], '');
+      Object.keys(request.params).forEach(name => {
+        query.bind(name, request.params[name], '');
       });
 
-      if (opts.queryParams) {
-        opts.queryParams.forEach(k => {
-          if (req.query[k]) {
-            const val = Array.isArray(req.query[k])
-              ? req.query[k].join(' ') : req.query[k];
-            query.bind(k, val, '', console.log);
+      if (options.queryParams) {
+        options.queryParams.forEach(k => {
+          if (request.query[k]) {
+            const value = Array.isArray(request.query[k])
+              ? request.query[k].join(' ') : request.query[k];
+            query.bind(k, value, '', console.log);
           }
         });
       }
 
       // stylesheet params
-      const xslparams = opts.xslParams ? opts.xslParams(req) : {};
-      xslparams['histvv-url'] = req.originalUrl;
+      const xslparams = options.xslParams ? options.xslParams(request) : {};
+      xslparams['histvv-url'] = request.originalUrl;
 
       query.execute((err, r) => {
         if (err) {
           console.log(err);
         }
+
         if (r.result === '') {
           next();
           return;
         }
+
         const body = stylesheet.apply(r.result, xslparams);
-        res.type(opts.type || 'html');
-        if (opts.send) {
+        res.type(options.type || 'html');
+        if (options.send) {
           res.send(body);
         } else {
           res.locals.body = body;

@@ -42,16 +42,19 @@ module.exports = function (dbSession) {
       if (err) {
         return reject(err);
       }
+
       const uris = r.result ? r.result.split('\n') : [];
       if (uris.length > 0) {
         console.log('Annotating documents...');
       }
+
       async.each(uris, (uri, cb) => {
         queryAnnotate.bind('uri', uri, '');
         queryAnnotate.execute(err => {
           if (err) {
             return cb(err);
           }
+
           console.log(`${uri}`);
           cb();
         });
@@ -59,6 +62,7 @@ module.exports = function (dbSession) {
         if (err) {
           return reject(err);
         }
+
         resolve(uris.length);
       });
     });
