@@ -13,22 +13,24 @@ histvv-server
 
 ## Prerequisites
 
+### BaseX
+
 The histvv server uses a [BaseX](http://basex.org) XML database to access and
 query a collection of XML files conforming to the [Histvv
 Schema](https://github.com/ubleipzig/histvv-schema). BaseX is expected to be run
-in [client/server mode](http://docs.basex.org/wiki/Startup#Client.2FServer):
+in [client/server mode](https://docs.basex.org/wiki/Database_Server):
 
 ```bash
 basexserver -S
 ```
 
-To initially load the XML files from the [Histvv data
-repository](https://github.com/ubleipzig/histvv-data) follow these steps:
+The histvv server has been tested with __BaseX version 9.3.2__.
 
-```bash
-git clone https://github.com/ubleipzig/histvv-data.git
-basex -c 'set chop false; create db histvv ./histvv-data/xml'
-```
+### Node.js
+
+As an Express application, the histvv server requires
+[Node.js](https://nodejs.org/) to run. It has been tested with
+__Node version 12.16.2__.
 
 ## Options
 
@@ -46,6 +48,29 @@ The `histvv-server` command  accepts the following command line options:
 * `--xsl` a custom XSL stylesheet to post-process the HTML produced by the
   histvv server (default: none, see
   https://github.com/ubleipzig/histvv-data/blob/master/custom.xsl as an example)
+
+## Example
+
+To serve the [data of the Histvv project at Leipzig
+University](https://github.com/ubleipzig/histvv-data) run the following
+commands:
+
+```bash
+# clone the data repository
+git clone https://github.com/ubleipzig/histvv-data.git
+# start the database server
+basexserver -S
+# create and populate the database
+# (make sure to use the -w option to preserve white space in the documents)
+basex -w -c 'create db histvv ./histvv-data/xml'
+# install the histvv server globally
+npm install -g github:ubleipzig/histvv
+# start the server passing in static data and a custom stylesheet
+histvv-server --static ./histvv-data/public --xsl ./histvv-data/custom.xsl
+```
+
+Now the server can be accessed under http://localhost:3000/. It can be stopped
+with the `Ctrl-C` key combination.
 
 ## Development
 
@@ -70,7 +95,7 @@ Carsten Milling <cmil@hashtable.de>
 
 ## License
 
-Copyright (C) 2018 Leipzig University Library <info@ub.uni-leipzig.de>
+Copyright (C) 2018-2020 Leipzig University Library <info@ub.uni-leipzig.de>
 
 Histvv is free software: you can redistribute it and/or modify it under the
 terms of the GNU General Public License as published by the Free Software
