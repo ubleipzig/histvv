@@ -51,7 +51,7 @@ module.exports = function (dbSession) {
     const stylesheet = libxslt.parse(xsl);
     const query = dbSession.query(xqy);
 
-    function routeHandler (request, res, next) {
+    function routeHandler (request, response, next) {
       // bind route params to the query
       Object.keys(request.params).forEach(name => {
         query.bind(name, request.params[name], '');
@@ -82,11 +82,11 @@ module.exports = function (dbSession) {
         }
 
         const body = stylesheet.apply(r.result, xslparams);
-        res.type(options.type || 'html');
+        response.type(options.type || 'html');
         if (options.send) {
-          res.send(body);
+          response.send(body);
         } else {
-          res.locals.body = body;
+          response.locals.body = body;
           next();
         }
       });

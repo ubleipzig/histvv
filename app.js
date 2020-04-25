@@ -39,17 +39,19 @@ const session = new basex.Session(
   config.db.user,
   config.db.password
 );
-session.execute('OPEN ' + config.db.name, (err, r) => {
+
+session.execute('OPEN ' + config.db.name, async (err, r) => {
   if (err) {
     throw err;
   }
 
   console.log(r.info);
-  annotate(session).then(n => {
+  try {
+    const n = await annotate(session);
     console.log('all documents prepared (%s new)', n);
-  }).catch(error => {
+  } catch (error) {
     console.warn(error);
-  });
+  }
 });
 
 const routeHandlerFactory = require('./routehandler.js')(session);
@@ -61,9 +63,9 @@ app.set('strict routing', true);
 app.use(logger('dev'));
 
 // redirect search without query to search form
-app.get('/suche/', (request, res, next) => {
+app.get('/suche/', (request, response, next) => {
   if (Object.keys(request.query).length === 0) {
-    res.redirect(301, '/suche.html');
+    response.redirect(301, '/suche.html');
   } else {
     next();
   }
@@ -113,7 +115,7 @@ if (config.staticDir) {
 app.use(express.static(path.join(__dirname, 'public')));
 
 // catch 404 and forward to error handler
-app.use((request, res, next) => {
+app.use((request, response, next) => {
   const err = new Error('Not Found');
   err.status = 404;
   next(err);
@@ -124,9 +126,9 @@ app.use((request, res, next) => {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use((err, request, res, _) => {
-    res.status(err.status || 500);
-    res.json({
+  app.use((err, request, response, _) => {
+    response.status(err.status || 500);
+    response.json({
       message: err.message,
       error: err
     });
@@ -135,10 +137,10 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use((err, request, res, _) => {
-  res.status(err.status || 500);
-  res.type('text');
-  res.send(err.message);
+app.use((err, request, response, _) => {
+  response.status(err.status || 500);
+  response.type('text');
+  response.send(err.message);
 });
 
 module.exports = app;

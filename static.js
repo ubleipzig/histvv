@@ -38,8 +38,8 @@ xsl = xsl.replace(/xsl:import href="/g, 'xsl:import href="' + xsldir + '/');
 const stylesheet = libxslt.parse(xsl);
 
 module.exports = function (dir) {
-  return function (request, res, next) {
-    if (res.headersSent || res.locals.body) {
+  return function (request, response, next) {
+    if (response.headersSent || response.locals.body) {
       return next();
     }
 
@@ -70,8 +70,8 @@ module.exports = function (dir) {
     };
 
     html = stylesheet.apply(html, xslparams);
-    res.set('Content-type', 'text/html');
-    res.locals.body = html;
+    response.set('Content-type', 'text/html');
+    response.locals.body = html;
     next();
   };
 };

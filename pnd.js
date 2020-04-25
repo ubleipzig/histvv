@@ -32,7 +32,7 @@ const xq = fs.readFileSync(xqfile, 'utf-8');
 module.exports = function (dbSession) {
   const query = dbSession.query(xq);
 
-  function pndHandler (request, res, next) {
+  function pndHandler (request, response, next) {
     query.bind('pnd', request.params.pnd, '');
     query.execute((err, r) => {
       if (err) {
@@ -43,7 +43,7 @@ module.exports = function (dbSession) {
         return next();
       }
 
-      res.redirect(r.result);
+      response.redirect(r.result);
     });
   }
 
