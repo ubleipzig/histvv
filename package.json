@@ -8,7 +8,7 @@
   "bugs": "https://github.com/ubleipzig/histvv/issues",
   "author": "Carsten Milling <cmil@hashtable.de>",
   "scripts": {
-    "lint": "eslint app.js routes",
+    "lint": "xo",
     "start": "nodemon -e js,json,xsl,xq ./bin/www",
     "test": "xo"
   },
