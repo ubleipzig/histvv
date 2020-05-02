@@ -72,6 +72,30 @@ histvv-server --static ./histvv-data/public --xsl ./histvv-data/custom.xsl
 Now the server can be accessed under http://localhost:3000/. It can be stopped
 with the `Ctrl-C` key combination.
 
+## Docker
+
+The `Dockerfile` in this repo allows to build and run a docker container like this:
+
+```bash
+docker build  -t histvv/server .
+docker run -ti -p 3000:3000 -e dbhost=10.1.2.3 histvv/server
+```
+
+This would run a containerized histvv-server connecting to a BaseX database hosted at `10.1.2.3` (with the default port `1984` and database name `histvv`).
+It would be available at http://localhost:3000/.
+
+The exposed port of the histvv-server and the database it connects to can be
+overridden from the command line:
+
+```bash
+docker run -ti \
+  -p 3003:3000 \
+  -e dbhost=10.1.2.3 \
+  -e dbport=1999 \
+  -e dbname=histvv_leipzig \
+  histvv/server
+```
+
 ## Development
 
 With `npm start` you can run an instance of the histvv server that reloads
