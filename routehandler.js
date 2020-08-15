@@ -81,13 +81,35 @@ module.exports = function (dbSession) {
           return;
         }
 
-        const body = stylesheet.apply(r.result, xslparams);
-        response.type(options.type || 'html');
-        if (options.send) {
-          response.send(body);
-        } else {
-          response.locals.body = body;
-          next();
+        let body;
+        let {send, type = 'html'} = options;
+        let status = 200;
+
+        try {
+          body = stylesheet.apply(r.result, xslparams);
+        } catch (error) {
+          console.log(error);
+          let line = '';
+          if (error.line) {
+            line = r.result.split('\n')[error.line - 1];
+            console.log({line});
+          }
+
+          send = true;
+          status = 500;
+          type = 'text/plain';
+          body = `Internal server error\n\n${error.message}\n`;
+          Object.keys(error).forEach(key => {
+            body += `${key}: ${error[key]}\n`;
+          });
+        } finally {
+          response.type(type);
+          if (send) {
+            response.status(status).send(body);
+          } else {
+            response.locals.body = body;
+            next();
+          }
         }
       });
     }
