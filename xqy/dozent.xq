@@ -35,8 +35,11 @@ if ($daten) then
   {$daten}
   <stellen>
   {
-    for $v in $veranstaltungen return
-    <stelle semester="{$v/ancestor::v:vv/@semester}">
+    for $v in $veranstaltungen
+    let $semester := $v/ancestor::v:vv/@semester
+    order by $semester
+    return
+    <stelle semester="{$semester}">
     {$v}
     {
      if ($v/v:dozent[@ref = $id])
