@@ -57,7 +57,9 @@
             ":": "before"
           }
         }
-      ]
+      ],
+      "unicorn/prefer-number-properties": 0,
+      "unicorn/prevent-abbreviations": 0
     },
     "ignores": [
       "doc/**",
