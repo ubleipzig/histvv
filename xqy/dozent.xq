@@ -23,7 +23,7 @@
 
 declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";
 
-declare variable $id external := "anger_r";
+declare variable $id external := "";
 
 let $daten := /v:dozentenliste/v:dozent[@xml:id=$id]
 let $veranstaltungen := /v:vv[v:kopf/v:status/@komplett]
