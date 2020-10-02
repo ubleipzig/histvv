@@ -35,7 +35,7 @@ let $start := if (number($start) > 0) then number($start) else 1
 let $interval := if (number($interval) >= 10 and number($interval) <= 200)
   then number($interval) else 50
 
-let $sems := /v:vv/@semester/data()
+let $sems := for $s in /v:vv/@semester/data() order by $s return $s
 let $semcount := count($sems)
 let $min-sem := $sems[1]
 let $max-sem := $sems[$semcount]
