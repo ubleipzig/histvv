@@ -15,22 +15,22 @@ histvv-server
 
 ### BaseX
 
-The histvv server uses a [BaseX](http://basex.org) XML database to access and
-query a collection of XML files conforming to the [Histvv
+The histvv server uses the REST API of a [BaseX](http://basex.org) XML database
+to access and query a collection of XML files conforming to the [Histvv
 Schema](https://github.com/ubleipzig/histvv-schema). BaseX is expected to be run
 in [client/server mode](https://docs.basex.org/wiki/Database_Server):
 
 ```bash
-basexserver -S
+basexhttp -S
 ```
 
-The histvv server has been tested with __BaseX version 9.3.2__.
+The histvv server has been tested with __BaseX version 9.4.2__.
 
 ### Node.js
 
 As an Express application, the histvv server requires
 [Node.js](https://nodejs.org/) to run. It has been tested with
-__Node version 12.16.2__.
+__Node version 12.18.0__.
 
 ## Options
 
@@ -39,7 +39,7 @@ The `histvv-server` command  accepts the following command line options:
 * `--port` the port the histvv server listens on (default: `3000`)
 * `--db` the name of basex database to use (default: `histvv`)
 * `--dbhost` the basex server host (default: `localhost`)
-* `--dbport` the basex server port (default: `1984`)
+* `--dbport` the basex server port (default: `8984`)
 * `--user` username of the basex user (default: `admin`)
 * `--password` password of the basex user (default: `admin`)
 * `--static` a directory of files to be served by the histvv server in addition
@@ -81,7 +81,8 @@ docker build  -t histvv/server .
 docker run -ti -p 3000:3000 -e dbhost=10.1.2.3 histvv/server
 ```
 
-This would run a containerized histvv-server connecting to a BaseX database hosted at `10.1.2.3` (with the default port `1984` and database name `histvv`).
+This would run a containerized histvv-server connecting to a BaseX database
+hosted at `10.1.2.3` (with the default port `8984` and database name `histvv`).
 It would be available at http://localhost:3000/.
 
 The exposed port of the histvv-server and the database it connects to can be
@@ -91,7 +92,7 @@ overridden from the command line:
 docker run -ti \
   -p 3003:3000 \
   -e dbhost=10.1.2.3 \
-  -e dbport=1999 \
+  -e dbport=8999 \
   -e dbname=histvv_leipzig \
   histvv/server
 ```
@@ -112,6 +113,13 @@ You can pass options to the dev server like this:
 ```bash
 npm start -- --port 3003 --db histvv_dev
 ```
+
+To enable debug output run
+
+```bash
+DEBUG=histvv:* npm start
+```
+
 
 ## Author
 

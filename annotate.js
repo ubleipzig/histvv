@@ -1,7 +1,7 @@
 /*
  * annotate.js
  *
- * Copyright (C) 2019 Leipzig University Library <info@ub.uni-leipzig.de>
+ * Copyright (C) 2019-2020 Leipzig University Library <info@ub.uni-leipzig.de>
  *
  * Author: Carsten Milling <cmil@hashtable.de>
  *
@@ -24,7 +24,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const async = require('async');
+const query = require('./query');
 
 const xqFindDocs =
   'declare namespace v = "http://histvv.uni-leipzig.de/ns/2007";' +
@@ -33,38 +33,30 @@ const xqFindDocs =
 const queryfile = path.join(__dirname, 'xqy', 'annotate.xq');
 const xqAnnotate = fs.readFileSync(queryfile, 'utf-8');
 
-module.exports = function (dbSession) {
+module.exports = function () {
   return new Promise((resolve, reject) => {
-    const queryFind = dbSession.query(xqFindDocs);
-    const queryAnnotate = dbSession.query(xqAnnotate);
-
-    queryFind.execute((err, r) => {
-      if (err) {
-        return reject(err);
-      }
-
-      const uris = r.result ? r.result.split('\n') : [];
+    // eslint-disable-next-line promise/prefer-await-to-then
+    query(xqFindDocs).then(response => {
+      const {data} = response;
+      const uris = data ? data.split('\n') : [];
       if (uris.length > 0) {
         console.log('Annotating documents...');
       }
 
-      async.each(uris, (uri, cb) => {
-        queryAnnotate.bind('uri', uri, '');
-        queryAnnotate.execute(err => {
-          if (err) {
-            return cb(err);
-          }
-
+      uris.forEach(async uri => {
+        try {
+          await query(xqAnnotate, {uri});
           console.log(`${uri}`);
-          cb();
-        });
-      }, err => {
-        if (err) {
-          return reject(err);
+        } catch (error) {
+          console.log(error);
+          return reject(error);
         }
-
-        resolve(uris.length);
       });
+
+      resolve(uris.length);
+    }).catch(error => {
+      console.log(error);
+      return reject(error);
     });
   });
 };

@@ -2,7 +2,7 @@ FROM node:12
 LABEL maintainer="cmil@hashtable.de"
 
 ENV dbhost 0.0.0.0
-ENV dbport 1984
+ENV dbport 8984
 ENV dbname histvv
 
 WORKDIR /usr/src/histvv

@@ -1,7 +1,7 @@
 /*
  * app.js
  *
- * Copyright (C) 2018 Leipzig University Library <info@ub.uni-leipzig.de>
+ * Copyright (C) 2018-2020 Leipzig University Library <info@ub.uni-leipzig.de>
  *
  * Author: Carsten Milling <cmil@hashtable.de>
  *
@@ -25,36 +25,26 @@
 
 const path = require('path');
 const express = require('express');
+const debug = require('debug')('histvv:app');
 const logger = require('morgan');
-const basex = require('basex');
 const annotate = require('./annotate');
 const staticHtml = require('./static');
 const finish = require('./finish');
 const config = require('./config');
 const pndHandler = require('./pnd');
 
-const session = new basex.Session(
-  config.db.host,
-  config.db.port,
-  config.db.user,
-  config.db.password
-);
+debug({...config, db: {
+  ...config.db,
+  password: config.db.password ? '*****' : config.db.password
+}});
 
-session.execute('OPEN ' + config.db.name, async (err, r) => {
-  if (err) {
-    throw err;
-  }
-
-  console.log(r.info);
-  try {
-    const n = await annotate(session);
-    console.log('all documents prepared (%s new)', n);
-  } catch (error) {
-    console.warn(error);
-  }
+annotate().then(n => {
+  console.log('all documents prepared (%s new)', n);
+}).catch(error => {
+  console.warn(error);
 });
 
-const routeHandlerFactory = require('./routehandler.js')(session);
+const routeHandlerFactory = require('./routehandler.js')();
 
 const app = express();
 
@@ -85,7 +75,7 @@ app.get('/pnd.txt', routeHandlerFactory('dozenten.xq', 'beacon.xsl', {
     };
   }
 }));
-app.get('/pnd/:pnd', pndHandler(session));
+app.get('/pnd/:pnd', pndHandler());
 app.get('/suche.html', routeHandlerFactory('suchformular.xq', 'suche.xsl'));
 app.get('/suche/', routeHandlerFactory('suche.xq', 'suche.xsl', {
   queryParams: [

@@ -1,7 +1,7 @@
 /*
  * routehandler.js
  *
- * Copyright (C) 2018 Leipzig University Library <info@ub.uni-leipzig.de>
+ * Copyright (C) 2018-2020 Leipzig University Library <info@ub.uni-leipzig.de>
  *
  * Author: Carsten Milling <cmil@hashtable.de>
  *
@@ -26,6 +26,8 @@
 const path = require('path');
 const fs = require('fs');
 const libxslt = require('libxslt');
+const debug = require('debug')('histvv:routehandler');
+const query = require('./query');
 
 const xqydir = path.join(__dirname, 'xqy');
 const xsldir = path.join(__dirname, 'xsl');
@@ -35,9 +37,10 @@ function loadFile (filename, dir) {
   return fs.readFileSync(file, 'utf-8');
 }
 
-module.exports = function (dbSession) {
+module.exports = function () {
   return function (xqyFile, xslFile, options) {
     options = options || {};
+    debug({xqyFile, xslFile, options});
 
     const xqy = loadFile(xqyFile, xqydir);
     let xsl = loadFile(xslFile, xsldir);
@@ -49,20 +52,22 @@ module.exports = function (dbSession) {
     );
 
     const stylesheet = libxslt.parse(xsl);
-    const query = dbSession.query(xqy);
 
-    function routeHandler (request, response, next) {
-      // bind route params to the query
+    async function routeHandler (request, response, next) {
+      debug({params: request.params});
+      // add route params to query vars
+      const vars = {};
       Object.keys(request.params).forEach(name => {
-        query.bind(name, request.params[name], '');
+        vars[name] = request.params[name];
       });
 
       if (options.queryParams) {
+        debug(request.query);
         options.queryParams.forEach(k => {
           if (request.query[k]) {
             const value = Array.isArray(request.query[k])
               ? request.query[k].join(' ') : request.query[k];
-            query.bind(k, value, '', console.log);
+            vars[k] = value;
           }
         });
       }
@@ -71,47 +76,48 @@ module.exports = function (dbSession) {
       const xslparams = options.xslParams ? options.xslParams(request) : {};
       xslparams['histvv-url'] = request.originalUrl;
 
-      query.execute((err, r) => {
-        if (err) {
-          console.log(err);
+      debug({xqy, vars});
+      const dbResponse = await query(xqy, vars);
+
+      const xml = dbResponse.data;
+      // debug({xml});
+
+      if (xml === '') {
+        next();
+        return;
+      }
+
+      let body;
+      let {send, type = 'html'} = options;
+      let status = 200;
+
+      try {
+        body = stylesheet.apply(xml, xslparams);
+      } catch (error) {
+        // console.log(dbResponse.data);
+        console.log(error);
+        let line = '';
+        if (error.line) {
+          line = xml.split('\n')[error.line - 1];
+          console.log({line});
         }
 
-        if (r.result === '') {
+        send = true;
+        status = 500;
+        type = 'text/plain';
+        body = `Internal server error\n\n${error.message}\n`;
+        Object.keys(error).forEach(key => {
+          body += `${key}: ${error[key]}\n`;
+        });
+      } finally {
+        response.type(type);
+        if (send) {
+          response.status(status).send(body);
+        } else {
+          response.locals.body = body;
           next();
-          return;
         }
-
-        let body;
-        let {send, type = 'html'} = options;
-        let status = 200;
-
-        try {
-          body = stylesheet.apply(r.result, xslparams);
-        } catch (error) {
-          console.log(error);
-          let line = '';
-          if (error.line) {
-            line = r.result.split('\n')[error.line - 1];
-            console.log({line});
-          }
-
-          send = true;
-          status = 500;
-          type = 'text/plain';
-          body = `Internal server error\n\n${error.message}\n`;
-          Object.keys(error).forEach(key => {
-            body += `${key}: ${error[key]}\n`;
-          });
-        } finally {
-          response.type(type);
-          if (send) {
-            response.status(status).send(body);
-          } else {
-            response.locals.body = body;
-            next();
-          }
-        }
-      });
+      }
     }
 
     return routeHandler;

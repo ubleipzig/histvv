@@ -32,8 +32,12 @@ function cwdResolve (filepath) {
 
 nconf.argv().env();
 nconf.defaults({
+  port: 3000,
   db: 'histvv',
-  dbhost: 'localhost'
+  dbhost: 'localhost',
+  dbport: '8984',
+  user: 'admin',
+  password: 'admin'
 });
 
 const config = {

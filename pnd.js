@@ -25,26 +25,25 @@
 
 const path = require('path');
 const fs = require('fs');
+const query = require('./query');
 
 const xqfile = path.join(__dirname, 'xqy', 'pnd.xq');
 const xq = fs.readFileSync(xqfile, 'utf-8');
 
-module.exports = function (dbSession) {
-  const query = dbSession.query(xq);
+module.exports = function () {
+  async function pndHandler (request, response, next) {
+    try {
+      const rsp = query(xq, {pnd: request.params.pnd});
+      const {data} = rsp;
 
-  function pndHandler (request, response, next) {
-    query.bind('pnd', request.params.pnd, '');
-    query.execute((err, r) => {
-      if (err) {
-        console.log(err);
-      }
-
-      if (r.result === '') {
+      if (data === '') {
         return next();
       }
 
-      response.redirect(r.result);
-    });
+      response.redirect(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return pndHandler;
