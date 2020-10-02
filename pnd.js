@@ -33,7 +33,7 @@ const xq = fs.readFileSync(xqfile, 'utf-8');
 module.exports = function () {
   async function pndHandler (request, response, next) {
     try {
-      const rsp = query(xq, {pnd: request.params.pnd});
+      const rsp = await query(xq, {pnd: request.params.pnd});
       const {data} = rsp;
 
       if (data === '') {
