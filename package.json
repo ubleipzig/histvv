@@ -9,7 +9,7 @@
   "author": "Carsten Milling <cmil@hashtable.de>",
   "scripts": {
     "lint": "xo",
-    "start": "nodemon -e js,json,xsl,xq ./bin/www",
+    "start": "nodemon --watch . -e js,json,xsl,xq --watch ./bin/www ./bin/www",
     "test": "xo"
   },
   "bin": {
