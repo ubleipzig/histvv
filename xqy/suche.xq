@@ -47,17 +47,21 @@ let $bis := if(
     matches($bis, '^[0-9]{4}[ws]$') and $bis >= $min-sem and $bis <= $max-sem
   ) then $bis else $max-sem
 
-let $stellen := /v:vv[@semester >= $von and @semester <= $bis]
-  //v:sachgruppe[
-    @fakultät and (@fakultät = tokenize($fakultaet) or $fakultaet = '')
-  ]
-  //v:veranstaltung[
-    ($volltext = ''
-      or @fulltext contains text {tokenize($volltext)} all using stemming
-         using language "German")
-    and
-    ($dozent = '' or @dozenten contains text {tokenize($dozent)})
-  ]
+let $stellen := for $s in (
+  /v:vv[@semester >= $von and @semester <= $bis]
+    //v:sachgruppe[
+      @fakultät and (@fakultät = tokenize($fakultaet) or $fakultaet = '')
+    ]
+    //v:veranstaltung[
+      ($volltext = ''
+        or @fulltext contains text {tokenize($volltext)} all using stemming
+           using language "German")
+      and
+      ($dozent = '' or @dozenten contains text {tokenize($dozent)})
+    ]
+)
+  order by $s/ancestor::v:vv/@semester/string()
+  return $s
 
 let $total := count($stellen)
 
