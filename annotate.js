@@ -33,7 +33,7 @@ const xqFindDocs =
 const queryfile = path.join(__dirname, 'xqy', 'annotate.xq');
 const xqAnnotate = fs.readFileSync(queryfile, 'utf-8');
 
-module.exports = function () {
+module.exports = async function () {
   return new Promise((resolve, reject) => {
     // eslint-disable-next-line promise/prefer-await-to-then
     query(xqFindDocs).then(response => {

@@ -27,9 +27,11 @@
  */
 
 const http = require('http');
+const waitOn = require('wait-on');
 const debug = require('debug')('histvv:server');
 const config = require('../config');
 const app = require('../app');
+const annotate = require('../annotate');
 
 /**
  * Get port from environment and store in Express.
@@ -43,6 +45,42 @@ app.set('port', port);
  */
 
 const server = http.createServer(app);
+
+(async function () {
+  const {
+    db: {
+      name: dbname,
+      port,
+      host,
+      user: username,
+      password
+    }
+  } = config;
+
+  try {
+    const url = `http-get://${host}:${port}/rest/${dbname}`;
+    debug(`waiting for ${url}`);
+    await waitOn({
+      resources: [url],
+      interval: 1000,
+      timeout: 30000,
+      window: 1500,
+      auth: {username, password}
+    });
+    debug('database available');
+  } catch (error) {
+    debug('database not available');
+    console.log(error);
+    process.exit(1);
+  }
+
+  // eslint-disable-next-line promise/prefer-await-to-then
+  annotate().then(n => {
+    console.log('all documents prepared (%s new)', n);
+  }).catch(error => {
+    console.warn(error);
+  });
+})();
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -96,6 +134,7 @@ function onError (error) {
       process.exit(1);
       // cannot fall through
     default:
+      console.log(error);
       throw error;
   }
 }

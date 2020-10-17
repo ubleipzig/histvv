@@ -27,7 +27,6 @@ const path = require('path');
 const express = require('express');
 const debug = require('debug')('histvv:app');
 const logger = require('morgan');
-const annotate = require('./annotate');
 const staticHtml = require('./static');
 const finish = require('./finish');
 const config = require('./config');
@@ -37,12 +36,6 @@ debug({...config, db: {
   ...config.db,
   password: config.db.password ? '*****' : config.db.password
 }});
-
-annotate().then(n => {
-  console.log('all documents prepared (%s new)', n);
-}).catch(error => {
-  console.warn(error);
-});
 
 const routeHandlerFactory = require('./routehandler.js')();
 
