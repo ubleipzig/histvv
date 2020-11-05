@@ -36,22 +36,26 @@ const xqAnnotate = fs.readFileSync(queryfile, 'utf-8');
 module.exports = async function () {
   return new Promise((resolve, reject) => {
     // eslint-disable-next-line promise/prefer-await-to-then
-    query(xqFindDocs).then(response => {
+    query(xqFindDocs).then(async response => {
       const {data} = response;
       const uris = data ? data.split('\n') : [];
       if (uris.length > 0) {
         console.log('Annotating documents...');
       }
 
-      uris.forEach(async uri => {
+      const promises = [];
+
+      uris.forEach(uri => {
         try {
-          await query(xqAnnotate, {uri});
           console.log(`${uri}`);
+          promises.push(query(xqAnnotate, {uri}));
         } catch (error) {
           console.log(error);
           return reject(error);
         }
       });
+
+      await Promise.all(promises);
 
       resolve(uris.length);
     }).catch(error => {
